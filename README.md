@@ -7,7 +7,7 @@
 
 # webui.gopx
 
-A comprehensive collection of meticulously crafted React components styled with Tailwind CSS and Framer Motion
+A comprehensive collection of meticulously crafted React components for web styled with Tailwind CSS and Framer Motion
 
 <br />
 
