@@ -1,8 +1,8 @@
 <div align="center">
 
 <div align="center">
-  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/cf643b71032134d540bd1ed1c026b0a9d203afe5/apps/website/public/webui-dark.png#gh-dark-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
-  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/cf643b71032134d540bd1ed1c026b0a9d203afe5/apps/website/public/webui-light.png#gh-light-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
+  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/724ad87fa1758d5881f0a2a14e9bb7cb484c311b/apps/website/public/webui-dark-rounded.png#gh-dark-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
+  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/724ad87fa1758d5881f0a2a14e9bb7cb484c311b/apps/website/public/webui-light-rounded.png#gh-light-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
 </div>
 
 # webui.gopx
