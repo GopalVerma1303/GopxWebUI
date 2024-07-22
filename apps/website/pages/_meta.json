@@ -1,0 +1,29 @@
+{
+  "index": {
+    "type": "page",
+    "title": "WEBUI.GOPX",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Docs"
+  },
+  "components": {
+    "type": "page",
+    "title": "Components"
+  },
+  "templates": {
+    "type": "page",
+    "title": "Templates"
+  },
+  "about": {
+    "type": "page",
+    "title": "About",
+    "theme": {
+      "typesetting": "article"
+    }
+  }
+}

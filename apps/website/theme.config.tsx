@@ -1,7 +1,7 @@
 const config = {
-  logo: <span>My Nextra Documentation</span>,
+  logo: <span>WEBUI.GOPX</span>,
   project: {
-    link: "https://github.com/shuding/nextra",
+    link: "https://github.com/GopalVerma1303/webui.gopx",
   },
   // ... other theme options
 };
