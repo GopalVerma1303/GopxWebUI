@@ -13,6 +13,7 @@ import SOCIAL_MEDIA_LINKS from "@/content/social-media";
 import LOGO_FOR_DARK from "@/public/webui-footer-dark.png";
 import LOGO_FOR_LIGHT from "@/public/webui-footer-light.png";
 import Logo from "@/components/Logo";
+import Footer from "@/components/Footer";
 
 const logo = (
   <>
@@ -192,41 +193,8 @@ const config: DocsThemeConfig = {
   },
   footer: {
     text: (
-      <div className="flex w-full flex-col items-center">
-        <div>
-          <a
-            className="flex items-center gap-1 text-current"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="vercel.com homepage"
-            href="https://vercel.com/vgopaldps1gmailcoms-projects?utm_source=bettercallgopal.vercel.app"
-          >
-            <Image
-              className="dark:hidden opacity-70"
-              src={LOGO_FOR_LIGHT}
-              height={200}
-              width={200}
-              alt="gopx.dev"
-            />
-            <Image
-              className="hidden dark:block opacity-70"
-              src={LOGO_FOR_DARK}
-              height={200}
-              width={200}
-              alt="gopx.dev"
-            />
-          </a>
-        </div>
-        <div className="flex mt-5 text-xs flex-col justify-center items-center gap-2">
-          <p>
-            Build with ♥ by <span className="font-bold">Gopal Verma</span>
-          </p>
-          <p>
-            © 2024 <span className="font-bold">Gopal Verma</span> . All Rights
-            Reserved.
-          </p>
-          <p>𐄷 MIT License</p>
-        </div>
+      <div className="w-screen h-full">
+        <Footer />
       </div>
     ),
   },
