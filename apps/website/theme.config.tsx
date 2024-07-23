@@ -17,6 +17,13 @@ import Logo from "@/components/Logo";
 const logo = (
   <>
     <Image
+      src={"/webui-logo-light.png"}
+      width={70}
+      height={70}
+      alt="logo"
+      className="dark:hidden"
+    />
+    <Image
       src={"/webui-logo-dark.png"}
       width={70}
       height={70}
@@ -164,6 +171,8 @@ const config: DocsThemeConfig = {
       </>
     );
   },
+  // primaryHue: 231,
+  // primarySaturation: 64,
   editLink: {
     text: "Edit this page on GitHub →",
   },
