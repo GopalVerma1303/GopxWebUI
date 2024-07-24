@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# black-listed-bot
+User-agent: black-listed-bot
+Disallow: /terms-and-conditions
+Disallow: /privacy-policy
+
+# Host
+Host: https://webui.gopx.dev
+
+# Sitemaps
+Sitemap: https://webui.gopx.dev/sitemap.xml
