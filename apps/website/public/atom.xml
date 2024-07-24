@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://localhost:3000</id>
+    <title>Gopal Verma | webui.gopx</title>
+    <updated>2024-07-24T08:20:16.843Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="http://localhost:3000"/>
+    <link rel="self" href="http://localhost:3000/atom.xml"/>
+    <subtitle>I'm Gopal Verma, an indie developer, freelancer, and full-stack developer based in India. I do open-source projects and freelance work.</subtitle>
+    <logo>http://localhost:3000/logo.png</logo>
+    <icon>http://localhost:3000/favicon.png</icon>
+    <rights>All rights reserved 2024, Gopal Verma</rights>
+    <entry>
+        <title type="html"><![CDATA[components/index]]></title>
+        <id>http://localhost:3000/components/index</id>
+        <link href="http://localhost:3000/components/index"/>
+        <updated>2024-07-24T08:20:16.850Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docs/index]]></title>
+        <id>http://localhost:3000/docs/index</id>
+        <link href="http://localhost:3000/docs/index"/>
+        <updated>2024-07-24T08:20:16.851Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[templates/index]]></title>
+        <id>http://localhost:3000/templates/index</id>
+        <link href="http://localhost:3000/templates/index"/>
+        <updated>2024-07-24T08:20:16.851Z</updated>
+    </entry>
+</feed>

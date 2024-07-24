@@ -1,0 +1,25 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Gopal Verma | webui.gopx",
+    "home_page_url": "http://localhost:3000",
+    "feed_url": "http://localhost:3000/rss.json",
+    "description": "I'm Gopal Verma, an indie developer, freelancer, and full-stack developer based in India. I do open-source projects and freelance work.",
+    "icon": "http://localhost:3000/logo.png",
+    "items": [
+        {
+            "url": "http://localhost:3000/components/index",
+            "title": "components/index",
+            "date_modified": "2024-07-24T08:20:16.850Z"
+        },
+        {
+            "url": "http://localhost:3000/docs/index",
+            "title": "docs/index",
+            "date_modified": "2024-07-24T08:20:16.851Z"
+        },
+        {
+            "url": "http://localhost:3000/templates/index",
+            "title": "templates/index",
+            "date_modified": "2024-07-24T08:20:16.851Z"
+        }
+    ]
+}
