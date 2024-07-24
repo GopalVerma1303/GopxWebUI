@@ -44,7 +44,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
-        titleTemplate: "%s - gopx.dev",
+        titleTemplate: "%s - webui.gopx",
       };
     }
   },
@@ -60,8 +60,8 @@ const config: DocsThemeConfig = {
     const description =
       frontMatter.description ||
       "Gopal Verma's devsite for sharing code, blogs and projects!";
-    const siteName = "gopx.dev";
-    const siteUrl = "https://www.gopx.dev";
+    const siteName = "webui.gopx";
+    const siteUrl = "https://webui.gopx.dev";
 
     return (
       <>
@@ -202,7 +202,7 @@ const config: DocsThemeConfig = {
     placeholder: "Search for something...",
   },
   navbar: {
-    extraContent: [<SiteMapIcon />, <RssIcon />],
+    extraContent: <TwitterXIcon />,
   },
   toc: {
     backToTop: true,

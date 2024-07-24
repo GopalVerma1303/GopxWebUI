@@ -45,7 +45,7 @@ const SocialIcon: React.FC<{ name: string; url: string }> = ({ name, url }) => {
   return (
     <Link
       href={url}
-      className="text-white/50 hover:text-black/90 dark:hover:text-white/90"
+      className="text-black/50 dark:text-white/50  hover:text-black/90 dark:hover:text-white/90"
       aria-label={name}
     >
       {getIcon()}
