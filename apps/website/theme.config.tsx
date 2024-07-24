@@ -9,7 +9,7 @@ import {
   RssIcon,
   SiteMapIcon,
 } from "@/components/icons";
-import SOCIAL_MEDIA_LINKS from "@/content/social-media";
+import { SOCIAL_MEDIA_LINKS } from "@/content/social-media";
 import LOGO_FOR_DARK from "@/public/webui-footer-dark.png";
 import LOGO_FOR_LIGHT from "@/public/webui-footer-light.png";
 import Logo from "@/components/Logo";
@@ -172,8 +172,8 @@ const config: DocsThemeConfig = {
       </>
     );
   },
-  primaryHue: { dark: 217, light: 223 },
-  primarySaturation: 70,
+  primaryHue: { dark: 215, light: 230 },
+  primarySaturation: 100,
   editLink: {
     text: "Edit this page on GitHub →",
   },

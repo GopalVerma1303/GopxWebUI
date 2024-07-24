@@ -25,5 +25,19 @@
     "theme": {
       "typesetting": "article"
     }
+  },
+  "privacy-policy": {
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "typesetting": "default"
+    }
+  },
+  "terms-and-conditions": {
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "typesetting": "default"
+    }
   }
 }

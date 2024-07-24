@@ -5,18 +5,41 @@ export type SocialProfile = {
   link: string;
 };
 
-const SOCIAL_MEDIA_LINKS: Record<string, SocialProfile> = {
-  website: {
-    username: "gopx.dev",
-    link: "https://gopx.dev",
-  },
+export const FOLLOW_US_LINKS: Record<string, SocialProfile> = {
   github: {
     username: "gopx.dev",
-    link: "https://github.com/GopalVerma1303/gopx.dev",
+    link: "https://github.com/GopalVerma1303/webui.gopx",
+  },
+  discord: {
+    username: "codedeployingsquad",
+    link: "https://discord.gg/uR7DpxtaKw",
+  },
+  twitter: {
+    username: "bettercallgopal",
+    link: "https://twitter.com/bettercallgopal",
+  },
+  instagram: {
+    username: "bettercallgopal",
+    link: "https://www.instagram.com/bettercallgopal/",
+  },
+  facebook: {
+    username: "Gopal Verma",
+    link: "https://www.facebook.com/profile.php?id=100067485754453",
+  },
+};
+
+export const SOCIAL_MEDIA_LINKS: Record<string, SocialProfile> = {
+  website: {
+    username: "webui.gopx.dev",
+    link: "https://webui.gopx.dev",
+  },
+  github: {
+    username: "webui.gopx",
+    link: "https://github.com/GopalVerma1303/webui.gopx",
   },
   github_docsRepositoryBase: {
-    username: "gopx.dev",
-    link: "https://github.com/GopalVerma1303/gopx.dev/tree/main",
+    username: "webui.gopx",
+    link: "https://github.com/GopalVerma1303/webui.gopx/tree/main",
   },
   discord: {
     username: "codedeployingsquad",
@@ -47,5 +70,3 @@ const SOCIAL_MEDIA_LINKS: Record<string, SocialProfile> = {
     link: "https://www.linkedin.com/in/vermagopal/",
   },
 };
-
-export default SOCIAL_MEDIA_LINKS;
