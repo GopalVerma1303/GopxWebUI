@@ -32,16 +32,6 @@ export function ProfileCard({
 
           {/* Content */}
           <div className="relative p-4">
-            {/* Image */}
-            <div className="relative w-24 h-24 mx-auto mb-3">
-              <img
-                src={image}
-                alt={name}
-                className="w-full h-full object-cover rounded-full border-4 border-[#5271FF] shadow-md transform transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 rounded-full bg-[#5271FF] opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-            </div>
-
             {/* Name and Role */}
             <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-1">
               {name}
