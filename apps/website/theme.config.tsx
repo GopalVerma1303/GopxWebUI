@@ -172,8 +172,8 @@ const config: DocsThemeConfig = {
       </>
     );
   },
-  primaryHue: { dark: 215, light: 230 },
-  primarySaturation: 100,
+  // primaryHue: { dark: 215, light: 230 },
+  // primarySaturation: 100,
   editLink: {
     text: "Edit this page on GitHub →",
   },
