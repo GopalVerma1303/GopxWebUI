@@ -1,4 +1,3 @@
-// pages/api/getComponentCode.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -14,14 +13,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     const fileContents = fs.readFileSync(fullPath, "utf8");
-    const fileExtension = path.extname(fullPath).slice(1);
-
-    res.status(200).json({
-      code: fileContents,
-      language: fileExtension === "tsx" ? "typescript" : fileExtension,
-    });
+    res.status(200).send(fileContents);
   } catch (error) {
     console.error("Error reading file:", error);
-    res.status(500).json({ error: "Failed to read file" });
+    res.status(500).json({ error: "Error reading file" });
   }
 }

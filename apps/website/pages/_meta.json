@@ -7,10 +7,6 @@
       "layout": "raw"
     }
   },
-  "docs": {
-    "type": "page",
-    "title": "Docs"
-  },
   "components": {
     "type": "page",
     "title": "Components"

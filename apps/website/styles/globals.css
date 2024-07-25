@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("@/styles/variables.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -85,54 +85,66 @@ code.text-\[\.9em\] {
 }
 
 .bg-preview-container-light {
-  background-image: radial-gradient(
+  background-image: 
+    /* Adjust this radial gradient for the light-to-dark effect */
+    radial-gradient(
       circle at center,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(245, 245, 245, 0.2) 50%,
-      rgba(235, 235, 235, 0.1) 100%
+      rgba(255, 255, 255, 0.9) 0%,
+      /* Increase opacity for brighter center */ rgba(255, 255, 255, 0.7) 20%,
+      /* Adjust percentage to change radius */ rgba(240, 240, 240, 0.5) 40%,
+      /* Add more color stops for smoother gradient */ rgba(220, 220, 220, 0.3)
+        60%,
+      rgba(200, 200, 200, 0.1) 80%,
+      rgba(180, 180, 180, 0.05) 100% /* Darker edges */
     ),
-    linear-gradient(
-      to bottom,
-      rgba(240, 240, 240, 0.3),
-      rgba(220, 220, 220, 0.3)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 20px,
-      rgba(0, 0, 0, 0.05) 20px,
-      rgba(0, 0, 0, 0.05) 21px
-    ),
+    /* You can adjust or remove this linear gradient if not needed */
+      linear-gradient(
+        to bottom,
+        rgba(240, 240, 240, 0.3),
+        rgba(220, 220, 220, 0.3)
+      ),
+    /* Increase opacity of lines for more visibility */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        rgba(0, 0, 0, 0.08) 20px,
+        /* Increased from 0.05 to 0.08 */ rgba(0, 0, 0, 0.08) 21px
+      ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 20px,
-      rgba(0, 0, 0, 0.05) 20px,
-      rgba(0, 0, 0, 0.05) 21px
+      rgba(0, 0, 0, 0.08) 20px,
+      /* Increased from 0.05 to 0.08 */ rgba(0, 0, 0, 0.08) 21px
     );
   background-blend-mode: overlay, normal, normal, normal;
 }
 
 .dark .bg-preview-container-light {
-  background-image: radial-gradient(
+  background-image: 
+    /* Adjust this radial gradient for the dark theme */
+    radial-gradient(
       circle at center,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(50, 50, 50, 0.4) 0%,
+      rgba(30, 30, 30, 0.6) 30%,
+      /* Adjust percentages to change radius */ rgba(10, 10, 10, 0.8) 60%,
+      rgba(0, 0, 0, 0.9) 100%
     ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 20px,
-      rgba(250, 250, 250, 0.05) 20px,
-      rgba(250, 250, 250, 0.05) 21px
-    ),
+    /* Increase opacity of lines for more visibility in dark theme */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        rgba(250, 250, 250, 0.08) 20px,
+        /* Increased from 0.05 to 0.08 */ rgba(250, 250, 250, 0.01) 21px
+      ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 20px,
-      rgba(250, 250, 250, 0.05) 20px,
-      rgba(250, 250, 250, 0.05) 21px
+      rgba(250, 250, 250, 0.08) 20px,
+      /* Increased from 0.05 to 0.08 */ rgba(250, 250, 250, 0.01) 21px
     );
 }
 
@@ -149,31 +161,4 @@ html.dark .shiki span {
 /* Optional, for the code block we add overflow, borders and padding */
 .shiki {
   @apply rounded-xl;
-}
-
-:root {
-  --shiki-color-text: #414141;
-  --shiki-color-background: transparent;
-  --shiki-token-constant: #1976d2;
-  --shiki-token-string: #22863a;
-  --shiki-token-comment: #aaa;
-  --shiki-token-keyword: #d32f2f;
-  --shiki-token-parameter: #ff9800;
-  --shiki-token-function: #6f42c1;
-  --shiki-token-string-expression: #22863a;
-  --shiki-token-punctuation: #212121;
-  --shiki-token-link: #22863a;
-}
-
-.dark {
-  --shiki-color-text: #d1d1d1;
-  --shiki-token-constant: #79b8ff;
-  --shiki-token-string: #ffab70;
-  --shiki-token-comment: #6b737c;
-  --shiki-token-keyword: #f97583;
-  --shiki-token-parameter: #ff9800;
-  --shiki-token-function: #b392f0;
-  --shiki-token-string-expression: #4bb74a;
-  --shiki-token-punctuation: #bbb;
-  --shiki-token-link: #ffab70;
 }
