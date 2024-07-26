@@ -11,7 +11,7 @@ const ShuffleHero = () => {
       <div>
         <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
           Effortless UI Development with{" "}
-          <span className="relative text-[#818CF8] font-bold">
+          <span className="relative text-[#818CF8] font-extrabold">
             GOPX WEBUI
             <svg
               className="absolute -bottom-0.8 left-0 w-full"
