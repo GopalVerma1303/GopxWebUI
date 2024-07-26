@@ -14,6 +14,7 @@
     "@repo/ui": "workspace:*",
     "clsx": "^2.1.1",
     "feed": "^4.2.2",
+    "framer-motion": "^11.3.17",
     "fs": "0.0.1-security",
     "gray-matter": "^4.0.3",
     "mini-svg-data-uri": "^1.4.4",
