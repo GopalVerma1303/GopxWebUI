@@ -16,22 +16,23 @@ import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 
 const logo = (
-  <>
+  <div className="flex items-center gap-2">
     <Image
-      src={"/webui-logo-light.png"}
-      width={70}
-      height={70}
+      src={"/webui-light-rounded.png"}
+      width={40}
+      height={40}
       alt="logo"
-      className="dark:hidden"
+      className="dark:hidden rounded-lg shadow-lg dark:shadow-gray-300/50"
     />
     <Image
-      src={"/webui-logo-dark.png"}
-      width={70}
-      height={70}
+      src={"/webui-dark-rounded.png"}
+      width={40}
+      height={40}
       alt="logo"
-      className="hidden dark:block"
+      className="hidden dark:block rounded-lg shadow-lg dark:shadow-gray-700/50"
     />
-  </>
+    <p className=" font-bold">GOPX WEBUI</p>
+  </div>
 );
 
 const config: DocsThemeConfig = {
@@ -172,8 +173,8 @@ const config: DocsThemeConfig = {
       </>
     );
   },
-  // primaryHue: { dark: 215, light: 230 },
-  // primarySaturation: 100,
+  // primaryHue: { dark: 230, light: 230 },
+  // primarySaturation: 30,
   editLink: {
     text: "Edit this page on GitHub →",
   },
