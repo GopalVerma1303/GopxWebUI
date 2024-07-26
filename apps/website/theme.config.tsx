@@ -61,7 +61,7 @@ const config: DocsThemeConfig = {
     const description =
       frontMatter.description ||
       "Beautiful UI Components for Web at Your Fingertips!";
-    const siteName = "GOPX WEBUI";
+    const siteName = "webui.gopx.dev";
     const siteUrl = "https://webui.gopx.dev";
 
     return (
