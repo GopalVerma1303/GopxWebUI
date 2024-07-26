@@ -17,10 +17,7 @@
   },
   "about": {
     "type": "page",
-    "title": "About",
-    "theme": {
-      "typesetting": "article"
-    }
+    "title": "About"
   },
   "privacy-policy": {
     "type": "page",

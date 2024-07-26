@@ -1,0 +1,55 @@
+
+# Install Next.js
+
+import { Steps, Tabs } from 'nextra/components'
+
+<p className="opacity-80 text-lg">Install Next.js with Create Next App</p>
+
+<Steps>
+  
+### Create a new project
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tabs.Tab title="npm">
+    ```bash
+    npx create-next-app@latest
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="yarn">
+    ```bash
+    yarn create next-app@latest
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="pnpm">
+    ```bash
+    pnpm create next-app@latest
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="bun">
+    ```bash
+    bunx --bun create-next-app@latest
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### On installation, you'll see the following prompts
+
+```bash
+What is your project named? my-app
+Would you like to use TypeScript? No / Yes
+Would you like to use ESLint? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like to use `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to customize the default import alias (@/*)? No / Yes
+What import alias would you like configured? @/*
+```
+
+### Start the app
+
+```bash
+cd my-app
+npm run dev
+```
+
+</Steps>

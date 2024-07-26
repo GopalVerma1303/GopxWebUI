@@ -1,0 +1,66 @@
+
+
+# Add Utilities
+
+import { Steps, Tabs } from 'nextra/components'
+
+<p className="opacity-80 text-lg">Commonly used utilities for using GOPX WEBUI</p>
+
+<Steps>
+  
+### Install dependencies
+
+```bash
+npm i framer-motion clsx tailwind-merge
+```
+
+### Add util file
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+### Base Tailwind Config File
+
+```ts {1-3, 15, 19, 22-32} filename="tailwind.config.ts"
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {},
+  },
+  plugins: [addVariablesForColors],
+};
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
+
+```
+
+</Steps>

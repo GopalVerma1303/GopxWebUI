@@ -1,0 +1,89 @@
+
+
+# Install Tailwind CSS
+
+import { Steps, Tabs } from 'nextra/components'
+
+<p className="opacity-80 text-lg">Install Tailwind CSS with Next.js</p>
+
+<Steps>
+  
+### Create your project
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tabs.Tab title="npm">
+    ```bash
+npx create-next-app@latest my-project --typescript --eslint
+cd my-project
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="yarn">
+    ```bash
+yarn create next-app@latest my-project --typescript --eslint
+cd my-project
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="pnpm">
+    ```bash
+pnpm create next-app@latest my-project --typescript --eslint
+cd my-project
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab title="bun">
+    ```bash
+bunx --bun create-next-app@latest my-project --typescript --eslint
+cd my-project
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Install Tailwind CSS
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+### Configure your template paths
+
+```bash {3-10}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+### Add the Tailwind directives to your CSS
+
+```css filename="global.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Start your build process
+
+```bash
+npm run dev
+```
+
+### Start using Tailwind
+
+```bash {2}
+export default function Home() {
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+}
+```
+
+</Steps>
