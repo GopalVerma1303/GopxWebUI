@@ -1,9 +1,8 @@
 import type { Site } from "@/types";
 export const siteConfig: Site = {
-  name: "webui.gopx",
-  title: "GOPX WEBUI| webui.dev | 🚀 Building something people want!",
-  description:
-    "A comprehensive collection of meticulously crafted React components styled with Tailwind CSS and Framer Motion.",
+  name: "GOPX WEBUI",
+  title: "GOPX WEBUI| webui.gopx.dev",
+  description: "Beautiful UI Components for Web at Your Fingertips!",
   keywords: [
     "Gopal Verma",
     "www.gopx.dev",
@@ -111,7 +110,7 @@ export const siteConfig: Site = {
     name: "Gopal Verma",
     url: "https://gopx.dev/me",
   },
-  ogImage: "https://bettercallgopal.vercel.app/og.jpeg",
+  ogImage: "https://webui.gopx.dev/og.jpeg",
   links: {
     x: "https://x.com/bettercallgopal",
     github: "https://github.com/GopalVerma1303",

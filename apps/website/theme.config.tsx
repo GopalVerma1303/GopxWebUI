@@ -45,7 +45,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
-        titleTemplate: "%s - webui.gopx",
+        titleTemplate: "%s - webui.gopx.dev",
       };
     }
   },
@@ -60,8 +60,8 @@ const config: DocsThemeConfig = {
 
     const description =
       frontMatter.description ||
-      "Gopal Verma's devsite for sharing code, blogs and projects!";
-    const siteName = "webui.gopx";
+      "Beautiful UI Components for Web at Your Fingertips!";
+    const siteName = "GOPX WEBUI";
     const siteUrl = "https://webui.gopx.dev";
 
     return (
