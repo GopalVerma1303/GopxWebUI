@@ -15,9 +15,24 @@
     "type": "page",
     "title": "Templates"
   },
-  "about": {
+  "color-generator": {
     "type": "page",
-    "title": "About",
+    "title": "Color Generator",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+
+  "pricing": {
+    "type": "page",
+    "title": "Pricing",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "faq": {
+    "type": "page",
+    "title": "FAQ",
     "theme": {
       "typesetting": "article"
     }
@@ -26,14 +41,14 @@
     "type": "page",
     "display": "hidden",
     "theme": {
-      "typesetting": "default"
+      "typesetting": "article"
     }
   },
   "terms-and-conditions": {
     "type": "page",
     "display": "hidden",
     "theme": {
-      "typesetting": "default"
+      "typesetting": "article"
     }
   },
   "404": {

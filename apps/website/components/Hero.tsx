@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Button from "../components/Button";
+import BentoGrid from "./BentoGrid";
 
 const ShuffleHero = () => {
   return (
     <section className="w-full px-8 py-12  grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto ">
       <div>
-        <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
+        <span className="block mb-4 text-xs md:text-sm text-[#5271ff] font-medium">
           Effortless UI Development with{" "}
-          <span className="relative text-[#818CF8] font-extrabold">
+          <span className="relative text-[#5279ff] font-extrabold">
             GOPX WEBUI
             <svg
               className="absolute -bottom-0.8 left-0 w-full"
@@ -21,7 +23,7 @@ const ShuffleHero = () => {
             >
               <path
                 d="M1 5.26C47.65 4.24667 94.3167 3.73333 141 3.72C187.683 3.70667 234.35 4.19333 281 5.18C300.667 6.04667 320.333 7.24667 340 8.78"
-                stroke="#818CF8"
+                stroke="#5271ff"
                 strokeWidth="8"
                 strokeLinecap="round"
               />
@@ -44,15 +46,24 @@ const ShuffleHero = () => {
           Motion components. Simply copy, paste, and customize to fit your
           needs.
         </p>
-        <Link
-          href="/components"
-          className="bg-indigo-500 font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95 !text-white !no-underline"
-        >
-          Explore Components
-        </Link>
+        <div className="flex gap-4">
+          <Link
+            href="/components"
+            className="bg-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
+          >
+            Explore Components ↗
+          </Link>
+          <Link
+            href="/templates"
+            className="border border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95  !no-underline dark:!text-white !text-[#5259ff]"
+          >
+            Explore Templates ↗
+          </Link>
+        </div>
       </div>
       {/* <HeroImage /> */}
-      <ShuffleGrid />
+      {/* <ShuffleGrid /> */}
+      <BentoGrid />
     </section>
   );
 };
@@ -158,18 +169,18 @@ const generateSquares = () => {
 
 const HeroImage = () => {
   return (
-    <div>
+    <div className="md:ml-24">
       <Image
         src={"/webui-light-rounded.png"}
-        width={500}
-        height={500}
+        width={400}
+        height={400}
         alt="logo"
         className="dark:hidden rounded-lg "
       />
       <Image
         src={"/webui-dark-rounded.png"}
-        width={500}
-        height={500}
+        width={400}
+        height={400}
         alt="logo"
         className="hidden dark:block rounded-lg "
       />

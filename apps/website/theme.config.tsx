@@ -31,7 +31,7 @@ const logo = (
       alt="logo"
       className="hidden dark:block rounded-lg shadow-lg dark:shadow-gray-700/50"
     />
-    <p className=" font-bold">GOPX WEBUI</p>
+    <p className=" font-bold hidden lg:inline-block">GOPX WEBUI</p>
   </div>
 );
 
