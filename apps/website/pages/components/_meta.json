@@ -1,5 +1,5 @@
 {
-  "index": "Introduction",
+  "index": "All Components",
   "-- Installation": {
     "type": "separator",
     "title": "Installation"
@@ -7,9 +7,14 @@
   "install-nextjs": "Install Next.js",
   "install-tailwind": "Install Tailwind CSS",
   "add-utils": "Add Utilities",
-  "-- All Components": {
+  "-- Sections": {
     "type": "separator",
-    "title": "All Components"
+    "title": "Sections"
+  },
+  "heros": "Heros",
+  "-- Components": {
+    "type": "separator",
+    "title": "Components"
   },
   "cards": "Cards"
 }

@@ -13,7 +13,10 @@
   },
   "templates": {
     "type": "page",
-    "title": "Templates"
+    "title": "Templates",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "color-generator": {
     "type": "page",
@@ -30,9 +33,9 @@
       "typesetting": "article"
     }
   },
-  "faq": {
+  "faqs": {
     "type": "page",
-    "title": "FAQ",
+    "title": "FAQs",
     "theme": {
       "typesetting": "article"
     }

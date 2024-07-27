@@ -39,7 +39,7 @@ export const SOCIAL_MEDIA_LINKS: Record<string, SocialProfile> = {
   },
   github_docsRepositoryBase: {
     username: "webui.gopx",
-    link: "https://github.com/GopalVerma1303/webui.gopx/tree/main",
+    link: "https://github.com/GopalVerma1303/webui.gopx/tree/main/apps/website",
   },
   discord: {
     username: "codedeployingsquad",

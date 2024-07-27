@@ -176,11 +176,11 @@ const config: DocsThemeConfig = {
   // primaryHue: { dark: 230, light: 230 },
   // primarySaturation: 30,
   editLink: {
-    text: "Edit this page on GitHub →",
+    text: "Edit this page on GitHub ↗",
   },
   feedback: {
-    content: "Question? Give us feedback →",
-    labels: "feedback",
+    content: "Question? Give us feedback ↗",
+    labels: "",
   },
   sidebar: {
     titleComponent({ title, type }) {
