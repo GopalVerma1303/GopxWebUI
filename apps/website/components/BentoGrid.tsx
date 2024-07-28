@@ -56,7 +56,7 @@ const BentoGrid: React.FC = () => {
     {
       bgImage: "/assets/hero/bento/5.png",
       className: "aspect-square",
-      url: "/faq",
+      url: "/faqs",
     },
   ];
 
