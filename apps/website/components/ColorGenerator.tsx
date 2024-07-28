@@ -91,7 +91,7 @@ const ColorGenerator: React.FC = () => {
                 onChange={(e) =>
                   setColorFormat(e.target.value as "hex" | "rgb" | "hsl")
                 }
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border dark:border-white/50 border-black/50 rounded focus:outline-none"
               >
                 <option value="hex">HEX</option>
                 <option value="rgb">RGB</option>
@@ -108,13 +108,13 @@ const ColorGenerator: React.FC = () => {
                   type="text"
                   value={getColorString(colorFormat)}
                   readOnly
-                  className="flex-grow p-2 border rounded-l"
+                  className="w-full p-2 border dark:border-white/50 border-black/50 rounded-tl rounded-bl focus:outline-none"
                 />
                 <CopyToClipboard
                   text={getColorString(colorFormat)}
                   onCopy={copyColor}
                 >
-                  <button className="bg-black dark:bg-white bg-opacity-10 text-black dar:text-white dark:text-black px-3 rounded-r transition">
+                  <button className="bg-black dark:bg-white bg-opacity-10 border-t border-r border-b border-black/50 dark:border-white text-black dar:text-white dark:text-black px-3 rounded-r transition">
                     {copied ? <FiCheck /> : <FiCopy />}
                   </button>
                 </CopyToClipboard>
@@ -210,7 +210,7 @@ const InfoCard: React.FC<{ title: string; value: string }> = ({
   title,
   value,
 }) => (
-  <div className="bg-gray-100 p-4 rounded">
+  <div className="bg-black/15 dark:bg-white/15 p-4 rounded-lg">
     <h3 className="text-sm font-semibold mb-1">{title}</h3>
     <p className="text-xs">{value}</p>
   </div>
