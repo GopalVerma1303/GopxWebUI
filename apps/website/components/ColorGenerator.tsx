@@ -1,4 +1,4 @@
-@ts-nocheck
+//@ts-nocheck
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HexColorPicker, RgbaColorPicker } from "react-colorful";
@@ -114,7 +114,7 @@ const ColorGenerator: React.FC = () => {
                   text={getColorString(colorFormat)}
                   onCopy={copyColor}
                 >
-                  <button className="bg-black dark:bg-white bg-opacity-10 text-white dark:text-black px-3 rounded-r transition">
+                  <button className="bg-black dark:bg-white bg-opacity-10 text-black dar:text-white dark:text-black px-3 rounded-r transition">
                     {copied ? <FiCheck /> : <FiCopy />}
                   </button>
                 </CopyToClipboard>
