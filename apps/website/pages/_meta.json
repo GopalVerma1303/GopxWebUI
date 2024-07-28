@@ -18,6 +18,14 @@
       "typesetting": "article"
     }
   },
+  "colors": {
+    "type": "page",
+    "title": "Colors",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+
   "pricing": {
     "type": "page",
     "title": "Pricing",
@@ -34,17 +42,11 @@
   },
   "privacy-policy": {
     "type": "page",
-    "display": "hidden",
-    "theme": {
-      "typesetting": "article"
-    }
+    "display": "hidden"
   },
   "terms-and-conditions": {
     "type": "page",
-    "display": "hidden",
-    "theme": {
-      "typesetting": "article"
-    }
+    "display": "hidden"
   },
   "404": {
     "type": "page",

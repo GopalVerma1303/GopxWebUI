@@ -51,7 +51,7 @@ const BentoGrid: React.FC = () => {
     {
       bgImage: "/assets/hero/bento/3.png",
       className: "col-span-2 aspect-[2/1]",
-      url: "/color-generator",
+      url: "/colors",
     },
     {
       bgImage: "/assets/hero/bento/5.png",
