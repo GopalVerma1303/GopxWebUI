@@ -18,19 +18,11 @@
       "typesetting": "article"
     }
   },
-  "color-generator": {
-    "type": "page",
-    "title": "Color Generator",
-    "theme": {
-      "typesetting": "article"
-    }
-  },
-
   "pricing": {
     "type": "page",
     "title": "Pricing",
     "theme": {
-      "typesetting": "article"
+      "layout": "raw"
     }
   },
   "faqs": {

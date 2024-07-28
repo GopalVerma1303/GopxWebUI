@@ -175,3 +175,46 @@ html.dark .shiki span {
 .animate-scroll {
   animation: scroll 30s linear infinite;
 }
+
+.circular-gradient {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.8) 0%,
+    rgba(59, 130, 246, 0.6) 50%,
+    rgba(59, 130, 246, 0.2) 100%,
+    rgba(59, 130, 246, 0) 70%
+  );
+  filter: blur(500px);
+}
+
+.separator {
+  @apply flex items-center;
+}
+
+.separator::before,
+.separator::after {
+  @apply flex-grow border dark:border-white/30 border-black/30 content-[''];
+  border-width: 1px 0 0 0;
+}
+
+.separator > * {
+  @apply flex-shrink mx-4 text-gray-400;
+}
+
+.card-inner-shadow {
+  box-shadow: inset 0 0 10px rgba(126, 126, 126, 1);
+}
+
+/* styles.css */
+.gradient-border {
+  position: relative;
+  padding: 1px; /* Adjust the width of the border */
+  background: linear-gradient(90deg, #ff5733, #ffc300, #daf7a6);
+}
+
+.gradient-border-inner {
+  background-color: white; /* Adjust for dark mode using Tailwind classes */
+  border-radius: inherit;
+  overflow: hidden;
+  padding: 1rem; /* Adjust the inner padding */
+}
