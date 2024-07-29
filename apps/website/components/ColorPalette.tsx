@@ -55,7 +55,7 @@ const ColorRow: React.FC<{ name: string; colors: Color[] }> = ({
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-semibold text-white">{name}</h3>
         <select
-          className="bg-white/15 text-white text-sm rounded px-1 py-1 focus:outline-none"
+          className="bg-black/15 dark:bg-white/15 text-black dark:text-white text-sm rounded px-1 py-1 focus:outline-none"
           value={format}
           onChange={(e) => setFormat(e.target.value as ColorFormat)}
         >
