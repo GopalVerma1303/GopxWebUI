@@ -19,12 +19,13 @@ export const FOOTER_CONTENT = {
   },
   sections: [
     {
-      title: "Menu",
+      title: "Site",
       links: [
-        { name: "Docs", url: "/docs" },
         { name: "Components", url: "/components" },
         { name: "Templates", url: "/templates" },
-        { name: "About", url: "/about" },
+        { name: "Colors", url: "/colors" },
+        { name: "Pricing", url: "/pricing" },
+        { name: "FAQs", url: "/faqs" },
       ],
     },
     {
