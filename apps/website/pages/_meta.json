@@ -15,7 +15,7 @@
     "type": "page",
     "title": "Templates",
     "theme": {
-      "typesetting": "article"
+      "layout": "raw"
     }
   },
   "colors": {

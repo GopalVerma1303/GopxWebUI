@@ -1,122 +1,101 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { TEMPLATES } from "@/content/templates";
+import AvatarRow from "@/components/AvatarRow";
+import { FaGithub } from "react-icons/fa";
 
-interface FAQItem {
+interface TechStackItem {
+  name: string;
+  image: string;
+}
+
+interface Template {
   question: string;
-  answer: string;
+  title: string;
+  description: string;
+  link: string;
+  code: string;
+  images: string[];
+  stack: TechStackItem[];
 }
 
-interface FAQData {
-  [key: string]: FAQItem[];
+interface TemplatePageProps {
+  templates: Record<string, Template[]>;
 }
 
-export const TemplatePage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("Components");
-  const [openQuestion, setOpenQuestion] = useState<string>(
-    "What are the UI components you offer?",
-  );
+export const TemplatePage: React.FC<TemplatePageProps> = () => {
+  const [activeTab, setActiveTab] = useState<string>("Portfolios");
 
-  const faqData: FAQData = {
-    Components: [
-      {
-        question: "What are the UI components you offer?",
-        answer:
-          "We offer a wide range of pre-built UI components built with Tailwind CSS and Framer Motion, including buttons, cards, forms, navigation menus, and more.",
-      },
-      {
-        question: "How can I use these components in my project?",
-        answer:
-          "Simply copy and paste the code for the components you need into your project, then customize the styles and functionality to match your design.",
-      },
-      {
-        question: "Are the components responsive and mobile-friendly?",
-        answer:
-          "Yes, our components are designed to be fully responsive and optimized for both desktop and mobile devices.",
-      },
-      {
-        question: "Can I modify the components to fit my branding?",
-        answer:
-          "Absolutely! The components are highly customizable, allowing you to easily change colors, fonts, and other styles to match your brand identity.",
-      },
-    ],
-    Features: [
-      {
-        question: "What makes your components unique?",
-        answer:
-          "Our components are built with modern technologies like Tailwind CSS and Framer Motion, offering advanced features like animations, hover effects, and smooth scrolling.",
-      },
-      {
-        question: "Do you provide documentation and support?",
-        answer:
-          "Yes, we offer comprehensive documentation and support to help you get started and troubleshoot any issues you may encounter.",
-      },
-      {
-        question: "How often are new components added?",
-        answer:
-          "We regularly add new components and update existing ones to ensure you always have access to the latest design trends and best practices.",
-      },
-      {
-        question: "Can I use these components in commercial projects?",
-        answer:
-          "Yes, our components are licensed for commercial use, allowing you to incorporate them into your client projects without any additional fees.",
-      },
-    ],
-    Pricing: [
-      {
-        question: "How much do your components cost?",
-        answer:
-          "Our components are available at an affordable, one-time price, with no recurring fees or hidden costs.",
-      },
-      {
-        question: "Do you offer any discounts or bundle deals?",
-        answer:
-          "Yes, we offer discounts for bulk purchases and bundle deals that include multiple component packs at a reduced price.",
-      },
-      {
-        question: "What payment methods do you accept?",
-        answer:
-          "We accept various payment methods, including credit cards, PayPal, and cryptocurrency, to make it easy for you to purchase our components.",
-      },
-      {
-        question: "Do you offer a money-back guarantee?",
-        answer:
-          "We stand behind the quality of our components and offer a 30-day money-back guarantee if you're not completely satisfied with your purchase.",
-      },
-    ],
-    Support: [
-      {
-        question: "What kind of support do you provide?",
-        answer:
-          "Our support team is available to assist you with any questions or issues you may have regarding our components, from installation to customization.",
-      },
-      {
-        question: "How can I get in touch with your support team?",
-        answer:
-          "You can reach our support team via email, live chat, or our support forum, where you can also find answers to frequently asked questions.",
-      },
-      {
-        question: "Do you offer any tutorials or guides?",
-        answer:
-          "Yes, we provide a variety of tutorials, guides, and code examples to help you get the most out of our components and learn best practices for web development.",
-      },
-      {
-        question: "How quickly can I expect a response from your support team?",
-        answer:
-          "We strive to respond to all support inquiries within 24 hours, and we prioritize resolving any critical issues as quickly as possible.",
-      },
-    ],
-    abc: [],
-    debu: [],
-    aubobec: [],
-    iubqe: [],
-    ibeub: [],
+  const TemplateItem: React.FC<{ item: Template }> = ({ item }) => {
+    return (
+      <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
+        <div className="flex flex-col mb-4 lg:mb-0 lg:mr-8 lg:pr-8 space-y-4 flex-grow">
+          <h2 className="font-bold text-2xl break-words">
+            {item.title || "Portfolio Template"}
+          </h2>
+          <p className="opacity-80 break-words">
+            {item.description ||
+              "Every Portfolio Template is a multi-page responsive website."}
+          </p>
+          <AvatarRow profiles={item.stack} />
+          <div className="flex gap-2">
+            <Link
+              href={item.link || "https://gopx.dev"}
+              target="_blank"
+              className="bg-black dark:bg-white text-white dark:text-black text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
+            >
+              View Template
+              <svg
+                className="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </Link>
+            <Link
+              href={item.code || "https://github.com/GopalVerma1303/gopx.dev"}
+              target="_blank"
+              className="border border-black dark:border-white text-black dark:text-white text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2"
+            >
+              Source Code
+              <FaGithub />
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-full">
+          {item.images?.map((src, index) => (
+            <div
+              key={index}
+              className="relative w-full h-80 rounded-md overflow-hidden"
+            >
+              <Image
+                src={src || "https://gopx.dev/og.jpeg"}
+                alt={`Template preview ${index + 1}`}
+                width={224}
+                height={224}
+                className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="min-h-screen mt-[50px]">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-start space-x-5 mb-8 w-full mx-auto h-42 overflow-x-auto no-scrollbar px-4">
-          {Object.keys(faqData).map((tab) => (
+    <div className="min-h-screen mt-[50px] mb-36">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-start space-x-1 mb-8 w-full mx-auto h-42 overflow-x-auto no-scrollbar px-4">
+          {Object.keys(TEMPLATES).map((tab) => (
             <motion.button
               key={tab}
               className={`px-4 py-2 font-bold rounded-md text-sm ${
@@ -133,43 +112,15 @@ export const TemplatePage: React.FC = () => {
           ))}
         </div>
         <div className="space-y-4">
-          {faqData[activeTab].map((item) => (
+          {TEMPLATES[activeTab].map((item) => (
             <motion.div
               key={item.question}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="border dark:border-white/20 border-black/20 rounded-lg overflow-hidden"
+              className="rounded-lg overflow-hidden m-2"
             >
-              <motion.button
-                className="w-full text-left p-4 flex justify-between items-center font-bold"
-                onClick={() =>
-                  setOpenQuestion(
-                    openQuestion === item.question ? "" : item.question,
-                  )
-                }
-              >
-                <span>{item.question}</span>
-                <motion.span
-                  animate={{ rotate: openQuestion === item.question ? 45 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  +
-                </motion.span>
-              </motion.button>
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{
-                  height: openQuestion === item.question ? "auto" : 0,
-                  opacity: openQuestion === item.question ? 1 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="p-4 border-t dark:border-white/20 border-black/20 text-black/70 dark:text-white/70">
-                  {item.answer}
-                </div>
-              </motion.div>
+              <TemplateItem item={item} />
             </motion.div>
           ))}
         </div>
