@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 import { HexColorPicker, RgbaColorPicker } from "react-colorful";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { TinyColor } from "@ctrl/tinycolor";
+import { useRouter } from "next/router";
 import { FiCheck, FiCopy, FiRefreshCw, FiSave, FiShare2 } from "react-icons/fi";
+import toast, { Toaster } from "react-hot-toast";
 
 const ColorGenerator: React.FC = () => {
+  const router = useRouter();
   const [color, setColor] = useState<string>("#1fb6ff");
   const [colorFormat, setColorFormat] = useState<"hex" | "rgb" | "hsl">("hex");
   const [savedColors, setSavedColors] = useState<string[]>([]);
@@ -17,7 +20,17 @@ const ColorGenerator: React.FC = () => {
     if (savedColorsFromStorage) {
       setSavedColors(JSON.parse(savedColorsFromStorage));
     }
-  }, []);
+
+    if (router.isReady) {
+      const { color: urlColor } = router.query;
+      if (typeof urlColor === "string") {
+        const decodedColor = decodeURIComponent(urlColor);
+        if (new TinyColor(decodedColor).isValid) {
+          setColor(decodedColor);
+        }
+      }
+    }
+  }, [router.isReady, router.query]);
 
   const tinyColor = new TinyColor(color);
 
@@ -55,9 +68,9 @@ const ColorGenerator: React.FC = () => {
   };
 
   const shareColor = () => {
-    const shareUrl = `${window.location.origin}?color=${encodeURIComponent(color)}`;
+    const shareUrl = `${window.location.origin}/colors?color=${encodeURIComponent(color)}`;
     navigator.clipboard.writeText(shareUrl);
-    alert("Share URL copied to clipboard!");
+    toast.success("Share URL copied to clipboard!");
   };
 
   return (

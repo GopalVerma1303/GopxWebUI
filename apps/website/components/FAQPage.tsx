@@ -11,98 +11,98 @@ interface FAQData {
 }
 
 export const FAQPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("Web");
+  const [activeTab, setActiveTab] = useState<string>("Components");
   const [openQuestion, setOpenQuestion] = useState<string>(
-    "What is web development?",
+    "What are the UI components you offer?",
   );
 
   const faqData: FAQData = {
-    Web: [
+    Components: [
       {
-        question: "What is web development?",
+        question: "What are the UI components you offer?",
         answer:
-          "Web development is the process of building and maintaining websites. It involves various aspects including web design, web programming, and database management.",
+          "We offer a wide range of pre-built UI components built with Tailwind CSS and Framer Motion, including buttons, cards, forms, navigation menus, and more.",
       },
       {
-        question: "How do I know if I need it?",
+        question: "How can I use these components in my project?",
         answer:
-          "If you want to establish an online presence, promote your business, or create an application, web development is essential.",
+          "Simply copy and paste the code for the components you need into your project, then customize the styles and functionality to match your design.",
       },
       {
-        question: "What does it cost?",
+        question: "Are the components responsive and mobile-friendly?",
         answer:
-          "The cost of web development can vary widely based on the complexity of the project, ranging from a few hundred to several thousand dollars.",
+          "Yes, our components are designed to be fully responsive and optimized for both desktop and mobile devices.",
       },
       {
-        question: "What about SEO?",
+        question: "Can I modify the components to fit my branding?",
         answer:
-          "SEO, or Search Engine Optimization, is crucial for improving your website's visibility in search engines. Our components are designed to be SEO-friendly.",
-      },
-    ],
-    Mobile: [
-      {
-        question: "What is mobile app development?",
-        answer:
-          "Mobile app development is the process of creating software applications that run on mobile devices, such as smartphones and tablets.",
-      },
-      {
-        question: "What platforms do you support?",
-        answer:
-          "We support both iOS and Android platforms, allowing you to reach a wider audience.",
-      },
-      {
-        question: "How long does it take to develop a mobile app?",
-        answer:
-          "The timeline for mobile app development can vary based on complexity, but it typically ranges from a few weeks to several months.",
-      },
-      {
-        question: "What are the costs involved in mobile app development?",
-        answer:
-          "Costs can vary significantly based on features and design, often ranging from a few thousand to tens of thousands of dollars.",
+          "Absolutely! The components are highly customizable, allowing you to easily change colors, fonts, and other styles to match your brand identity.",
       },
     ],
-    "UI/UX": [
+    Features: [
       {
-        question: "What is UI/UX design?",
+        question: "What makes your components unique?",
         answer:
-          "UI (User Interface) design focuses on the layout and visual elements of a product, while UX (User Experience) design focuses on the overall experience a user has with a product.",
+          "Our components are built with modern technologies like Tailwind CSS and Framer Motion, offering advanced features like animations, hover effects, and smooth scrolling.",
       },
       {
-        question: "Why is UI/UX design important?",
+        question: "Do you provide documentation and support?",
         answer:
-          "Good UI/UX design enhances user satisfaction, increases engagement, and drives conversions.",
+          "Yes, we offer comprehensive documentation and support to help you get started and troubleshoot any issues you may encounter.",
       },
       {
-        question: "How do you ensure a good user experience?",
+        question: "How often are new components added?",
         answer:
-          "We conduct user research, usability testing, and iterative design processes to ensure our designs meet user needs.",
+          "We regularly add new components and update existing ones to ensure you always have access to the latest design trends and best practices.",
       },
       {
-        question: "Can you help with redesigning existing interfaces?",
+        question: "Can I use these components in commercial projects?",
         answer:
-          "Yes, we offer services to redesign and improve existing interfaces for better usability and aesthetics.",
+          "Yes, our components are licensed for commercial use, allowing you to incorporate them into your client projects without any additional fees.",
       },
     ],
-    Copywriting: [
+    Pricing: [
       {
-        question: "What is copywriting?",
+        question: "How much do your components cost?",
         answer:
-          "Copywriting is the art of writing persuasive text for marketing and advertising purposes, aimed at encouraging the reader to take action.",
+          "Our components are available at an affordable, one-time price, with no recurring fees or hidden costs.",
       },
       {
-        question: "Why is copywriting important for my business?",
+        question: "Do you offer any discounts or bundle deals?",
         answer:
-          "Effective copywriting can significantly impact your marketing efforts, helping to attract and convert potential customers.",
+          "Yes, we offer discounts for bulk purchases and bundle deals that include multiple component packs at a reduced price.",
       },
       {
-        question: "Do you offer SEO copywriting services?",
+        question: "What payment methods do you accept?",
         answer:
-          "Yes, we provide SEO copywriting services that help improve your website's visibility in search engines while engaging your audience.",
+          "We accept various payment methods, including credit cards, PayPal, and cryptocurrency, to make it easy for you to purchase our components.",
       },
       {
-        question: "What types of copywriting do you specialize in?",
+        question: "Do you offer a money-back guarantee?",
         answer:
-          "We specialize in website copy, product descriptions, blog posts, and social media content.",
+          "We stand behind the quality of our components and offer a 30-day money-back guarantee if you're not completely satisfied with your purchase.",
+      },
+    ],
+    Support: [
+      {
+        question: "What kind of support do you provide?",
+        answer:
+          "Our support team is available to assist you with any questions or issues you may have regarding our components, from installation to customization.",
+      },
+      {
+        question: "How can I get in touch with your support team?",
+        answer:
+          "You can reach our support team via email, live chat, or our support forum, where you can also find answers to frequently asked questions.",
+      },
+      {
+        question: "Do you offer any tutorials or guides?",
+        answer:
+          "Yes, we provide a variety of tutorials, guides, and code examples to help you get the most out of our components and learn best practices for web development.",
+      },
+      {
+        question: "How quickly can I expect a response from your support team?",
+        answer:
+          "We strive to respond to all support inquiries within 24 hours, and we prioritize resolving any critical issues as quickly as possible.",
       },
     ],
   };
@@ -110,11 +110,11 @@ export const FAQPage: React.FC = () => {
   return (
     <div className="min-h-screen mt-[50px]">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-center space-x-1 mb-8 w-fit mx-auto">
+        <div className="flex justify-center space-x-1 sm:space-x-5 mb-8 w-fit mx-auto">
           {Object.keys(faqData).map((tab) => (
             <motion.button
               key={tab}
-              className={`px-4 py-2 font-bold rounded-md text-sm ${
+              className={`px-2 py-1 font-bold rounded-md text-sm ${
                 activeTab === tab
                   ? "bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600"
                   : "text-black/50 dark:text-white/50"
