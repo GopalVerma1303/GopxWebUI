@@ -28,7 +28,11 @@ const ColorSwatch: React.FC<{ color: Color; format: ColorFormat }> = ({
       <div
         className={`w-full aspect-square rounded-t cursor-pointer`}
         style={{ backgroundColor: color.hex }}
-        onClick={() => copyToClipboard(colorFormat[format])}
+        onClick={() =>
+          copyToClipboard(
+            format === "className" ? color.className : colorFormat[format],
+          )
+        }
       />
       <div
         className="w-full text-[10px] p-1 rounded-b text-center truncate"
