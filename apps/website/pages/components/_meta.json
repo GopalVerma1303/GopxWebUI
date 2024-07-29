@@ -11,10 +11,19 @@
     "type": "separator",
     "title": "Sections"
   },
-  "heros": "Heros",
+  "faq-sections": "FAQ",
+  "features-sections": "Features",
+  "form-sections": "Forms",
+  "hero-sections": "Heros",
+  "pricing-sections": "Pricing",
+  "signin-sections": "Sign In",
+  "stats-sections": "Stats",
+  "testimonial-sections": "Testimonials",
   "-- Components": {
     "type": "separator",
     "title": "Components"
   },
+  "accordions": "Accordion",
+  "buttons": "Buttons",
   "cards": "Cards"
 }
