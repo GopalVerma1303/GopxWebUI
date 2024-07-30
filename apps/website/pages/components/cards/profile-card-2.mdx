@@ -1,6 +1,6 @@
 ---
-title: "Profile Card"
-description: "A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details."
+title: "Profile Card 2"
+description: "Second reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details."
 ---
 
 import { ComponentShowcase } from '@/components/ComponentShowcase';
@@ -28,7 +28,53 @@ import { Steps } from 'nextra/components'
     />
   }
   componentName="ProfileCard.tsx"
-  componentPath="@/components/ProfileCard.tsx"
+  componentPath="/components/ProfileCard.tsx"
+  componentProps={
+  
+  [
+  {
+    prop: "name",
+    type: "string",
+    description: "The name of the individual displayed in the card."
+  },
+  {
+    prop: "role",
+    type: "string",
+    description: "The job title or role of the individual."
+  },
+  {
+    prop: "company",
+    type: "string",
+    description: "The name of the company where the individual works."
+  },
+  {
+    prop: "image",
+    type: "string",
+    description: "URL to the individual's profile image (not used in the current implementation)."
+  },
+  {
+    prop: "email",
+    type: "string",
+    description: "The email address of the individual."
+  },
+  {
+    prop: "phone",
+    type: "string",
+    description: "The phone number of the individual."
+  },
+  {
+    prop: "website",
+    type: "string",
+    description: "The personal or company website of the individual."
+  },
+  {
+    prop: "github",
+    type: "string",
+    description: "The GitHub profile URL of the individual."
+  }
+]
+
+  }
 />
 
 ## Installation

@@ -1,0 +1,79 @@
+---
+title: "Profile Card"
+description: "A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details."
+---
+
+import { ComponentShowcase } from '@/components/ComponentShowcase';
+import { ProfileCard } from '@/components/ProfileCard';
+import { Steps } from 'nextra/components'
+
+
+# Profile Card
+
+<p className="opacity-80 text-lg">A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details.</p>
+
+`Card` `Profile`
+
+<ComponentShowcase
+  component={
+    <ProfileCard
+      name="Jane Doe"
+      role="Senior Developer"
+      company="TechCorp Inc."
+      image="https://example.com/jane-doe.jpg"
+      email="jane@example.com"
+      phone="+1 (555) 123-4567"
+      website="www.janedoe.com"
+      github="janedoe"
+    />
+  }
+  componentName="ProfileCard.tsx"
+  componentPath="/components/ProfileCard.tsx"
+  componentProps={
+  
+  [
+  {
+    prop: "name",
+    type: "string",
+    description: "The name of the individual displayed in the card."
+  },
+  {
+    prop: "role",
+    type: "string",
+    description: "The job title or role of the individual."
+  },
+  {
+    prop: "company",
+    type: "string",
+    description: "The name of the company where the individual works."
+  },
+  {
+    prop: "image",
+    type: "string",
+    description: "URL to the individual's profile image (not used in the current implementation)."
+  },
+  {
+    prop: "email",
+    type: "string",
+    description: "The email address of the individual."
+  },
+  {
+    prop: "phone",
+    type: "string",
+    description: "The phone number of the individual."
+  },
+  {
+    prop: "website",
+    type: "string",
+    description: "The personal or company website of the individual."
+  },
+  {
+    prop: "github",
+    type: "string",
+    description: "The GitHub profile URL of the individual."
+  }
+]
+
+  }
+/>
+

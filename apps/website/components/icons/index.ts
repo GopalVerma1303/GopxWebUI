@@ -32,3 +32,6 @@ export { DiscordIcon as DiscordIcon } from "./discord-icon";
 export { TwitterXIcon as TwitterXIcon } from "./twitter-x-icon";
 export { RssIcon as RssIcon } from "./rss";
 export { SiteMapIcon as SiteMapIcon } from "./sitemap";
+export * from "./check";
+export * from "./copy";
+export * from "./word-wrap";

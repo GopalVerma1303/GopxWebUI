@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { path: filePath } = req.query;
+  const { filePath } = req.query;
 
   if (typeof filePath !== "string") {
     return res.status(400).json({ error: "Invalid file path" });
@@ -12,10 +12,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const fullPath = path.join(process.cwd(), filePath);
 
   try {
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    res.status(200).send(fileContents);
+    const fileContent = fs.readFileSync(fullPath, "utf8");
+    res.status(200).json({ code: fileContent });
   } catch (error) {
-    console.error("Error reading file:", error);
     res.status(500).json({ error: "Error reading file" });
   }
 }
