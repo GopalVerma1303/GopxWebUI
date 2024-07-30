@@ -46,7 +46,7 @@ export const Pre: React.FC<PreProps> = ({
           "nx-relative",
           "nx-bg-primary-700/5 nx-mb-4 nx-rounded-xl nx-subpixel-antialiased dark:nx-bg-primary-300/10",
           "contrast-more:nx-border contrast-more:nx-border-primary-900/20 contrast-more:nx-contrast-150 contrast-more:dark:nx-border-primary-100/40",
-          filename ? "nx-pt-12" : "nx-pt-4",
+          filename ? "nx-pt-8" : "nx-pt-4",
         )}
       >
         <pre
