@@ -6,19 +6,20 @@ description: "A reusable UI element that displays key user information, typicall
 import { getPagesUnderRoute } from 'nextra/context'
 import Link from 'next/link'
 import {Cards, Card} from "nextra/components"
+import Image from 'next/image'
 
 # Card Components
 
 <p className="opacity-80 text-lg">A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details.</p>
+
+<br />
 
 export function BlogIndex() {
   const currentPageTitle = "Card Components";
   return getPagesUnderRoute('/components/cards').filter(page => page.meta?.title !== currentPageTitle && page.frontMatter?.title !== currentPageTitle).map(page => {
     return (
       <ShowcaseCard title={page.meta?.title || page.frontMatter?.title || page.name} href={page.route}>
-        <p className="opacity-80 text-justify text-xs" style={{ margin: '1rem' }}>
-          {page.frontMatter?.description}{' '}
-        </p>
+        <Image src={page.frontMatter?.image} alt={page.frontMatter?.title} width={500} height={500} />
       </ShowcaseCard>
     )
   })
