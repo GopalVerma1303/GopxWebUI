@@ -52,17 +52,26 @@ const darkTheme = {
   colors: {},
 };
 
+const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (key: string, value: any) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return "[Circular]";
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
+
 export function ComponentShowcase({
   component,
   componentName,
 }: ComponentShowcaseProps) {
   const [highlighter, setHighlighter] = useState<Highlighter | null>(null);
   const [highlightedCode, setHighlightedCode] = useState<string>("");
-
-  // Extract the props from the component
   const props = component.props;
-
-  // Generate the code string
   const code = `<${componentName}
 ${Object.entries(props)
   .map(([key, value]) => `  ${key}=${JSON.stringify(value)}`)

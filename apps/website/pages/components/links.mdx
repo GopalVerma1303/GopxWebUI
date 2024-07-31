@@ -1,25 +1,117 @@
-import {ProfileCard}  from '@gopx-webui/ui/cards';
-import InteractiveLink from "@/components/InteractiveLink";
-import { ComponentShowcase } from '@/components/ComponentShowcase';
+---
+title: "Torsional Link"
+description: "Animated link component with torsional movement on hover, adding dynamic visual flair to your UI."
+---
 
-# Spiral Worm Link
+import TorsionalLink from "@/components/TorsionalLink";
+import Showcase from "@/components/Showcase";
+import { Tabs } from "nextra/components";
 
-<p className="opacity-80 text-lg">A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details.</p>
+# Torsional Link
 
-`Card` `Profile`
+<p className="opacity-80 text-lg">Animated link component with torsional movement on hover, adding dynamic visual flair to your UI.</p>
 
-<ComponentShowcase
-  component={
-    <section className="grid place-content-center gap-4 bg-gray-100 px-8 py-24">
-      <InteractiveLink href="/components">Components</InteractiveLink>
-      <InteractiveLink href="/templates">Templates</InteractiveLink>
-      <InteractiveLink href="/colors">Colors</InteractiveLink>
-      <InteractiveLink href="/Pricing">Pricing</InteractiveLink>
-      <InteractiveLink href="/faqs">FAQs</InteractiveLink>
+`Link` `Reveal` `Animation`
+
+<br />
+
+<Tabs items={["Preview", "Code"]}>
+  <Tabs.Tab>
+    <Showcase 
+      component={
+        <section className="grid place-content-center gap-4 dark:bg-gray-100 bg-gray-200 rounded-lg px-8 py-24">
+          <TorsionalLink href="/components">Components</TorsionalLink>
+          <TorsionalLink href="/templates">Templates</TorsionalLink>
+          <TorsionalLink href="/colors">Colors</TorsionalLink>
+          <TorsionalLink href="/Pricing">Pricing</TorsionalLink>
+          <TorsionalLink href="/faqs">FAQs</TorsionalLink>
+        </section>
+      }
+    />
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="DemoLink.tsx"
+    <section className="grid place-content-center gap-4 dark:bg-gray-100 bg-gray-200 rounded-lg px-8 py-24">
+      <TorsionalLink href="/components">Components</TorsionalLink>
+      <TorsionalLink href="/templates">Templates</TorsionalLink>
+      <TorsionalLink href="/colors">Colors</TorsionalLink>
+      <TorsionalLink href="/Pricing">Pricing</TorsionalLink>
+      <TorsionalLink href="/faqs">FAQs</TorsionalLink>
     </section>
-  }
-  componentName="ProfileCardDemo.tsx"
-  componentPath="@/components/ProfileCard.tsx"
-/>
+    ```
+  </Tabs.Tab>
+</Tabs>
 
+## Installation
+```tsx filename="TorsionalLink.tsx"  showLineNumbers
+import React from "react";
+import { motion } from "framer-motion";
 
+interface TorsionalLinkProps {
+  href: string;
+  children: string;
+}
+
+const DURATION = 0.25;
+const STAGGER = 0.025;
+
+const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
+  return (
+    <motion.a
+      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase text-blue-600 hover:text-blue-700 transition-colors duration-300 sm:text-5xl md:text-6xl lg:text-7xl"
+      style={{ lineHeight: 0.9 }}
+      initial="initial"
+      whileHover="hovered"
+      href={href}
+    >
+      <motion.div>
+        {children.split("").map((letter, index) => (
+          <motion.span
+            key={index}
+            variants={{
+              initial: { y: 0 },
+              hovered: { y: "-100%" },
+            }}
+            transition={{
+              duration: DURATION,
+              ease: "easeInOut",
+              delay: STAGGER * index,
+            }}
+            className="inline-block"
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </motion.div>
+      <motion.div className="absolute inset-0">
+        {children.split("").map((letter, index) => (
+          <motion.span
+            key={index}
+            variants={{
+              initial: { y: "100%" },
+              hovered: { y: 0 },
+            }}
+            transition={{
+              duration: DURATION,
+              ease: "easeInOut",
+              delay: STAGGER * index,
+            }}
+            className="inline-block text-blue-700"
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.a>
+  );
+};
+
+export default TorsionalLink; 
+```
+
+## Props
+
+| Prop      | Type   | Required | Description                              |
+|-----------|--------|----------|------------------------------------------|
+| `href`    | string | Yes      | The URL that the link points to.        |
+| `children`| string | Yes      | The text content to be displayed within the link. Each letter will have a unique animation effect. |
