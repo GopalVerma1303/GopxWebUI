@@ -25,14 +25,9 @@ const ProfileCard = ({
   return (
     <div className="w-full max-w-sm mx-auto">
       <div className="relative group">
-        {/* Card Container */}
         <div className="relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-500 group-hover:scale-105">
-          {/* Background Pattern */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#5271FF]/30 to-[#5271FF]/10 dark:from-[#5271FF]/20 dark:to-[#5271FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          {/* Content */}
           <div className="relative p-4">
-            {/* Name and Role */}
             <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-1">
               {name}
             </h2>
@@ -42,8 +37,6 @@ const ProfileCard = ({
             <p className="text-center text-gray-600 dark:text-gray-300 mb-4">
               {company}
             </p>
-
-            {/* Contact Info */}
             <div className="space-y-2">
               <ContactItem icon={<FiMail />} text={email} />
               <ContactItem icon={<FiPhone />} text={phone} />
@@ -52,8 +45,6 @@ const ProfileCard = ({
             </div>
           </div>
         </div>
-
-        {/* Background Blur Effect */}
         <div className="absolute inset-0 bg-[#5271FF]/20 dark:bg-[#5271FF]/10 rounded-lg blur-xl transform transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110" />
       </div>
     </div>

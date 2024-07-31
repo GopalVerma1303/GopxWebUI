@@ -1,12 +1,25 @@
 import {ProfileCard}  from '@gopx-webui/ui/cards';
+import InteractiveLink from "@/components/InteractiveLink";
+import { ComponentShowcase } from '@/components/ComponentShowcase';
 
-    <ProfileCard
-      name="Jane Doe"
-      role="Senior Developer"
-      company="TechCorp Inc."
-      image="https://example.com/jane-doe.jpg"
-      email="jane@example.com"
-      phone="+1 (555) 123-4567"
-      website="www.janedoe.com"
-      github="janedoe"
-    />
+# Spiral Worm Link
+
+<p className="opacity-80 text-lg">A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details.</p>
+
+`Card` `Profile`
+
+<ComponentShowcase
+  component={
+    <section className="grid place-content-center gap-4 bg-gray-100 px-8 py-24">
+      <InteractiveLink href="/components">Components</InteractiveLink>
+      <InteractiveLink href="/templates">Templates</InteractiveLink>
+      <InteractiveLink href="/colors">Colors</InteractiveLink>
+      <InteractiveLink href="/Pricing">Pricing</InteractiveLink>
+      <InteractiveLink href="/faqs">FAQs</InteractiveLink>
+    </section>
+  }
+  componentName="ProfileCardDemo.tsx"
+  componentPath="@/components/ProfileCard.tsx"
+/>
+
+
