@@ -9,7 +9,8 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./cards": "./src/cards/index.ts"
+    "./cards": "./src/cards/index.ts",
+    "./links": "./src/links/index.ts"
   },
   "license": "MIT",
   "scripts": {
@@ -32,6 +33,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "framer-motion": "^11.3.17",
     "react-icons": "^5.2.1"
   }
 }

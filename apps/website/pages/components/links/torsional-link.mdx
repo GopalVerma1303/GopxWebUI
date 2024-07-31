@@ -1,9 +1,10 @@
 ---
 title: "Torsional Link"
 description: "Animated link component with torsional movement on hover, adding dynamic visual flair to your UI."
+image: "https://webui.gopx.dev/assets/components/links/torsional-link.png"
 ---
 
-import TorsionalLink from "@/components/TorsionalLink";
+import {TorsionalLink} from "@gopx-webui/ui/links";
 import Showcase from "@/components/Showcase";
 import { Tabs } from "nextra/components";
 
@@ -19,11 +20,11 @@ import { Tabs } from "nextra/components";
   <Tabs.Tab>
     <Showcase 
       component={
-        <section className="grid place-content-center gap-4 dark:bg-gray-100 bg-gray-200 rounded-lg px-8 py-24">
+        <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-orange-600 rounded-lg px-8 py-24">
           <TorsionalLink href="/components">Components</TorsionalLink>
           <TorsionalLink href="/templates">Templates</TorsionalLink>
           <TorsionalLink href="/colors">Colors</TorsionalLink>
-          <TorsionalLink href="/Pricing">Pricing</TorsionalLink>
+          <TorsionalLink href="/pricing">Pricing</TorsionalLink>
           <TorsionalLink href="/faqs">FAQs</TorsionalLink>
         </section>
       }
@@ -31,11 +32,11 @@ import { Tabs } from "nextra/components";
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="DemoLink.tsx"
-    <section className="grid place-content-center gap-4 dark:bg-gray-100 bg-gray-200 rounded-lg px-8 py-24">
+    <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-orange-600 rounded-lg px-8 py-24">
       <TorsionalLink href="/components">Components</TorsionalLink>
       <TorsionalLink href="/templates">Templates</TorsionalLink>
       <TorsionalLink href="/colors">Colors</TorsionalLink>
-      <TorsionalLink href="/Pricing">Pricing</TorsionalLink>
+      <TorsionalLink href="/pricing">Pricing</TorsionalLink>
       <TorsionalLink href="/faqs">FAQs</TorsionalLink>
     </section>
     ```
