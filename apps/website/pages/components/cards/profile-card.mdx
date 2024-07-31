@@ -4,10 +4,10 @@ description: "A reusable UI element that displays key user information, typicall
 image: "https://webui.gopx.dev/assets/components/cards/profile-card.png"
 ---
 
-import { ComponentShowcase } from '@/components/ComponentShowcase';
+import Showcase from '@/components/Showcase';
 import { ProfileCard }  from '@gopx-webui/ui/cards';
 import { Steps } from 'nextra/components'
-
+import { Tabs } from "nextra/components";
 
 # Profile Card
 
@@ -15,106 +15,50 @@ import { Steps } from 'nextra/components'
 
 `Card` `Profile`
 
-<ComponentShowcase
-  component={
+<Tabs items={["Preview", "Code"]}>
+  <Tabs.Tab>
+    <Showcase 
+      component={
     <ProfileCard
-      name="Jane Doe"
-      role="Senior Developer"
-      company="TechCorp Inc."
-      image="https://example.com/jane-doe.jpg"
-      email="jane@example.com"
+      name="Gopal Verma"
+      role="Software Developer"
+      company="GOPX WEBUI"
+      image="/me.jpg"
+      email="business.gopalverma@gmail.com"
       phone="+1 (555) 123-4567"
-      website="www.janedoe.com"
-      github="janedoe"
+      website="www.gopx.dev"
+      github="GopalVerma1303"
     />
-  }
-  componentName="ProfileCardDemo.tsx"
-  componentPath="@/components/ProfileCard.tsx"
-/>
+      }
+    />
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="DemoLink.tsx"
+    <ProfileCard
+      name="Gopal Verma"
+      role="Software Developer"
+      company="GOPX WEBUI"
+      image="/me.jpg"
+      email="business.gopalverma@gmail.com"
+      phone="+1 (555) 123-4567"
+      website="www.gopx.dev"
+      github="GopalVerma1303"
+    />
+    ```
+  </Tabs.Tab>
+</Tabs>
 
 ## Installation
 
 <Steps>
 
-### Set up the component and its props
+### Install `react-icons`
+
+  ```bash
+  npm install react-icons
+  ```
  
-```tsx
-import React from "react";
-import { FiMail, FiPhone, FiGlobe, FiGithub } from "react-icons/fi";
-
-interface ProfileCardProps {
-  name: string;
-  role: string;
-  company: string;
-  image: string;
-  email: string;
-  phone: string;
-  website: string;
-  github: string;
-}
-
-export function ProfileCard({
-  name,
-  role,
-  company,
-  image,
-  email,
-  phone,
-  website,
-  github,
-}: ProfileCardProps) {
-  // Component body will go here
-}
-```
- 
-### Create the main container and group wrapper
-
-```tsx
-return (
-  <div className="w-full max-w-sm mx-auto">
-    <div className="relative group">
-      {/* Card content will go here */}
-    </div>
-  </div>
-);
-```
-
-### Add the card container with background and hover effects
-
-```tsx
-<div className="relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-500 group-hover:scale-105">
-  {/* Background Pattern */}
-  <div className="absolute inset-0 bg-gradient-to-br from-[#5271FF]/30 to-[#5271FF]/10 dark:from-[#5271FF]/20 dark:to-[#5271FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-  
-  {/* Content will go here */}
-</div>
-```
-
-### Add the card content
-
-```tsx
-{/* Background Blur Effect */}
-<div className="absolute inset-0 bg-[#5271FF]/20 dark:bg-[#5271FF]/10 rounded-lg blur-xl transform transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110"></div>
-```
-
-### Create the ContactItem component
-
-```tsx
-function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="flex items-center space-x-2 group">
-      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#5271FF]/10 dark:bg-[#5271FF]/20 flex items-center justify-center text-[#5271FF] group-hover:bg-[#5271FF] group-hover:text-white transition-all duration-300">
-        {icon}
-      </div>
-      <span className="text-gray-600 dark:text-gray-300 group-hover:text-[#5271FF] transition-colors duration-300">
-        {text}
-      </span>
-    </div>
-  );
-}
-```
-
-### Combine all parts to complete the ProfileCard component
+### Create `ProfileCard.tsx` 
 
 ```tsx filename="ProfileCard.tsx" showLineNumbers 
 import React from "react";
@@ -145,6 +89,14 @@ export function ProfileCard({
         <div className="relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-500 group-hover:scale-105">
           <div className="absolute inset-0 bg-gradient-to-br from-[#5271FF]/30 to-[#5271FF]/10 dark:from-[#5271FF]/20 dark:to-[#5271FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="relative p-4">
+            <div className="relative w-12 h-12 mx-auto mb-4">
+              <img
+                src={image}
+                alt={name}
+                className="w-full h-full object-cover rounded-full border-4 border-[#5271FF] shadow-md transform transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 rounded-full bg-[#5271FF] opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            </div>
             <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-1">
               {name}
             </h2>
@@ -185,13 +137,13 @@ function ContactItem({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 ## Props
 
-| Prop    | Type   | Description                                          |
-|---------|--------|------------------------------------------------------|
-| `name`  | `string` | The name of the individual displayed in the card.   |
-| `role`  | `string` | The job title or role of the individual.            |
-| `company` | `string` | The name of the company where the individual works. |
-| `image` | `string` | URL to the individual's profile image (not used in the current implementation). |
-| `email` | `string` | The email address of the individual.                |
-| `phone` | `string` | The phone number of the individual.                 |
-| `website` | `string` | The personal or company website of the individual.  |
-| `github` | `string` | The GitHub profile URL of the individual.           |
+| Prop     | Type    | Required | Description                                          |
+|----------|---------|----------|------------------------------------------------------|
+| `name`   | `string`| Yes      | The name of the individual displayed in the card.   |
+| `role`   | `string`| Yes      | The job title or role of the individual.            |
+| `company`| `string`| Yes      | The name of the company where the individual works.  |
+| `image`  | `string`| Yes      | URL to the individual's profile image (not used in the current implementation). |
+| `email`  | `string`| Yes      | The email address of the individual.                 |
+| `phone`  | `string`| Yes      | The phone number of the individual.                  |
+| `website`| `string`| Yes      | The personal or company website of the individual.   |
+| `github` | `string`| Yes      | The GitHub profile URL of the individual.            |

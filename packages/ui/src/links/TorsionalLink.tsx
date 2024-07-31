@@ -1,19 +1,50 @@
 import React from "react";
+import "../styles.css";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 interface TorsionalLinkProps {
   href: string;
   children: string;
+  duration?: number;
+  stagger?: number;
+  fontSize?: string;
+  fontWeight?: string | number;
+  textTransform?: "uppercase" | "lowercase" | "capitalize" | "none";
+  initialColor?: string;
+  hoverColor?: string;
+  lineHeight?: number | string;
+  easing?: string;
+  className?: string;
 }
 
-const DURATION = 0.25;
-const STAGGER = 0.025;
-
-const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
+const TorsionalLink: React.FC<TorsionalLinkProps> = ({
+  href,
+  children,
+  duration = 0.25,
+  stagger = 0.025,
+  fontSize = "4xl",
+  fontWeight = "black",
+  textTransform = "uppercase",
+  initialColor = "black",
+  hoverColor = "blue-700",
+  lineHeight = 0.9,
+  easing = "easeInOut",
+  className,
+}) => {
   return (
     <motion.a
-      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase text-black hover:text-black transition-colors duration-300 sm:text-5xl md:text-6xl lg:text-7xl"
-      style={{ lineHeight: 0.9 }}
+      className={clsx(
+        "relative block overflow-hidden whitespace-nowrap",
+        `text-${fontSize}`,
+        `font-${fontWeight}`,
+        textTransform,
+        `text-${initialColor}`,
+        `hover:text-${hoverColor}`,
+        "transition-colors duration-300",
+        className,
+      )}
+      style={{ lineHeight }}
       initial="initial"
       whileHover="hovered"
       href={href}
@@ -27,9 +58,9 @@ const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
               hovered: { y: "-100%" },
             }}
             transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * index,
+              duration,
+              ease: easing,
+              delay: stagger * index,
             }}
             className="inline-block"
           >
@@ -46,11 +77,11 @@ const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
               hovered: { y: 0 },
             }}
             transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * index,
+              duration,
+              ease: easing,
+              delay: stagger * index,
             }}
-            className="inline-block text-black"
+            className={clsx("inline-block", `text-${hoverColor}`)}
           >
             {letter}
           </motion.span>

@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles.css";
 import { FiMail, FiPhone, FiGlobe, FiGithub } from "react-icons/fi";
 
 interface ProfileCardProps {
@@ -17,6 +16,7 @@ const ProfileCard = ({
   name,
   role,
   company,
+  image,
   email,
   phone,
   website,
@@ -28,6 +28,14 @@ const ProfileCard = ({
         <div className="relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-all duration-500 group-hover:scale-105">
           <div className="absolute inset-0 bg-gradient-to-br from-[#5271FF]/30 to-[#5271FF]/10 dark:from-[#5271FF]/20 dark:to-[#5271FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="relative p-4">
+            <div className="relative w-12 h-12 mx-auto mb-4">
+              <img
+                src={image}
+                alt={name}
+                className="w-full h-full object-cover rounded-full border-4 border-[#5271FF] shadow-md transform transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 rounded-full bg-[#5271FF] opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            </div>
             <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-1">
               {name}
             </h2>

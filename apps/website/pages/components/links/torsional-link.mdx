@@ -4,9 +4,11 @@ description: "Animated link component with torsional movement on hover, adding d
 image: "https://webui.gopx.dev/assets/components/links/torsional-link.png"
 ---
 
-import {TorsionalLink} from "@gopx-webui/ui/links";
+import { TorsionalLink } from "@gopx-webui/ui/links";
 import Showcase from "@/components/Showcase";
 import { Tabs } from "nextra/components";
+import { Steps } from 'nextra/components'
+
 
 # Torsional Link
 
@@ -20,7 +22,7 @@ import { Tabs } from "nextra/components";
   <Tabs.Tab>
     <Showcase 
       component={
-        <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-orange-600 rounded-lg px-8 py-24">
+        <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-blue-200 rounded-lg px-8 py-24 text-green-600">
           <TorsionalLink href="/components">Components</TorsionalLink>
           <TorsionalLink href="/templates">Templates</TorsionalLink>
           <TorsionalLink href="/colors">Colors</TorsionalLink>
@@ -31,36 +33,76 @@ import { Tabs } from "nextra/components";
     />
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="DemoLink.tsx"
-    <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-orange-600 rounded-lg px-8 py-24">
-      <TorsionalLink href="/components">Components</TorsionalLink>
-      <TorsionalLink href="/templates">Templates</TorsionalLink>
-      <TorsionalLink href="/colors">Colors</TorsionalLink>
-      <TorsionalLink href="/pricing">Pricing</TorsionalLink>
-      <TorsionalLink href="/faqs">FAQs</TorsionalLink>
-    </section>
+    ```tsx filename="TorsionalLinkDemo.tsx"
+        <section className="grid place-content-center gap-4 dark:bg-orange-600 bg-blue-200 rounded-lg px-8 py-24 text-green-600">
+          <TorsionalLink href="/components">Components</TorsionalLink>
+          <TorsionalLink href="/templates">Templates</TorsionalLink>
+          <TorsionalLink href="/colors">Colors</TorsionalLink>
+          <TorsionalLink href="/pricing">Pricing</TorsionalLink>
+          <TorsionalLink href="/faqs">FAQs</TorsionalLink>
+        </section>
     ```
   </Tabs.Tab>
 </Tabs>
 
 ## Installation
+
+<Steps>
+
+  ### Install `framer-motion` and `clsx`
+  ```bash
+  npm install framer-motion clsx
+  ```
+
+  ### Create `TorsionalLink.tsx`
+
 ```tsx filename="TorsionalLink.tsx"  showLineNumbers
 import React from "react";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 interface TorsionalLinkProps {
   href: string;
   children: string;
+  duration?: number;
+  stagger?: number;
+  fontSize?: string;
+  fontWeight?: string | number;
+  textTransform?: "uppercase" | "lowercase" | "capitalize" | "none";
+  initialColor?: string;
+  hoverColor?: string;
+  lineHeight?: number | string;
+  easing?: string;
+  className?: string;
 }
 
-const DURATION = 0.25;
-const STAGGER = 0.025;
-
-const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
+const TorsionalLink: React.FC<TorsionalLinkProps> = ({
+  href,
+  children,
+  duration = 0.25,
+  stagger = 0.025,
+  fontSize = "4xl",
+  fontWeight = "black",
+  textTransform = "uppercase",
+  initialColor = "black",
+  hoverColor = "blue-700",
+  lineHeight = 0.9,
+  easing = "easeInOut",
+  className,
+}) => {
   return (
     <motion.a
-      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase text-blue-600 hover:text-blue-700 transition-colors duration-300 sm:text-5xl md:text-6xl lg:text-7xl"
-      style={{ lineHeight: 0.9 }}
+      className={clsx(
+        "relative block overflow-hidden whitespace-nowrap",
+        `text-${fontSize}`,
+        `font-${fontWeight}`,
+        textTransform,
+        `text-${initialColor}`,
+        `hover:text-${hoverColor}`,
+        "transition-colors duration-300",
+        className,
+      )}
+      style={{ lineHeight }}
       initial="initial"
       whileHover="hovered"
       href={href}
@@ -74,9 +116,9 @@ const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
               hovered: { y: "-100%" },
             }}
             transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * index,
+              duration,
+              ease: easing,
+              delay: stagger * index,
             }}
             className="inline-block"
           >
@@ -93,11 +135,11 @@ const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
               hovered: { y: 0 },
             }}
             transition={{
-              duration: DURATION,
-              ease: "easeInOut",
-              delay: STAGGER * index,
+              duration,
+              ease: easing,
+              delay: stagger * index,
             }}
-            className="inline-block text-blue-700"
+            className={clsx("inline-block", `text-${hoverColor}`)}
           >
             {letter}
           </motion.span>
@@ -107,12 +149,25 @@ const TorsionalLink: React.FC<TorsionalLinkProps> = ({ href, children }) => {
   );
 };
 
-export default TorsionalLink; 
+export default TorsionalLink;
 ```
+</Steps>
+
+
 
 ## Props
 
-| Prop      | Type   | Required | Description                              |
-|-----------|--------|----------|------------------------------------------|
-| `href`    | string | Yes      | The URL that the link points to.        |
-| `children`| string | Yes      | The text content to be displayed within the link. Each letter will have a unique animation effect. |
+| Prop              | Type                          | Required | Description                                                                                   |
+|-------------------|-------------------------------|----------|-----------------------------------------------------------------------------------------------|
+| `href`            | `string`                      | Yes      | The URL that the link points to.                                                             |
+| `children`        | `string`                      | Yes      | The text content to be displayed within the link.                                            |
+| `duration`        | `number`                      | No       | The duration of the hover animation in seconds (default is `0.25`).                         |
+| `stagger`         | `number`                      | No       | The delay between the animations of each letter in seconds (default is `0.025`).            |
+| `fontSize`       | `string`                      | No       | The size of the font (default is `"4xl"`).                                                  |
+| `fontWeight`      | `string \| number`             | No       | The weight of the font (default is `"black"`).                                              |
+| `textTransform`   | `"uppercase" \| "lowercase" \| "capitalize" \| "none"` | No       | The text transformation style (default is `"uppercase"`).                                   |
+| `initialColor`    | `string`                      | No       | The initial color of the text before hover (default is `"black"`).                          |
+| `hoverColor`      | `string`                      | No       | The color of the text when hovered (default is `"blue-700"`).                                  |
+| `lineHeight`      | `number \| string`             | No       | The line height of the text (default is `0.9`).                                             |
+| `easing`          | `string`                      | No       | The easing function for the animation (default is `"easeInOut"`).                           |
+| `className`       | `string`                      | No       | Additional custom CSS classes to apply to the link element.                                  |

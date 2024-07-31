@@ -143,6 +143,9 @@ importers:
 
   packages/ui:
     dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       framer-motion:
         specifier: ^11.3.17
         version: 11.3.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
