@@ -1,6 +1,6 @@
 export function DiscordIcon() {
   return (
-    <>
+    <a href="https://discord.com/invite/uR7DpxtaKw">
       <svg
         width="24"
         height="24"
@@ -23,6 +23,6 @@ export function DiscordIcon() {
           }
         `}
       </style>
-    </>
+    </a>
   );
 }

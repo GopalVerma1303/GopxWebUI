@@ -95,7 +95,7 @@ ${Object.entries(props)
     <div className="w-full mt-[30px]">
       <Tabs items={["Preview", "Code"]}>
         <Tabs.Tab>
-          <div className="bg-preview-container bg-preview-container-light rounded-xl p-6 py-20">
+          <div className="bg-preview-container bg-preview-container-light rounded-xl p-6 py-20 h-full min-h-[500px] flex justify-center items-center">
             <div className="w-full h-full flex items-center justify-center">
               {component}
             </div>

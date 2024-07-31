@@ -1,5 +1,5 @@
 {
-  "name": "@repo/ui",
+  "name": "@gopx-webui/ui",
   "version": "0.0.0",
   "sideEffects": [
     "**/*.css"
@@ -9,7 +9,7 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./card": "./src/card.tsx"
+    "./cards": "./src/cards/index.ts"
   },
   "license": "MIT",
   "scripts": {
@@ -22,13 +22,16 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/tailwind-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@gopx-webui/eslint-config": "workspace:*",
+    "@gopx-webui/tailwind-config": "workspace:*",
+    "@gopx-webui/typescript-config": "workspace:*",
     "@types/react": "^18.2.61",
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "react-icons": "^5.2.1"
   }
 }

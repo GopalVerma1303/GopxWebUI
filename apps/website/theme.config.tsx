@@ -10,9 +10,6 @@ import {
   SiteMapIcon,
 } from "@/components/icons";
 import { SOCIAL_MEDIA_LINKS } from "@/content/social-media";
-import LOGO_FOR_DARK from "@/public/webui-footer-dark.png";
-import LOGO_FOR_LIGHT from "@/public/webui-footer-light.png";
-import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 
 const logo = (
@@ -203,7 +200,10 @@ const config: DocsThemeConfig = {
     placeholder: "Search for something...",
   },
   navbar: {
-    extraContent: <TwitterXIcon />,
+    extraContent: [
+      <DiscordIcon key="discord" />,
+      <TwitterXIcon key="twitter" />,
+    ],
   },
   toc: {
     backToTop: true,
