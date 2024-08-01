@@ -78,7 +78,7 @@ const ColorPalette: React.FC = () => {
   const colorRows = getColors();
 
   return (
-    <div className="container mx-auto mt-24">
+    <div className="container mx-auto">
       <h2 className="text-2xl font-bold mb-4">Tailwind Color Palette</h2>
       {colorRows.map((row) => (
         <ColorRow key={row.name} name={row.name} colors={row.colors} />

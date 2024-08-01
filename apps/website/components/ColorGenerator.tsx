@@ -5,7 +5,14 @@ import { HexColorPicker, RgbaColorPicker } from "react-colorful";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useRouter } from "next/router";
-import { FiCheck, FiCopy, FiRefreshCw, FiSave, FiShare2 } from "react-icons/fi";
+import {
+  FiCheck,
+  FiCopy,
+  FiRefreshCw,
+  FiSave,
+  FiShare2,
+  FiTrash2,
+} from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
 
 const ColorGenerator: React.FC = () => {
@@ -57,9 +64,14 @@ const ColorGenerator: React.FC = () => {
   };
 
   const saveColor = () => {
-    const updatedColors = [...savedColors, color];
-    setSavedColors(updatedColors);
-    localStorage.setItem("savedColors", JSON.stringify(updatedColors));
+    if (!savedColors.includes(color)) {
+      const updatedColors = [...savedColors, color];
+      setSavedColors(updatedColors);
+      localStorage.setItem("savedColors", JSON.stringify(updatedColors));
+      toast.success("Color saved!");
+    } else {
+      toast.error("This color is already saved!");
+    }
   };
 
   const copyColor = () => {
@@ -71,6 +83,13 @@ const ColorGenerator: React.FC = () => {
     const shareUrl = `${window.location.origin}/colors?color=${encodeURIComponent(color)}`;
     navigator.clipboard.writeText(shareUrl);
     toast.success("Share URL copied to clipboard!");
+  };
+
+  const deleteColor = (colorToDelete: string) => {
+    const updatedColors = savedColors.filter((c) => c !== colorToDelete);
+    setSavedColors(updatedColors);
+    localStorage.setItem("savedColors", JSON.stringify(updatedColors));
+    toast.success("Color deleted!");
   };
 
   return (
@@ -133,7 +152,6 @@ const ColorGenerator: React.FC = () => {
                 </CopyToClipboard>
               </div>
             </div>
-
             <div className="grid grid-cols-3 gap-4">
               <button
                 onClick={generateRandomColor}
@@ -172,15 +190,25 @@ const ColorGenerator: React.FC = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Saved Colors</h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-4">
             {savedColors.map((savedColor, index) => (
-              <motion.div
-                key={index}
-                className="w-12 h-12 rounded cursor-pointer"
-                style={{ backgroundColor: savedColor }}
-                whileHover={{ scale: 1.1 }}
-                onClick={() => setColor(savedColor)}
-              />
+              <div key={index} className="relative group">
+                <motion.div
+                  className="w-12 h-12 rounded cursor-pointer"
+                  style={{ backgroundColor: savedColor }}
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => setColor(savedColor)}
+                />
+                <button
+                  className="absolute top-0 right-0 bg-red-800 text-white rounded-full p-[2px] m-[1px] opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteColor(savedColor);
+                  }}
+                >
+                  <FiTrash2 size={10} />
+                </button>
+              </div>
             ))}
           </div>
         </div>
