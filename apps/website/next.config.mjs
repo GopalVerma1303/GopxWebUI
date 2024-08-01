@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import nextra from "nextra";
+import withPWA from "next-pwa";
 
 const withNextra = nextra({
   theme: "nextra-theme-docs",
@@ -29,4 +30,11 @@ const nextConfig = {
   transpilePackages: ["ui"],
 };
 
-export default withNextra(nextConfig);
+const withPWAConfig = withPWA({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  register: true,
+  skipWaiting: true,
+});
+
+export default withPWAConfig(withNextra(nextConfig));
