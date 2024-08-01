@@ -13,6 +13,7 @@
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
     "@gopx-webui/ui": "workspace:*",
+    "@vercel/analytics": "^1.3.1",
     "clsx": "^2.1.1",
     "feed": "^4.2.2",
     "framer-motion": "^11.3.17",
