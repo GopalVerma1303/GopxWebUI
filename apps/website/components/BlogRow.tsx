@@ -1,6 +1,6 @@
 import React from "react";
-import { format, parseISO } from "date-fns";
-import TextTooltip from "./TextTooltip";
+import { format } from "date-fns";
+import { TextTooltip } from "@gopx-webui/ui/tooltips";
 
 type BlogPost = {
   title: string;
@@ -16,7 +16,7 @@ export default function BlogRow({ post }: { post: BlogPost }) {
 
   return (
     <a href={post.link}>
-      <TextTooltip text={post.title} link={"#"} hoverMessage={post.description}>
+      <TextTooltip text={post.title} hoverMessage={post.description}>
         <div className="group flex flex-col md:flex-row justify-between items-start md:items-center gap-[4px] md:gap-[12px] w-full opacity-70 hover:opacity-100 transition-opacity duration-200 ease-in-out py-[5px] relative ">
           <div className="flex gap-[5px] items-center">
             <p className="text-xl group-hover:underline">{post.title}</p>
