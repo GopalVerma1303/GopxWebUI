@@ -1,9 +1,22 @@
+---
+title: "Image Tooltip"
+description: "Image Tooltip component displays an image tooltip on hover, offering visual context and details about the hovered item."
+image: "https://webui.gopx.dev/assets/components/tooltips/image-tooltip.png"
+---
 
+import { Callout } from 'nextra/components'
 import ImageTooltip from "@/components/ImageTooltip";
 import Showcase from "@/components/Showcase";
 import { Tabs } from "nextra/components";
 import { Steps } from 'nextra/components'
 
+# Image Tooltip
+
+<p className="component-description">Image Tooltip component displays an image tooltip on hover, offering visual context and details about the hovered item.</p>
+
+`Tooltip` `Image` `Reveal` `Animation`
+
+<br />
 
 <Tabs items={["Preview", "Code"]}>
   <Tabs.Tab>
@@ -19,10 +32,138 @@ Right now I live in <ImageTooltip text="Chandigarh" hoverImage={{src: "https://g
   <Tabs.Tab>
     ```tsx filename="ImageTooltipDemo.tsx"
     <section className="w-full max-w-2xl">
-      Outside of programming, being a mountain guy from <ImageTooltip hoverImage={{src: "https://gopx.dev/personal/me/utkd.jpg", alt: "my og", width: 200, height: 100}} text="Uttarakhand" link="https://maps.app.goo.gl/pWWe9LMDAvabPUVL6" />, I enjoy mountain trekking and exploring valleys.   
-      Right now I live in <ImageTooltip text="Chandigarh" hoverImage={{src: "https://gopx.dev/personal/me/chd.jpg", alt: "my og", width: 200, height: 100}} link="https://maps.app.goo.gl/HxUHbDUukonBaqGH8" />. If you are around, feel free to reach me out, we could have some <span className="italic font-bold">chai</span> or work together.
+      Outside of programming, being a mountain guy from <ImageTooltip hoverImage={{src: "https://gopx.dev/personal/me/utkd.jpg", alt: "my og", width: 200, height: 100}} text="Uttarakhand" />, I enjoy mountain trekking and exploring valleys.   
+      Right now I live in <ImageTooltip text="Chandigarh" hoverImage={{src: "https://gopx.dev/personal/me/chd.jpg", alt: "my og", width: 200, height: 100}}  />. If you are around, feel free to reach me out, we could have some <span className="italic font-bold">chai</span> or work together.
     </section>
     ```
   </Tabs.Tab>
 </Tabs>
 
+
+## Installation
+
+<Callout type="warning" emoji="💡">
+  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+</Callout>
+
+### Create `ImageTooltip.tsx` component
+
+```tsx filename="ImageTooltip.tsx" showLineNumbers
+import Image from "next/image";
+import { useLayoutEffect } from "react";
+import React, { SVGProps, useState, useRef, useEffect } from "react";
+
+type ImageTooltipProps = {
+  text: string;
+  Icon?: React.FC<SVGProps<SVGSVGElement>>;
+  hoverImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+};
+
+const ImageTooltip: React.FC<ImageTooltipProps> = ({
+  Icon,
+  text,
+  hoverImage,
+}: ImageTooltipProps) => {
+  const [isHovering, setIsHovering] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const linkRef = useRef<HTMLDivElement>(null);
+  const hoverContentRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (linkRef.current && hoverContentRef.current) {
+        const linkRect = linkRef.current.getBoundingClientRect();
+        const hoverRect = hoverContentRef.current.getBoundingClientRect();
+        setPosition({
+          x: e.clientX - linkRect.left,
+          y: e.clientY - linkRect.top - hoverRect.height - 10,
+        });
+      }
+    };
+
+    if (isHovering) {
+      document.addEventListener("mousemove", handleMouseMove);
+      if (!hoverImage || isImageLoaded) {
+        setTimeout(() => setIsVisible(true), 50);
+      }
+    } else {
+      document.removeEventListener("mousemove", handleMouseMove);
+      setIsVisible(false);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isHovering, isImageLoaded, hoverImage]);
+
+  useEffect(() => {
+    if (!isHovering) {
+      setIsImageLoaded(false);
+    }
+  }, [isHovering]);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+    if (isHovering) {
+      setIsVisible(true);
+    }
+  };
+
+  return (
+    <div
+      ref={linkRef}
+      className={`inline-flex justify-center items-center mx-[4px] font-bold hover:cursor-pointer ${
+        Icon ? "pb-1" : ""
+      } rounded-none w-fit border-b border-black/30 dark:border-white/30 dark:hover:border-white/90 hover:border-black/90 transition-colors duration-500 relative`}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      {Icon && <Icon className="mr-1" />}
+      {text}
+      {isHovering && hoverImage && (
+        <div
+          ref={hoverContentRef}
+          className={`absolute dark:bg-[#111111] bg-[#FFFFFF] border-[#e6e6e6] border dark:border-[#333333] rounded shadow-md z-10 transition-opacity duration-300 ease-in-out ${
+            isVisible ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            width: hoverImage ? `${hoverImage.width}px` : "auto",
+            transform: "translateX(-50%)",
+            pointerEvents: "none",
+          }}
+        >
+          {hoverImage && (
+            <Image
+              src={hoverImage.src}
+              alt={hoverImage.alt}
+              width={hoverImage.width}
+              height={hoverImage.height}
+              className="rounded"
+              onLoad={handleImageLoad}
+            />
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ImageTooltip;
+```
+
+## Props
+
+| Prop        | Type                                             | Required | Description                                                                                     |
+|-------------|--------------------------------------------------|----------|-------------------------------------------------------------------------------------------------|
+| `text`     | `string`                                        | Yes      | The text that will be displayed within the tooltip.                                           |
+| `Icon`     | `React.FC<SVGProps<SVGSVGElement>>`            | No       | An optional SVG icon component to be displayed alongside the text.                             |
+| `hoverImage`| `{ src: string; alt: string; width: number; height: number; }` | No       | An optional object containing the source URL, alt text, width, and height of the image to be displayed on hover. |

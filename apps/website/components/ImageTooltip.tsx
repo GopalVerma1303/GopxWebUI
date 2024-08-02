@@ -5,8 +5,6 @@ import React, { SVGProps, useState, useRef, useEffect } from "react";
 type ImageTooltipProps = {
   text: string;
   Icon?: React.FC<SVGProps<SVGSVGElement>>;
-  link: string;
-  hoverMessage?: string;
   hoverImage?: {
     src: string;
     alt: string;
@@ -18,7 +16,6 @@ type ImageTooltipProps = {
 const ImageTooltip: React.FC<ImageTooltipProps> = ({
   Icon,
   text,
-  hoverMessage,
   hoverImage,
 }: ImageTooltipProps) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -79,7 +76,7 @@ const ImageTooltip: React.FC<ImageTooltipProps> = ({
     >
       {Icon && <Icon className="mr-1" />}
       {text}
-      {isHovering && (hoverMessage || hoverImage) && (
+      {isHovering && hoverImage && (
         <div
           ref={hoverContentRef}
           className={`absolute dark:bg-[#111111] bg-[#FFFFFF] border-[#e6e6e6] border dark:border-[#333333] rounded shadow-md z-10 transition-opacity duration-300 ease-in-out ${
@@ -93,7 +90,6 @@ const ImageTooltip: React.FC<ImageTooltipProps> = ({
             pointerEvents: "none",
           }}
         >
-          {hoverMessage && <span>{hoverMessage}</span>}
           {hoverImage && (
             <Image
               src={hoverImage.src}

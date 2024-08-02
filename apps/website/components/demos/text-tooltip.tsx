@@ -59,7 +59,7 @@ const BlogList: React.FC = () => {
       <div className="-mt-0">
         {years.map((year) => (
           <div key={year} className="relative mt-20">
-            <GhostLabel text={"Blogs"} />
+            <GhostLabel text={year.toString()} />
             {blogsByYear[year].map((post, index) => (
               <BlogRow key={index} post={post} />
             ))}
