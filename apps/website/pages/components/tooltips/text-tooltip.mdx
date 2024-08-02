@@ -112,7 +112,6 @@ import React, { useState, useRef, useEffect } from "react";
 
 type TextTooltipProps = {
   text: string;
-  link: string;
   hoverMessage?: string;
   children?: React.ReactNode;
 };
@@ -192,6 +191,5 @@ export default TextTooltip;
 | Prop          | Type                  | Required | Description                                                                                     |
 |---------------|-----------------------|----------|-------------------------------------------------------------------------------------------------|
 | `text`        | `string`              | Yes      | The main text that will be displayed when the tooltip is not hovered.                          |
-| `link`        | `string`              | Yes      | A URL or identifier that can be used for linking or navigation purposes (though not used in the component). |
 | `hoverMessage`| `string`              | No       | An optional message that will be displayed in the tooltip when the user hovers over the component. |
 | `children`    | `React.ReactNode`     | No       | Optional children elements that can be rendered inside the tooltip area, allowing for more complex content. |

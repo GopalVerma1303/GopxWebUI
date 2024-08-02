@@ -2,14 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 
 type TextTooltipProps = {
   text: string;
-  link: string;
   hoverMessage?: string;
   children?: React.ReactNode;
 };
 
 const TextTooltip: React.FC<TextTooltipProps> = ({
   text,
-  link,
   hoverMessage,
   children,
 }) => {
