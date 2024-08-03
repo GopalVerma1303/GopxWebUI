@@ -1,0 +1,48 @@
+name: Publish @gopx-webui/cli Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/cli/**"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build CLI package
+        run: pnpm turbo run build --filter=@gopx-webui/cli
+
+      - name: Publish to npm
+        run: |
+          cd packages/cli
+          npm version patch
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GOPX_WEBUI_ACCESS_TOKEN }}
+
+      - name: Push version bump
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add packages/cli/package.json
+          git commit -m "Bump CLI version [skip ci]"
+          git push
