@@ -2,23 +2,56 @@
   "name": "@gopx-webui/cli",
   "version": "1.0.0",
   "description": "CLI tool for installing GOPX WEBUI Components.",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "bin": {
+    "gopx-webui": "./dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GopalVerma1303/webui.gopx.git#main"
+    "url": "https://github.com/GopalVerma1303/webui.gopx.git",
+    "directory": "packages/cli"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "cli",
     "gopx",
-    "webui"
+    "webui",
+    "components",
+    "ui",
+    "tailwind",
+    "framer-motion",
+    "nextjs"
   ],
-  "author": "Gopal Verma",
+  "author": {
+    "name": "Gopal Verma",
+    "url": "https://twitter.com/bettercallgopal"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GopalVerma1303/webui.gopx/issues"
   },
-  "homepage": "https://github.com/GopalVerma1303/webui.gopx/tree/main#readme"
+  "homepage": "https://webui.gopx.dev",
+  "devDependencies": {
+    "@gopx-webui/typescript-config": "workspace:*",
+    "@types/figlet": "^1.5.8",
+    "@types/node": "^20",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "figlet": "^1.7.0"
+  }
 }
