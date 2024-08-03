@@ -19,3 +19,5 @@ npm install -g gopx-webui
 ```
 
 ## Options
+
+- `-l, --ls [value]`: List directory contents
