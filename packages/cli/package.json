@@ -1,0 +1,24 @@
+{
+  "name": "@gopx-webui/cli",
+  "version": "1.0.0",
+  "description": "CLI tool for installing GOPX WEBUI Components.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GopalVerma1303/webui.gopx.git#main"
+  },
+  "keywords": [
+    "cli",
+    "gopx",
+    "webui"
+  ],
+  "author": "Gopal Verma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GopalVerma1303/webui.gopx/issues"
+  },
+  "homepage": "https://github.com/GopalVerma1303/webui.gopx/tree/main#readme"
+}
