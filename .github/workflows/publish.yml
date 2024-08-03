@@ -35,7 +35,7 @@ jobs:
         run: |
           cd packages/cli
           pnpm version patch
-          pnpm publish --access public
+          pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GOPX_WEBUI_ACCESS_TOKEN }}
 
