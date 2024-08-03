@@ -1,4 +1,4 @@
-name: Publish @gopx-webui/cli Package
+name: Publish gopx-webui
 
 on:
   push:
@@ -34,8 +34,8 @@ jobs:
       - name: Publish to npm
         run: |
           cd packages/cli
-          npm version patch
-          npm publish --access public
+          pnpm version patch
+          pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GOPX_WEBUI_ACCESS_TOKEN }}
 
