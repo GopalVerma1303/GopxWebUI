@@ -29,7 +29,7 @@ jobs:
         run: pnpm install
 
       - name: Build CLI package
-        run: pnpm turbo run build --filter=@gopx-webui/cli
+        run: pnpm turbo run build --filter=gopx-webui
 
       - name: Publish to npm
         run: |
