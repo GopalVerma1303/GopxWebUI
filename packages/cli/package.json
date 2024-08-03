@@ -1,6 +1,6 @@
 {
-  "name": "@gopx-webui/cli",
-  "version": "1.0.1",
+  "name": "gopx-webui",
+  "version": "1.0.2",
   "description": "CLI tool for installing GOPX WEBUI Components.",
   "type": "module",
   "exports": "./dist/index.js",
