@@ -17,3 +17,5 @@ A powerful CLI tool for managing GOPX WEBUI Components and performing file syste
 ```bash
 npm install -g gopx-webui
 ```
+
+## Options
