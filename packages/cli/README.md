@@ -1,23 +1,11 @@
-# GOPX WEBUI CLI
+<div align="center">
 
-A powerful CLI tool for managing GOPX WEBUI Components and performing file system operations.
+<div align="center">
+    <img src="https://webui.gopx.dev/cli/cli-dark.png" width="250" />
+</div>
 
-## Features
+# gopx-webui
 
-- List directory contents with detailed information
-- Create directories and files
-- Delete files and directories
-- Rename files and directories
-- Copy files and directories
-- Append content to files
-- User-friendly command-line interface
+CLI tool to add GOPX WEBUI components to your project.
 
-## Installation
-
-```bash
-npm install -g gopx-webui
-```
-
-## Options
-
-- `-l, --ls [value]`: List directory contents
+<br />
