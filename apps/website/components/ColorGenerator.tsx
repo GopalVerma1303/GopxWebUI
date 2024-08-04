@@ -215,7 +215,7 @@ const ColorGenerator: React.FC = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Color Palette</h2>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-8">
             {[
               "analogous",
               "monochromatic",

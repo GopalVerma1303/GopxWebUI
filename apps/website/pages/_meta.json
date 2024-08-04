@@ -22,7 +22,7 @@
     "type": "page",
     "title": "Colors",
     "theme": {
-      "typesetting": "article"
+      "layout": "raw"
     }
   },
 
