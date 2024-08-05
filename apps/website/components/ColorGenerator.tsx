@@ -21,6 +21,8 @@ import { saveAs } from "file-saver";
 import { SketchPicker, ChromePicker, PhotoshopPicker } from "react-color";
 import { FaRainbow } from "react-icons/fa6";
 import { ColorResult } from "react-color";
+import Dropdown from "./Dropdown/Dropdown";
+import ColorFormatSelector from "./ColorFormatSelector";
 
 interface CustomChromePickerProps {
   color: string;
@@ -73,13 +75,25 @@ const ColorGenerator: React.FC = () => {
     }
   };
 
-  const handleColorChange = (newColor: string) => {
+  const handleColorChange = (colorResult: any) => {
+    const { r, g, b, a } = colorResult.rgb;
+    const newColor = `rgba(${r}, ${g}, ${b}, ${a})`;
     setColor(newColor);
   };
 
   const generateRandomColor = () => {
-    const newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    setColor(newColor);
+    try {
+      let newColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      newColor = newColor.padEnd(7, "0");
+      if (/^#[0-9A-F]{6}$/i.test(newColor)) {
+        setColor(newColor);
+      } else {
+        throw new Error("Invalid color generated");
+      }
+    } catch (error) {
+      console.error("Error generating color:", error);
+      setColor("#000000");
+    }
   };
 
   const saveColor = () => {
@@ -182,8 +196,10 @@ const ColorGenerator: React.FC = () => {
     saveAs(blob, `color-palette.${format}`);
   };
 
-  const addToHistory = (newColor: string) => {
-    setColorHistory((prev) => [newColor, ...prev.slice(0, 18)]);
+  const addToHistory = (newColor: ColorResult) => {
+    const { r, g, b, a } = newColor.rgb;
+    const colorString = `rgba(${r}, ${g}, ${b}, ${a})`;
+    setColorHistory((prev) => [colorString, ...prev.slice(0, 18)]);
   };
 
   const toggleFavorite = (favoriteColor: string) => {
@@ -194,86 +210,17 @@ const ColorGenerator: React.FC = () => {
     );
   };
 
-  const CustomChromePicker: React.FC<CustomChromePickerProps> = ({
-    color,
-    onChange,
-  }) => {
-    const pickerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      const updatePickerStyles = () => {
-        if (pickerRef.current) {
-          const inputs = pickerRef.current.querySelectorAll("input");
-          const labels = pickerRef.current.querySelectorAll("label");
-
-          inputs.forEach((input) => {
-            input.style.backgroundColor = "var(--input-background)";
-            input.style.color = "var(--input-text)";
-            input.style.boxShadow = "var(--input-shadow)";
-            input.style.border = "var(--input-border)";
-          });
-
-          labels.forEach((label) => {
-            label.style.color = "var(--label-text)";
-          });
-        }
-      };
-
-      updatePickerStyles();
-      const observer = new MutationObserver(updatePickerStyles);
-      if (pickerRef.current) {
-        observer.observe(pickerRef.current, { childList: true, subtree: true });
-      }
-
-      return () => observer.disconnect();
-    }, []);
-
-    return (
-      <div ref={pickerRef} className="custom-chrome-picker">
-        <ChromePicker
-          width="100%"
-          color={color}
-          onChange={onChange}
-          disableAlpha
-        />
-        <style jsx global>{`
-          :root {
-            --input-background: #ffffff;
-            --input-text: #000000;
-            --input-shadow: inset 0 0 0 1px #f0f0f0;
-            --input-border: none;
-            --label-text: #000000;
-          }
-
-          .dark-mode :root {
-            --input-background: #2c2c2c;
-            --input-text: #ffffff;
-            --input-shadow: inset 0 0 0 1px #5c5c5c;
-            --input-border: none;
-            --label-text: #ffffff;
-          }
-        `}</style>
-      </div>
-    );
-  };
-
   return (
     <div className="mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <motion.div
-            className="w-full h-64 rounded-lg shadow-md"
-            style={{ backgroundColor: color }}
-            animate={{ backgroundColor: color }}
-            transition={{ duration: 0.3 }}
-          />
-
-          <div className="mt-4">
-            <CustomChromePicker
+          <div className="mt-4 mr-4">
+            <SketchPicker
+              width="100%"
               color={color}
               onChange={(newColor) => {
-                handleColorChange(newColor.hex);
-                addToHistory(newColor.hex);
+                handleColorChange(newColor);
+                addToHistory(newColor);
               }}
             />
           </div>
@@ -289,17 +236,10 @@ const ColorGenerator: React.FC = () => {
             <label className="block text-sm font-medium mb-2">
               Color Format
             </label>
-            <select
+            <ColorFormatSelector
               value={colorFormat}
-              onChange={(e) =>
-                setColorFormat(e.target.value as "hex" | "rgb" | "hsl")
-              }
-              className="w-full p-2 border dark:border-white/50 border-black/50 rounded focus:outline-none"
-            >
-              <option value="hex">HEX</option>
-              <option value="rgb">RGB</option>
-              <option value="hsl">HSL</option>
-            </select>
+              onChange={setColorFormat}
+            />
           </div>
 
           <div className="mb-6">
