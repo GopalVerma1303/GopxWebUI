@@ -51,13 +51,13 @@ const ShuffleHero = () => {
             href="/components"
             className="bg-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
           >
-            Explore Components ↗
+            Explore Components →
           </Link>
           <Link
             href="/templates"
             className="border border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95  !no-underline dark:!text-white !text-[#5259ff]"
           >
-            Explore Templates ↗
+            Explore Templates →
           </Link>
         </div>
       </div>
