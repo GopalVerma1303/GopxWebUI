@@ -28,7 +28,7 @@ import { Tabs } from 'nextra/components';
             "https://webui.gopx.dev/assets/brands/gsap.png"
           ]}
           direction="right"
-          speed={15}
+          speed={25}
           itemWidth={50}
           itemHeight={50}
         />
@@ -41,7 +41,7 @@ import { Tabs } from 'nextra/components';
             "https://webui.gopx.dev/assets/brands/gsap.png"
           ]}
           direction="left"
-          speed={15}
+          speed={25}
           itemWidth={50}
           itemHeight={50}
         />
@@ -60,7 +60,7 @@ import { Tabs } from 'nextra/components';
           "/assets/brands/gsap.png"
         ]}
         direction="right"
-        speed={15}
+        speed={25}
         itemWidth={50}
         itemHeight={50}
       />
@@ -73,7 +73,7 @@ import { Tabs } from 'nextra/components';
           "/assets/brands/gsap.png"
         ]}
         direction="left"
-        speed={15}
+        speed={25}
         itemWidth={50}
         itemHeight={50}
       />
@@ -93,7 +93,7 @@ import { Tabs } from 'nextra/components';
     theme: {
       extend: {
         animation: {
-          'scroll': 'scroll 25s linear infinite',
+          'scroll': 'scroll linear infinite',
         },
         keyframes: {
           'scroll': {
@@ -145,7 +145,7 @@ interface InfiniteCarouselProps {
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
   images,
   direction = "left",
-  speed = 30,
+  speed = 25,
   itemWidth,
   itemHeight,
 }) => {
@@ -198,7 +198,7 @@ export default InfiniteCarousel;
 |-------------|--------------------------|----------|--------------------------------------------------------------------|
 | `images`    | `string[]`              | Yes      | An array of image sources to be displayed in the carousel.        |
 | `direction` | `"left"` \| `"right"`   | No       | The direction of the carousel animation. Defaults to `"left"`.    |
-| `speed`     | `number`                 | No       | The speed of the carousel animation in seconds. Defaults to `30`.  |
+| `speed`     | `number`                 | No       | The speed of the carousel animation in seconds. Defaults to `25`.  |
 | `itemWidth` | `number`                 | Yes      | The width of each carousel item in pixels.                        |
 | `itemHeight`| `number`                 | Yes      | The height of each carousel item in pixels.                       |
 

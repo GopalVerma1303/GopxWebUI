@@ -34,7 +34,7 @@ interface InfiniteCarouselProps {
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
   images,
   direction = "left",
-  speed = 30,
+  speed = 25,
   itemWidth,
   itemHeight,
 }) => {

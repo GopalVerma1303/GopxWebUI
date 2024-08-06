@@ -20,7 +20,7 @@ module.exports = {
         roboto: ["Roboto Condensed", "sans-serif"],
       },
       animation: {
-        scroll: "scroll 25s linear infinite",
+        scroll: "scroll linear infinite",
         flicker: "flicker 0.3s infinite",
         blob: "blob 7s linear infinite",
         bounce: "240ms ease 0s running bounce",
