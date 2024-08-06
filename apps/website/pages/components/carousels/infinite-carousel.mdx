@@ -93,10 +93,10 @@ import { Tabs } from 'nextra/components';
     theme: {
       extend: {
         animation: {
-          'infinite-scroll': 'infinite-scroll 25s linear infinite',
+          'scroll': 'scroll 25s linear infinite',
         },
         keyframes: {
-          'infinite-scroll': {
+          'scroll': {
             from: { transform: 'translateX(0)' },
             to: { transform: 'translateX(-100%)' },
           }
@@ -171,7 +171,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
         ref={logoListRef}
         className="flex items-center justify-center md:justify-start"
         style={{
-          animation: `infinite-scroll ${animationDuration} linear infinite ${animationDirection}`,
+          animation: `scroll ${animationDuration} linear infinite ${animationDirection}`,
         }}
       >
         {images.concat(images).map((src, index) => (

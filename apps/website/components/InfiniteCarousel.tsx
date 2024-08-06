@@ -60,7 +60,7 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
         ref={logoListRef}
         className="flex items-center justify-center md:justify-start"
         style={{
-          animation: `infinite-scroll ${animationDuration} linear infinite ${animationDirection}`,
+          animation: `scroll ${animationDuration} linear infinite ${animationDirection}`,
         }}
       >
         {images.concat(images).map((src, index) => (

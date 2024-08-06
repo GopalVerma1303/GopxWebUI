@@ -20,8 +20,7 @@ module.exports = {
         roboto: ["Roboto Condensed", "sans-serif"],
       },
       animation: {
-        scroll: "scroll 30s linear infinite",
-        "infinite-scroll": "infinite-scroll 25s linear infinite",
+        scroll: "scroll 25s linear infinite",
         flicker: "flicker 0.3s infinite",
         blob: "blob 7s linear infinite",
         bounce: "240ms ease 0s running bounce",
@@ -67,7 +66,7 @@ module.exports = {
         white: "#fff",
       },
       keyframes: {
-        "infinite-scroll": {
+        scroll: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
         },
