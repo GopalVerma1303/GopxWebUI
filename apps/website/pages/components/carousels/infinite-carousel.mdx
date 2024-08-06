@@ -1,0 +1,212 @@
+---
+title: "Infinite Carousel"
+description: "A customizable carousel component that displays a series of images or logos with a smooth infinite scrolling effect."
+image: "https://webui.gopx.dev/assets/components/carousels/infinite-carousel.png"
+---
+
+import Showcase from '@/components/Showcase2';
+import InfiniteCarousel from '@/components/InfiniteCarousel';
+import { Steps } from 'nextra/components';
+import { Tabs } from 'nextra/components';
+
+# Infinite Carousel
+
+<p className="opacity-80 text-lg">A customizable carousel component that displays a series of images or logos with a smooth infinite scrolling effect, ideal for showcasing brand partnerships or featured content.</p>
+
+`Carousel` `Infinite` `Animated` `Brands`
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+      <div className="flex flex-col gap-y-8 w-full">
+        <InfiniteCarousel
+          images={[
+            "https://webui.gopx.dev/assets/brands/nextjs.svg",
+            "https://webui.gopx.dev/assets/brands/tailwind.svg",
+            "https://webui.gopx.dev/assets/brands/framer-motion.svg",
+            "https://webui.gopx.dev/assets/brands/react.svg",
+            "https://webui.gopx.dev/assets/brands/gsap.png"
+          ]}
+          direction="right"
+          speed={15}
+          itemWidth={50}
+          itemHeight={50}
+        />
+        <InfiniteCarousel
+          images={[
+            "https://webui.gopx.dev/assets/brands/nextjs.svg",
+            "https://webui.gopx.dev/assets/brands/tailwind.svg",
+            "https://webui.gopx.dev/assets/brands/framer-motion.svg",
+            "https://webui.gopx.dev/assets/brands/react.svg",
+            "https://webui.gopx.dev/assets/brands/gsap.png"
+          ]}
+          direction="left"
+          speed={15}
+          itemWidth={50}
+          itemHeight={50}
+        />
+      </div>
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="InfiniteCarouselDemo.tsx" showLineNumbers
+    <div className="flex flex-col gap-y-8 w-full">
+      <InfiniteCarousel
+        images={[
+          "/assets/brands/nextjs.svg",
+          "/assets/brands/tailwind.svg",
+          "/assets/brands/framer-motion.svg",
+          "/assets/brands/react.svg",
+          "/assets/brands/gsap.png"
+        ]}
+        direction="right"
+        speed={15}
+        itemWidth={50}
+        itemHeight={50}
+      />
+      <InfiniteCarousel
+        images={[
+          "/assets/brands/nextjs.svg",
+          "/assets/brands/tailwind.svg",
+          "/assets/brands/framer-motion.svg",
+          "/assets/brands/react.svg",
+          "/assets/brands/gsap.png"
+        ]}
+        direction="left"
+        speed={15}
+        itemWidth={50}
+        itemHeight={50}
+      />
+    </div>
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Installation
+
+<Steps>
+
+  ### Define the animation and keyframes in `tailwind.config.ts`
+
+  ```ts filename="tailwind.config.ts" {5, 9-10}
+  tailwind.config = {
+    theme: {
+      extend: {
+        animation: {
+          'infinite-scroll': 'infinite-scroll 25s linear infinite',
+        },
+        keyframes: {
+          'infinite-scroll': {
+            from: { transform: 'translateX(0)' },
+            to: { transform: 'translateX(-100%)' },
+          }
+        }
+      },
+    },
+  }
+```
+
+  ### Create `InfiniteCarousel.tsx` Component
+
+```tsx filename="InfiniteCarousel.tsx" showLineNumbers
+import React, { useRef, useEffect } from "react";
+import Image from "next/image";
+
+interface InfiniteCarouselItemProps {
+  src: string;
+  width: number;
+  height: number;
+}
+
+const InfiniteCarouselItem: React.FC<InfiniteCarouselItemProps> = ({
+  src,
+  width,
+  height,
+}) => (
+  <li className="mx-8">
+    <Image
+      src={src}
+      alt={`Logo ${src}`}
+      width={width}
+      height={height}
+      className="object-contain max-w-none filter dark:invert"
+    />
+  </li>
+);
+
+interface InfiniteCarouselProps {
+  images: string[];
+  direction?: "left" | "right";
+  speed?: number;
+  itemWidth: number;
+  itemHeight: number;
+}
+
+const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
+  images,
+  direction = "left",
+  speed = 30,
+  itemWidth,
+  itemHeight,
+}) => {
+  const logoListRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (logoListRef.current) {
+      const clone = logoListRef.current.cloneNode(true) as HTMLUListElement;
+      clone.setAttribute("aria-hidden", "true");
+      logoListRef.current.parentNode?.insertBefore(
+        clone,
+        logoListRef.current.nextSibling,
+      );
+    }
+  }, []);
+
+  const animationDirection = direction === "left" ? "normal" : "reverse";
+  const animationDuration = `${speed}s`;
+
+  return (
+    <div className="w-full mx-auto inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+      <ul
+        ref={logoListRef}
+        className="flex items-center justify-center md:justify-start"
+        style={{
+          animation: `infinite-scroll ${animationDuration} linear infinite ${animationDirection}`,
+        }}
+      >
+        {images.concat(images).map((src, index) => (
+          <InfiniteCarouselItem
+            key={index}
+            src={src}
+            width={itemWidth}
+            height={itemHeight}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default InfiniteCarousel;
+  ```
+
+</Steps>
+
+## InfiniteCarousel Props
+
+| Prop        | Type                     | Required | Description                                                        |
+|-------------|--------------------------|----------|--------------------------------------------------------------------|
+| `images`    | `string[]`              | Yes      | An array of image sources to be displayed in the carousel.        |
+| `direction` | `"left"` \| `"right"`   | No       | The direction of the carousel animation. Defaults to `"left"`.    |
+| `speed`     | `number`                 | No       | The speed of the carousel animation in seconds. Defaults to `30`.  |
+| `itemWidth` | `number`                 | Yes      | The width of each carousel item in pixels.                        |
+| `itemHeight`| `number`                 | Yes      | The height of each carousel item in pixels.                       |
+
+## InfiniteCarouselItem Props
+
+| Prop    | Type      | Required | Description                                           |
+|---------|-----------|----------|-------------------------------------------------------|
+| `src`   | `string`  | Yes      | The source of the image to be displayed.             |
+| `width` | `number`  | Yes      | The width of the image in pixels.                    |
+| `height`| `number`  | Yes      | The height of the image in pixels.                   |
+
