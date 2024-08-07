@@ -13,10 +13,10 @@ export default async function handler(req) {
   const inter = await font;
   const { searchParams } = new URL(req.url);
 
-  const title = searchParams.get("title")?.slice(0, 100) || "Image Tooltip";
+  const title = searchParams.get("title")?.slice(0, 100) || "GOPX WEBUI";
   const description =
     searchParams.get("description")?.slice(0, 200) ||
-    "Image Tooltip component displays an image tooltip on hover, offering visual context and details about the hovered item.";
+    "Beautiful UI Components for web at your fingertips!";
   const image = searchParams.get("image") || "https://webui.gopx.dev/og.jpeg";
 
   return new ImageResponse(
