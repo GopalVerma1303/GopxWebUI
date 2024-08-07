@@ -12,14 +12,12 @@ const font = fetch(new URL("./Inter-SemiBold.otf", import.meta.url)).then(
 export default async function handler(req) {
   const inter = await font;
   const { searchParams } = new URL(req.url);
-  const hasTitle = searchParams.has("title");
-  const hasDescription = searchParams.has("description");
-  const title = hasTitle
-    ? searchParams.get("title")?.slice(0, 100)
-    : "Content Title";
-  const description = hasDescription
-    ? searchParams.get("description")?.slice(0, 200)
-    : "Content Description";
+
+  const title = searchParams.get("title")?.slice(0, 100) || "Image Tooltip";
+  const description =
+    searchParams.get("description")?.slice(0, 200) ||
+    "Image Tooltip component displays an image tooltip on hover, offering visual context and details about the hovered item.";
+  const image = searchParams.get("image") || "https://webui.gopx.dev/og.jpeg";
 
   return new ImageResponse(
     (
@@ -29,81 +27,101 @@ export default async function handler(req) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "center",
-          padding: 80,
-          backgroundColor: "#030303",
-          backgroundImage: `
-            linear-gradient(0deg, transparent 24%, #333 24%, #333 27%, transparent 27%, transparent 74%, #333 74%, #333 77%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, #333 24%, #333 27%, transparent 27%, transparent 74%, #333 74%, #333 77%, transparent 77%, transparent)
-            `,
-          backgroundSize: "100px 100px",
-          backgroundPosition: "-30px -10px",
-          fontWeight: 600,
-          color: "white",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          padding: "40px",
+          backgroundImage: "linear-gradient(180deg, #000000 30%, #192B8C)",
+          fontFamily: "Arial, sans-serif",
         }}
       >
-        <img
-          style={{ position: "absolute", top: 20, right: 30 }}
-          height="120"
-          src="https://webui.gopx.dev/webui-dark-rounded.png"
-          alt="@bettercallgopal logo"
-        />
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
+            justifyContent: "center",
             alignItems: "center",
             position: "absolute",
-            bottom: 40,
-            left: 80,
-            margin: 0,
-            fontSize: 30,
-            letterSpacing: -1,
+            top: "25px",
+            fontSize: "18px",
+            fontWeight: "1000",
+            color: "#ffffff",
           }}
         >
           <img
             style={{
-              marginRight: "15px",
+              marginRight: "5px",
             }}
-            height="60"
+            height="30"
+            width="30"
             src="https://webui.gopx.dev/webui-light-rounded.png"
             alt="Gopal Verma"
           />
-          GOPX WEBUI - gopx.gopx.dev
+          GOPX WEBUI
         </div>
+
         <h1
           style={{
-            width: "900px",
-            fontSize: 82,
-            margin: "-90px 0 40px -2px",
-            lineHeight: 1.1,
-            textShadow: "0 2px 30px #000",
-            letterSpacing: -4,
-            backgroundImage: "linear-gradient(90deg, #fff 40%, #aaa)",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
+            fontSize: "48px",
+            fontWeight: "bold",
+            textAlign: "center",
+            margin: "30px 0 0px 0",
+            color: "#ffffff",
           }}
         >
           {title}
         </h1>
+
         <p
           style={{
-            width: "900px",
-            fontSize: 34,
-            margin: "0 0 40px -2px",
-            lineHeight: 1.3,
-            textShadow: "0 2px 30px #000",
-            letterSpacing: -1,
-            backgroundImage: "linear-gradient(90deg, #fff 40%, #aaa)",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
+            fontSize: "18px",
+            textAlign: "center",
+            maxWidth: "800px",
+            margin: "20px 0 40px 0",
+            color: "#ffffff",
           }}
         >
           {description}
         </p>
+
+        <div
+          style={{
+            marginBottom: "-300px",
+            display: "flex",
+            width: "90%",
+            height: "600px",
+            padding: "10px",
+            backgroundColor: "#1F1F1F",
+            borderRadius: "20px",
+            overflow: "hidden",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+              borderRadius: "15px",
+            }}
+          >
+            <img
+              src={image}
+              alt="Component preview"
+              width="1200"
+              height="400px"
+              style={{
+                borderRadius: "15px",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                position: "absolute",
+                top: "-50px",
+              }}
+            />
+          </div>
+        </div>
       </div>
     ),
     {
