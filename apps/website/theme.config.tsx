@@ -53,7 +53,7 @@ const config: DocsThemeConfig = {
     const socialCard =
       route === "/" || !title
         ? `${SOCIAL_MEDIA_LINKS.website.link}/og.jpeg`
-        : `${SOCIAL_MEDIA_LINKS.website.link}/api/og?title=${title}&description=${frontMatter.description}&image=${frontMatter.image}`;
+        : `${SOCIAL_MEDIA_LINKS.website.link}/api/og?title=${title}&description=${frontMatter.description}${frontMatter.image ? `&image=${frontMatter.image}` : "https://webui.gopx.dev/og.jpeg"}`;
 
     const description =
       frontMatter.description ||
