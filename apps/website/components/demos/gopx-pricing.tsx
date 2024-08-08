@@ -1,28 +1,3 @@
----
-title: "Pricing Sections"
-description: "Beautifully designed Pricing Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/sections/gopx-pricing.png"
----
-
-import { Tabs } from "nextra/components";
-import PricingComponent from "@/components/demos/gopx-pricing";
-
-# Pricing Sections
-
-<p className="opacity-80 text-lg">Beautifully designed Pricing Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
-
-`Pricing` `Section`
-
-### GOPX Pricing Section
-
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="w-full border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <PricingComponent />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="Pricing.tsx" showLineNumbers
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -158,24 +133,29 @@ const PricingComponent: React.FC = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center w-full max-w-7xl mx-auto mb-24">
-      <motion.div
-        className="mx-auto w-full"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:m-2 m-4">
-          {tiers.map((tier, index) => (
-            <PricingTier key={index} {...tier} />
-          ))}
-        </div>
-      </motion.div>
+    <div>
+      <h2 className="text-4xl font-bold text-center mb-4 mt-12">Pricing</h2>
+      <p className="text-center opacity-60 mb-12 mt-8 px-6">
+        Use it for free for yourself, upgrade when your team needs advanced
+        control.
+      </p>
+
+      <div className="flex items-center justify-center w-full max-w-7xl mx-auto mb-24">
+        <motion.div
+          className="mx-auto w-full"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:m-2 m-4">
+            {tiers.map((tier, index) => (
+              <PricingTier key={index} {...tier} />
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };
 
 export default PricingComponent;
-```
-  </Tabs.Tab>
-</Tabs>
