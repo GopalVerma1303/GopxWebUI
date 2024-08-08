@@ -1,28 +1,3 @@
----
-title: "FAQ Sections"
-description: "Beautifully designed FAQ Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/sections/gopx-faqs.png"
----
-
-import { Tabs } from "nextra/components";
-import {FAQPage} from "@/components/demos/gopx-faq-section";
-
-# FAQ Sections
-
-<p className="opacity-80 text-lg">Beautifully designed FAQ Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
-
-`FAQ` `Section`
-
-### GOPX FAQs Section
-
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="w-full h-fit border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <FAQPage />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="FAQs.tsx" showLineNumbers
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -198,6 +173,3 @@ export const FAQPage: React.FC = () => {
     </div>
   );
 };
-```
-  </Tabs.Tab>
-</Tabs>
