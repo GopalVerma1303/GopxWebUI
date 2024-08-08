@@ -15,7 +15,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
 }) => (
   <button
     onClick={onClick}
-    className="w-full border border-black/50 dark:border-white/50 bg-gray-100 dark:bg-[#111111] focus:outline-none dark:text-white text-black text-sm rounded-md px-3 py-2 flex items-center justify-between transition-colors duration-200"
+    className="w-full border border-black/10 dark:border-white/10 bg-white dark:bg-[#111111] focus:outline-none dark:text-white text-black text-sm rounded-md px-3 py-2 flex items-center justify-between transition-colors duration-200"
   >
     <span>{value || placeholder}</span>
     <svg

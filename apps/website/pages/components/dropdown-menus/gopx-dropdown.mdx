@@ -1,0 +1,292 @@
+---
+title: "GOPX Dropdown"
+description: "Beautifully designed dropdown menu components for webui.gopx.dev with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/gopx-buttons.png"
+---
+
+import Showcase from '@/components/Showcase2';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import TabButton from "@/components/gopx-buttons/TabButton"; 
+import toast, { Toaster } from 'react-hot-toast';
+import GopxDropdownSelector from "@/components/demos/gopx-dropdown";
+
+export const handleClick = () => {
+  toast('Option Pressed!');
+};
+
+# GOPX Dropdown
+
+<p className="opacity-80 text-lg">Beautifully designed dropdown menu components for [GOPX WEBUI](https://webui.gopx.dev) with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Dropdown` `Menus` `GOPX` `Animated` `framer-motion`
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+      <div className="w-full h-full px-36 -mt-56">
+        <Toaster />
+        <GopxDropdownSelector onChange={handleClick} />
+      </div>
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="WorldTourDropdown.tsx" showLineNumbers
+import React from "react";
+import Dropdown from "@/components/Dropdown/Dropdown";
+
+type WorldTourDestination =
+  | "🗽 New York, USA"
+  | "🗼 Paris, France"
+  | "🏰 London, UK"
+  | "🛕 New Delhi, India"
+  | "🗾 Tokyo, Japan"
+  | "🌉 Sydney, Australia";
+
+interface WorldTourDropdownProps {
+  value: WorldTourDestination;
+  onChange: (destination: WorldTourDestination) => void;
+}
+
+const WorldTourDropdown: React.FC<WorldTourDropdownProps> = ({
+  value,
+  onChange,
+}) => {
+  const destinationOptions: WorldTourDestination[] = [
+    "🗽 New York, USA",
+    "🗼 Paris, France",
+    "🏰 London, UK",
+    "🛕 New Delhi, India",
+    "🗾 Tokyo, Japan",
+    "🌉 Sydney, Australia",
+  ];
+
+  return (
+    <Dropdown<WorldTourDestination>
+      value={value}
+      onChange={onChange}
+      options={destinationOptions}
+      renderOption={(option) => option}
+      placeholder="Select a world tour destination"
+      className="w-full"
+    />
+  );
+};
+
+export default WorldTourDropdown;
+```
+  </Tabs.Tab>
+</Tabs>
+
+## Installation
+
+<Steps>
+
+  ### Install `framer-motion`
+  ```bash
+  npm install framer-motion
+  ```
+
+  ### Create `DropdownButton.tsx` 
+```tsx filename="DropdownButton.tsx" showLineNumbers
+import React from "react";
+
+interface DropdownButtonProps {
+  value: string | number;
+  placeholder: string;
+  onClick: () => void;
+  isOpen: boolean;
+}
+
+const DropdownButton: React.FC<DropdownButtonProps> = ({
+  value,
+  placeholder,
+  onClick,
+  isOpen,
+}) => (
+  <button
+    onClick={onClick}
+    className="w-full border border-black/10 dark:border-white/10 bg-white dark:bg-[#111111] focus:outline-none dark:text-white text-black text-sm rounded-md px-3 py-2 flex items-center justify-between transition-colors duration-200"
+  >
+    <span>{value || placeholder}</span>
+    <svg
+      className={`w-4 h-4 ml-2 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </button>
+);
+
+export default DropdownButton;
+```
+
+  ### Create `DropdownItem.tsx`
+
+```tsx filename="DropdownItem.tsx" showLineNumbers
+import React from "react";
+
+interface DropdownItemProps<T> {
+  option: T;
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+function DropdownItem<T>({ option, onClick, children }: DropdownItemProps<T>) {
+  return (
+    <button
+      onClick={onClick}
+      className="block w-full text-left px-4 py-2 text-sm dark:text-white text-black hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-150"
+    >
+      {children}
+    </button>
+  );
+}
+
+export default DropdownItem;
+```
+
+  ### Create `DropdownMenu.tsx`
+
+```tsx filename="DropdownMenu.tsx" showLineNumbers
+import React from "react";
+import { motion } from "framer-motion";
+
+const DropdownMenu: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2 }}
+    className="absolute z-10 w-full mt-1 bg-white dark:bg-[#111111] border border-black/10 dark:border-white/10 rounded-md shadow-lg overflow-hidden"
+  >
+    {children}
+  </motion.div>
+);
+
+export default DropdownMenu;
+```
+
+  ### Create `Dropdown.tsx`
+
+```tsx filename="Dropdown.tsx" showLineNumbers
+import React, { useState, useRef, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import DropdownButton from "./DropdownButton";
+import DropdownMenu from "./DropdownMenu";
+import DropdownItem from "./DropdownItem";
+
+export interface DropdownProps<T> {
+  value: T;
+  onChange: (value: T) => void;
+  options: T[];
+  renderOption?: (option: T) => React.ReactNode;
+  placeholder?: string;
+  className?: string;
+}
+
+function Dropdown<T extends string | number>({
+  value,
+  onChange,
+  options,
+  renderOption,
+  placeholder = "Select an option",
+  className = "",
+}: DropdownProps<T>) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div className={`relative ${className}`} ref={dropdownRef}>
+      <DropdownButton
+        value={value}
+        placeholder={placeholder}
+        onClick={() => setIsOpen(!isOpen)}
+        isOpen={isOpen}
+      />
+      <AnimatePresence>
+        {isOpen && (
+          <DropdownMenu>
+            {options.map((option) => (
+              <DropdownItem
+                key={option}
+                option={option}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                }}
+              >
+                {renderOption ? renderOption(option) : option}
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default Dropdown;
+```
+
+</Steps>
+
+## Props
+
+### DropdownButton
+
+| Prop         | Type                | Required | Description                                         |
+|--------------|---------------------|----------|-----------------------------------------------------|
+| `value`      | `string \| number`   | Yes      | The current value displayed in the dropdown button. If no value is set, the placeholder will be shown. |
+| `placeholder`| `string`            | Yes      | The placeholder text displayed when there is no value. |
+| `onClick`    | `function`          | Yes      | A function that is called when the button is clicked. |
+| `isOpen`     | `boolean`           | Yes      | A flag indicating whether the dropdown is currently open or closed. |
+
+### DropdownItem
+
+| Prop         | Type                | Required | Description                                         |
+|--------------|---------------------|----------|-----------------------------------------------------|
+| `option`     | `T`                 | Yes      | The option object that represents the dropdown item. |
+| `onClick`    | `function`          | Yes      | A function that is called when the dropdown item is clicked. |
+| `children`   | `React.ReactNode`   | Yes      | The content to be displayed inside the dropdown item. |
+
+### DropdownMenu
+
+| Prop      | Type                | Required | Description                                         |
+|-----------|---------------------|----------|-----------------------------------------------------|
+| `children`| `React.ReactNode`   | Yes      | The content to be displayed inside the dropdown menu. This can include any valid React nodes, such as `DropdownItem` components or other elements. |
+
+### Dropdown
+
+| Prop            | Type                        | Required | Description                                                                                                 |
+|-----------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------------------|
+| `value`         | `T`                         | Yes      | The currently selected value of the dropdown. This should match one of the options in the `options` array. |
+| `onChange`      | `(value: T) => void`       | Yes      | A function that is called when an option is selected. It receives the selected value as an argument.        |
+| `options`       | `T[]`                       | Yes      | An array of options available for selection in the dropdown.                                               |
+| `renderOption`  | `(option: T) => React.ReactNode` | No       | An optional function that allows for custom rendering of each dropdown option. If not provided, the option will be displayed as is. |
+| `placeholder`   | `string`                   | No       | An optional placeholder text displayed when no option is selected. Defaults to "Select an option".          |
+| `className`     | `string`                   | No       | An optional additional CSS class for styling the dropdown component.                                        |
+

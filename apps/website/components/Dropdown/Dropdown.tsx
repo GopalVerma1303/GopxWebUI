@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import DropdownButton from "./DropdownButton";
 import DropdownMenu from "./DropdownMenu";
 import DropdownItem from "./DropdownItem";
