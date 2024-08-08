@@ -1,30 +1,5 @@
----
-title: "Hero Sections"
-description: "Beautifully designed Hero Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/sections/gopx-faqs.png"
----
-
-import { Tabs } from "nextra/components";
-import Hero from "@/components/demos/gopx-hero";
-
-# Hero Sections
-
-<p className="opacity-80 text-lg">Beautifully designed Hero Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
-
-`Hero` `Section`
-
-### GOPX Hero Section
-
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="w-full border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <Hero />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="Hero.tsx" showLineNumbers
 import Link from "next/link";
-import BentoGrid from "@/components/BentoGrid"; // Find at -> https://webui.gopx.dev/components/grids/gopx-bento-grid
+import BentoGrid from "@/components/BentoGrid";
 
 const Hero = () => {
   return (
@@ -86,6 +61,3 @@ const Hero = () => {
 };
 
 export default Hero;
-```
-  </Tabs.Tab>
-</Tabs>
