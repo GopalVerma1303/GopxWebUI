@@ -1,0 +1,41 @@
+---
+title: "Input Components"
+description: "Beautifully designed Input components with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+---
+
+import { getPagesUnderRoute } from 'nextra/context'
+import Link from 'next/link'
+import {Cards, Card} from "nextra/components"
+import Image from 'next/image'
+
+# Input Components
+
+<p className="component-description">Beautifully designed Input components with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+<br />
+
+export function BlogIndex() {
+  const currentPageTitle = "Input Components";
+  return getPagesUnderRoute('/components/inputs').filter(page => page.meta?.title !== currentPageTitle && page.frontMatter?.title !== currentPageTitle).map(page => {
+    return (
+      <ShowcaseCard title={page.meta?.title || page.frontMatter?.title || page.name} href={page.route}>
+        <Image src={page.frontMatter?.image} alt={page.frontMatter?.title} width={500} height={500} />
+      </ShowcaseCard>
+    )
+  })
+}
+
+export const ShowcaseCard = Object.assign(
+  Cards.Card.bind(),
+  {
+    defaultProps: {
+      image: true,
+      arrow: true,
+    },
+    displayName: 'ShowcaseCard',
+  }
+)
+
+<Cards>
+<BlogIndex />
+</Cards>
