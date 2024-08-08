@@ -1,0 +1,62 @@
+---
+title: "GOPX Buttons"
+description: "Beautifully designed Button components for webui.gopx.dev with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/gopx-buttons.png"
+---
+
+import Showcase from '@/components/Showcase2';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import TabButton from "@/components/gopx-buttons/TabButton"; 
+import toast, { Toaster } from 'react-hot-toast';
+
+export const handleClick = () => {
+  toast('Button Pressed!');
+};
+
+# GOPX Buttons
+
+<p className="opacity-80 text-lg">Beautifully designed Button components for [GOPX WEBUI](https://webui.gopx.dev) with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Buttons` `GOPX` `Animated` `framer-motion`
+
+## Tab Button
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+      <Toaster />
+      <TabButton label="Click me!" onClick={handleClick} />
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="TabButton.tsx" showLineNumbers
+import React from "react";
+import { motion } from "framer-motion";
+
+interface TabButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+const TabButton: React.FC<TabButtonProps> = ({ label, onClick }) => {
+  return (
+    <motion.button
+      className={`px-4 py-2 font-bold rounded-md text-xl bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600`}
+      onClick={onClick}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {label}
+    </motion.button>
+  );
+};
+
+export default TabButton;
+
+// use like this
+<TabButton label="Click me!" onClick={handleClick} />
+```
+  </Tabs.Tab>
+</Tabs>
