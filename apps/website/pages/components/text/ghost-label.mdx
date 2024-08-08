@@ -1,0 +1,64 @@
+---
+title: "Ghost Label"
+description: "A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details."
+image: "https://webui.gopx.dev/assets/components/cards/profile-card.png"
+---
+
+import Showcase from '@/components/Showcase2';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import GhostLabel from '@/components/GhostLabel';
+
+# Ghost Label
+
+<p className="opacity-80 text-lg">A reusable UI element that displays key user information, typically including a profile picture, name, and brief bio or contact details.</p>
+
+`Card` `Profile`
+
+<Tabs items={["Preview", "Code"]}>
+  <Tabs.Tab>
+    <Showcase>
+      <div className="relative ml-[30px] ">
+        <GhostLabel text="1920"/>
+        <p className="w-full max-w-[600px] text-sm font-serif">The film 1920: Evil Returns follows poet Jaidev, who helps a woman with amnesia, only for her to become possessed by a malevolent spirit. As he struggles to save her, dark secrets unfold, intertwining love and horror in a chilling narrative. This supernatural horror film, released in 2012, is a quasi-sequel to 1920 and features themes of possession and redemption</p>
+      </div>
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="GhostLabelDemo.tsx" showLineNumbers
+      <div className="relative ml-[30px] ">
+        <GhostLabel text="1920"/>
+        <p className="w-full max-w-[600px] text-sm font-serif">The film 1920: Evil Returns follows poet Jaidev, who helps a woman with amnesia, only for her to become possessed by a malevolent spirit. As he struggles to save her, dark secrets unfold, intertwining love and horror in a chilling narrative. This supernatural horror film, released in 2012, is a quasi-sequel to 1920 and features themes of possession and redemption</p>
+      </div>
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Installation
+
+### Create `GhostLabel.tsx` 
+
+```tsx filename="GhostLabel.tsx" showLineNumbers 
+import React from "react";
+
+type GhostLabelProps = {
+  text: string;
+};
+
+const GhostLabel: React.FC<GhostLabelProps> = ({ text }: GhostLabelProps) => {
+  return (
+    <p className="absolute -inset-y-[130px] -inset-x-[30px]  md:-inset-x-[50px] flex text-[150px] font-bold -z-0 opacity-10 font-anton">
+      {text}
+    </p>
+  );
+};
+
+export default GhostLabel;
+```
+
+## Props
+
+| Prop     | Type    | Required | Description                                          |
+|----------|---------|----------|------------------------------------------------------|
+| `text`   | `string`| Yes      | The text that you want to display as the ghost label.|

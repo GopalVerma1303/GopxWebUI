@@ -53,7 +53,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
       </ul>
 
       <Link
-        href={`${buttonText === "Browse Components" ? "/components" : "https://cal.com/bettercallgopal/personalizedcall"}`}
+        href={`${buttonText === "Explore" ? "/components" : "https://cal.com/bettercallgopal/personalizedcall"}`}
         className="flex justify-center"
       >
         <motion.button
@@ -85,7 +85,7 @@ const PricingComponent: React.FC = () => {
         { included: true, name: "MIT License for personal and commercial use" },
         { included: true, name: "Chat support available" },
       ],
-      buttonText: "Browse",
+      buttonText: "Explore",
     },
     {
       tier: "Custom Components",
