@@ -12,13 +12,8 @@
     "title": "SECTIONS"
   },
   "faq-sections": "FAQ",
-  "features-sections": "Features",
-  "form-sections": "Forms",
   "hero-sections": "Heros",
   "pricing-sections": "Pricing",
-  "signin-sections": "Sign In",
-  "stats-sections": "Stats",
-  "testimonial-sections": "Testimonials",
   "-- Components": {
     "type": "separator",
     "title": "COMPONENTS"
@@ -27,20 +22,11 @@
   "buttons": "Buttons",
   "cards": "Cards",
   "carousels": "Carousels",
-  "countdowns": "Countdowns",
   "dropdown-menus": "Dropdown Menus",
   "grids": "Grids",
   "inputs": "Inputs",
   "links": "Links",
-  "loaders": "Loaders",
-  "modals": "Modals",
-  "navbars-menus": "Navbars & Menus",
-  "notifications": "Notifications",
-  "progress": "Progress",
-  "tables": "Tables",
   "tabs": "Tabs",
   "text": "Text",
-  "toggles": "Toggles",
-  "tooltips": "Tooltips",
-  "others": "Others"
+  "tooltips": "Tooltips"
 }
