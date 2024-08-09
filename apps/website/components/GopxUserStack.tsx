@@ -33,7 +33,7 @@ const GopxUserStack: React.FC = () => {
       <StackedAvatars avatars={avatars} />
       <div className="absolute bottom-0 left-[240px] transform -translate-x-1/2 w-1/2 text-center">
         <span className="inline-block transform text-white/70 text-lg font-caveat font-bold">
-          1k+ finger tapped!
+          1k+ fingers tapped!
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1418 125"
