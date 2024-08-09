@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         anton: ["Anton", "sans-serif"],
         roboto: ["Roboto Condensed", "sans-serif"],
+        caveat: ["Caveat", "cursive"],
       },
       animation: {
         scroll: "scroll linear infinite",

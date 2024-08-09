@@ -1,11 +1,12 @@
 import Link from "next/link";
 import BentoGrid from "./BentoGrid";
+import GopxUserStack from "./GopxUserStack";
 
 const ShuffleHero = () => {
   return (
     <section className="w-full px-8 py-12  grid grid-cols-1 lg:grid-cols-2 items-center gap-8 max-w-6xl mx-auto ">
       <div>
-        <span className="block mb-4 text-xs md:text-sm text-[#5271ff] font-medium">
+        <span className="block mb-3 text-xs md:text-sm text-[#5271ff] font-medium">
           Effortless UI Development with{" "}
           <span className="relative text-[#5279ff] font-extrabold">
             GOPX WEBUI
@@ -25,7 +26,7 @@ const ShuffleHero = () => {
           </span>
         </span>
         <h3
-          className="inline-flex text-4xl md:text-6xl font-bold leading-tight tracking-tight -ml-0.5 mt-6 bg-gradient-to-br from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-500 bg-clip-text text-transparent"
+          className="inline-flex text-4xl md:text-6xl font-bold leading-tight tracking-tight -ml-0.5 mt-5 bg-gradient-to-br from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-500 bg-clip-text text-transparent"
           style={{
             fontSize: "min(3.375rem, max(8vw, 2.5rem))",
             fontFeatureSettings: "initial",
@@ -40,6 +41,7 @@ const ShuffleHero = () => {
           Motion components. Simply copy, paste, and customize to fit your
           needs.
         </p>
+        <GopxUserStack />
         <div className="flex gap-4">
           <Link
             href="/components"
