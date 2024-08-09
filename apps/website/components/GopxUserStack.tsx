@@ -32,7 +32,7 @@ const GopxUserStack: React.FC = () => {
     <div className="my-6 relative  flex-col">
       <StackedAvatars avatars={avatars} />
       <div className="absolute bottom-0 left-[240px] transform -translate-x-1/2 w-1/2 text-center">
-        <span className="inline-block transform text-white/70 text-lg font-caveat font-bold">
+        <span className="inline-block transform text-[#B8B8B8] text-lg font-caveat font-bold">
           1k+ fingers tapped!
           <svg
             xmlns="http://www.w3.org/2000/svg"
