@@ -15,14 +15,18 @@ const ColorFormatSelector: React.FC<ColorFormatSelectorProps> = ({
   const colorFormatOptions: ColorFormat[] = ["hex", "rgb", "hsl"];
 
   return (
-    <Dropdown<ColorFormat>
-      value={value}
-      onChange={onChange}
-      options={colorFormatOptions}
-      renderOption={(option) => option.toUpperCase()}
-      placeholder="Select color format"
-      className="w-full"
-    />
+    <div className="flex justify-end">
+      <div>
+        <Dropdown<ColorFormat>
+          value={value}
+          onChange={onChange}
+          options={colorFormatOptions}
+          renderOption={(option) => option.toLowerCase()}
+          placeholder="Select color format"
+          className="w-full"
+        />
+      </div>
+    </div>
   );
 };
 
