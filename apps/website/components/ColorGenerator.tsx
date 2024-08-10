@@ -1,5 +1,13 @@
 //@ts-nocheck
-import React, { useState, useEffect, useRef } from "react";
+"use client";
+
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { motion } from "framer-motion";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { TinyColor } from "@ctrl/tinycolor";
@@ -52,101 +60,96 @@ const CodeFormatDropdown = ({ value, onChange }) => {
 };
 
 const GradientPreview = ({ initialGradient, onGradientChange }) => {
-  const [color1, setColor1] = useState(initialGradient.start);
-  const [color2, setColor2] = useState(initialGradient.end);
+  const [colors, setColors] = useState({
+    start: initialGradient.start,
+    end: initialGradient.end,
+  });
   const [gradientType, setGradientType] = useState("linear");
   const [codeFormat, setCodeFormat] = useState("css");
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    onGradientChange({ start: color1, end: color2 });
-  }, [color1, color2, onGradientChange]);
+  const handleColorChange = useCallback(
+    (type, value) => {
+      setColors((prev) => {
+        const newColors = { ...prev, [type]: value };
+        onGradientChange(newColors);
+        return newColors;
+      });
+    },
+    [onGradientChange],
+  );
 
-  const getGradientStyle = () => {
+  const getGradientStyle = useMemo(() => {
+    const { start, end } = colors;
     switch (gradientType) {
       case "linear":
-        return `linear-gradient(to right, ${color1}, ${color2})`;
+        return `linear-gradient(to right, ${start}, ${end})`;
       case "radial":
-        return `radial-gradient(circle, ${color1}, ${color2})`;
+        return `radial-gradient(circle, ${start}, ${end})`;
       case "conic":
-        return `conic-gradient(from 0deg, ${color1}, ${color2})`;
+        return `conic-gradient(from 0deg, ${start}, ${end})`;
       default:
-        return `linear-gradient(to right, ${color1}, ${color2})`;
+        return `linear-gradient(to right, ${start}, ${end})`;
     }
-  };
+  }, [colors, gradientType]);
 
-  const getGradientCode = () => {
-    const gradientStyle = getGradientStyle();
+  const getGradientCode = useMemo(() => {
     switch (codeFormat) {
       case "css":
-        return `background: ${gradientStyle};`;
+        return `background: ${getGradientStyle};`;
       case "tailwind":
-        return `bg-gradient-to-r from-[${color1}] to-[${color2}]`;
+        return `bg-gradient-to-r from-[${colors.start}] to-[${colors.end}]`;
       case "scss":
-        return `$gradient: ${gradientStyle};\nbackground: $gradient;`;
+        return `$gradient: ${getGradientStyle};\nbackground: $gradient;`;
       default:
-        return `background: ${gradientStyle};`;
+        return `background: ${getGradientStyle};`;
     }
-  };
+  }, [getGradientStyle, codeFormat, colors]);
 
-  const copyCode = () => {
-    navigator.clipboard.writeText(getGradientCode());
+  const copyCode = useCallback(() => {
+    navigator.clipboard.writeText(getGradientCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
+  }, [getGradientCode]);
 
   return (
     <div>
       <div className="flex space-x-4 mb-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Color 1</label>
-          <input
-            type="color"
-            value={color1}
-            onChange={(e) => setColor1(e.target.value)}
-            className="w-full h-10 rounded"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Color 2</label>
-          <input
-            type="color"
-            value={color2}
-            onChange={(e) => setColor2(e.target.value)}
-            className="w-full h-10 rounded"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">
-            Gradient Type
-          </label>
-          <GradientTypeDropdown
-            value={gradientType}
-            onChange={setGradientType}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Code Format</label>
-          <CodeFormatDropdown value={codeFormat} onChange={setCodeFormat} />
-        </div>
+        <ColorInput
+          label="Color 1"
+          value={colors.start}
+          onChange={(value) => handleColorChange("start", value)}
+        />
+        <ColorInput
+          label="Color 2"
+          value={colors.end}
+          onChange={(value) => handleColorChange("end", value)}
+        />
+        <DropdownWrapper
+          label="Gradient Type"
+          value={gradientType}
+          onChange={setGradientType}
+          Component={GradientTypeDropdown}
+        />
+        <DropdownWrapper
+          label="Code Format"
+          value={codeFormat}
+          onChange={setCodeFormat}
+          Component={CodeFormatDropdown}
+        />
       </div>
       <div className="relative">
         <div
           className="w-full h-96 rounded-lg cursor-pointer"
-          style={{ background: getGradientStyle() }}
+          style={{ background: getGradientStyle }}
           onClick={copyCode}
         />
-        <button
-          className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded hover:bg-opacity-70 transition-opacity"
-          onClick={copyCode}
-        >
-          {copied ? "Copied!" : "Copy"}
-        </button>
+        <CopyButton copied={copied} onClick={copyCode} />
       </div>
       <div className="mt-4">
         <label className="block text-sm font-medium mb-1">Generated Code</label>
         <CopyableInput
-          value={getGradientCode()}
+          value={getGradientCode}
           editable={false}
           className="w-full"
         />
@@ -154,6 +157,34 @@ const GradientPreview = ({ initialGradient, onGradientChange }) => {
     </div>
   );
 };
+
+const ColorInput = ({ label, value, onChange }) => (
+  <div>
+    <label className="block text-sm font-medium mb-1">{label}</label>
+    <input
+      type="color"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full h-10 rounded"
+    />
+  </div>
+);
+
+const DropdownWrapper = ({ label, value, onChange, Component }) => (
+  <div>
+    <label className="block text-sm font-medium mb-1">{label}</label>
+    <Component value={value} onChange={onChange} />
+  </div>
+);
+
+const CopyButton = ({ copied, onClick }) => (
+  <button
+    className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded hover:bg-opacity-70 transition-opacity"
+    onClick={onClick}
+  >
+    {copied ? "Copied!" : "Copy"}
+  </button>
+);
 
 const ColorGenerator: React.FC = () => {
   const router = useRouter();
@@ -289,24 +320,10 @@ const ColorGenerator: React.FC = () => {
     )[0];
   };
 
-  const generateGradient = () => {
-    const start = new TinyColor(color).spin(30).toHexString();
-    const end = new TinyColor(color).spin(-30).toHexString();
-    setGradient({ start, end });
-  };
-
   const addToHistory = (newColor: ColorResult) => {
     const { r, g, b, a } = newColor.rgb;
     const colorString = `rgba(${r}, ${g}, ${b}, ${a})`;
     setColorHistory((prev) => [colorString, ...prev.slice(0, 18)]);
-  };
-
-  const toggleFavorite = (favoriteColor: string) => {
-    setFavorites((prev) =>
-      prev.includes(favoriteColor)
-        ? prev.filter((c) => c !== favoriteColor)
-        : [...prev, favoriteColor],
-    );
   };
 
   const handleGradientChange = (newGradient) => {
