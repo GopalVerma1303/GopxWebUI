@@ -7,7 +7,7 @@ const Home: React.FC = () => {
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center  bg-white/20"></div>
       <h1 className="text-2xl mb-8 font-bold">GOPX Playground</h1>
       <Showcase>
-        <p>Gopal Verma!</p>
+        <div className="h-full w-full rounded-lg "></div>
       </Showcase>
     </div>
   );
