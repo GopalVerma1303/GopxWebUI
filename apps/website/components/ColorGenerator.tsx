@@ -29,42 +29,79 @@ import Dropdown from "./Dropdown/Dropdown";
 import ColorFormatSelector from "./ColorFormatSelector";
 import CopyableInput from "./CopyableInput";
 
-const GradientTypeDropdown = ({ value, onChange }) => {
-  const gradientTypes = ["linear", "radial", "conic"];
+const gradientTypes = [
+  "To Top",
+  "To Top Right",
+  "To Right",
+  "To Bottom Right",
+  "To Bottom",
+  "To Bottom Left",
+  "To Left",
+  "To Top Left",
+];
 
-  return (
-    <Dropdown
-      value={value}
-      onChange={onChange}
-      options={gradientTypes}
-      renderOption={(option) => option.toLowerCase()}
-      placeholder="Select gradient type"
-      className="w-full"
-    />
-  );
+const directionMap = {
+  "to top": "to-t",
+  "to top right": "to-tr",
+  "to right": "to-r",
+  "to bottom right": "to-br",
+  "to bottom": "to-b",
+  "to bottom left": "to-bl",
+  "to left": "to-l",
+  "to top left": "to-tl",
 };
 
-const CodeFormatDropdown = ({ value, onChange }) => {
-  const codeFormats = ["css", "tailwind", "scss"];
+const codeFormats = ["css", "tailwind", "scss"];
 
-  return (
-    <Dropdown
+const GradientTypeDropdown = ({ value, onChange }) => (
+  <Dropdown
+    value={value}
+    onChange={onChange}
+    options={gradientTypes}
+    renderOption={(option) => option}
+    placeholder="Select gradient type"
+    className="w-full"
+  />
+);
+
+const CodeFormatDropdown = ({ value, onChange }) => (
+  <Dropdown
+    value={value}
+    onChange={onChange}
+    options={codeFormats}
+    renderOption={(option) => option.toLowerCase()}
+    placeholder="Select code format"
+    className="w-full"
+  />
+);
+
+const ColorInput = ({ label, value, onChange }) => (
+  <div>
+    <label className="block text-sm font-medium mb-1">{label}</label>
+    <input
+      type="color"
       value={value}
-      onChange={onChange}
-      options={codeFormats}
-      renderOption={(option) => option.toLowerCase()}
-      placeholder="Select code format"
-      className="w-full"
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full h-10 rounded"
     />
-  );
-};
+  </div>
+);
+
+const CopyButton = ({ copied, onClick }) => (
+  <button
+    className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded hover:bg-opacity-70 transition-opacity"
+    onClick={onClick}
+  >
+    {copied ? "Copied!" : "Copy"}
+  </button>
+);
 
 const GradientPreview = ({ initialGradient, onGradientChange }) => {
   const [colors, setColors] = useState({
     start: initialGradient.start,
     end: initialGradient.end,
   });
-  const [gradientType, setGradientType] = useState("linear");
+  const [gradientType, setGradientType] = useState("To Right");
   const [codeFormat, setCodeFormat] = useState("css");
   const [copied, setCopied] = useState(false);
 
@@ -81,30 +118,33 @@ const GradientPreview = ({ initialGradient, onGradientChange }) => {
 
   const getGradientStyle = useMemo(() => {
     const { start, end } = colors;
-    switch (gradientType) {
-      case "linear":
-        return `linear-gradient(to right, ${start}, ${end})`;
-      case "radial":
-        return `radial-gradient(circle, ${start}, ${end})`;
-      case "conic":
-        return `conic-gradient(from 0deg, ${start}, ${end})`;
-      default:
-        return `linear-gradient(to right, ${start}, ${end})`;
-    }
+    const direction = gradientType.toLowerCase().replace(/ /g, " ");
+    return `linear-gradient(${direction}, ${start}, ${end})`;
   }, [colors, gradientType]);
 
   const getGradientCode = useMemo(() => {
+    const { start, end } = colors;
+    const direction = gradientType.toLowerCase().replace(/ /g, " ");
+
+    const tailwindDirection = directionMap[direction] || "";
+    let tailwindCode = `bg-gradient-${tailwindDirection} from-[${start}] to-[${end}]`;
+
+    const getGradientStyle = `linear-gradient(${direction}, ${start}, ${end})`;
+    const cssCode = `background: ${getGradientStyle};`;
+
+    let scssCode = `$gradient: ${getGradientStyle};\nbackground: $gradient;`;
+
     switch (codeFormat) {
       case "css":
-        return `background: ${getGradientStyle};`;
+        return cssCode;
       case "tailwind":
-        return `bg-gradient-to-r from-[${colors.start}] to-[${colors.end}]`;
+        return tailwindCode;
       case "scss":
-        return `$gradient: ${getGradientStyle};\nbackground: $gradient;`;
+        return scssCode;
       default:
-        return `background: ${getGradientStyle};`;
+        return cssCode;
     }
-  }, [getGradientStyle, codeFormat, colors]);
+  }, [colors, gradientType, codeFormat]);
 
   const copyCode = useCallback(() => {
     navigator.clipboard.writeText(getGradientCode);
@@ -125,18 +165,19 @@ const GradientPreview = ({ initialGradient, onGradientChange }) => {
           value={colors.end}
           onChange={(value) => handleColorChange("end", value)}
         />
-        <DropdownWrapper
-          label="Gradient Type"
-          value={gradientType}
-          onChange={setGradientType}
-          Component={GradientTypeDropdown}
-        />
-        <DropdownWrapper
-          label="Code Format"
-          value={codeFormat}
-          onChange={setCodeFormat}
-          Component={CodeFormatDropdown}
-        />
+        <div className="w-[150px]">
+          <label className="block text-sm font-medium mb-1">
+            Gradient Type
+          </label>
+          <GradientTypeDropdown
+            value={gradientType}
+            onChange={setGradientType}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Code Format</label>
+          <CodeFormatDropdown value={codeFormat} onChange={setCodeFormat} />
+        </div>
       </div>
       <div className="relative">
         <div
@@ -157,34 +198,6 @@ const GradientPreview = ({ initialGradient, onGradientChange }) => {
     </div>
   );
 };
-
-const ColorInput = ({ label, value, onChange }) => (
-  <div>
-    <label className="block text-sm font-medium mb-1">{label}</label>
-    <input
-      type="color"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className="w-full h-10 rounded"
-    />
-  </div>
-);
-
-const DropdownWrapper = ({ label, value, onChange, Component }) => (
-  <div>
-    <label className="block text-sm font-medium mb-1">{label}</label>
-    <Component value={value} onChange={onChange} />
-  </div>
-);
-
-const CopyButton = ({ copied, onClick }) => (
-  <button
-    className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-3 py-1 rounded hover:bg-opacity-70 transition-opacity"
-    onClick={onClick}
-  >
-    {copied ? "Copied!" : "Copy"}
-  </button>
-);
 
 const ColorGenerator: React.FC = () => {
   const router = useRouter();
