@@ -1,0 +1,77 @@
+---
+title: "Background Bricks"
+description: "A customizable React component that creates a bricks background using SVG, with adjustable color, size, and fade effects."
+image: "https://webui.gopx.dev/assets/components/backgrounds/bricks.png"
+---
+
+# Background Bricks
+
+<p className="component-description">A customizable React component that creates a bricks background using SVG, with adjustable color, size, and fade effects.</p>
+
+`Aesthetics` `Effects` `Backgrounds` `Bricks`
+
+import Showcase from '@/components/Showcase3';
+import BackgroundBricks from "@/components/backgrounds/bricks";
+import { Tabs } from "nextra/components";
+
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+<Showcase>
+    <BackgroundBricks className="absolute inset-0" />
+</Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="bricks.tsx" showLineNumbers
+import { HTMLProps } from "react";
+
+interface BackgroundBricksProps {
+  color: string;
+  cellSize: string | number;
+  strokeWidth: number | string;
+  className?: string;
+  fade?: boolean;
+}
+
+const BackgroundBricks = ({
+  color = "#5271ff",
+  cellSize = "25px",
+  strokeWidth = "3px",
+  className,
+  fade = true,
+  ...props
+}: Partial<BackgroundBricksProps> & HTMLProps<HTMLDivElement>) => {
+  const svg = `
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' stroke='${color}' stroke-width='${strokeWidth}' fill-opacity='0.4' >
+      <path d='M 100 0 L 100 200'/>
+      <path d='M 0 100 L 200 100'/>
+    </svg>
+  `;
+  const svgDataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  return (
+    <div
+      className={`pointer-events-none ${className}`}
+      style={{
+        backgroundImage: `url("${svgDataUrl}")`,
+        backgroundRepeat: "repeat",
+        backgroundSize: cellSize,
+        maskImage: fade
+          ? `radial-gradient(ellipse at top, white, transparent 70%)`
+          : undefined,
+        WebkitMaskImage: fade
+          ? `radial-gradient(ellipse at top, white, transparent 70%)`
+          : undefined,
+      }}
+      {...props}
+    ></div>
+  );
+};
+
+export default BackgroundBricks;
+
+// inpired by https://syntaxui.com/
+```
+  </Tabs.Tab>
+</Tabs>
+
+

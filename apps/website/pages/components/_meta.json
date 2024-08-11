@@ -27,5 +27,10 @@
   "inputs": "Inputs",
   "links": "Links",
   "text": "Text",
-  "tooltips": "Tooltips"
+  "tooltips": "Tooltips",
+  "-- Aesthetics": {
+    "type": "separator",
+    "title": "AESTHETICS"
+  },
+  "backgrounds": "Backgrounds"
 }

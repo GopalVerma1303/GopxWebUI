@@ -1,0 +1,13 @@
+{
+  "index": {
+    "display": "hidden"
+  },
+  "bricks": "Bricks",
+  "check": "Check",
+  "cross": "Cross",
+  "dots": "Dots",
+  "grid": "Grid",
+  "matrix": "Matrix",
+  "no-signal": "No-Signal",
+  "plus": "Plus"
+}
