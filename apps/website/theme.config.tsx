@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import type { DocsThemeConfig } from "nextra-theme-docs";
-import { useConfig } from "nextra-theme-docs";
+import type { DocsThemeConfig } from "@gopx-webui/nextra-theme-gopx";
+import { useConfig } from "@gopx-webui/nextra-theme-gopx";
 import Image from "next/image";
 import {
   GitHubIcon,
