@@ -3,7 +3,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "dev:website": "turbo dev --filter @gopx-webui/website",
+    "dev:playground": "turbo dev:playground",
+    "dev:template": "turbo dev:template",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
