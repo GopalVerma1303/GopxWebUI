@@ -127,7 +127,7 @@ export const FAQPage: React.FC = () => {
             </motion.button>
           ))}
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 mx-4 lg:mx-0">
           {faqData[activeTab].map((item) => (
             <motion.div
               key={item.question}

@@ -4,14 +4,14 @@ description: "Discover expertly crafted templates by our team to enhance your we
 image: "https://webui.gopx.dev/assets/templates/templates.png"
 ---
 
-<div className="max-w-screen-lg mx-auto py-8  border-gray-400 border-opacity-20">
-  <div className="-z-50 absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
-  <p className="text-center font-space-grotesk mb-8 font-roboto font-bold uppercase text-xl">Templates</p>
-  <h1 className="text-center">
-    <span className="font-bold font-serif leading-tight lg:text-5xl md:text-4xl sm:text-3xl text-2xl">Discover expertly crafted templates by our team to enhance your web projects effortlessly.</span>
-  </h1>
-</div>
 
 import {TemplatePage} from "@/components/TemplatePage";
- 
+import PageHeader from "@/components/PageHeader"; 
+
+<PageHeader
+  title="Templates"
+  heading="Expertly crafted templates for effortless web development with modern TechStack"
+  description="Explore our expertly crafted templates designed to enhance your web projects effortlessly, utilizing Next.js, Nextra, MDX, Tailwind, Framer Motion, and more!"
+/>
+
 <TemplatePage />

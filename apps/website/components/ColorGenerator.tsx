@@ -336,7 +336,6 @@ const ColorGenerator: React.FC = () => {
   const addToHistory = (newColor: ColorResult) => {
     const { r, g, b, a } = newColor.rgb;
     const colorString = `rgba(${r}, ${g}, ${b}, ${a})`;
-    setColorHistory((prev) => [colorString, ...prev.slice(0, 18)]);
   };
 
   const handleGradientChange = (newGradient) => {
