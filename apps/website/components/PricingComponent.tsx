@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -6,6 +6,41 @@ interface FeatureItemProps {
   included: boolean;
   name: string;
 }
+
+const PricingToggle: React.FC<{
+  isPeriodYearly: boolean;
+  onToggle: () => void;
+}> = ({ isPeriodYearly, onToggle }) => (
+  <div className="flex items-center justify-center my-8">
+    <span
+      className={`mr-3 ${isPeriodYearly ? "text-gray-500 dark:text-gray-400" : "font-semibold"}`}
+    >
+      Monthly
+    </span>
+    <motion.div
+      className="w-14 h-7 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full p-1 cursor-pointer"
+      onClick={onToggle}
+    >
+      <motion.div
+        className="bg-white w-5 h-5 rounded-full shadow-md"
+        layout
+        transition={spring}
+        animate={{ x: isPeriodYearly ? 28 : 0 }}
+      />
+    </motion.div>
+    <span
+      className={`ml-3 ${isPeriodYearly ? "font-semibold" : "text-gray-500 dark:text-gray-400"}`}
+    >
+      Yearly
+    </span>
+  </div>
+);
+
+const spring = {
+  type: "spring",
+  stiffness: 700,
+  damping: 30,
+};
 
 const FeatureItem: React.FC<FeatureItemProps> = ({ included, name }) => (
   <motion.li
@@ -23,18 +58,22 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ included, name }) => (
 
 interface PricingTierProps {
   tier: string;
-  price: string;
+  monthlyPrice: string;
+  yearlyPrice: string;
   description: string;
   features: FeatureItemProps[];
   buttonText: string;
+  isPeriodYearly: boolean;
 }
 
 const PricingTier: React.FC<PricingTierProps> = ({
   tier,
-  price,
+  monthlyPrice,
+  yearlyPrice,
   description,
   features,
   buttonText,
+  isPeriodYearly,
 }) => {
   return (
     <motion.div
@@ -42,7 +81,22 @@ const PricingTier: React.FC<PricingTierProps> = ({
     >
       <div className="flex flex-col justify-center items-start gap-2">
         <h3 className="text-lg font-bold">{tier}</h3>
-        <p className="text-3xl font-bold">{price}</p>
+        <motion.p
+          className="text-3xl font-bold"
+          key={isPeriodYearly ? yearlyPrice : monthlyPrice}
+        >
+          <motion.span
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+          >
+            {isPeriodYearly ? yearlyPrice : monthlyPrice}
+          </motion.span>
+          <span className="text-sm font-normal ml-1">
+            {isPeriodYearly ? "/year" : "/month"}
+          </span>
+        </motion.p>
         <p className="opacity-70 text-sm ">{description}</p>
       </div>
       <div className="separator mb-4"></div>
@@ -73,10 +127,13 @@ const PricingTier: React.FC<PricingTierProps> = ({
 };
 
 const PricingComponent: React.FC = () => {
+  const [isPeriodYearly, setIsPeriodYearly] = useState(false);
+
   const tiers = [
     {
       tier: "Existing Components",
-      price: "Free",
+      monthlyPrice: "Free",
+      yearlyPrice: "Free",
       description:
         "Explore a constantly expanding collection of components available to you for free.",
       features: [
@@ -89,7 +146,8 @@ const PricingComponent: React.FC = () => {
     },
     {
       tier: "Custom Components",
-      price: "$799.99/mo",
+      monthlyPrice: "$799.99",
+      yearlyPrice: "$8,399.89",
       description:
         "Custom components designed to fit your needs, easily integrated. Perfect for adding elements.",
       features: [
@@ -106,7 +164,8 @@ const PricingComponent: React.FC = () => {
     },
     {
       tier: "Pages",
-      price: "$1199.99/mo",
+      monthlyPrice: "$1,199.99",
+      yearlyPrice: "$12,599.89",
       description:
         "Ideal for early-stage startups needing a marketing site and ongoing development work.",
       features: [
@@ -125,7 +184,8 @@ const PricingComponent: React.FC = () => {
     },
     {
       tier: "Multi Page Website",
-      price: "Starts at $2100",
+      monthlyPrice: "Starts at $2,100",
+      yearlyPrice: "Starts at $22,050",
       description:
         "Great for small businesses needing a fast website that looks good and converts visitors into customers.",
       features: [
@@ -143,7 +203,11 @@ const PricingComponent: React.FC = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center w-full max-w-7xl mx-auto mb-24">
+    <div className="flex flex-col items-center justify-center w-full max-w-7xl mx-auto mb-24">
+      <PricingToggle
+        isPeriodYearly={isPeriodYearly}
+        onToggle={() => setIsPeriodYearly(!isPeriodYearly)}
+      />
       <motion.div
         className="mx-auto w-full"
         initial={{ opacity: 0, y: 50 }}
@@ -152,12 +216,15 @@ const PricingComponent: React.FC = () => {
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:m-2 m-4">
           {tiers.map((tier, index) => (
-            <PricingTier key={index} {...tier} />
+            <PricingTier
+              key={index}
+              {...tier}
+              isPeriodYearly={isPeriodYearly}
+            />
           ))}
         </div>
       </motion.div>
     </div>
   );
 };
-
 export default PricingComponent;

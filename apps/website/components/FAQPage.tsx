@@ -108,7 +108,7 @@ export const FAQPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen mt-[50px]">
+    <div className="min-h-screen mt-[20px]">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center space-x-1 sm:space-x-5 mb-8 w-fit mx-auto">
           {Object.keys(faqData).map((tab) => (
