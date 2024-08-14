@@ -45,16 +45,16 @@ const ShuffleHero = () => {
           needs.
         </p>
         <GopxUserStack />
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href="/components"
-            className="bg-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
+            className="bg-[#5271ff] sm:text-medium text-sm justify-center items-center flex py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
           >
             Explore Components →
           </Link>
           <Link
             href="/templates"
-            className="border flex justify-center items-center gap-2 border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95  !no-underline dark:!text-white !text-[#5259ff]"
+            className="border flex justify-center items-center gap-2 sm:text-medium text-sm border-black/40 dark:border-white/40 font-medium py-2 px-4 rounded transition-all dark:hover:border-white/70 hover:border-black/70 active:scale-95  !no-underline dark:!text-white !text-black"
           >
             <BsGithub /> Star on Github
           </Link>
