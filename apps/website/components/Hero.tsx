@@ -1,6 +1,9 @@
 import Link from "next/link";
 import BentoGrid from "./BentoGrid";
 import GopxUserStack from "./GopxUserStack";
+import { FiGithub } from "react-icons/fi";
+import { FaGithubAlt, FaGithubSquare } from "react-icons/fa";
+import { BsGithub } from "react-icons/bs";
 
 const ShuffleHero = () => {
   return (
@@ -51,9 +54,9 @@ const ShuffleHero = () => {
           </Link>
           <Link
             href="/templates"
-            className="border border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95  !no-underline dark:!text-white !text-[#5259ff]"
+            className="border flex justify-center items-center gap-2 border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95  !no-underline dark:!text-white !text-[#5259ff]"
           >
-            Explore Templates →
+            <BsGithub /> Star on Github
           </Link>
         </div>
       </div>
