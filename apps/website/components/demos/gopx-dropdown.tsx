@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "@/components/Dropdown/Dropdown";
 
 type WorldTourDestination =
+  | ""
   | "🗽 New York, USA"
   | "🗼 Paris, France"
   | "🏰 London, UK"
@@ -10,14 +11,12 @@ type WorldTourDestination =
   | "🌉 Sydney, Australia";
 
 interface WorldTourDropdownProps {
-  value: WorldTourDestination;
   onChange: (destination: WorldTourDestination) => void;
 }
 
-const WorldTourDropdown: React.FC<WorldTourDropdownProps> = ({
-  value,
-  onChange,
-}) => {
+const WorldTourDropdown: React.FC<WorldTourDropdownProps> = ({ onChange }) => {
+  const [value, setValue] = useState<WorldTourDestination | "">("");
+
   const destinationOptions: WorldTourDestination[] = [
     "🗽 New York, USA",
     "🗼 Paris, France",
@@ -27,10 +26,15 @@ const WorldTourDropdown: React.FC<WorldTourDropdownProps> = ({
     "🌉 Sydney, Australia",
   ];
 
+  const handleChange = (destination: WorldTourDestination) => {
+    setValue(destination);
+    onChange(destination);
+  };
+
   return (
     <Dropdown<WorldTourDestination>
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       options={destinationOptions}
       renderOption={(option) => option}
       placeholder="Select a world tour destination"
