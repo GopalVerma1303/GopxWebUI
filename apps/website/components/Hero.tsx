@@ -53,7 +53,7 @@ const ShuffleHero = () => {
             Explore Components →
           </Link>
           <Link
-            href="/templates"
+            href="https://github.com/GopalVerma1303/webui.gopx"
             className="border flex justify-center items-center gap-2 sm:text-medium text-sm border-black/40 dark:border-white/40 font-medium py-2 px-4 rounded transition-all dark:hover:border-white/70 hover:border-black/70 active:scale-95  !no-underline dark:!text-white !text-black"
           >
             <BsGithub /> Star on Github
