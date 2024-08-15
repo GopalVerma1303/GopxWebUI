@@ -56,7 +56,7 @@ const componentsData = [
     title: "Tooltips",
     href: "/components/tooltips",
     Icon: GrTooltip,
-    sections: ["Trending"],
+    sections: ["Trending", "Components"],
   },
   {
     title: "Pricing Sections",
