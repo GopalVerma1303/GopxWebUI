@@ -1,0 +1,33 @@
+[
+  {
+    "name": "accordian",
+    "files": [
+      "registry/components/ui/accordion.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "ghost-label",
+    "files": [
+      "registry/components/ui/ghost-label.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "gopx-accordion",
+    "registryDependencies": [
+      "accordion"
+    ],
+    "files": [
+      "registry/components/example/gopx-accordion.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "tab-button",
+    "files": [
+      "registry/components/ui/tab-button.tsx"
+    ],
+    "type": "components:ui"
+  }
+]

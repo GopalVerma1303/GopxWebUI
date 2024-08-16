@@ -1,0 +1,13 @@
+{
+  "name": "gopx-accordion",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "name": "gopx-accordion.tsx",
+      "content": "import React, { useState } from \"react\";\nimport Accordion from \"@/components/Accordion\";\n\nconst GopxAccordionDemo: React.FC = () => {\n  const [activeIndex, setActiveIndex] = useState<number | null>(null);\n\n  const items = [\n    { title: \"Section 1\", description: \"This is the content for section 1.\" },\n    {\n      title: \"Section 2\",\n      description: \"Here's some information for section 2.\",\n    },\n    { title: \"Section 3\", description: \"Section 3 contains this text.\" },\n  ];\n\n  return (\n    <div className=\"max-w-md mx-auto mt-8\">\n      {items.map((item, index) => (\n        <Accordion\n          key={index}\n          title={item.title}\n          description={item.description}\n          isActive={activeIndex === index}\n          toggleActive={() =>\n            setActiveIndex(activeIndex === index ? null : index)\n          }\n        />\n      ))}\n    </div>\n  );\n};\n\nexport default GopxAccordionDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

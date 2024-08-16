@@ -1,17 +1,18 @@
 import path from "path";
 import { Config } from "@/src/utils/get-config";
 import {
-  registryBaseColorSchema,
   registryIndexSchema,
   registryItemWithContentSchema,
   registryWithContentSchema,
-  stylesSchema,
 } from "@/src/utils/registry/schema";
 import { HttpsProxyAgent } from "https-proxy-agent";
 import fetch from "node-fetch";
 import { z } from "zod";
 
-const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://ui.shadcn.com";
+const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://webui.gopx.dev";
+
+type theTree = z.infer<typeof registryIndexSchema>;
+
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined;
@@ -19,63 +20,15 @@ const agent = process.env.https_proxy
 export async function getRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["index.json"]);
-
     return registryIndexSchema.parse(result);
   } catch (error) {
-    throw new Error(`Failed to fetch components from registry.`);
+    console.error(error);
+    throw new Error("Failed to fetch components from registry.");
   }
 }
 
-export async function getRegistryStyles() {
-  try {
-    const [result] = await fetchRegistry(["styles/index.json"]);
-
-    return stylesSchema.parse(result);
-  } catch (error) {
-    throw new Error(`Failed to fetch styles from registry.`);
-  }
-}
-
-export async function getRegistryBaseColors() {
-  return [
-    {
-      name: "slate",
-      label: "Slate",
-    },
-    {
-      name: "gray",
-      label: "Gray",
-    },
-    {
-      name: "zinc",
-      label: "Zinc",
-    },
-    {
-      name: "neutral",
-      label: "Neutral",
-    },
-    {
-      name: "stone",
-      label: "Stone",
-    },
-  ];
-}
-
-export async function getRegistryBaseColor(baseColor: string) {
-  try {
-    const [result] = await fetchRegistry([`colors/${baseColor}.json`]);
-
-    return registryBaseColorSchema.parse(result);
-  } catch (error) {
-    throw new Error(`Failed to fetch base color from registry.`);
-  }
-}
-
-export async function resolveTree(
-  index: z.infer<typeof registryIndexSchema>,
-  names: string[],
-) {
-  const tree: z.infer<typeof registryIndexSchema> = [];
+export async function resolveTree(index: theTree, names: string[]) {
+  const tree: theTree = [];
 
   for (const name of names) {
     const entry = index.find((entry) => entry.name === name);
@@ -98,12 +51,12 @@ export async function resolveTree(
   );
 }
 
-export async function fetchTree(
-  style: string,
-  tree: z.infer<typeof registryIndexSchema>,
-) {
+export async function fetchTree(tree: theTree) {
   try {
-    const paths = tree.map((item) => `styles/${style}/${item.name}.json`);
+    const paths = tree.map((item) => {
+      const [parent, subfolder] = item.type.split(":");
+      return `${parent}/${subfolder}/${item.name}.json`;
+    });
     const result = await fetchRegistry(paths);
 
     return registryWithContentSchema.parse(result);
@@ -119,10 +72,6 @@ export async function getItemTargetPath(
 ) {
   if (override) {
     return override;
-  }
-
-  if (item.type === "components:ui" && config.aliases.ui) {
-    return config.resolvedPaths.ui;
   }
 
   const [parent, type] = item.type.split(":");
@@ -146,10 +95,8 @@ async function fetchRegistry(paths: string[]) {
         return await response.json();
       }),
     );
-
     return results;
   } catch (error) {
-    console.log(error);
     throw new Error(`Failed to fetch registry from ${baseUrl}.`);
   }
 }

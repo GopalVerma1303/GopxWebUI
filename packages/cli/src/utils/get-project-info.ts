@@ -2,8 +2,8 @@ import { existsSync } from "fs";
 import path from "path";
 import {
   Config,
-  RawConfig,
   getConfig,
+  RawConfig,
   resolveConfigPaths,
 } from "@/src/utils/get-config";
 import fg from "fast-glob";
@@ -102,6 +102,8 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
     aliases: {
       utils: `${tsConfigAliasPrefix}/lib/utils`,
       components: `${tsConfigAliasPrefix}/components`,
+      magicui: `${tsConfigAliasPrefix}/components/magicui`,
+      ui: `${tsConfigAliasPrefix}/components/ui`,
     },
   };
 

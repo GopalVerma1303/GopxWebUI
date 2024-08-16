@@ -7,7 +7,6 @@ import { logger } from "@/src/utils/logger";
 import {
   fetchTree,
   getItemTargetPath,
-  getRegistryBaseColor,
   getRegistryIndex,
   resolveTree,
 } from "@/src/utils/registry";
@@ -94,8 +93,7 @@ export const add = new Command()
       }
 
       const tree = await resolveTree(registryIndex, selectedComponents);
-      const payload = await fetchTree(config.style, tree);
-      const baseColor = await getRegistryBaseColor(config.tailwind.baseColor);
+      const payload = await fetchTree(tree);
 
       if (!payload.length) {
         logger.warn("Selected components not found. Exiting.");
@@ -169,7 +167,6 @@ export const add = new Command()
             filename: file.name,
             raw: file.content,
             config,
-            baseColor,
           });
 
           if (!config.tsx) {

@@ -1,0 +1,10 @@
+{
+  "name": "ghost-label",
+  "files": [
+    {
+      "name": "ghost-label.tsx",
+      "content": "import React from \"react\";\n\ntype GhostLabelProps = {\n  text: string;\n};\n\nconst GhostLabel: React.FC<GhostLabelProps> = ({ text }: GhostLabelProps) => {\n  return (\n    <p className=\"absolute -inset-y-[130px] -inset-x-[30px]  md:-inset-x-[50px] flex text-[150px] font-bold -z-0 opacity-10 font-anton\">\n      {text}\n    </p>\n  );\n};\n\nexport default GhostLabel;\n"
+    }
+  ],
+  "type": "components:ui"
+}
