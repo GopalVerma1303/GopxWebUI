@@ -1,14 +1,18 @@
 import { existsSync, promises as fs } from "fs";
 import path from "path";
+import { generateDistinctId } from "@/src/utils/distinct-id";
 import { getConfig } from "@/src/utils/get-config";
 import { getPackageManager } from "@/src/utils/get-package-manager";
 import { handleError } from "@/src/utils/handle-error";
-import { logger } from "@/src/utils/logger";
+import { ASCII_TEXT, ColorFullText, logger } from "@/src/utils/logger";
 import {
   fetchTree,
+  fetchTreeFromShadcn,
   getItemTargetPath,
   getRegistryBaseColor,
   getRegistryIndexGopxWebUI,
+  getRegistryIndexShadcn,
+  resolveTreeWithShadcn,
 } from "@/src/utils/registry";
 import { transform } from "@/src/utils/transformers";
 import chalk from "chalk";
@@ -24,6 +28,8 @@ const addOptionsSchema = z.object({
   overwrite: z.boolean(),
   cwd: z.string(),
   all: z.boolean(),
+  example: z.boolean(),
+  shadcn: z.boolean(),
   path: z.string().optional(),
 });
 
@@ -39,8 +45,11 @@ export const add = new Command()
     process.cwd(),
   )
   .option("-a, --all", "add all available components", false)
+  .option("-e, --example", "include available examples & demos", false)
+  .option("-s, --shadcn", "include available components from shadcn-ui", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .action(async (components, opts) => {
+    console.log(ASCII_TEXT);
     try {
       const options = addOptionsSchema.parse({
         components,
@@ -64,20 +73,38 @@ export const add = new Command()
         process.exit(1);
       }
 
-      const registryIndex = await getRegistryIndexGopxWebUI();
+      const registryIndex = await getRegistryIndexGopxWebUI(false);
+      const shadcnRegistryIndex = await getRegistryIndexShadcn();
 
       let selectedComponents = options.all
-        ? registryIndex.map((entry) => entry.name)
+        ? (options.shadcn ? shadcnRegistryIndex : registryIndex).map(
+            (entry) => entry.name,
+          )
         : options.components;
 
       if (!options.components?.length && !options.all) {
+        const filterIndex = (): typeof registryIndex =>
+          registryIndex.filter((e) => {
+            const type = e.type.split(":")[1] as string;
+            return options.example ? type === "example" : type === "ui";
+          });
+
+        const multiselectChoice = options.shadcn
+          ? shadcnRegistryIndex
+          : filterIndex();
+
+        if (multiselectChoice.length === 0) {
+          logger.warn("No components available to select. Exiting.");
+          process.exit(0);
+        }
+
         const { components } = await prompts({
           type: "multiselect",
           name: "components",
           message: "Which components would you like to add?",
           hint: "Space to select. A to toggle all. Enter to submit.",
           instructions: false,
-          choices: registryIndex.map((entry) => ({
+          choices: multiselectChoice.map((entry) => ({
             title: entry.name,
             value: entry.name,
             selected: options.all
@@ -93,16 +120,30 @@ export const add = new Command()
         process.exit(0);
       }
 
-      const tree = await fetchTree(registryIndex, selectedComponents);
-      const payload = await fetchTree(tree);
+      const { gopxwebuiTree, shadcnTree } = await resolveTreeWithShadcn(
+        shadcnRegistryIndex,
+        registryIndex,
+        selectedComponents,
+        options.shadcn,
+      );
+
+      const gopxwebuiPayload = await fetchTree(gopxwebuiTree);
+      const shadcnPayload = await fetchTreeFromShadcn(config.style, shadcnTree);
       const baseColor = await getRegistryBaseColor(config.tailwind.baseColor);
 
-      if (!payload.length) {
+      if (!gopxwebuiPayload.length && !shadcnPayload.length) {
         logger.warn("Selected components not found. Exiting.");
         process.exit(0);
       } else {
-        logger.info(`Found ${payload.length}x Gopx WebUI components.`);
+        gopxwebuiPayload.length !== 0 &&
+          logger.info(
+            `Found ${gopxwebuiPayload.length}x GOPX WEBUI components.`,
+          );
+        shadcnPayload.length !== 0 &&
+          logger.info(`Found ${shadcnPayload.length}x Shadcn UI components.`);
       }
+
+      const totalPayload = [...gopxwebuiPayload, ...shadcnPayload];
 
       if (!options.yes) {
         const { proceed } = await prompts({
@@ -118,7 +159,7 @@ export const add = new Command()
       }
 
       const spinner = ora(`Installing components...`).start();
-      for (const item of payload) {
+      for (const item of totalPayload) {
         spinner.text = `Installing ${item.name}...`;
         const targetDir = await getItemTargetPath(
           config,

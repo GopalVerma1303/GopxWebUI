@@ -3,8 +3,8 @@ import * as React from "react";
 import { Registry } from "@/registry/schema";
 
 const ui: Registry = {
-  accordian: {
-    name: "accordian",
+  accordion: {
+    name: "accordion",
     type: "components:ui",
     files: ["registry/components/ui/accordion.tsx"],
   },

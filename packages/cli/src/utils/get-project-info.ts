@@ -102,7 +102,6 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
     aliases: {
       utils: `${tsConfigAliasPrefix}/lib/utils`,
       components: `${tsConfigAliasPrefix}/components`,
-      magicui: `${tsConfigAliasPrefix}/components/magicui`,
       ui: `${tsConfigAliasPrefix}/components/ui`,
     },
   };

@@ -1,6 +1,6 @@
 [
   {
-    "name": "accordian",
+    "name": "accordion",
     "files": [
       "registry/components/ui/accordion.tsx"
     ],

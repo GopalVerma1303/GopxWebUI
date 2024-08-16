@@ -13,7 +13,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/ui/*": ["./registry/components/ui/*"],
+      "@/components/example/*": ["./registry/components/example/*"]
     }
   },
   "include": [

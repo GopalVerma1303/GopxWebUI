@@ -33,7 +33,7 @@ rimraf.sync(path.join(REGISTRY_PATH, "index.json"));
 fs.writeFileSync(path.join(REGISTRY_PATH, "index.json"), registryJson, "utf8");
 
 // ----------------------------------------------------------------------------
-// Build registry/components/["magicui" | "ui" | "example"]/[name].json.
+// Build registry/components/[ "ui" | "example"]/[name].json.
 // ----------------------------------------------------------------------------
 
 for (const item of data) {

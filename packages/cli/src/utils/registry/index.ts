@@ -97,9 +97,9 @@ export async function resolveTreeWithShadcn(
   index: theTree,
   names: string[],
   calledByShadcn = false,
-): Promise<{ shadcnTree: theTree; magicuiTree: theTree }> {
+): Promise<{ shadcnTree: theTree; gopxwebuiTree: theTree }> {
   const shadcnTree: theTree = [];
-  const magicuiTree: theTree = [];
+  const gopxwebuiTree: theTree = [];
 
   for (const name of names) {
     if (!calledByShadcn) {
@@ -126,11 +126,11 @@ export async function resolveTreeWithShadcn(
         }
       }
 
-      entry && magicuiTree.push(entry);
+      entry && gopxwebuiTree.push(entry);
 
       if (entry && entry.registryDependencies) {
         const {
-          magicuiTree: magicuiTreeDependencies,
+          gopxwebuiTree: gopxwebuiTreeDependencies,
           shadcnTree: shadcnTreeDependencies,
         } = await resolveTreeWithShadcn(
           shadcnIndex,
@@ -139,7 +139,7 @@ export async function resolveTreeWithShadcn(
           false,
         );
         shadcnTree.push(...shadcnTreeDependencies);
-        magicuiTree.push(...magicuiTreeDependencies);
+        gopxwebuiTree.push(...gopxwebuiTreeDependencies);
       }
     } else {
       const entry = shadcnIndex.find((e) => e.name === name);
@@ -168,7 +168,7 @@ export async function resolveTreeWithShadcn(
       (component, index, self) =>
         self.findIndex((c) => c.name === component.name) === index,
     ),
-    magicuiTree: magicuiTree.filter(
+    gopxwebuiTree: gopxwebuiTree.filter(
       (component, index, self) =>
         self.findIndex((c) => c.name === component.name) === index,
     ),
@@ -203,7 +203,7 @@ export async function fetchTree(tree: theTree, env?: string) {
   try {
     const treeNormal = tree.filter((item) => !item.type.includes("blocks"));
     const treePro = tree.filter((item) => item.type.includes("blocks"));
-    // {baseUrl}/registry/components/magicui/[name].json.
+    // {baseUrl}/registry/components/gopxwebui/[name].json.
     const paths = treeNormal.map((item) => {
       const [parent, subfolder] = item.type.split(":");
       return `${parent}/${subfolder}/${item.name}.json`;
@@ -218,7 +218,7 @@ export async function fetchTree(tree: theTree, env?: string) {
 
     return registryWithContentSchema.parse([...result, ...resultPro]);
   } catch (error) {
-    throw new Error(`Failed to fetch tree from Magic UI registry.`);
+    throw new Error(`Failed to fetch tree from GOPX WEBUI registry.`);
   }
 }
 
@@ -266,7 +266,7 @@ async function fetchRegistry(
           headers: env
             ? {
                 // the Pro registry route will valid this env cookie
-                cookie: `x-magicui-env=${env}`,
+                cookie: `x-gopxwebui-env=${env}`,
               }
             : {},
         });

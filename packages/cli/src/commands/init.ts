@@ -47,7 +47,7 @@ const initOptionsSchema = z.object({
 
 export const init = new Command()
   .name("init")
-  .description("Initialize your project with shadcn-ui config & magic-ui")
+  .description("Initialize your project with shadcn-ui config & gopx-webui")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-d, --defaults,", "use default configuration.", false)
   .option(
@@ -87,7 +87,7 @@ export const init = new Command()
       logger.info(
         `${chalk.green(
           "Success!",
-        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`,
+        )} Project initialization completed. You may now add both shadcn-ui and gopx-webui components.`,
       );
       logger.info("");
     } catch (error) {
@@ -204,7 +204,6 @@ export async function promptForConfig(
       utils: options.utils,
       components: options.components,
       ui: `${options.components}/ui`,
-      magicui: `${options.components}/magicui`,
     },
   });
 
