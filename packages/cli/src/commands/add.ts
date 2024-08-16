@@ -7,8 +7,8 @@ import { logger } from "@/src/utils/logger";
 import {
   fetchTree,
   getItemTargetPath,
-  getRegistryIndex,
-  resolveTree,
+  getRegistryBaseColor,
+  getRegistryIndexGopxWebUI,
 } from "@/src/utils/registry";
 import { transform } from "@/src/utils/transformers";
 import chalk from "chalk";
@@ -29,7 +29,7 @@ const addOptionsSchema = z.object({
 
 export const add = new Command()
   .name("add")
-  .description("add a component to your project")
+  .description("Add ui components to your project")
   .argument("[components...]", "the components to add")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-o, --overwrite", "overwrite existing files.", false)
@@ -64,11 +64,12 @@ export const add = new Command()
         process.exit(1);
       }
 
-      const registryIndex = await getRegistryIndex();
+      const registryIndex = await getRegistryIndexGopxWebUI();
 
       let selectedComponents = options.all
         ? registryIndex.map((entry) => entry.name)
         : options.components;
+
       if (!options.components?.length && !options.all) {
         const { components } = await prompts({
           type: "multiselect",
@@ -92,12 +93,15 @@ export const add = new Command()
         process.exit(0);
       }
 
-      const tree = await resolveTree(registryIndex, selectedComponents);
+      const tree = await fetchTree(registryIndex, selectedComponents);
       const payload = await fetchTree(tree);
+      const baseColor = await getRegistryBaseColor(config.tailwind.baseColor);
 
       if (!payload.length) {
         logger.warn("Selected components not found. Exiting.");
         process.exit(0);
+      } else {
+        logger.info(`Found ${payload.length}x Gopx WebUI components.`);
       }
 
       if (!options.yes) {
@@ -167,6 +171,7 @@ export const add = new Command()
             filename: file.name,
             raw: file.content,
             config,
+            baseColor,
           });
 
           if (!config.tsx) {
@@ -181,33 +186,52 @@ export const add = new Command()
 
         // Install dependencies.
         if (item.dependencies?.length) {
-          await execa(
-            packageManager,
-            [
-              packageManager === "npm" ? "install" : "add",
-              ...item.dependencies,
-            ],
-            {
-              cwd,
-            },
-          );
+          try {
+            await execa(
+              packageManager,
+              [
+                packageManager === "npm" ? "install" : "add",
+                ...item.dependencies,
+              ],
+              {
+                cwd,
+              },
+            );
+          } catch (error) {
+            logger.warn(
+              `\nFailed to install dependencies for ${
+                item.name
+              }.\n\t-${item.dependencies.join("\n\t- ")}\n\nReason: ${error}`,
+            );
+          }
         }
 
         // Install devDependencies.
         if (item.devDependencies?.length) {
-          await execa(
-            packageManager,
-            [
-              packageManager === "npm" ? "install" : "add",
-              "-D",
-              ...item.devDependencies,
-            ],
-            {
-              cwd,
-            },
-          );
+          try {
+            await execa(
+              packageManager,
+              [
+                packageManager === "npm" ? "install" : "add",
+                "-D",
+                ...item.devDependencies,
+              ],
+              {
+                cwd,
+              },
+            );
+          } catch (error) {
+            logger.warn(
+              `\nFailed to install devDependencies for ${
+                item.name
+              }.\n\t-${item.devDependencies.join(
+                "\n\t- ",
+              )}\n\nReason: ${error}`,
+            );
+          }
         }
       }
+
       spinner.succeed(`Done.`);
     } catch (error) {
       handleError(error);

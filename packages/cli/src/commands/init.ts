@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs";
 import path from "path";
+import { generateDistinctId } from "@/src/utils/distinct-id";
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -35,6 +36,7 @@ const PROJECT_DEPENDENCIES = [
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
+  "framer-motion",
 ];
 
 const initOptionsSchema = z.object({
@@ -45,7 +47,7 @@ const initOptionsSchema = z.object({
 
 export const init = new Command()
   .name("init")
-  .description("initialize your project and install dependencies")
+  .description("Initialize your project with shadcn-ui config & magic-ui")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-d, --defaults,", "use default configuration.", false)
   .option(
@@ -85,7 +87,7 @@ export const init = new Command()
       logger.info(
         `${chalk.green(
           "Success!",
-        )} Project initialization completed. You may now add components.`,
+        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`,
       );
       logger.info("");
     } catch (error) {
@@ -201,6 +203,8 @@ export async function promptForConfig(
     aliases: {
       utils: options.utils,
       components: options.components,
+      ui: `${options.components}/ui`,
+      magicui: `${options.components}/magicui`,
     },
   });
 
@@ -281,7 +285,7 @@ export async function promptForMinimalConfig(
     cssVariables = options.tailwindCssVariables;
   }
 
-  const config = rawConfigSchema.parse({
+  const content = {
     $schema: defaultConfig?.$schema,
     style,
     tailwind: {
@@ -292,7 +296,9 @@ export async function promptForMinimalConfig(
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
-  });
+  };
+
+  const config = rawConfigSchema.parse(content);
 
   // Write to file.
   logger.info("");

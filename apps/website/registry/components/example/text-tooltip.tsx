@@ -1,6 +1,6 @@
 import React from "react";
-import GhostLabel from "../GhostLabel";
-import BlogRow from "../BlogRow";
+import GhostLabel from "@/components/GhostLabel";
+import BlogRow from "@/components/BlogRow";
 
 type BlogPost = {
   title: string;
