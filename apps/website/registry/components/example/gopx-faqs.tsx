@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -10,7 +12,7 @@ interface FAQData {
   [key: string]: FAQItem[];
 }
 
-export const FAQPage: React.FC = () => {
+const FAQPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("Components");
   const [openQuestion, setOpenQuestion] = useState<string>(
     "What are the UI components you offer?",
@@ -173,3 +175,5 @@ export const FAQPage: React.FC = () => {
     </div>
   );
 };
+
+export default FAQPage;

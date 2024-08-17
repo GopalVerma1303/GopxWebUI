@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from "react";
-import Dropdown from "@/components/Dropdown/Dropdown";
+import Dropdown from "@/components/ui/dropdown";
 
 type WorldTourDestination =
   | ""

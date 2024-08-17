@@ -1,0 +1,10 @@
+{
+  "name": "bg-plus",
+  "files": [
+    {
+      "name": "bg-plus.tsx",
+      "content": "interface PlusPatternBackgroundProps {\n  plusSize?: number;\n  plusColor?: string;\n  backgroundColor?: string;\n  className?: string;\n  style?: React.CSSProperties;\n  fade?: boolean;\n  [key: string]: any;\n}\n\nexport const BackgroundPlus: React.FC<PlusPatternBackgroundProps> = ({\n  plusColor = \"#5271ff\",\n  backgroundColor = \"transparent\",\n  plusSize = 60,\n  className,\n  fade = true,\n  style,\n  ...props\n}) => {\n  const encodedPlusColor = encodeURIComponent(plusColor);\n\n  const maskStyle: React.CSSProperties = fade\n    ? {\n        maskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n      }\n    : {};\n\n  //  SVG taken from https://heropatterns.com/\n  const backgroundStyle: React.CSSProperties = {\n    backgroundColor,\n    backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='${plusSize}' height='${plusSize}' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodedPlusColor}' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")`,\n    ...maskStyle,\n    ...style,\n  };\n\n  return (\n    <div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      style={backgroundStyle}\n      {...props}\n    />\n  );\n};\n\nexport default BackgroundPlus;\n\n// inpired by https://syntaxui.com/\n"
+    }
+  ],
+  "type": "components:ui"
+}

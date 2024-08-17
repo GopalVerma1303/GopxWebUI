@@ -1,0 +1,13 @@
+{
+  "name": "torsional-link-demo",
+  "registryDependencies": [
+    "torsional-link"
+  ],
+  "files": [
+    {
+      "name": "torsional-link-demo.tsx",
+      "content": "import React from \"react\";\nimport TorsionalLink from \"@/components/ui/torsional-link\";\n\nconst TorsionalLinkDemo: React.FC = () => {\n  return (\n    <section className=\"grid place-content-center gap-4 dark:bg-orange-600 bg-blue-200 rounded-lg px-8 py-24 text-green-600\">\n      <TorsionalLink href=\"/components\">Components</TorsionalLink>\n      <TorsionalLink href=\"/templates\">Templates</TorsionalLink>\n      <TorsionalLink href=\"/colors\">Colors</TorsionalLink>\n      <TorsionalLink href=\"/pricing\">Pricing</TorsionalLink>\n      <TorsionalLink href=\"/faqs\">FAQs</TorsionalLink>\n    </section>\n  );\n};\n\nexport default TorsionalLinkDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "bg-grid",
+  "files": [
+    {
+      "name": "bg-grid.tsx",
+      "content": "import { HTMLProps } from \"react\";\n\ninterface BackgroundGridProps {\n  color: string;\n  cellSize: string | number;\n  strokeWidth: number | string;\n  className?: string;\n  fade?: boolean;\n}\n\nconst BackgroundGrid = ({\n  color = \"#5271ff\",\n  cellSize = \"25px\",\n  strokeWidth = \"3px\",\n  className,\n  fade = true,\n  ...props\n}: Partial<BackgroundGridProps> & HTMLProps<HTMLDivElement>) => {\n  const svg = `\n    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' stroke='${color}' stroke-width='${strokeWidth}' fill-opacity='0.4' >\n      <path d='M 100 0 L 100 200'/>\n      <path d='M 0 100 L 200 100'/>\n    </svg>\n  `;\n  const svgDataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;\n  return (\n    <div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      style={{\n        backgroundImage: `url(\"${svgDataUrl}\")`,\n        backgroundRepeat: \"repeat\",\n        backgroundSize: cellSize,\n        maskImage: fade\n          ? `radial-gradient(ellipse at top, white, transparent 70%)`\n          : undefined,\n        WebkitMaskImage: fade\n          ? `radial-gradient(ellipse at top, white, transparent 70%)`\n          : undefined,\n      }}\n      {...props}\n    ></div>\n  );\n};\n\nexport default BackgroundGrid;\n\n// inpired by https://syntaxui.com/\n"
+    }
+  ],
+  "type": "components:ui"
+}

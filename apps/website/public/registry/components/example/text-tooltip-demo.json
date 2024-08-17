@@ -1,0 +1,13 @@
+{
+  "name": "text-tooltip-demo",
+  "registryDependencies": [
+    "text-tooltip"
+  ],
+  "files": [
+    {
+      "name": "text-tooltip-demo.tsx",
+      "content": "import React from \"react\";\nimport GhostLabel from \"@/components/ui/ghost-label\";\nimport BlogRow from \"@/components/ui/blog-row\";\n\ntype BlogPost = {\n  title: string;\n  date: Date;\n  readTime: number;\n  description: string;\n  link: string;\n};\n\nconst dummyBlogPosts: BlogPost[] = [\n  {\n    title: \"The Future of AI in Web Development\",\n    date: new Date(\"2023-08-15\"),\n    readTime: 5,\n    description:\n      \"Explore how AI is transforming the landscape of web development, from code generation to user experience optimization.\",\n    link: \"#\",\n  },\n  {\n    title: \"Mastering React Hooks\",\n    date: new Date(\"2023-07-22\"),\n    readTime: 8,\n    description:\n      \"A deep dive into React Hooks, covering useEffect, useContext, and custom hooks to supercharge your React applications.\",\n    link: \"#\",\n  },\n  {\n    title: \"TypeScript Best Practices in 2023\",\n    date: new Date(\"2023-06-30\"),\n    readTime: 6,\n    description:\n      \"Learn the latest TypeScript best practices to write more maintainable and scalable code in your projects.\",\n    link: \"#\",\n  },\n];\n\nconst BlogList: React.FC = () => {\n  const blogsByYear = dummyBlogPosts.reduce(\n    (acc, post) => {\n      const year = post.date.getFullYear();\n      if (!acc[year]) {\n        acc[year] = [];\n      }\n      acc[year].push(post);\n      return acc;\n    },\n    {} as Record<number, BlogPost[]>,\n  );\n\n  const years = Object.keys(blogsByYear)\n    .map(Number)\n    .sort((a, b) => b - a);\n\n  return (\n    <div className=\"w-full max-w-2xl mx-auto py-12 px-4\">\n      <div className=\"-mt-0\">\n        {years.map((year) => (\n          <div key={year} className=\"relative mt-20\">\n            <GhostLabel text={year.toString()} />\n            {blogsByYear[year].map((post, index) => (\n              <BlogRow key={index} post={post} />\n            ))}\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n};\n\nexport default BlogList;\n"
+    }
+  ],
+  "type": "components:example"
+}

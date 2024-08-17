@@ -1,0 +1,10 @@
+{
+  "name": "bg-nosignal",
+  "files": [
+    {
+      "name": "bg-nosignal.tsx",
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef } from \"react\";\n\ninterface NoSignalScreenProps {\n  className?: string;\n  frameRate?: number;\n}\n\nconst NoSignalScreen: React.FC<NoSignalScreenProps> = ({\n  className = \"\",\n  frameRate = 30,\n}) => {\n  const canvasRef = useRef<HTMLCanvasElement>(null);\n\n  useEffect(() => {\n    const canvas = canvasRef.current;\n    if (!canvas) return;\n\n    const ctx = canvas.getContext(\"2d\");\n    if (!ctx) return;\n\n    const resizeCanvas = () => {\n      canvas.width = window.innerWidth;\n      canvas.height = window.innerHeight;\n    };\n\n    resizeCanvas();\n    window.addEventListener(\"resize\", resizeCanvas);\n\n    let animationFrameId: number;\n    let lastTime = 0;\n    const interval = 1000 / frameRate;\n\n    const drawNoise = (currentTime: number) => {\n      animationFrameId = requestAnimationFrame(drawNoise);\n\n      if (currentTime - lastTime < interval) return;\n      lastTime = currentTime;\n\n      const imageData = ctx.createImageData(canvas.width, canvas.height);\n      const data = imageData.data;\n\n      for (let i = 0; i < data.length; i += 4) {\n        const value = Math.floor(Math.random() * 256);\n        data[i] = value; // red\n        data[i + 1] = value; // green\n        data[i + 2] = value; // blue\n        data[i + 3] = 255; // alpha\n      }\n\n      ctx.putImageData(imageData, 0, 0);\n    };\n\n    animationFrameId = requestAnimationFrame(drawNoise);\n\n    return () => {\n      window.removeEventListener(\"resize\", resizeCanvas);\n      cancelAnimationFrame(animationFrameId);\n    };\n  }, [frameRate]);\n\n  return (\n    <canvas\n      ref={canvasRef}\n      className={`pointer-events-none opacity-50 absolute inset-0 ${className}`}\n      style={{\n        position: \"absolute\",\n        top: 0,\n        left: 0,\n        width: \"100%\",\n        height: \"100%\",\n      }}\n    />\n  );\n};\n\nexport default NoSignalScreen;\n"
+    }
+  ],
+  "type": "components:ui"
+}

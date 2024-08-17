@@ -1,0 +1,10 @@
+{
+  "name": "blog-row",
+  "files": [
+    {
+      "name": "blog-row.tsx",
+      "content": "import React from \"react\";\nimport { format } from \"date-fns\";\nimport TextTooltip from \"@/components/ui/text-tooltip\";\n\ntype BlogPost = {\n  title: string;\n  date: Date;\n  readTime: number;\n  description: string;\n  link: string;\n};\n\n// @ts-ignore\nexport default function BlogRow({ post }: { post: BlogPost }) {\n  const formattedDate = format(post.date, \"MMM dd\");\n\n  return (\n    <a href={post.link}>\n      <TextTooltip text={post.title} hoverMessage={post.description}>\n        <div className=\"group flex flex-col md:flex-row justify-between items-start md:items-center gap-[4px] md:gap-[12px] w-full opacity-70 hover:opacity-100 transition-opacity duration-200 ease-in-out py-[5px] relative \">\n          <div className=\"flex gap-[5px] items-center\">\n            <p className=\"text-xl group-hover:underline\">{post.title}</p>\n            <p className=\"text-xs transform transition-transform duration-200 ease-in-out group-hover:animate-flicker\">\n              {\"↗\"}\n            </p>\n          </div>\n          <div className=\"flex gap-[8px] items-center flex-shrink-0\">\n            <p className=\"opacity-50 text-sm\">{formattedDate}</p>\n            <p className=\"opacity-50 text-sm\">•</p>\n            <p className=\"opacity-50 text-sm\">{post.readTime} mins</p>\n          </div>\n        </div>\n      </TextTooltip>\n    </a>\n  );\n}\n"
+    }
+  ],
+  "type": "components:ui"
+}

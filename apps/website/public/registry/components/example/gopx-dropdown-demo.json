@@ -1,0 +1,13 @@
+{
+  "name": "gopx-dropdown-demo",
+  "registryDependencies": [
+    "dropdown"
+  ],
+  "files": [
+    {
+      "name": "gopx-dropdown-demo.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport Dropdown from \"@/components/ui/dropdown\";\n\ntype WorldTourDestination =\n  | \"\"\n  | \"🗽 New York, USA\"\n  | \"🗼 Paris, France\"\n  | \"🏰 London, UK\"\n  | \"🛕 New Delhi, India\"\n  | \"🗾 Tokyo, Japan\"\n  | \"🌉 Sydney, Australia\";\n\ninterface WorldTourDropdownProps {\n  onChange: (destination: WorldTourDestination) => void;\n}\n\nconst WorldTourDropdown: React.FC<WorldTourDropdownProps> = ({ onChange }) => {\n  const [value, setValue] = useState<WorldTourDestination | \"\">(\"\");\n\n  const destinationOptions: WorldTourDestination[] = [\n    \"🗽 New York, USA\",\n    \"🗼 Paris, France\",\n    \"🏰 London, UK\",\n    \"🛕 New Delhi, India\",\n    \"🗾 Tokyo, Japan\",\n    \"🌉 Sydney, Australia\",\n  ];\n\n  const handleChange = (destination: WorldTourDestination) => {\n    setValue(destination);\n    onChange(destination);\n  };\n\n  return (\n    <Dropdown<WorldTourDestination>\n      value={value}\n      onChange={handleChange}\n      options={destinationOptions}\n      renderOption={(option) => option}\n      placeholder=\"Select a world tour destination\"\n      className=\"w-full\"\n    />\n  );\n};\n\nexport default WorldTourDropdown;\n"
+    }
+  ],
+  "type": "components:example"
+}

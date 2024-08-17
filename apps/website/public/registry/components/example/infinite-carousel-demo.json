@@ -1,0 +1,13 @@
+{
+  "name": "infinite-carousel-demo",
+  "registryDependencies": [
+    "infinite-carousel"
+  ],
+  "files": [
+    {
+      "name": "infinite-carousel-demo.tsx",
+      "content": "import React from \"react\";\nimport InfiniteCarousel from \"@/components/ui/infinite-carousel\";\n\nconst InfiniteCarouselDemo: React.FC = () => {\n  return (\n    <div className=\"flex flex-col gap-y-8 w-full\">\n      <InfiniteCarousel\n        images={[\n          \"https://webui.gopx.dev/assets/brands/nextjs.svg\",\n          \"https://webui.gopx.dev/assets/brands/tailwind.svg\",\n          \"https://webui.gopx.dev/assets/brands/framer-motion.svg\",\n          \"https://webui.gopx.dev/assets/brands/react.svg\",\n          \"https://webui.gopx.dev/assets/brands/gsap.png\",\n        ]}\n        direction=\"right\"\n        speed={25}\n        itemWidth={50}\n        itemHeight={50}\n      />\n      <InfiniteCarousel\n        images={[\n          \"https://webui.gopx.dev/assets/brands/nextjs.svg\",\n          \"https://webui.gopx.dev/assets/brands/tailwind.svg\",\n          \"https://webui.gopx.dev/assets/brands/framer-motion.svg\",\n          \"https://webui.gopx.dev/assets/brands/react.svg\",\n          \"https://webui.gopx.dev/assets/brands/gsap.png\",\n        ]}\n        direction=\"left\"\n        speed={25}\n        itemWidth={50}\n        itemHeight={50}\n      />\n    </div>\n  );\n};\n\nexport default InfiniteCarouselDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

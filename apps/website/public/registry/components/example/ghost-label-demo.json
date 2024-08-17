@@ -1,0 +1,13 @@
+{
+  "name": "ghost-label-demo",
+  "registryDependencies": [
+    "ghost-label"
+  ],
+  "files": [
+    {
+      "name": "ghost-label-demo.tsx",
+      "content": "import React from \"react\";\nimport GhostLabel from \"@/components/ui/ghost-label\";\n\nconst GhostLabelDemo: React.FC = () => {\n  return (\n    <div className=\"relative ml-[30px] \">\n      <GhostLabel text=\"1920\" />\n      <p className=\"w-full max-w-[600px] text-sm font-serif\">\n        The film 1920: Evil Returns follows poet Jaidev, who helps a woman with\n        amnesia, only for her to become possessed by a malevolent spirit. As he\n        struggles to save her, dark secrets unfold, intertwining love and horror\n        in a chilling narrative. This supernatural horror film, released in\n        2012, is a quasi-sequel to 1920 and features themes of possession and\n        redemption\n      </p>\n    </div>\n  );\n};\n\nexport default GhostLabelDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

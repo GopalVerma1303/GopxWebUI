@@ -1,0 +1,13 @@
+{
+  "name": "copyable-input-demo",
+  "registryDependencies": [
+    "copyable-input"
+  ],
+  "files": [
+    {
+      "name": "copyable-input-demo.tsx",
+      "content": "import React from \"react\";\nimport CopyableInput from \"@/components/ui/copyable-input\";\n\nconst CopyableInputDemo: React.FC = () => {\n  return (\n    <div className=\"w-full max-w-[350px]\">\n      <CopyableInput value=\"npm install -g gopx-webui\" />\n    </div>\n  );\n};\n\nexport default CopyableInputDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

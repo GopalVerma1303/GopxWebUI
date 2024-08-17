@@ -1,0 +1,13 @@
+{
+  "name": "image-tooltip-demo",
+  "registryDependencies": [
+    "image-tooltip"
+  ],
+  "files": [
+    {
+      "name": "image-tooltip-demo.tsx",
+      "content": "import React from \"react\";\nimport ImageTooltip from \"@/components/ui/image-tooltip\";\n\nconst ImageTooltipDemo: React.FC = () => {\n  return (\n    <section className=\"w-full max-w-2xl\">\n      Outside of programming, being a mountain guy from{\" \"}\n      <ImageTooltip\n        hoverImage={{\n          src: \"https://gopx.dev/personal/me/utkd.jpg\",\n          alt: \"my og\",\n          width: 200,\n          height: 100,\n        }}\n        text=\"Uttarakhand\"\n      />\n      , I enjoy mountain trekking and exploring valleys. Right now I live in{\" \"}\n      <ImageTooltip\n        text=\"Chandigarh\"\n        hoverImage={{\n          src: \"https://gopx.dev/personal/me/chd.jpg\",\n          alt: \"my og\",\n          width: 200,\n          height: 100,\n        }}\n      />\n      . If you are around, feel free to reach me out, we could have some{\" \"}\n      <span className=\"italic font-bold\">chai</span> or work together.\n    </section>\n  );\n};\n\nexport default ImageTooltipDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

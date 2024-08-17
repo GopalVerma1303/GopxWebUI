@@ -1,0 +1,10 @@
+{
+  "name": "bg-cross",
+  "files": [
+    {
+      "name": "bg-cross.tsx",
+      "content": "interface CrossPatternBackgroundProps {\n  crossSize?: number;\n  crossColor?: string;\n  backgroundColor?: string;\n  gap?: number;\n  maskColor?: string;\n  className?: string;\n  style?: React.CSSProperties;\n  fade?: boolean;\n  [key: string]: any;\n}\n\nexport const BackgroundCross: React.FC<CrossPatternBackgroundProps> = ({\n  crossColor = \"#5271ff\",\n  backgroundColor = \"transparent\",\n  crossSize = 40,\n  className,\n  fade = true,\n  style,\n  ...props\n}) => {\n  const encodedCrossColor = encodeURIComponent(crossColor);\n\n  const maskStyle: React.CSSProperties = fade\n    ? {\n        maskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n      }\n    : {};\n\n  //  SVG taken from https://heropatterns.com/\n  const backgroundStyle: React.CSSProperties = {\n    backgroundColor,\n    backgroundImage: `url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${crossSize}' height='${crossSize}' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='${encodedCrossColor}' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")`,\n    ...maskStyle,\n    ...style,\n  };\n\n  return (\n    <div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      style={backgroundStyle}\n      {...props}\n    />\n  );\n};\n\nexport default BackgroundCross;\n\n// inpired by https://syntaxui.com/\n"
+    }
+  ],
+  "type": "components:ui"
+}

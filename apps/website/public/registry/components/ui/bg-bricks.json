@@ -1,0 +1,10 @@
+{
+  "name": "bg-bricks",
+  "files": [
+    {
+      "name": "bg-bricks.tsx",
+      "content": "interface CustomPatternBackgroundProps {\n  patternColor?: string;\n  backgroundColor?: string;\n  maskColor?: string;\n  className?: string;\n  style?: React.CSSProperties;\n  fade?: boolean;\n  [key: string]: any;\n}\n\nexport const BackgroundBricks: React.FC<CustomPatternBackgroundProps> = ({\n  patternColor = \"#5271ff\",\n  backgroundColor = \"transparent\",\n  className,\n  fade = true,\n  style,\n  ...props\n}) => {\n  const encodedPatternColor = encodeURIComponent(patternColor);\n\n  const maskStyle: React.CSSProperties = fade\n    ? {\n        maskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n      }\n    : {};\n\n  //  SVG taken from https://heropatterns.com/\n  const backgroundStyle: React.CSSProperties = {\n    backgroundColor,\n    backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='${encodedPatternColor}' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")`,\n    ...maskStyle,\n    ...style,\n  };\n\n  return (\n    <div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      style={backgroundStyle}\n      {...props}\n    />\n  );\n};\n\nexport default BackgroundBricks;\n\n// inpired by https://syntaxui.com/\n"
+    }
+  ],
+  "type": "components:ui"
+}

@@ -7,6 +7,100 @@
     "type": "components:ui"
   },
   {
+    "name": "bento-grid",
+    "files": [
+      "registry/components/ui/bento-grid.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-bricks",
+    "files": [
+      "registry/components/ui/bg-bricks.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-check",
+    "files": [
+      "registry/components/ui/bg-check.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-cross",
+    "files": [
+      "registry/components/ui/bg-cross.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-dots",
+    "files": [
+      "registry/components/ui/bg-dots.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-grid",
+    "files": [
+      "registry/components/ui/bg-grid.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-matrix",
+    "files": [
+      "registry/components/ui/bg-matrix.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-nosignal",
+    "files": [
+      "registry/components/ui/bg-nosignal.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-plus",
+    "files": [
+      "registry/components/ui/bg-plus.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "blog-row",
+    "files": [
+      "registry/components/ui/blog-row.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "copyable-input",
+    "files": [
+      "registry/components/ui/copyable-input.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "copyable-input-demo",
+    "registryDependencies": [
+      "copyable-input"
+    ],
+    "files": [
+      "registry/components/example/copyable-input-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "dropdown",
+    "files": [
+      "registry/components/ui/dropdown.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "ghost-label",
     "files": [
       "registry/components/ui/ghost-label.tsx"
@@ -14,14 +108,75 @@
     "type": "components:ui"
   },
   {
-    "name": "gopx-accordion",
+    "name": "ghost-label-demo",
+    "registryDependencies": [
+      "ghost-label"
+    ],
+    "files": [
+      "registry/components/example/ghost-label-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "gopx-accordion-demo",
     "registryDependencies": [
       "accordion"
     ],
     "files": [
-      "registry/components/example/gopx-accordion.tsx"
+      "registry/components/example/gopx-accordion-demo.tsx"
     ],
     "type": "components:example"
+  },
+  {
+    "name": "gopx-dropdown-demo",
+    "registryDependencies": [
+      "dropdown"
+    ],
+    "files": [
+      "registry/components/example/gopx-dropdown-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "image-tooltip",
+    "files": [
+      "registry/components/ui/image-tooltip.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "image-tooltip-demo",
+    "registryDependencies": [
+      "image-tooltip"
+    ],
+    "files": [
+      "registry/components/example/image-tooltip-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "infinite-carousel",
+    "files": [
+      "registry/components/ui/infinite-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "infinite-carousel-demo",
+    "registryDependencies": [
+      "infinite-carousel"
+    ],
+    "files": [
+      "registry/components/example/infinite-carousel-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "profile-card",
+    "files": [
+      "registry/components/ui/profile-card.tsx"
+    ],
+    "type": "components:ui"
   },
   {
     "name": "tab-button",
@@ -29,5 +184,39 @@
       "registry/components/ui/tab-button.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "text-tooltip",
+    "files": [
+      "registry/components/ui/text-tooltip.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "text-tooltip-demo",
+    "registryDependencies": [
+      "text-tooltip"
+    ],
+    "files": [
+      "registry/components/example/text-tooltip-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "torsional-link",
+    "files": [
+      "registry/components/ui/torsional-link.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "torsional-link-demo",
+    "registryDependencies": [
+      "torsional-link"
+    ],
+    "files": [
+      "registry/components/example/torsional-link-demo.tsx"
+    ],
+    "type": "components:example"
   }
 ]

@@ -1,0 +1,10 @@
+{
+  "name": "bg-dots",
+  "files": [
+    {
+      "name": "bg-dots.tsx",
+      "content": "interface DotPatternBackgroundProps {\n  dotSize?: number;\n  dotColor?: string;\n  backgroundColor?: string;\n  gap?: number;\n  maskColor?: string;\n  className?: string;\n  style?: React.CSSProperties;\n  fade?: boolean;\n  [key: string]: any;\n}\n\nexport const BackgroundDots: React.FC<DotPatternBackgroundProps> = ({\n  dotSize = 1.2,\n  dotColor = \"#5271ff\",\n  backgroundColor = \"transparent\",\n  gap = 15,\n  className,\n  fade = true,\n  style,\n  ...props\n}) => {\n  const encodedDotColor = encodeURIComponent(dotColor);\n\n  const maskStyle: React.CSSProperties = fade\n    ? {\n        maskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n        WebkitMaskImage: \"radial-gradient(circle, white 10%, transparent 90%)\",\n      }\n    : {};\n\n  //  SVG taken from https://heropatterns.com/\n  const backgroundStyle: React.CSSProperties = {\n    backgroundColor,\n    backgroundImage: `url(\"data:image/svg+xml,%3Csvg width='${gap}' height='${gap}' viewBox='0 0 ${gap} ${gap}' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='${encodedDotColor}' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='${dotSize}' cy='${dotSize}' r='${dotSize}'/%3E%3C/g%3E%3C/svg%3E\")`,\n    ...maskStyle,\n    ...style,\n  };\n\n  return (\n    <div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      style={backgroundStyle}\n      {...props}\n    />\n  );\n};\n\nexport default BackgroundDots;\n\n// inpired by https://syntaxui.com/\n"
+    }
+  ],
+  "type": "components:ui"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "copyable-input",
+  "files": [
+    {
+      "name": "copyable-input.tsx",
+      "content": "import React, { useState, useEffect } from \"react\";\nimport { FiCheck, FiCopy } from \"react-icons/fi\";\nimport { CopyToClipboard } from \"react-copy-to-clipboard\";\n\ninterface CopyableInputProps {\n  value: string;\n  onChange?: (value: string) => void;\n  className?: string;\n  editable?: boolean;\n  spellcheck?: boolean;\n}\n\nconst CopyableInput = ({\n  value,\n  onChange,\n  className = \"\",\n  editable = true,\n  spellcheck = false,\n}: CopyableInputProps) => {\n  const [inputValue, setInputValue] = useState(value);\n  const [copied, setCopied] = useState(false);\n\n  useEffect(() => {\n    setInputValue(value);\n  }, [value]);\n\n  const handleCopy = () => {\n    setCopied(true);\n    setTimeout(() => setCopied(false), 2000);\n  };\n\n  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    setInputValue(e.target.value);\n    if (onChange) {\n      onChange(e.target.value);\n    }\n  };\n\n  return (\n    <div className={`flex w-full ${className}`}>\n      <input\n        type=\"text\"\n        value={inputValue}\n        onChange={handleChange}\n        readOnly={!editable}\n        spellCheck={spellcheck}\n        className={`w-full font-mono p-2 border dark:border-white/50 border-black/50 rounded-tl rounded-bl focus:ring-0 focus:ring-offset-0`}\n      />\n      <CopyToClipboard text={inputValue} onCopy={handleCopy}>\n        <button className=\"bg-black dark:bg-white bg-opacity-10 border-t border-r border-b border-black/50 dark:border-white text-black dar:text-white dark:text-black px-3 rounded-r transition\">\n          {copied ? <FiCheck /> : <FiCopy />}\n        </button>\n      </CopyToClipboard>\n    </div>\n  );\n};\n\nexport default CopyableInput;\n"
+    }
+  ],
+  "type": "components:ui"
+}
