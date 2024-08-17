@@ -1,11 +1,13 @@
 import Link from "next/link";
 import BentoGrid from "@/components/BentoGrid";
+import GopxUserStack from "@/components/GopxUserStack";
+import { BsGithub } from "react-icons/bs";
 
-const Hero = () => {
+const ShuffleHero = () => {
   return (
-    <section className="w-full px-8 py-12 grid grid-cols-1 lg:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    <section className="w-full px-8 py-12  grid grid-cols-1 lg:grid-cols-1  items-center gap-8 max-w-6xl mx-auto ">
       <div>
-        <span className="block mb-4 text-xs md:text-xs text-[#5271ff] font-medium">
+        <span className="block mb-3 text-xs md:text-sm text-[#5271ff] font-medium">
           Effortless UI Development with{" "}
           <span className="relative text-[#5279ff] font-extrabold">
             GOPX WEBUI
@@ -25,9 +27,9 @@ const Hero = () => {
           </span>
         </span>
         <h3
-          className="inline-flex text-2xl md:text-3xl font-bold leading-tight tracking-tight -ml-0.5 mt-6 bg-gradient-to-br from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-500 bg-clip-text text-transparent"
+          className="inline-flex text-4xl md:text-6xl font-bold leading-tight tracking-tight -ml-0.5 mt-5 bg-gradient-to-br from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-500 bg-clip-text text-transparent"
           style={{
-            fontSize: "min(1.875rem, max(5vw, 1.5rem))",
+            fontSize: "min(3.375rem, max(8vw, 2.5rem))",
             fontFeatureSettings: "initial",
             lineHeight: 1.2,
             paddingBottom: "0.2em",
@@ -35,23 +37,24 @@ const Hero = () => {
         >
           Beautiful UI Components for Web at Your Fingertips
         </h3>
-        <p className="text-xs md:text-sm text-slate-700 dark:text-slate-300 my-4 md:my-6">
+        <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 my-4 md:my-6">
           Enhance your projects with our pre-built Tailwind CSS and Framer
           Motion components. Simply copy, paste, and customize to fit your
           needs.
         </p>
-        <div className="flex gap-4">
+        <GopxUserStack />
+        <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href="/components"
-            className="bg-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline text-xs md:text-sm"
+            className="bg-[#5271ff] sm:text-medium text-sm justify-center items-center flex py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
           >
-            Components →
+            Explore Components →
           </Link>
           <Link
-            href="/templates"
-            className="border border-[#5271ff] font-medium py-2 px-4 rounded transition-all hover:border-[#5259ff] active:scale-95 !no-underline dark:!text-white !text-[#5259ff] text-xs md:text-sm"
+            href="https://github.com/GopalVerma1303/webui.gopx"
+            className="border flex justify-center items-center gap-2 sm:text-medium text-sm border-black/40 dark:border-white/40 font-medium py-2 px-4 rounded transition-all dark:hover:border-white/70 hover:border-black/70 active:scale-95  !no-underline dark:!text-white !text-black"
           >
-            Templates →
+            <BsGithub /> Star on Github
           </Link>
         </div>
       </div>
@@ -60,4 +63,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default ShuffleHero;

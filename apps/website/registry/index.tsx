@@ -8,6 +8,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/accordion.tsx"],
   },
+  "avatar-stack": {
+    name: "avatar-stack",
+    type: "components:ui",
+    files: ["registry/components/ui/avatar-stack.tsx"],
+  },
   "bento-grid": {
     name: "bento-grid",
     type: "components:ui",
@@ -83,6 +88,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/infinite-carousel.tsx"],
   },
+  "page-header": {
+    name: "page-header",
+    type: "components:ui",
+    files: ["registry/components/ui/page-header.tsx"],
+  },
   "profile-card": {
     name: "profile-card",
     type: "components:ui",
@@ -102,6 +112,36 @@ const ui: Registry = {
     name: "torsional-link",
     type: "components:ui",
     files: ["registry/components/ui/torsional-link.tsx"],
+  },
+};
+
+const block: Registry = {
+  "gopx-faqs": {
+    name: "gopx-faqs",
+    type: "components:block",
+    registryDependencies: ["page-header"],
+    files: ["registry/components/block/gopx-faqs.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/block/gopx-faqs"),
+    ),
+  },
+  "gopx-hero": {
+    name: "gopx-hero",
+    type: "components:block",
+    registryDependencies: ["bento-grid", "avatar-stack"],
+    files: ["registry/components/block/gopx-hero.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/block/gopx-hero"),
+    ),
+  },
+  "gopx-pricing": {
+    name: "gopx-pricing",
+    type: "components:block",
+    registryDependencies: ["page-header"],
+    files: ["registry/components/block/gopx-pricing.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/block/gopx-pricing"),
+    ),
   },
 };
 
@@ -182,6 +222,7 @@ const example: Registry = {
 
 export const registry: Registry = {
   ...ui,
+  ...block,
   ...example,
 };
 
@@ -193,6 +234,20 @@ const updatedExample: Registry = resolvedExamples.reduce(
   (acc, curr) => ({ ...acc, [curr.name]: curr }),
   {},
 );
-export const downloadRegistry: Registry = { ...ui, ...updatedExample };
+
+const resolvedBlocks = Object.entries(block).map(([key, value]) => ({
+  ...value,
+  component: () => void 0,
+}));
+const updatedBlock: Registry = resolvedBlocks.reduce(
+  (acc, curr) => ({ ...acc, [curr.name]: curr }),
+  {},
+);
+
+export const downloadRegistry: Registry = {
+  ...ui,
+  ...updatedExample,
+  ...updatedBlock,
+};
 
 export type ComponentName = keyof (typeof ui & typeof example);

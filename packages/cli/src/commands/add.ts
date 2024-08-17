@@ -29,6 +29,7 @@ const addOptionsSchema = z.object({
   cwd: z.string(),
   all: z.boolean(),
   example: z.boolean(),
+  block: z.boolean(),
   shadcn: z.boolean(),
   path: z.string().optional(),
 });
@@ -46,6 +47,7 @@ export const add = new Command()
   )
   .option("-a, --all", "add all available components", false)
   .option("-e, --example", "include available examples & demos", false)
+  .option("-b, --block", "include available blocks", false)
   .option("-s, --shadcn", "include available components from shadcn-ui", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .action(async (components, opts) => {
@@ -86,7 +88,9 @@ export const add = new Command()
         const filterIndex = (): typeof registryIndex =>
           registryIndex.filter((e) => {
             const type = e.type.split(":")[1] as string;
-            return options.example ? type === "example" : type === "ui";
+            if (options.block) return type === "block";
+            if (options.example) return type === "example";
+            return type === "ui";
           });
 
         const multiselectChoice = options.shadcn

@@ -1,0 +1,10 @@
+{
+  "name": "page-header",
+  "files": [
+    {
+      "name": "page-header.tsx",
+      "content": "import React from \"react\";\n\ninterface PageHeaderProps {\n  title: string;\n  heading: string;\n  description: string;\n}\n\nconst PageHeader: React.FC<PageHeaderProps> = ({\n  title,\n  heading,\n  description,\n}) => {\n  return (\n    <div className=\"max-w-screen-lg mx-auto py-8\">\n      <div className=\"-z-50 absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)]\"></div>\n      <p className=\"text-center font-space-grotesk mb-8 font-roboto font-bold uppercase text-xl\">\n        {title}\n      </p>\n      <h1 className=\"text-center lg:leading-10 mx-4 lg:mx-0\">\n        <span className=\"font-bold font-serif lg:text-5xl md:text-4xl sm:text-3xl text-2xl\">\n          {heading}\n        </span>\n      </h1>\n      <p className=\"text-center font-space-grotesk w-full max-w-3xl mx-auto px-8 mt-8 text-sm md:text-md opacity-70 italic font-serif\">\n        {description}\n      </p>\n    </div>\n  );\n};\n\nexport default PageHeader;\n"
+    }
+  ],
+  "type": "components:ui"
+}

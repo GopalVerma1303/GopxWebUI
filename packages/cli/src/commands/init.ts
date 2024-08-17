@@ -391,6 +391,7 @@ export async function runInit(cwd: string, config: Config) {
   const deps = [
     ...PROJECT_DEPENDENCIES,
     config.style === "new-york" ? "@radix-ui/react-icons" : "lucide-react",
+    "react-icons",
   ];
 
   await execa(

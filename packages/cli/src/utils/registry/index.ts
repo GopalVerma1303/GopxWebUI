@@ -201,8 +201,8 @@ export async function resolveTree(index: theTree, names: string[]) {
 
 export async function fetchTree(tree: theTree, env?: string) {
   try {
-    const treeNormal = tree.filter((item) => !item.type.includes("blocks"));
-    const treePro = tree.filter((item) => item.type.includes("blocks"));
+    const treeNormal = tree.filter((item) => !item.type.includes("block"));
+    const treePro = tree.filter((item) => item.type.includes("block"));
     // {baseUrl}/registry/components/gopxwebui/[name].json.
     const paths = treeNormal.map((item) => {
       const [parent, subfolder] = item.type.split(":");

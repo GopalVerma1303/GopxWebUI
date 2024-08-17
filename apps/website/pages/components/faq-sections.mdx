@@ -17,7 +17,7 @@ import {FAQPage} from "@/components/demos/gopx-faq-section";
 
 <Tabs items={['Preview', 'Code']}>
   <Tabs.Tab>
-      <div className="w-full h-fit border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
+      <div className="relative w-full h-fit border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
         <FAQPage />
       </div>
   </Tabs.Tab>
@@ -25,6 +25,7 @@ import {FAQPage} from "@/components/demos/gopx-faq-section";
 ```tsx filename="FAQs.tsx" showLineNumbers
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import PageHeader from "@/components/PageHeader";
 
 interface FAQItem {
   question: string;
@@ -135,7 +136,11 @@ export const FAQPage: React.FC = () => {
   return (
     <div className="mb-16">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-5xl font-bold text-center mb-10 mt-12">FAQs</h2>
+        <PageHeader
+          title="FAQs"
+          heading="Comprehensive Answers to Frequently Asked Questions"
+          description="Find detailed answers to common questions about our services and tools."
+        />
         <div className="flex justify-center space-x-1 sm:space-x-5 mb-8 w-fit mx-auto">
           {Object.keys(faqData).map((tab) => (
             <motion.button

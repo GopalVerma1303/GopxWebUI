@@ -7,6 +7,13 @@
     "type": "components:ui"
   },
   {
+    "name": "avatar-stack",
+    "files": [
+      "registry/components/ui/avatar-stack.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "bento-grid",
     "files": [
       "registry/components/ui/bento-grid.tsx"
@@ -138,6 +145,37 @@
     "type": "components:example"
   },
   {
+    "name": "gopx-faqs",
+    "registryDependencies": [
+      "page-header"
+    ],
+    "files": [
+      "registry/components/block/gopx-faqs.tsx"
+    ],
+    "type": "components:block"
+  },
+  {
+    "name": "gopx-hero",
+    "registryDependencies": [
+      "bento-grid",
+      "avatar-stack"
+    ],
+    "files": [
+      "registry/components/block/gopx-hero.tsx"
+    ],
+    "type": "components:block"
+  },
+  {
+    "name": "gopx-pricing",
+    "registryDependencies": [
+      "page-header"
+    ],
+    "files": [
+      "registry/components/block/gopx-pricing.tsx"
+    ],
+    "type": "components:block"
+  },
+  {
     "name": "image-tooltip",
     "files": [
       "registry/components/ui/image-tooltip.tsx"
@@ -170,6 +208,13 @@
       "registry/components/example/infinite-carousel-demo.tsx"
     ],
     "type": "components:example"
+  },
+  {
+    "name": "page-header",
+    "files": [
+      "registry/components/ui/page-header.tsx"
+    ],
+    "type": "components:ui"
   },
   {
     "name": "profile-card",

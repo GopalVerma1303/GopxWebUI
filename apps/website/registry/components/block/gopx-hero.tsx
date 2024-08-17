@@ -1,31 +1,55 @@
----
-title: "Hero Sections"
-description: "Beautifully designed Hero Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
----
-
-import { Tabs } from "nextra/components";
-import Hero from "@/components/demos/gopx-hero";
-
-# Hero Sections
-
-<p className="opacity-80 text-lg">Beautifully designed Hero Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
-
-`Hero` `Section`
-
-### GOPX Hero Section
-
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="w-full border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <Hero />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="Hero.tsx" showLineNumbers
 import Link from "next/link";
-import BentoGrid from "@/components/BentoGrid";
-import GopxUserStack from "@/components/GopxUserStack";
+import BentoGrid from "@/components/ui/bento-grid";
+import AvatarStack from "@/components/ui/avatar-stack";
 import { BsGithub } from "react-icons/bs";
+import { FaStar } from "react-icons/fa";
+
+const GopxUserStack: React.FC = () => {
+  const baseUrl = "https://webui.gopx.dev";
+
+  const avatars = [
+    {
+      src: `${baseUrl}/assets/avatars/1.jpeg`,
+      alt: "Avatar 1",
+    },
+    {
+      src: `${baseUrl}/assets/avatars/2.jpeg`,
+      alt: "Avatar 2",
+    },
+    {
+      src: `${baseUrl}/assets/avatars/3.jpeg`,
+      alt: "Avatar 3",
+    },
+    {
+      src: `${baseUrl}/assets/avatars/4.jpeg`,
+      alt: "Avatar 4",
+    },
+    {
+      src: `${baseUrl}/assets/avatars/5.jpeg`,
+      alt: "Avatar 5",
+    },
+    {
+      src: `${baseUrl}/assets/avatars/6.jpeg`,
+      alt: "Avatar 6",
+    },
+  ];
+
+  return (
+    <div className="my-6 relative  flex-col">
+      <AvatarStack avatars={avatars} />
+      <div className="absolute -bottom-1 left-[250px] transform -translate-x-1/2 w-1/2 text-center">
+        <div className="flex justify-center mb-0">
+          {[...Array(5)].map((_, index) => (
+            <FaStar key={index} className="text-yellow-400 mx-1" />
+          ))}
+        </div>
+        <span className="inline-block transform dark:text-white/50 text-black/50 text-lg font-caveat font-bold ">
+          1k+ fingers tapped!
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const ShuffleHero = () => {
   return (
@@ -88,6 +112,3 @@ const ShuffleHero = () => {
 };
 
 export default ShuffleHero;
-```
-  </Tabs.Tab>
-</Tabs>

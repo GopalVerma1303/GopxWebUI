@@ -1,0 +1,10 @@
+{
+  "name": "avatar-stack",
+  "files": [
+    {
+      "name": "avatar-stack.tsx",
+      "content": "import Image from \"next/image\";\n\ninterface Avatar {\n  src: string;\n  alt: string;\n}\n\ninterface AvatarStackProps {\n  avatars: Avatar[];\n  maxDisplay?: number;\n  size?: number;\n  borderColor?: string;\n  darkBorderColor?: string;\n}\n\nconst AvatarStack: React.FC<AvatarStackProps> = ({\n  avatars,\n  maxDisplay = 5,\n  size = 10,\n  borderColor = \"white\",\n  darkBorderColor = \"gray-800\",\n}) => {\n  const displayAvatars = avatars.slice(0, maxDisplay);\n  const remainingCount = avatars.length - maxDisplay;\n\n  return (\n    <div className={`flex -space-x-3 rtl:space-x-reverse`}>\n      {displayAvatars.map((avatar, index) => (\n        <Image\n          key={index}\n          width={56}\n          height={56}\n          className={`w-${size} h-${size} border-2 border-${borderColor} rounded-full dark:border-${darkBorderColor}`}\n          src={avatar.src}\n          alt={avatar.alt}\n        />\n      ))}\n      {remainingCount > 0 && (\n        <div\n          className={`flex items-center justify-center w-${size} h-${size} text-[10px] text-white/80 font-medium text-white bg-gray-700 border-2 border-${borderColor} rounded-full hover:bg-gray-600 dark:border-${darkBorderColor}`}\n        >\n          +1.4k\n        </div>\n      )}\n    </div>\n  );\n};\n\nexport default AvatarStack;\n"
+    }
+  ],
+  "type": "components:ui"
+}

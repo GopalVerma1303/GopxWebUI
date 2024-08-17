@@ -1,32 +1,7 @@
----
-title: "Pricing Sections"
-description: "Beautifully designed Pricing Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/sections/gopx-pricing.png"
----
-
-import { Tabs } from "nextra/components";
-import PricingComponent from "@/components/demos/gopx-pricing";
-
-# Pricing Sections
-
-<p className="opacity-80 text-lg">Beautifully designed Pricing Sections with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
-
-`Pricing` `Section`
-
-### GOPX Pricing Section
-
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="relative w-full border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <PricingComponent />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="Pricing.tsx" showLineNumbers
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import PageHeader from "@/components/PageHeader";
+import PageHeader from "@/components/ui/page-header";
 
 interface FeatureItemProps {
   included: boolean;
@@ -224,6 +199,3 @@ const PricingComponent: React.FC = () => {
   );
 };
 export default PricingComponent;
-```
-  </Tabs.Tab>
-</Tabs>
