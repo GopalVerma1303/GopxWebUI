@@ -15,10 +15,12 @@ import {
 } from "react-icons/fa";
 import { GrTooltip } from "react-icons/gr";
 import { LuWallpaper } from "react-icons/lu";
+import { PiAlignTopFill } from "react-icons/pi";
 
 // Importing ComponentCard and ComponentCardWrapper
 import ComponentCard from "@/components/ComponentCard";
 import ComponentCardWrapper from "@/components/ComponentCardWrapper";
+import { FaUserLarge } from "react-icons/fa6";
 
 // Define the data for components
 const componentsData = [
@@ -26,7 +28,7 @@ const componentsData = [
     title: "Carousels",
     href: "/components/carousels",
     Icon: FaImages,
-    sections: ["Trending", "Components"],
+    sections: ["Components"],
   },
   {
     title: "Dropdown Menus",
@@ -104,7 +106,19 @@ const componentsData = [
     title: "Backgrounds",
     href: "/components/backgrounds",
     Icon: LuWallpaper,
-    sections: ["Aesthetics"],
+    sections: ["Aesthetics", "Trending"],
+  },
+  {
+    title: "Avatars",
+    href: "/components/avatars",
+    Icon: FaUserLarge,
+    sections: ["Components"],
+  },
+  {
+    title: "Headers",
+    href: "/components/headers",
+    Icon: PiAlignTopFill,
+    sections: ["Components"],
   },
 ];
 

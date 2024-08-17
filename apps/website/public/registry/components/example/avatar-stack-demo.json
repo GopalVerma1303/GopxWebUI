@@ -1,0 +1,13 @@
+{
+  "name": "avatar-stack-demo",
+  "registryDependencies": [
+    "avatar-stack"
+  ],
+  "files": [
+    {
+      "name": "avatar-stack-demo.tsx",
+      "content": "import AvatarStack from \"@/components/ui/avatar-stack\";\n\nconst GopxUserStack: React.FC = () => {\n  const avatars = [\n    {\n      src: \"/assets/avatars/1.jpeg\",\n      alt: \"Avatar 1\",\n    },\n    {\n      src: \"/assets/avatars/2.jpeg\",\n      alt: \"Avatar 2\",\n    },\n    {\n      src: \"/assets/avatars/3.jpeg\",\n      alt: \"Avatar 3\",\n    },\n    {\n      src: \"/assets/avatars/4.jpeg\",\n      alt: \"Avatar 4\",\n    },\n    {\n      src: \"/assets/avatars/5.jpeg\",\n      alt: \"Avatar 5\",\n    },\n    {\n      src: \"/assets/avatars/6.jpeg\",\n      alt: \"Avatar 6\",\n    },\n  ];\n\n  return (\n    <div className=\"my-6 relative  flex-col\">\n      <AvatarStack avatars={avatars} />\n    </div>\n  );\n};\n\nexport default GopxUserStack;\n"
+    }
+  ],
+  "type": "components:example"
+}

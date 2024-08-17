@@ -1,0 +1,151 @@
+---
+title: "Avatars"
+description: "Beautifully designed Avatar components Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+---
+
+import Showcase from '@/components/Showcase2';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import TabButton from "@/components/gopx-buttons/TabButton"; 
+import toast, { Toaster } from 'react-hot-toast';
+import AvatarStack from '@/components/ui/avatar-stack';
+import GopxUserStack from '@/components/example/avatar-stack-demo';
+
+export const handleClick = () => {
+  toast('Button Pressed!');
+};
+
+# Avatars
+
+<p className="opacity-80 text-lg">Beautifully designed Avatar components with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Avatars`
+
+## Avatar Stack
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+      <GopxUserStack />
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="TabButton.tsx" showLineNumbers
+import AvatarStack from "@/components/ui/avatar-stack";
+
+const GopxUserStack: React.FC = () => {
+  const avatars = [
+    {
+      src: "/assets/avatars/1.jpeg",
+      alt: "Avatar 1",
+    },
+    {
+      src: "/assets/avatars/2.jpeg",
+      alt: "Avatar 2",
+    },
+    {
+      src: "/assets/avatars/3.jpeg",
+      alt: "Avatar 3",
+    },
+    {
+      src: "/assets/avatars/4.jpeg",
+      alt: "Avatar 4",
+    },
+    {
+      src: "/assets/avatars/5.jpeg",
+      alt: "Avatar 5",
+    },
+    {
+      src: "/assets/avatars/6.jpeg",
+      alt: "Avatar 6",
+    },
+  ];
+
+  return (
+    <div className="my-6 relative  flex-col">
+      <AvatarStack avatars={avatars} />
+    </div>
+  );
+};
+
+export default GopxUserStack;
+```
+  </Tabs.Tab>
+</Tabs>
+
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tabs.Tab>
+    ### Run the following command:
+    ```bash
+    npx gopx-webui add avatar-stack
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ### Create `avatar-stack.tsx`
+```tsx filename="avatar-stack.tsx" showLineNumbers
+import Image from "next/image";
+
+interface Avatar {
+  src: string;
+  alt: string;
+}
+
+interface AvatarStackProps {
+  avatars: Avatar[];
+  maxDisplay?: number;
+  size?: number;
+  borderColor?: string;
+  darkBorderColor?: string;
+}
+
+const AvatarStack: React.FC<AvatarStackProps> = ({
+  avatars,
+  maxDisplay = 5,
+  size = 10,
+  borderColor = "white",
+  darkBorderColor = "gray-800",
+}) => {
+  const displayAvatars = avatars.slice(0, maxDisplay);
+  const remainingCount = avatars.length - maxDisplay;
+
+  return (
+    <div className={`flex -space-x-3 rtl:space-x-reverse`}>
+      {displayAvatars.map((avatar, index) => (
+        <Image
+          key={index}
+          width={56}
+          height={56}
+          className={`w-${size} h-${size} border-2 border-${borderColor} rounded-full dark:border-${darkBorderColor}`}
+          src={avatar.src}
+          alt={avatar.alt}
+        />
+      ))}
+      {remainingCount > 0 && (
+        <div
+          className={`flex items-center justify-center w-${size} h-${size} text-[10px] text-white/80 font-medium text-white bg-gray-700 border-2 border-${borderColor} rounded-full hover:bg-gray-600 dark:border-${darkBorderColor}`}
+        >
+          +1.4k
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AvatarStack;
+```
+  </Tabs.Tab>
+</Tabs>
+
+## Props
+
+| Prop           | Type          | Description                                                                                     |
+|---------------------|-------------------|-----------------------------------------------------------------------------------------------------|
+| `avatars`           | `Avatar[]`        | An array of avatar objects, each containing `src` (string) and `alt` (string) properties.         |
+| `maxDisplay`        | `number` (optional) | The maximum number of avatars to display. Defaults to `5`.                                         |
+| `size`              | `number` (optional) | The size of the avatars in a specified unit (e.g., pixels). Defaults to `10`.                      |
+| `borderColor`       | `string` (optional) | The color of the avatar border. Defaults to `"white"`.                                            |
+| `darkBorderColor`   | `string` (optional) | The border color for dark mode. Defaults to `"gray-800"`.                                         |

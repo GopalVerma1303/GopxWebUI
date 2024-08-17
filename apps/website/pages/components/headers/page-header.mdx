@@ -1,0 +1,93 @@
+---
+title: "Page Header"
+description: "Beautifully designed Page Header component for webui.gopx.dev with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/headers/page-header.png"
+---
+
+import Showcase from '@/components/Showcase3';
+import { Tabs } from "nextra/components";
+import PageHeader from "@/components/ui/page-header";
+
+# Page Header
+
+<p className="opacity-80 text-lg">Beautifully designed Page Header component for [GOPX WEBUI](https://webui.gopx.dev) with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`GOPX` `Page` `Header`
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+<PageHeader 
+  title="Page Header"
+  heading="Discover the Benefits of Our Header Component"
+  description="Our PageHeader component offers a sleek design and advanced features to enhance your user interface. Customize it easily to fit your project’s needs."
+/>
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="PricingHeader.tsx" showLineNumbers
+<PageHeader 
+  title="Page Header"
+  heading="Discover the Benefits of Our Header Component"
+  description="Our PageHeader component offers a sleek design and advanced features to enhance your user interface. Customize it easily to fit your project’s needs."
+/>
+```
+  </Tabs.Tab>
+</Tabs>
+
+
+## Installation
+
+<Tabs items={['CLI', 'Manual']}>
+  <Tabs.Tab>
+    ### Run the following command:
+    ```bash
+    npx gopx-webui add page-header
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ### Create `page-header.tsx`
+```tsx filename="page-header.tsx" showLineNumbers
+import React from "react";
+ 
+interface PageHeaderProps {
+  title: string;
+  heading: string;
+  description: string;
+}
+ 
+const PageHeader: React.FC<PageHeaderProps> = ({
+  title,
+  heading,
+  description,
+}) => {
+  return (
+    <div className="max-w-screen-lg mx-auto py-8">
+      <div className="-z-50 absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+      <p className="text-center font-space-grotesk mb-8 font-roboto font-bold uppercase text-xl">
+        {title}
+      </p>
+      <h1 className="text-center lg:leading-10 mx-4 lg:mx-0">
+        <span className="font-bold font-serif lg:text-5xl md:text-4xl sm:text-3xl text-2xl">
+          {heading}
+        </span>
+      </h1>
+      <p className="text-center font-space-grotesk w-full max-w-3xl mx-auto px-8 mt-8 text-sm md:text-md opacity-70 italic font-serif">
+        {description}
+      </p>
+    </div>
+  );
+};
+ 
+export default PageHeader;
+```
+  </Tabs.Tab>
+</Tabs>
+
+## Props
+
+| Prop        | Type     | Required | Description                          |
+|-------------|----------|----------|--------------------------------------|
+| `title`     | `string` | Yes      | The main title displayed in the header. |
+| `heading`   | `string` | Yes      | A secondary heading that provides additional context. |
+| `description` | `string` | Yes      | A brief description or subtitle that elaborates on the heading. |

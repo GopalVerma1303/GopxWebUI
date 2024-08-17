@@ -146,6 +146,15 @@ const block: Registry = {
 };
 
 const example: Registry = {
+  "avatar-stack-demo": {
+    name: "avatar-stack-demo",
+    type: "components:example",
+    registryDependencies: ["avatar-stack"],
+    files: ["registry/components/example/avatar-stack-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/avatar-stack-demo"),
+    ),
+  },
   "copyable-input-demo": {
     name: "copyable-input-demo",
     type: "components:example",

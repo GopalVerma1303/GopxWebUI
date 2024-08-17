@@ -7,9 +7,9 @@
   "install-nextjs": "Install Next.js",
   "install-tailwind": "Install Tailwind CSS",
   "add-utils": "Add Utilities",
-  "-- Sections": {
+  "-- Blocks": {
     "type": "separator",
-    "title": "SECTIONS"
+    "title": "BLOCKS"
   },
   "faq-sections": "FAQs",
   "hero-sections": "Heros",
@@ -19,11 +19,13 @@
     "title": "COMPONENTS"
   },
   "accordions": "Accordion",
+  "avatars": "Avatars",
   "buttons": "Buttons",
   "cards": "Cards",
   "carousels": "Carousels",
   "dropdown-menus": "Dropdown Menus",
   "grids": "Grids",
+  "headers": "Headers",
   "inputs": "Inputs",
   "links": "Links",
   "text": "Text",
