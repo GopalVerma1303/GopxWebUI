@@ -1,6 +1,6 @@
 {
   "name": "gopx-webui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CLI tool for installing GOPX WEBUI Components.",
   "type": "module",
   "exports": "./dist/index.js",
@@ -35,14 +35,21 @@
     "dist"
   ],
   "keywords": [
-    "cli",
-    "gopx",
-    "webui",
-    "components",
-    "ui",
-    "tailwind",
+    "Javascript",
+    "Typescript",
+    "NodeJs",
+    "ReactJs",
+    "NextJs",
+    "CLI",
+    "TailwindCSS",
     "framer-motion",
-    "nextjs"
+    "GSAP",
+    "shadcn-ui",
+    "Components",
+    "UI",
+    "UX",
+    "GOPX",
+    "WEBUI"
   ],
   "author": {
     "name": "Gopal Verma",
@@ -52,7 +59,7 @@
   "bugs": {
     "url": "https://github.com/GopalVerma1303/webui.gopx/issues"
   },
-  "homepage": "https://webui.gopx.dev",
+  "homepage": "https://webui.gopx.dev/components/cli",
   "devDependencies": {
     "@gopx-webui/typescript-config": "workspace:*",
     "@types/babel__core": "^7.20.1",
