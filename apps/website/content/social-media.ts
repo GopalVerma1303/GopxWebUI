@@ -12,7 +12,7 @@ export const FOLLOW_US_LINKS: Record<string, SocialProfile> = {
   },
   discord: {
     username: "codedeployingsquad",
-    link: "https://discord.gg/uR7DpxtaKw",
+    link: "https://discord.gg/qctADgzbYF",
   },
   twitter: {
     username: "bettercallgopal",
