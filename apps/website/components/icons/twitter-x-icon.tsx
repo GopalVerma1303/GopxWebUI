@@ -10,7 +10,7 @@ export function TwitterXIcon() {
         aria-label="CodeDeployingSquad twitter"
         rel="nofollow noreferrer"
       >
-        <BsTwitterX className="w-[20px] h-[20px] transition-colors duration-500 hover:fill-[#0077ff] focus:fill-[#0077ff]" />
+        <BsTwitterX className="w-[20px] h-[20px] transition-colors duration-500 hover:fill-[#5271ff] focus:fill-[#5271ff]" />
       </a>
       {/* <a
           href="https://github.com/sponsors/codedeployingsquad"

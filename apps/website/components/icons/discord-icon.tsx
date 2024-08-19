@@ -19,7 +19,7 @@ export function DiscordIcon() {
 
           svg:hover,
           svg:focus {
-            fill: #0077ff;
+            fill: #5271ff;
           }
         `}
       </style>

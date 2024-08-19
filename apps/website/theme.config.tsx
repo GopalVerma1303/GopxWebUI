@@ -202,13 +202,13 @@ const config: DocsThemeConfig = {
   },
   navbar: {
     extraContent: [
+      <SpringModal key="modal" />,
       <DiscordIcon key="discord" />,
       <TwitterXIcon key="twitter" />,
     ],
   },
   toc: {
     backToTop: true,
-    extraContent: <SpringModal />,
   },
 };
 

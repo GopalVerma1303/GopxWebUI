@@ -35,3 +35,4 @@ export { SiteMapIcon as SiteMapIcon } from "./sitemap";
 export * from "./check";
 export * from "./copy";
 export * from "./word-wrap";
+export { PuzzlePieceIcon as PuzzlePieceIcon } from "./puzzle-piece";
