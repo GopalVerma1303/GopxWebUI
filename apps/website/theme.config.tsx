@@ -1,3 +1,4 @@
+import SpringModal from "@/components/SpringModal";
 import { useRouter } from "next/router";
 import type { DocsThemeConfig } from "nextra-theme-docs";
 import { useConfig } from "nextra-theme-docs";
@@ -207,9 +208,7 @@ const config: DocsThemeConfig = {
   },
   toc: {
     backToTop: true,
-    // extraContent: (
-    //   <img alt="placeholder cat" src="https://placekitten.com/g/300/200" />
-    // ),
+    extraContent: <SpringModal />,
   },
 };
 
