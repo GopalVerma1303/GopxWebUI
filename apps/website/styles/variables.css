@@ -3,16 +3,6 @@
   --nextra-primary-saturation: 100%;
 }
 
-/* Increase z-index for navbar */
-.nextra-nav-container {
-  z-index: 1000 !important;
-}
-
-/* Increase z-index for TOC */
-.nextra-toc {
-  z-index: 999 !important;
-}
-
 /* Override Nextra's default colors with your specific color */
 .nx-text-primary-600 {
   color: #5271ff !important;

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import TabButton from "./gopx-buttons/TabButton";
 import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
 import { PuzzlePieceIcon } from "./icons";
@@ -6,7 +7,7 @@ import { PuzzlePieceIcon } from "./icons";
 const ExampleWrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="pr-2 flex">
+    <div className="-ml-1 pr-1 flex">
       <button onClick={() => setIsOpen(true)}>
         <PuzzlePieceIcon />
       </button>
@@ -15,7 +16,17 @@ const ExampleWrapper = () => {
   );
 };
 
-const CustomInput = ({ label, id, placeholder, textarea = false }) => {
+const CustomInput = ({
+  label,
+  id,
+  placeholder,
+  textarea = false,
+}: {
+  label: string;
+  id: string;
+  placeholder: string;
+  textarea?: boolean;
+}) => {
   return (
     <div className="mb-4">
       <label
@@ -29,7 +40,7 @@ const CustomInput = ({ label, id, placeholder, textarea = false }) => {
           id={id}
           className="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder={placeholder}
-          rows="4"
+          rows={4}
         ></textarea>
       ) : (
         <input
@@ -43,7 +54,13 @@ const CustomInput = ({ label, id, placeholder, textarea = false }) => {
   );
 };
 
-const SpringModal = ({ isOpen, setIsOpen }) => {
+const SpringModal = ({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: Function;
+}) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -65,10 +82,10 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
               Suggest a component
             </h2>
             <p className="mb-6 text-gray-700 dark:text-gray-300">
-              As we build out our library, we'd love your input on interesting
-              animations & interactions we could use for inspiration. No
-              guarantees, but if we think it's a fit, we'll build it out and let
-              you know!
+              As we expand our library, we welcome your suggestions for
+              intriguing animations and interactions to inspire us. While we
+              can&apos;t promise anything, if we find it suitable, we&apos;ll
+              develop it and keep you updated!
             </p>
             <form>
               <CustomInput
@@ -90,21 +107,20 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
               <div className="flex flex-col sm:flex-row justify-between mt-6">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="mb-2 sm:mb-0 w-full sm:w-auto px-5 py-2.5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                  className="mb-2 sm:mb-0 w-full sm:w-auto px-5 py-2.5 text-sm font-medium text-gray-900 bg-white rounded-lg border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                   type="button"
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Submit
-                </button>
+                <TabButton label="Submit" onClick={() => setIsOpen(false)} />
               </div>
             </form>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              ⚡ Pro users get preferred consideration
+              🚀 DM at{" "}
+              <a href="https://x.com/bettercallgopal" className="text-blue-600">
+                @bettercallgopal
+              </a>{" "}
+              for preferred consideration.
             </p>
           </motion.div>
         </motion.div>
