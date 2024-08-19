@@ -3,6 +3,7 @@ import TabButton from "./gopx-buttons/TabButton";
 import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
 import { PuzzlePieceIcon } from "./icons";
+import { toast, Toaster } from "react-hot-toast";
 
 const ExampleWrapper = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,11 +21,17 @@ const CustomInput = ({
   label,
   id,
   placeholder,
+  value,
+  onChange,
   textarea = false,
 }: {
   label: string;
   id: string;
   placeholder: string;
+  value: string;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
   textarea?: boolean;
 }) => {
   return (
@@ -38,6 +45,8 @@ const CustomInput = ({
       {textarea ? (
         <textarea
           id={id}
+          value={value}
+          onChange={onChange}
           className="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder={placeholder}
           rows={4}
@@ -46,6 +55,8 @@ const CustomInput = ({
         <input
           type="text"
           id={id}
+          value={value}
+          onChange={onChange}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder={placeholder}
         />
@@ -61,8 +72,67 @@ const SpringModal = ({
   isOpen: boolean;
   setIsOpen: Function;
 }) => {
+  const [formData, setFormData] = useState({
+    type: "",
+    example: "",
+    desc: "",
+  });
+
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const url =
+      "https://script.google.com/macros/s/AKfycby3I8PaWQPT6g7Ex7iICG7J8tKAOfjsnQDTAVBVvVXkc51Qc_PJiHawrTKKe-AwFM-K9g/exec"; //v1.0.1
+
+    try {
+      const formBody = new URLSearchParams(formData);
+
+      const response = await fetch(url, {
+        method: "POST",
+        body: formBody,
+      });
+
+      const finalRes = await response.text();
+      console.log(finalRes);
+
+      if (response.ok) {
+        toast.success("Thank you for your suggestion!");
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 0);
+      } else {
+        toast.error("Failed to submit. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+      setFormData({
+        type: "",
+        example: "",
+        desc: "",
+      });
+    }
+  };
+
   return (
     <AnimatePresence>
+      <Toaster />
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -87,20 +157,26 @@ const SpringModal = ({
               can&apos;t promise anything, if we find it suitable, we&apos;ll
               develop it and keep you updated!
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <CustomInput
                 label="What type of component?*"
-                id="componentType"
+                id="type"
+                value={formData.type}
+                onChange={handleChange}
                 placeholder='e.x. "Hero section"'
               />
               <CustomInput
                 label="Link to an example"
-                id="exampleLink"
+                id="example"
+                value={formData.example}
+                onChange={handleChange}
                 placeholder="www.website.com/cool-animation-here"
               />
               <CustomInput
                 label="Explain the animation/interaction*"
-                id="explanation"
+                id="desc"
+                value={formData.desc}
+                onChange={handleChange}
                 placeholder="If an idea, explain it as well as you can. If from an example site, something like 'the button at the top of the nav bar' will do."
                 textarea={true}
               />
@@ -112,7 +188,11 @@ const SpringModal = ({
                 >
                   Cancel
                 </button>
-                <TabButton label="Submit" onClick={() => setIsOpen(false)} />
+                <TabButton
+                  label={isSubmitting ? "Submitting..." : "Submit"}
+                  onClick={() => handleSubmit}
+                  className="py-2 px-4 text-md"
+                />
               </div>
             </form>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
