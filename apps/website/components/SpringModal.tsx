@@ -92,41 +92,50 @@ const SpringModal = ({
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    if (
+      formData.type === "" ||
+      formData.desc === "" ||
+      formData.example === ""
+    ) {
+      e.preventDefault();
+      toast.error("Please fill in all fields.");
+    } else {
+      e.preventDefault();
+      setIsSubmitting(true);
 
-    const url =
-      "https://script.google.com/macros/s/AKfycby3I8PaWQPT6g7Ex7iICG7J8tKAOfjsnQDTAVBVvVXkc51Qc_PJiHawrTKKe-AwFM-K9g/exec"; //v1.0.1
+      const url =
+        "https://script.google.com/macros/s/AKfycby3I8PaWQPT6g7Ex7iICG7J8tKAOfjsnQDTAVBVvVXkc51Qc_PJiHawrTKKe-AwFM-K9g/exec"; //v1.0.1
 
-    try {
-      const formBody = new URLSearchParams(formData);
+      try {
+        const formBody = new URLSearchParams(formData);
 
-      const response = await fetch(url, {
-        method: "POST",
-        body: formBody,
-      });
+        const response = await fetch(url, {
+          method: "POST",
+          body: formBody,
+        });
 
-      const finalRes = await response.text();
-      console.log(finalRes);
+        const finalRes = await response.text();
+        console.log(finalRes);
 
-      if (response.ok) {
-        toast.success("Thank you for your suggestion!");
-        setTimeout(() => {
-          setIsOpen(false);
-        }, 0);
-      } else {
-        toast.error("Failed to submit. Please try again.");
+        if (response.ok) {
+          toast.success("Thank you for your suggestion!");
+          setTimeout(() => {
+            setIsOpen(false);
+          }, 0);
+        } else {
+          toast.error("Failed to submit. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        toast.error("An error occurred. Please try again later.");
+      } finally {
+        setIsSubmitting(false);
+        setFormData({
+          type: "",
+          example: "",
+          desc: "",
+        });
       }
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error("An error occurred. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-      setFormData({
-        type: "",
-        example: "",
-        desc: "",
-      });
     }
   };
 
