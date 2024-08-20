@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, Code } from "nextra/components";
 import { getHighlighter, Highlighter } from "shiki";
-import { Pre } from "@/components/Pre";
+import { Pre } from "@/components/pre";
 
 interface ComponentShowcaseProps {
   component: React.ReactElement;
@@ -111,7 +111,7 @@ ${Object.entries(props)
           </div>
         </Tabs.Tab>
         <Tabs.Tab>
-          <Pre filename={componentName} hasCopyCode={true} maxHeight="400px">
+          <Pre filename={componentName} hasCopyCode={true}>
             <Code>
               <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
             </Code>

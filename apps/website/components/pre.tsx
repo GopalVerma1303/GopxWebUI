@@ -1,28 +1,21 @@
-// src/components/Pre.tsx
-import React, { useCallback, useRef } from "react";
 import cn from "clsx";
-import { WordWrapIcon } from "./icons";
+import type { ComponentProps, ReactElement } from "react";
+import { useCallback, useRef } from "react";
+import { WordWrapIcon } from "@/components/icons";
 import { Button } from "./button";
 import { CopyToClipboard } from "./copy-to-clipboard";
 
-interface PreProps {
-  children: React.ReactNode;
-  className?: string;
-  hasCopyCode?: boolean;
-  filename?: string;
-  maxHeight?: string;
-  [key: string]: any;
-}
-
-export const Pre: React.FC<PreProps> = ({
+export const Pre = ({
   children,
   className,
   hasCopyCode,
   filename,
-  maxHeight,
   ...props
-}) => {
-  const preRef = useRef<HTMLPreElement>(null);
+}: ComponentProps<"pre"> & {
+  filename?: string;
+  hasCopyCode?: boolean;
+}): ReactElement => {
+  const preRef = useRef<HTMLPreElement | null>(null);
 
   const toggleWordWrap = useCallback(() => {
     const htmlDataset = document.documentElement.dataset;
@@ -37,30 +30,22 @@ export const Pre: React.FC<PreProps> = ({
   return (
     <div className="nextra-code-block nx-relative nx-mt-6 first:nx-mt-0">
       {filename && (
-        <div className="nx-absolute nx-top-0 nx-z-[1] nx-w-full nx-truncate nx-rounded-t-xl bg-[#E5EAFA] nx-py-2 nx-px-4 nx-text-xs nx-text-gray-700 dark:bg-[#272C3E] dark:nx-text-gray-200">
+        <div className="nx-absolute nx-top-0 nx-z-[1] nx-w-full nx-truncate nx-rounded-t-xl nx-bg-primary-700/5 nx-py-2 nx-px-4 nx-text-xs nx-text-gray-700 dark:nx-bg-primary-300/10 dark:nx-text-gray-200">
           {filename}
         </div>
       )}
-      <div
+      <pre
         className={cn(
-          "nx-relative",
-          "nx-bg-primary-700/5 nx-mb-4 nx-rounded-xl nx-subpixel-antialiased dark:nx-bg-primary-300/10",
+          "nx-bg-primary-700/5 nx-mb-4 nx-overflow-x-auto nx-rounded-xl nx-subpixel-antialiased dark:nx-bg-primary-300/10 nx-text-[.9em]",
           "contrast-more:nx-border contrast-more:nx-border-primary-900/20 contrast-more:nx-contrast-150 contrast-more:dark:nx-border-primary-100/40",
-          filename ? "nx-pt-8" : "nx-pt-4",
+          filename ? "nx-pt-12 nx-pb-4" : "nx-py-4",
+          className,
         )}
+        ref={preRef}
+        {...props}
       >
-        <pre
-          className={cn(
-            "nx-overflow-x-auto nx-overflow-y-auto nx-text-[.9em] nx-p-4 no-scrollbar scroll-smooth",
-            className,
-          )}
-          style={{ maxHeight: maxHeight || "500px" }}
-          ref={preRef}
-          {...props}
-        >
-          {children}
-        </pre>
-      </div>
+        {children}
+      </pre>
       <div
         className={cn(
           "nx-opacity-0 nx-transition [div:hover>&]:nx-opacity-100 focus-within:nx-opacity-100",
