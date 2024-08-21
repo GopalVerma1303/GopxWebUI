@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <FooterLogo />
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-5">
             {FOOTER_CONTENT.sections.map((section, index) => (
               <FooterSection
                 key={index}

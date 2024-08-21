@@ -1,6 +1,10 @@
 // footer.ts
 
-import { SOCIAL_MEDIA_LINKS, FOLLOW_US_LINKS } from "./social-media";
+import {
+  SOCIAL_MEDIA_LINKS,
+  FOLLOW_US_LINKS,
+  CONTACT_US,
+} from "./social-media";
 
 export const FOOTER_CONTENT = {
   logo: {
@@ -38,13 +42,22 @@ export const FOOTER_CONTENT = {
       ],
     },
     {
-      title: "Follow us",
+      title: "Community",
       links: Object.entries(FOLLOW_US_LINKS).map(([key, value]) => ({
         name: key.charAt(0).toUpperCase() + key.slice(1),
         url: value.link,
         username: value.username,
       })),
     },
+    {
+      title: "Connect us",
+      links: Object.entries(CONTACT_US).map(([key, value]) => ({
+        name: key.charAt(0).toUpperCase() + key.slice(1),
+        url: value.link,
+        username: value.username,
+      })),
+    },
+
     {
       title: "Legal",
       links: [
