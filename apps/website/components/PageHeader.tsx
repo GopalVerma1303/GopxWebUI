@@ -12,9 +12,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   description,
 }) => {
   return (
-    <div className="max-w-screen-lg mx-auto py-8">
+    <div className="max-w-screen-lg mx-auto py-8 pt-[85px]">
       <div className="-z-50 absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
-      <p className="text-center font-space-grotesk mb-8 font-roboto font-bold uppercase text-xl">
+      <p className="text-center font-space-grotesk mb-8 font-roboto font-bold uppercase text-2xl">
         {title}
       </p>
       <h1 className="text-center lg:leading-10 mx-4 lg:mx-0">
