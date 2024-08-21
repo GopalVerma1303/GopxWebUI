@@ -12,6 +12,8 @@ import {
 } from "@/components/icons";
 import { SOCIAL_MEDIA_LINKS } from "@/content/social-media";
 import Footer from "@/components/Footer";
+import FRLink from "./components/toc/fr-link";
+import BugLink from "./components/toc/bug-link";
 
 const logo = (
   <div className="flex items-center gap-2">
@@ -174,12 +176,13 @@ const config: DocsThemeConfig = {
   // primaryHue: { dark: 230, light: 230 },
   // primarySaturation: 30,
   editLink: {
-    text: "Edit this page on GitHub →",
+    text: "✏️  Edit this page →",
   },
   feedback: {
-    content: "Question? Give us feedback →",
-    labels: "",
+    content: "🐞 Report a bug →",
+    labels: "feedback",
   },
+
   sidebar: {
     titleComponent({ title, type }) {
       if (type === "separator") {
@@ -209,6 +212,7 @@ const config: DocsThemeConfig = {
   },
   toc: {
     backToTop: true,
+    extraContent: [<FRLink key="feature" />],
   },
 };
 
