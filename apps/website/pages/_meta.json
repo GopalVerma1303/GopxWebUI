@@ -48,6 +48,10 @@
     "type": "page",
     "display": "hidden"
   },
+  "license": {
+    "type": "page",
+    "display": "hidden"
+  },
   "404": {
     "type": "page",
     "theme": {

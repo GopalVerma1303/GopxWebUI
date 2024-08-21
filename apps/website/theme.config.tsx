@@ -180,7 +180,7 @@ const config: DocsThemeConfig = {
   },
   feedback: {
     content: "🐞 Report a bug →",
-    labels: "feedback",
+    labels: "bug, feedback",
   },
 
   sidebar: {

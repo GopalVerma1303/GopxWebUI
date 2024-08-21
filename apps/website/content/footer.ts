@@ -48,6 +48,7 @@ export const FOOTER_CONTENT = {
     {
       title: "Legal",
       links: [
+        { name: "License", url: "/license" },
         { name: "Privacy Policy", url: "/privacy-policy" },
         { name: "Terms & Conditions", url: "/terms-and-conditions" },
       ],
