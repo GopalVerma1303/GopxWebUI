@@ -13,7 +13,7 @@ const FRLink: React.FC = () => {
       href={`${SOCIAL_MEDIA_LINKS.github.link}/issues/new?title=Feature%20request%20for&labels=enhancement`}
       className={linkClassName}
     >
-      💡 Request a feature →
+      Request a feature →
     </a>
   );
 };

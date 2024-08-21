@@ -176,10 +176,10 @@ const config: DocsThemeConfig = {
   // primaryHue: { dark: 230, light: 230 },
   // primarySaturation: 30,
   editLink: {
-    text: "✏️  Edit this page →",
+    text: "Edit this page →",
   },
   feedback: {
-    content: "🐞 Report a bug →",
+    content: "Report a bug →",
     labels: "bug, feedback",
   },
 
