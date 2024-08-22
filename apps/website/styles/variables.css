@@ -34,7 +34,6 @@
 li.nx-active > a,
 li.nx-active > a:hover {
   color: #5271ff !important;
-  font-weight: 700;
 }
 
 /* Styles for the sidebar item hover state */
@@ -48,7 +47,6 @@ li.nx-active > a:hover {
 /* Style for the small colored line next to the selected item */
 li.nx-active > a::before {
   background-color: #5271ff !important;
-  font-weight: 700;
 }
 
 /* If there's a background color for the active item, target it like this */
