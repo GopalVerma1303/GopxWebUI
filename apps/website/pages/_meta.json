@@ -11,21 +11,20 @@
     "type": "page",
     "title": "Components"
   },
-  "templates": {
+  "store": {
     "type": "page",
-    "title": "Templates",
+    "title": "Store",
     "theme": {
       "layout": "raw"
     }
   },
-  "colors": {
+  "tools": {
     "type": "page",
-    "title": "Colors",
+    "title": "Tools",
     "theme": {
       "layout": "raw"
     }
   },
-
   "pricing": {
     "type": "page",
     "title": "Pricing",

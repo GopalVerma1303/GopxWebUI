@@ -15,7 +15,7 @@ interface TechStackItem {
   image: string;
 }
 
-interface Template {
+interface StoreItem {
   question: string;
   title: string;
   description: string;
@@ -25,14 +25,14 @@ interface Template {
   stack: TechStackItem[];
 }
 
-const createTemplate = (
+const createStoreItem = (
   title: string,
   description: string,
   link: string,
   code: string,
   images: string[],
   techStack: string[],
-): Template => {
+): StoreItem => {
   const stack: TechStackItem[] = techStack.map((tech) => ({
     name: tech,
     image: TECH_STACK_IMAGES[tech] || "/assets/brands/default.svg", // Use a default image if the tech is not found
@@ -50,12 +50,22 @@ const createTemplate = (
 };
 
 interface TemplatesObject {
-  [key: string]: Template[];
+  [key: string]: StoreItem[];
 }
 
-export const TEMPLATES: TemplatesObject = {
-  Portfolios: [
-    createTemplate(
+export const STORE_ITEMS: TemplatesObject = {
+  "Component Packs": [
+    createStoreItem(
+      "www.gopx.dev",
+      "Developer's portfolio website for sharing notes, blogs, and showcase projects.",
+      "https://gopx.dev",
+      "https://github.com/GopalVerma1303/gopx.dev",
+      ["/assets/templates/gopx-1.png", "/assets/templates/gopx-3.png"],
+      ["react", "nextjs", "tailwind", "framer-motion"],
+    ),
+  ],
+  Templates: [
+    createStoreItem(
       "www.gopx.dev",
       "Developer's portfolio website for sharing notes, blogs, and showcase projects.",
       "https://gopx.dev",
