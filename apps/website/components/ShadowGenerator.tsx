@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { TinyColor } from "@ctrl/tinycolor";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
+import { BsPlus } from "react-icons/bs";
+import { CopyIcon } from "./icons";
+import { FaCopy, FaRandom } from "react-icons/fa";
+import { LuRefreshCcw } from "react-icons/lu";
+import { FaDumpster, FaTrash } from "react-icons/fa6";
 
 interface ShadowLayer {
   x: number;
@@ -131,54 +136,66 @@ const ShadowGenerator: React.FC = () => {
             animate={{ boxShadow: generateBoxShadow() }}
           ></motion.div>
         </div>
-        <div className="w-full md:w-1/2">
-          <div className="mb-4 flex flex-col gap-2 md:flex-row md:gap-4">
+        <div className="w-full">
+          <div className="mb-4 flex flex-col gap-2 md:flex-row">
             <button
               onClick={addLayer}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
+              className="bg-black dark:bg-white bg-opacity-10 text-black text-opacity-90 p-3 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50"
             >
-              Add Layer
+              <BsPlus />
             </button>
             <CopyToClipboard
               text={generateCSSCode()}
               onCopy={() => handleCopy("CSS")}
             >
-              <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">
-                Copy CSS
+              <button className="bg-black text-[10px] dark:bg-white bg-opacity-10 text-black text-opacity-90 p-3 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+                <FaCopy /> CSS
               </button>
             </CopyToClipboard>
             <CopyToClipboard
               text={generateSCSSCode()}
               onCopy={() => handleCopy("SCSS")}
             >
-              <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">
-                Copy SCSS
+              <button className="bg-black text-[10px] dark:bg-white bg-opacity-10 text-black text-opacity-90 p-3 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+                <FaCopy /> SCSS
               </button>
             </CopyToClipboard>
             <CopyToClipboard
               text={generateTailwindCode()}
               onCopy={() => handleCopy("Tailwind")}
             >
-              <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">
-                Copy Tailwind
+              <button className="bg-black text-[10px] dark:bg-white bg-opacity-10 text-black text-opacity-90 p-3 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+                <FaCopy /> Tailwind
               </button>
             </CopyToClipboard>
             <button
               onClick={randomizeLayers}
-              className="bg-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-yellow-600"
+              className="bg-black text-[10px] dark:bg-white bg-opacity-10 text-black text-opacity-90 p-3 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50"
             >
-              Random
+              <FaRandom />
             </button>
             <button
               onClick={resetLayers}
-              className="bg-red-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-600"
+              className="bg-black text-[10px] dark:bg-white bg-opacity-10 text-black text-opacity-90 p-2 rounded-md hover:bg-opacity-20 focus:bg-opacity-25 active:bg-opacity-30 transition-all duration-200 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50"
             >
-              Reset
+              <LuRefreshCcw />
             </button>
           </div>
           <div className="overflow-y-auto no-scrollbar h-[400px] mt-4">
             {layers.map((layer, index) => (
-              <div key={index} className="mb-4 p-4 border rounded-md shadow-sm">
+              <div
+                key={index}
+                className="mb-4 p-4 bg-black/10 dark:bg-[#222222] rounded-md shadow-sm"
+              >
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => removeLayer(index)}
+                    className=" text-white text-[15px] p-1 rounded-md hover:bg-red-600 transition-all duration-200"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+
                 <h3 className="font-bold mb-2">Layer {index + 1}</h3>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                   <label className="flex items-center">
@@ -261,12 +278,6 @@ const ShadowGenerator: React.FC = () => {
                     Inset
                   </label>
                 </div>
-                <button
-                  onClick={() => removeLayer(index)}
-                  className="bg-red-500 text-white px-2 py-1 rounded-md mt-2 shadow-sm hover:bg-red-600"
-                >
-                  Remove Layer
-                </button>
               </div>
             ))}
           </div>
