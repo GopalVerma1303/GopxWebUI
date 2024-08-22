@@ -22,9 +22,6 @@ const ToolCard: React.FC<ToolCardProps> = ({
     <Link href={href}>
       <motion.div
         className="relative w-full h-64 bg-white/90 rounded-lg shadow-md overflow-hidden group transition-all duration-300 ease-in-out hover:bg-white/70"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
       >

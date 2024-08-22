@@ -3,6 +3,7 @@
 import React from "react";
 import { getPagesUnderRoute } from "nextra/context";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import ToolCard from "./ToolCard"; // Make sure to import the ToolCard component
 
 export function ToolsIndex() {
@@ -37,9 +38,14 @@ export function ToolsIndex() {
 
 const ToolMenu: React.FC = () => {
   return (
-    <div className="p-4 w-full mx-auto flex justify-center items-center mt-20 mb-32 max-w-5xl">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="p-4 w-full mx-auto flex justify-center items-center mt-12 mb-32 max-w-5xl"
+    >
       <ToolsIndex />
-    </div>
+    </motion.div>
   );
 };
 
