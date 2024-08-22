@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { STORE_ITEMS } from "@/content/store";
 import AvatarRow from "@/components/AvatarRow";
 import { FaGithub } from "react-icons/fa";
@@ -26,7 +27,22 @@ interface StorePageProps {
 }
 
 export const StorePage: React.FC<StorePageProps> = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>("Component Packs");
+
+  useEffect(() => {
+    const tab = router.query.tab as string;
+    if (tab && Object.keys(STORE_ITEMS).includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, [router.query.tab]);
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    router.push(`/store?tab=${encodeURIComponent(tab)}`, undefined, {
+      shallow: true,
+    });
+  };
 
   const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     return (
@@ -103,7 +119,7 @@ export const StorePage: React.FC<StorePageProps> = () => {
                   ? "bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600"
                   : "text-black/50 dark:text-white/50"
               }`}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => handleTabChange(tab)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
