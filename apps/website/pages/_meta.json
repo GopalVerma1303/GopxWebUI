@@ -18,14 +18,13 @@
       "layout": "raw"
     }
   },
-  "colors": {
+  "tools": {
     "type": "page",
-    "title": "Colors",
+    "title": "Tools",
     "theme": {
       "layout": "raw"
     }
   },
-
   "pricing": {
     "type": "page",
     "title": "Pricing",
