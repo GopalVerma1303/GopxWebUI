@@ -36,13 +36,25 @@ const BentoGrid: React.FC = () => {
     {
       bgImage: "/assets/hero/bento/1.png",
       url: "/components",
-      className: "col-span-2 row-span-2 aspect-square",
+      className: "col-span-1 row-span-1",
     },
+    {
+      bgImage: "/assets/hero/bento/6.png",
+      url: "/tools/shadows",
+      className: "col-span-2 row-span-1",
+    },
+
     {
       bgImage: "/assets/hero/bento/2.png",
       className: "aspect-square",
-      url: "/templates",
+      url: "/store?tab=Templates",
     },
+    {
+      bgImage: "/assets/hero/bento/7.png",
+      url: "/store?tab=Component%20Packs",
+      className: "col-span-1 row-span-1",
+    },
+
     {
       bgImage: "/assets/hero/bento/4.png",
       className: "aspect-square",
@@ -51,7 +63,7 @@ const BentoGrid: React.FC = () => {
     {
       bgImage: "/assets/hero/bento/3.png",
       className: "col-span-2 aspect-[45px]",
-      url: "/colors",
+      url: "/tools/colors",
     },
     {
       bgImage: "/assets/hero/bento/5.png",
