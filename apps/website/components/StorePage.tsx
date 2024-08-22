@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { TEMPLATES } from "@/content/templates";
+import { STORE_ITEMS } from "@/content/store";
 import AvatarRow from "@/components/AvatarRow";
 import { FaGithub } from "react-icons/fa";
 
@@ -11,7 +11,7 @@ interface TechStackItem {
   image: string;
 }
 
-interface Template {
+interface Store {
   question: string;
   title: string;
   description: string;
@@ -21,23 +21,23 @@ interface Template {
   stack: TechStackItem[];
 }
 
-interface TemplatePageProps {
-  templates: Record<string, Template[]>;
+interface StorePageProps {
+  templates: Record<string, Store[]>;
 }
 
-export const TemplatePage: React.FC<TemplatePageProps> = () => {
-  const [activeTab, setActiveTab] = useState<string>("Portfolios");
+export const StorePage: React.FC<StorePageProps> = () => {
+  const [activeTab, setActiveTab] = useState<string>("Component Packs");
 
-  const TemplateItem: React.FC<{ item: Template }> = ({ item }) => {
+  const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     return (
       <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
         <div className="flex flex-col mb-4 lg:mb-0 lg:mr-8 lg:pr-8 space-y-4 flex-grow">
           <h2 className="font-bold text-2xl break-words">
-            {item.title || "Portfolio Template"}
+            {item.title || "Portfolio Store"}
           </h2>
           <p className="opacity-80 break-words">
             {item.description ||
-              "Every Portfolio Template is a multi-page responsive website."}
+              "Every Portfolio Store is a multi-page responsive website."}
           </p>
           <AvatarRow profiles={item.stack} />
           <div className="flex gap-2">
@@ -46,7 +46,7 @@ export const TemplatePage: React.FC<TemplatePageProps> = () => {
               target="_blank"
               className="bg-black dark:bg-white text-white dark:text-black text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
             >
-              View Template
+              View Store
               <svg
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
@@ -79,7 +79,7 @@ export const TemplatePage: React.FC<TemplatePageProps> = () => {
             >
               <Image
                 src={src || "https://gopx.dev/og.jpeg"}
-                alt={`Template preview ${index + 1}`}
+                alt={`Store preview ${index + 1}`}
                 width={224}
                 height={224}
                 className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
@@ -95,7 +95,7 @@ export const TemplatePage: React.FC<TemplatePageProps> = () => {
     <div className="min-h-screen mt-[50px] mb-36">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-start space-x-1 mb-8 w-full mx-auto h-42 overflow-x-auto no-scrollbar px-4">
-          {Object.keys(TEMPLATES).map((tab) => (
+          {Object.keys(STORE_ITEMS).map((tab) => (
             <motion.button
               key={tab}
               className={`px-4 py-2 font-bold rounded-md text-sm ${
@@ -112,7 +112,7 @@ export const TemplatePage: React.FC<TemplatePageProps> = () => {
           ))}
         </div>
         <div className="space-y-4">
-          {TEMPLATES[activeTab].map((item) => (
+          {STORE_ITEMS[activeTab].map((item) => (
             <motion.div
               key={item.question}
               initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ export const TemplatePage: React.FC<TemplatePageProps> = () => {
               transition={{ duration: 0.3 }}
               className="rounded-lg overflow-hidden m-2"
             >
-              <TemplateItem item={item} />
+              <StoreItem item={item} />
             </motion.div>
           ))}
         </div>
