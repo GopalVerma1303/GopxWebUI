@@ -148,7 +148,7 @@ const SpringModal = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsOpen(false)}
-          className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer any-modal"
+          className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll any-modal"
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -175,7 +175,7 @@ const SpringModal = ({
                 placeholder='e.x. "Hero section"'
               />
               <CustomInput
-                label="Link to an example"
+                label="Link to an example*"
                 id="example"
                 value={formData.example}
                 onChange={handleChange}
@@ -205,11 +205,8 @@ const SpringModal = ({
               </div>
             </form>
             <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              🚀 DM at{" "}
-              <a href="https://x.com/bettercallgopal" className="text-blue-600">
-                @bettercallgopal
-              </a>{" "}
-              for preferred consideration.
+              🚀 Please include your{" "}
+              <span className="text-blue-500">email</span> to receive a reply.
             </p>
           </motion.div>
         </motion.div>
