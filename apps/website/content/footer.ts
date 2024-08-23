@@ -26,8 +26,8 @@ export const FOOTER_CONTENT = {
       title: "Site",
       links: [
         { name: "Components", url: "/components" },
-        { name: "Templates", url: "/templates" },
-        { name: "Colors", url: "/colors" },
+        { name: "Store", url: "/store" },
+        { name: "Tools", url: "/tools" },
         { name: "Pricing", url: "/pricing" },
         { name: "FAQs", url: "/faqs" },
       ],
