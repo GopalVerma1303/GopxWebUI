@@ -1,7 +1,6 @@
 import Link from "next/link";
 import BentoGrid from "./BentoGrid";
 import GopxUserStack from "./GopxUserStack";
-import { BsGithub } from "react-icons/bs";
 import CopyableInput from "@/components/ui/copyable-input";
 
 const ShuffleHero = () => {
@@ -54,12 +53,6 @@ const ShuffleHero = () => {
           <div className="flex gap-2">
             <CopyableInput value="npm i gopx-webui" editable={false} />
           </div>
-          {/* <Link */}
-          {/*   href="https://github.com/GopalVerma1303/webui.gopx" */}
-          {/*   className="border flex justify-center items-center gap-2 sm:text-medium text-sm border-black/40 dark:border-white/40 font-medium py-2 px-4 rounded transition-all dark:hover:border-white/70 hover:border-black/70 active:scale-95  !no-underline dark:!text-white !text-black" */}
-          {/* > */}
-          {/*   <BsGithub /> Star on Github */}
-          {/* </Link> */}
         </div>
       </div>
       <BentoGrid />

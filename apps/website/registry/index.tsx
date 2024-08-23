@@ -128,7 +128,7 @@ const block: Registry = {
   "gopx-hero": {
     name: "gopx-hero",
     type: "components:block",
-    registryDependencies: ["bento-grid", "avatar-stack"],
+    registryDependencies: ["bento-grid", "avatar-stack", "copyable-input"],
     files: ["registry/components/block/gopx-hero.tsx"],
     component: React.lazy(
       () => import("@/registry/components/block/gopx-hero"),

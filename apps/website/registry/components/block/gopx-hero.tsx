@@ -1,8 +1,8 @@
 import Link from "next/link";
 import BentoGrid from "@/components/ui/bento-grid";
 import AvatarStack from "@/components/ui/avatar-stack";
-import { BsGithub } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
+import CopyableInput from "@/components/ui/copyable-input";
 
 const GopxUserStack: React.FC = () => {
   const baseUrl = "https://webui.gopx.dev";
@@ -51,9 +51,9 @@ const GopxUserStack: React.FC = () => {
   );
 };
 
-const ShuffleHero = () => {
+const GopxHero = () => {
   return (
-    <section className="w-full px-8 py-12  grid grid-cols-1 lg:grid-cols-1  items-center gap-8 max-w-6xl mx-auto ">
+    <section className="w-full px-8 py-12  grid grid-cols-1 items-center gap-8 max-w-6xl mx-auto">
       <div>
         <span className="block mb-3 text-xs md:text-sm text-[#5271ff] font-medium">
           Effortless UI Development with{" "}
@@ -98,12 +98,9 @@ const ShuffleHero = () => {
           >
             Explore Components →
           </Link>
-          <Link
-            href="https://github.com/GopalVerma1303/webui.gopx"
-            className="border flex justify-center items-center gap-2 sm:text-medium text-sm border-black/40 dark:border-white/40 font-medium py-2 px-4 rounded transition-all dark:hover:border-white/70 hover:border-black/70 active:scale-95  !no-underline dark:!text-white !text-black"
-          >
-            <BsGithub /> Star on Github
-          </Link>
+          <div className="flex gap-2">
+            <CopyableInput value="npm i gopx-webui" editable={false} />
+          </div>
         </div>
       </div>
       <BentoGrid />
@@ -111,4 +108,4 @@ const ShuffleHero = () => {
   );
 };
 
-export default ShuffleHero;
+export default GopxHero;

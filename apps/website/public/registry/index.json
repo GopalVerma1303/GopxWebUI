@@ -168,7 +168,8 @@
     "name": "gopx-hero",
     "registryDependencies": [
       "bento-grid",
-      "avatar-stack"
+      "avatar-stack",
+      "copyable-input"
     ],
     "files": [
       "registry/components/block/gopx-hero.tsx"
