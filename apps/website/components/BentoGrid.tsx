@@ -27,21 +27,24 @@ const BentoCard: React.FC<BentoCardProps> = ({
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
       >
-        <div className="absolute inset-0 bg-[#111111] dark:bg-[#111111]">
+        <div className="absolute inset-0 bg-[#FFFFFF] dark:bg-[#111111]">
           <Image
             src={bgImage}
             alt={title}
             layout="fill"
             objectFit="cover"
-            className="transition-all duration-300 ease-in-out group-hover:blur-sm group-hover:scale-110 opacity-80 group-hover:opacity-70"
+            className="transition-all duration-300 ease-in-out group-hover:blur-sm group-hover:scale-110 opacity-80 group-hover:opacity-100"
           />
         </div>
         <div className="relative z-10 p-3 h-full flex flex-col justify-between text-white">
-          <div className="self-end group-hover:rotate-[-45deg] transition-all duration-500">
+          <div className="self-end group-hover:rotate-[-45deg] transition-all duration-700">
             <FaArrowRightLong size={16} />
           </div>
           <div>
-            <ToolTitle isHovered={isHovered} className="text-sm font-bold">
+            <ToolTitle
+              isHovered={isHovered}
+              className="text-xs sm:text-sm md:text-lg font-bold"
+            >
               {title}
             </ToolTitle>
           </div>
@@ -65,7 +68,7 @@ const ToolTitle: React.FC<ToolTitleProps> = ({
   return (
     <motion.div
       className={clsx(
-        "relative block overflow-hidden",
+        "font-roboto relative block overflow-hidden",
         "transition-colors duration-300",
         className,
       )}
@@ -77,9 +80,9 @@ const ToolTitle: React.FC<ToolTitleProps> = ({
             initial={{ y: 0 }}
             animate={isHovered ? { y: "-100%" } : { y: 0 }}
             transition={{
-              duration: 0.25,
+              duration: 0.35,
               ease: "easeInOut",
-              delay: 0.015 * index,
+              delay: 0.025 * index,
             }}
             className="inline-block"
           >
@@ -94,9 +97,9 @@ const ToolTitle: React.FC<ToolTitleProps> = ({
             initial={{ y: "100%" }}
             animate={isHovered ? { y: 0 } : { y: "100%" }}
             transition={{
-              duration: 0.25,
+              duration: 0.35,
               ease: "easeInOut",
-              delay: 0.015 * index,
+              delay: 0.025 * index,
             }}
             className="inline-block text-white"
           >
