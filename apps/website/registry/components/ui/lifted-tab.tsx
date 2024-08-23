@@ -13,48 +13,47 @@ const tabs: TabData[] = [
   { id: "3", label: "Tab 3", content: "Tab content 3" },
 ];
 
-const LiftedTab: React.FC = () => {
+const BrowserLikeTab: React.FC = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
 
   return (
-    <div className="bg-white text-gray-700 p-2 sm:p-4 rounded-lg">
-      <div className="flex flex-wrap relative">
+    <div className="p-4 rounded-lg">
+      <div className="flex">
         {tabs.map((tab) => (
           <motion.button
             key={tab.id}
-            className={`px-3 py-2 sm:px-4 sm:py-2 rounded-t-3xl mr-1 focus:outline-none relative ${
-              activeTab === tab.id
-                ? " z-10 border border-black rounded-tl-lg rounded-tr-lg"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-t-3xl"
-            }`}
             style={{
-              boxShadow:
-                activeTab === tab.id
-                  ? "0px -4px 6px 0px rgba(0, 0, 0, 0.1)"
-                  : "none",
+              ...(activeTab === tab.id && {
+                borderTop: "1px solid #d3d3d3",
+                borderLeft: "1px solid #d3d3d3",
+                borderRight: "1px solid #d3d3d3",
+                boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.1)",
+              }),
+              ...(activeTab !== tab.id && {
+                borderBottom: "1px solid #d3d3d3",
+              }),
+              borderTopRightRadius: 5,
+              borderTopLeftRadius: 5,
             }}
+            className={`px-4 py-2 focus:outline-none`}
             onClick={() => setActiveTab(tab.id)}
-            whileHover={{ y: -2 }}
-            whileTap={{ y: 0 }}
+            whileHover={{
+              boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.1)",
+              transition: { duration: 0.15, ease: "easeInOut" },
+            }}
           >
             {tab.label}
-            {activeTab === tab.id && (
-              <motion.div
-                className="absolute inset-x-0 bottom-0 h-1 bg-blue-500 rounded-b-xl "
-                layoutId="activeTabLine"
-              />
-            )}
           </motion.button>
         ))}
       </div>
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          // initial={{ opacity: 0, y: 10 }}
-          // animate={{ opacity: 1, y: 0 }}
-          // exit={{ opacity: 0, y: -10 }}
-          // transition={{ duration: 0.2 }}
-          className="px-4 pb-4 rounded-b-lg border border-black "
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="p-4 rounded-b-lg"
         >
           {tabs.find((tab) => tab.id === activeTab)?.content}
         </motion.div>
@@ -63,4 +62,4 @@ const LiftedTab: React.FC = () => {
   );
 };
 
-export default LiftedTab;
+export default BrowserLikeTab;
