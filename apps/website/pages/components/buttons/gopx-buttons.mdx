@@ -10,6 +10,9 @@ import { Steps } from 'nextra/components'
 import { Tabs } from "nextra/components";
 import TabButton from "@/components/gopx-buttons/TabButton"; 
 import toast, { Toaster } from 'react-hot-toast';
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
 
 export const handleClick = () => {
   toast('Button Pressed!');
@@ -22,6 +25,10 @@ export const handleClick = () => {
 `Buttons` `GOPX` `Animated` `framer-motion`
 
 ## Tab Button
+
+<ComponentPreview name="gopx-accordion-demo" /> 
+<ComponentSource name="gopx-accordion-demo" />
+
 
 <Tabs items={['Preview', 'Code']}>
   <Tabs.Tab>
