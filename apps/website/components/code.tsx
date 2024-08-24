@@ -1,12 +1,49 @@
 import cn from "clsx";
 import type { ComponentProps, ReactElement } from "react";
+import { useTheme } from "next-themes";
+import { Highlighter } from "shiki";
+import { useEffect, useState } from "react";
+
+interface NextraCodeProps extends ComponentProps<"code"> {
+  lang?: string;
+}
 
 export const NextraCode = ({
   children,
   className,
+  lang,
   ...props
-}: ComponentProps<"code">): ReactElement => {
+}: NextraCodeProps): ReactElement => {
+  const { resolvedTheme } = useTheme();
+  const [highlighter, setHighlighter] = useState<Highlighter | null>(null);
+  const [highlightedCode, setHighlightedCode] = useState<string>("");
+
+  useEffect(() => {
+    const loadHighlighter = async () => {
+      const { getHighlighter } = await import("shiki");
+      const newHighlighter = await getHighlighter({
+        themes: ["github-light", "github-dark"],
+        langs: [lang || "typescript"],
+      });
+      setHighlighter(newHighlighter);
+    };
+
+    loadHighlighter();
+  }, [lang]);
+
+  useEffect(() => {
+    if (highlighter && typeof children === "string") {
+      const theme = resolvedTheme === "dark" ? "github-dark" : "github-light";
+      const code = highlighter.codeToHtml(children, {
+        lang: lang || "typescript",
+        theme,
+      });
+      setHighlightedCode(code);
+    }
+  }, [highlighter, children, lang, resolvedTheme]);
+
   const hasLineNumbers = "data-line-numbers" in props;
+
   return (
     <code
       className={cn(
@@ -15,11 +52,9 @@ export const NextraCode = ({
         hasLineNumbers && "[counter-reset:line]",
         className,
       )}
-      // always show code blocks in ltr
       dir="ltr"
       {...props}
-    >
-      {children}
-    </code>
+      dangerouslySetInnerHTML={{ __html: highlightedCode }}
+    />
   );
 };
