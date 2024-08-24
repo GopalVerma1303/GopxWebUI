@@ -4,6 +4,7 @@ import { useCallback, useRef } from "react";
 import { WordWrapIcon } from "@/components/icons";
 import { Button } from "./button";
 import { CopyToClipboard } from "./copy-to-clipboard";
+import { NextraCode } from "@/components/code";
 
 export const Pre = ({
   children,
@@ -44,7 +45,7 @@ export const Pre = ({
         ref={preRef}
         {...props}
       >
-        {children}
+        <NextraCode>{children}</NextraCode>
       </pre>
       <div
         className={cn(

@@ -1,14 +1,11 @@
 "use client";
-
 import * as React from "react";
-import { RotateCcw } from "lucide-react";
-
 import { cn } from "@/utils/cn";
-import { Button } from "@/components/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs";
-import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/magicui-icons";
 import { ComponentName, registry } from "@/registry/index";
+import { ComponentSource } from "./component-source";
+import { Pre } from "./pre";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: ComponentName;
@@ -16,21 +13,72 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   preview?: boolean;
 }
 
+interface ComponentData {
+  name: string;
+  registryDependencies: string[];
+  files: { name: string; content: string }[];
+  type: string;
+}
+
 export function ComponentPreview({
   name,
-  children,
   className,
   align = "center",
   preview = false,
   ...props
 }: ComponentPreviewProps) {
-  const [key, setKey] = React.useState(0); // State to trigger re-render of preview
-  const Codes = React.Children.toArray(children) as React.ReactElement[];
-  const Code = Codes[0]; // first child
+  const [sourceCode, setSourceCode] = React.useState<string>("");
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  const Component = registry[name]?.component;
+
+  React.useEffect(() => {
+    const fetchSourceCode = async () => {
+      try {
+        // First, fetch the index.json to determine the component type and file path
+        const indexResponse = await fetch("/registry/index.json");
+        const indexData = await indexResponse.json();
+
+        const componentInfo = indexData.find((item: any) => item.name === name);
+        if (!componentInfo) {
+          throw new Error(`Component "${name}" not found in registry index.`);
+        }
+
+        // Determine the correct path based on the component type
+        let componentPath;
+        switch (componentInfo.type) {
+          case "components:ui":
+            componentPath = `/registry/components/ui/${name}.json`;
+            break;
+          case "components:example":
+            componentPath = `/registry/components/example/${name}.json`;
+            break;
+          case "components:block":
+            componentPath = `/registry/components/block/${name}.json`;
+            break;
+          default:
+            throw new Error(`Unknown component type: ${componentInfo.type}`);
+        }
+
+        // Fetch the component data
+        const componentResponse = await fetch(componentPath);
+        const data: ComponentData = await componentResponse.json();
+        setSourceCode(data.files[0]?.content || "");
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching component data:", err);
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred",
+        );
+        setLoading(false);
+      }
+    };
+
+    fetchSourceCode();
+  }, [name]);
 
   const Preview = React.useMemo(() => {
-    const Component = registry[name]?.component;
-
     if (!Component) {
       console.error(`Component with name "${name}" not found in registry.`);
       return (
@@ -43,9 +91,16 @@ export function ComponentPreview({
         </p>
       );
     }
-
     return <Component />;
-  }, [name, key]);
+  }, [name, Component]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div
@@ -74,7 +129,7 @@ export function ComponentPreview({
             </TabsList>
           </div>
         )}
-        <TabsContent value="preview" className="relative rounded-md" key={key}>
+        <TabsContent value="preview" className="relative rounded-md">
           <React.Suspense
             fallback={
               <div className="flex items-center text-sm text-muted-foreground">
@@ -87,11 +142,9 @@ export function ComponentPreview({
           </React.Suspense>
         </TabsContent>
         <TabsContent value="code">
-          <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-              {Code}
-            </div>
-          </div>
+          <Pre filename="gopx-dropdown-demo.tsx" hasCopyCode>
+            {sourceCode}
+          </Pre>
         </TabsContent>
       </Tabs>
     </div>
