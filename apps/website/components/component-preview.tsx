@@ -1,11 +1,12 @@
 "use client";
 import * as React from "react";
 import { cn } from "@/utils/cn";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs";
+import { Tabs } from "nextra/components";
 import { Icons } from "@/components/magicui-icons";
 import { ComponentName, registry } from "@/registry/index";
 import { ComponentSource } from "./component-source";
 import { Pre } from "./pre";
+import Showcase from "./Showcase2";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: ComponentName;
@@ -103,33 +104,9 @@ export function ComponentPreview({
   }
 
   return (
-    <div
-      className={cn(
-        "relative my-4 flex flex-col space-y-2 lg:max-w-[120ch]",
-        className,
-      )}
-      {...props}
-    >
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        {!preview && (
-          <div className="flex items-center justify-between pb-3">
-            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
-              <TabsTrigger
-                value="preview"
-                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-              >
-                Preview
-              </TabsTrigger>
-              <TabsTrigger
-                value="code"
-                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-              >
-                Code
-              </TabsTrigger>
-            </TabsList>
-          </div>
-        )}
-        <TabsContent value="preview" className="relative rounded-md">
+    <Tabs items={["Preview", "Code"]}>
+      <Tabs.Tab>
+        <Showcase>
           <React.Suspense
             fallback={
               <div className="flex items-center text-sm text-muted-foreground">
@@ -140,13 +117,13 @@ export function ComponentPreview({
           >
             {Preview}
           </React.Suspense>
-        </TabsContent>
-        <TabsContent value="code">
-          <Pre filename={`${name}.tsx`} hasCopyCode>
-            {sourceCode}
-          </Pre>
-        </TabsContent>
-      </Tabs>
-    </div>
+        </Showcase>
+      </Tabs.Tab>
+      <Tabs.Tab>
+        <Pre filename={`${name}.tsx`} hasCopyCode>
+          {sourceCode}
+        </Pre>
+      </Tabs.Tab>
+    </Tabs>
   );
 }
