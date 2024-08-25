@@ -67,7 +67,7 @@ const Code: React.FC<CodeProps> = ({
         <code dir="ltr" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
       </div>
       {!isExpanded && (
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F1F4FD] dark:from-[#1D1F29] to-transparent pointer-events-none" />
       )}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-2">
         <Button variant="secondary" className="text-xs" onClick={toggleExpand}>

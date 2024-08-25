@@ -4,7 +4,7 @@ import { Tabs } from "nextra/components";
 import { Icons } from "@/components/magicui-icons";
 import { ComponentName, registry } from "@/registry/index";
 import { Pre } from "./pre";
-import Showcase from "./Showcase2";
+import Showcase from "./Showcase3";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: ComponentName;
@@ -104,18 +104,20 @@ export function ComponentPreview({
   return (
     <Tabs items={["Preview", "Code"]}>
       <Tabs.Tab>
-        <Showcase>
-          <React.Suspense
-            fallback={
-              <div className="flex items-center text-sm text-muted-foreground">
-                <Icons.spinner className="mr-2 size-4 animate-spin" />
-                Loading...
-              </div>
-            }
-          >
-            {Preview}
-          </React.Suspense>
-        </Showcase>
+        <div className="border-[1px] border-black/10 dark:border-white/10 relative rounded-xl p-6 py-20 h-full min-h-[500px] flex justify-center items-center">
+          <div className="w-full h-full flex items-center justify-center">
+            <React.Suspense
+              fallback={
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
+                  Loading...
+                </div>
+              }
+            >
+              {Preview}
+            </React.Suspense>
+          </div>
+        </div>
       </Tabs.Tab>
       <Tabs.Tab>
         <Pre filename={`${name}.tsx`} hasCopyCode>

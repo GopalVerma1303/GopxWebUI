@@ -11,6 +11,9 @@ import { Tabs } from "nextra/components";
 import GopxAccordionDemo from "@/components/demos/gopx-accordion";
 import { Pre } from "@/components/pre";
 import { Code } from "@/components/code";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
 
 # GOPX Accordion
 
@@ -18,51 +21,7 @@ import { Code } from "@/components/code";
 
 `GOPX` `Accordion` `Animated` `FAQ`
 
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-    <Showcase>
-      <div className="h-full">
-        <GopxAccordionDemo />
-      </div>
-    </Showcase>
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```tsx filename="GopxAccordionDemo.tsx" showLineNumbers
-import React, { useState } from "react";
-import Accordion from "@/components/Accordion";
-
-const GopxAccordionDemo: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const items = [
-    { title: "Section 1", description: "This is the content for section 1." },
-    { title: "Section 2", description: "Here's some information for section 2."},
-    { title: "Section 3", description: "Section 3 contains this text." },
-  ];
-
-  return (
-    <div className="max-w-md mx-auto mt-8">
-      {items.map((item, index) => (
-        <Accordion
-          key={index}
-          title={item.title}
-          description={item.description}
-          isActive={activeIndex === index}
-          toggleActive={() =>
-            setActiveIndex(activeIndex === index ? null : index)
-          }
-        />
-      ))}
-    </div>
-  );
-};
-
-export default GopxAccordionDemo;
-    ```
-  </Tabs.Tab>
-</Tabs>
-
+<ComponentPreview name="gopx-accordion-demo" />
 
 ## Installation
 
@@ -73,62 +32,10 @@ export default GopxAccordionDemo;
   npm install framer-motion
   ```
 
-  ### Create `Accordion.tsx` component
+  ### Create `accordion.tsx` component
 
-```tsx filename="Accordion.tsx" showLineNumbers
-import React from "react";
-import { motion } from "framer-motion";
+  <ComponentSource name="accordion" />
 
-interface AccordionProps {
-  title: string;
-  description: string;
-  isActive: boolean;
-  toggleActive: () => void;
-}
-
-const Accordion: React.FC<AccordionProps> = ({
-  title,
-  description,
-  isActive,
-  toggleActive,
-}) => (
-  <div className="border border-black/50 dark:border-white/50 rounded-md mb-2">
-    <button
-      className="w-full text-left p-4 flex justify-between items-center"
-      onClick={toggleActive}
-    >
-      <span className="font-semibold">{title}</span>
-      <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        animate={{ rotate: isActive ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </motion.svg>
-    </button>
-    <motion.div
-      initial={{ height: 0 }}
-      animate={{ height: isActive ? "auto" : 0 }}
-      transition={{ duration: 0.3 }}
-      className="overflow-hidden"
-    >
-      <div className="p-4 border-t border-black/50 dark:border-white/50">
-        {description}
-      </div>
-    </motion.div>
-  </div>
-);
-
-export default Accordion;
-```
 </Steps>
 
 ## Props
