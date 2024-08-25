@@ -1,10 +1,8 @@
 "use client";
 import * as React from "react";
-import { cn } from "@/utils/cn";
 import { Tabs } from "nextra/components";
 import { Icons } from "@/components/magicui-icons";
 import { ComponentName, registry } from "@/registry/index";
-import { ComponentSource } from "./component-source";
 import { Pre } from "./pre";
 import Showcase from "./Showcase2";
 

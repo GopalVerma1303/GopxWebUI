@@ -57,7 +57,7 @@ const Code: React.FC<CodeProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative min-h-[400px]">
       <div
         ref={codeRef}
         className={`no-scrollbar overflow-x-auto px-5 text-[.9em] -ml-[30px] ${
