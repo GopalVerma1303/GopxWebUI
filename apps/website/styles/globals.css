@@ -88,66 +88,58 @@ code.text-\[\.9em\] {
 }
 
 .bg-preview-container-light {
-  background-image: 
-    /* Adjust this radial gradient for the light-to-dark effect */
-    radial-gradient(
+  background-image: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.9) 0%,
-      /* Increase opacity for brighter center */ rgba(255, 255, 255, 0.7) 20%,
-      /* Adjust percentage to change radius */ rgba(240, 240, 240, 0.5) 40%,
-      /* Add more color stops for smoother gradient */ rgba(220, 220, 220, 0.3)
-        60%,
+      rgba(255, 255, 255, 0.7) 20%,
+      rgba(240, 240, 240, 0.5) 40%,
+      rgba(220, 220, 220, 0.3) 60%,
       rgba(200, 200, 200, 0.1) 80%,
-      rgba(180, 180, 180, 0.05) 100% /* Darker edges */
+      rgba(180, 180, 180, 0.05) 100%
     ),
-    /* You can adjust or remove this linear gradient if not needed */
-      linear-gradient(
-        to bottom,
-        rgba(240, 240, 240, 0.3),
-        rgba(220, 220, 220, 0.3)
-      ),
-    /* Increase opacity of lines for more visibility */
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 20px,
-        rgba(0, 0, 0, 0.08) 20px,
-        /* Increased from 0.05 to 0.08 */ rgba(0, 0, 0, 0.08) 21px
-      ),
+    linear-gradient(
+      to bottom,
+      rgba(240, 240, 240, 0.3),
+      rgba(220, 220, 220, 0.3)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.08) 20px,
+      rgba(0, 0, 0, 0.08) 21px
+    ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 20px,
       rgba(0, 0, 0, 0.08) 20px,
-      /* Increased from 0.05 to 0.08 */ rgba(0, 0, 0, 0.08) 21px
+      rgba(0, 0, 0, 0.08) 21px
     );
   background-blend-mode: overlay, normal, normal, normal;
 }
 
 .dark .bg-preview-container-light {
-  background-image: 
-    /* Adjust this radial gradient for the dark theme */
-    radial-gradient(
+  background-image: radial-gradient(
       circle at center,
       rgba(50, 50, 50, 0.4) 0%,
       rgba(30, 30, 30, 0.6) 30%,
-      /* Adjust percentages to change radius */ rgba(10, 10, 10, 0.8) 60%,
+      rgba(10, 10, 10, 0.8) 60%,
       rgba(0, 0, 0, 0.9) 100%
     ),
-    /* Increase opacity of lines for more visibility in dark theme */
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 20px,
-        rgba(250, 250, 250, 0.08) 20px,
-        /* Increased from 0.05 to 0.08 */ rgba(250, 250, 250, 0.01) 21px
-      ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(250, 250, 250, 0.08) 20px,
+      rgba(250, 250, 250, 0.01) 21px
+    ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 20px,
       rgba(250, 250, 250, 0.08) 20px,
-      /* Increased from 0.05 to 0.08 */ rgba(250, 250, 250, 0.01) 21px
+      rgba(250, 250, 250, 0.01) 21px
     );
 }
 
@@ -155,15 +147,13 @@ html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
-  /* Optional, if you also want font styles */
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-/* Optional, for the code block we add overflow, borders and padding */
 .shiki {
-  @apply rounded-xl;
+  border-radius: 0.75rem;
 }
 
 .animate-scroll {
@@ -182,45 +172,59 @@ html.dark .shiki span {
 }
 
 .separator {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 }
 
 .separator::before,
 .separator::after {
-  @apply flex-grow border dark:border-white/30 border-black/30 content-[''];
-  border-width: 1px 0 0 0;
+  flex-grow: 1;
+  border: 0;
+  border-top: 1px solid;
+  content: "";
+}
+
+.dark .separator::before,
+.dark .separator::after {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.separator::before,
+.separator::after {
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .separator > * {
-  @apply flex-shrink mx-4 text-gray-400;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: #9ca3af;
 }
 
 .card-inner-shadow {
   box-shadow: inset 0 0 10px rgba(126, 126, 126, 1);
 }
 
-/* styles.css */
 .gradient-border {
   position: relative;
-  padding: 1px; /* Adjust the width of the border */
+  padding: 1px;
   background: linear-gradient(90deg, #ff5733, #ffc300, #daf7a6);
 }
 
 .gradient-border-inner {
-  background-color: white; /* Adjust for dark mode using Tailwind classes */
+  background-color: white;
   border-radius: inherit;
   overflow: hidden;
-  padding: 1rem; /* Adjust the inner padding */
+  padding: 1rem;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
+
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .component-description {
@@ -236,6 +240,11 @@ html.dark .shiki span {
 code {
   counter-reset: step;
   counter-increment: step 0;
+  box-decoration-break: slice;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1,
+    "ss01" 1;
 }
 
 code .line::before {
@@ -248,14 +257,102 @@ code .line::before {
   color: #6a7280;
 }
 
-.code-block-container {
-  display: flex;
-  overflow-x: auto;
+code[data-line-numbers] > .line {
+  padding-left: 0.5rem;
 }
 
-.code-block {
-  flex-grow: 1;
-  margin: 0;
-  padding: 1em 0;
-  overflow-x: auto;
+code[data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  height: 100%;
+  float: left;
+  padding-right: 1rem;
+  text-align: right;
+  min-width: 2.6rem;
+  color: #6b7280;
+}
+
+code .line.highlighted {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: rgba(59, 130, 246, 0.5);
+  box-shadow: 2px 0 currentColor inset;
+}
+
+code .line .highlighted {
+  border-radius: 0.125rem;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+  background-color: rgba(30, 64, 175, 0.1);
+  box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.1);
+}
+
+.dark code .line .highlighted {
+  background-color: rgba(147, 197, 253, 0.1);
+  box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.1);
+}
+
+pre {
+  contain: paint;
+}
+
+pre code {
+  display: grid;
+  min-width: 100%;
+  border-radius: 0;
+  border: none;
+  background-color: transparent !important;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: currentColor;
+}
+
+pre code .line {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+pre:not([data-theme]) {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-nextra-word-wrap] pre {
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+@media (min-width: 768px) {
+  html[data-nextra-word-wrap] pre {
+    white-space: pre;
+  }
+}
+
+html[data-nextra-word-wrap] pre .line {
+  display: inline-block;
+}
+
+pre .nextra-copy-icon {
+  animation: fade-in 0.3s ease forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@supports (
+  (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+) {
+  .nextra-button {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .dark .nextra-button {
+    background-color: rgba(17, 17, 17, 0.8);
+  }
 }

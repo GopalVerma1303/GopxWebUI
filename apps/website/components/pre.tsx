@@ -45,7 +45,13 @@ export const Pre = ({
         ref={preRef}
         {...props}
       >
-        <Code code={children} language="tsx" />
+        <Code
+          code={
+            children?.toString().split("\n").slice(0, -1).join("\n") ||
+            "Error fetching code!"
+          }
+          language="tsx"
+        />
       </pre>
       <div
         className={cn(
@@ -54,13 +60,13 @@ export const Pre = ({
           filename ? "nx-top-8" : "nx-top-0",
         )}
       >
-        <Button
-          onClick={toggleWordWrap}
-          className="md:nx-hidden"
-          title="Toggle word wrap"
-        >
-          <WordWrapIcon className="nx-pointer-events-none nx-h-4 nx-w-4" />
-        </Button>
+        {/* <Button */}
+        {/*   onClick={toggleWordWrap} */}
+        {/*   className="md:nx-hidden" */}
+        {/*   title="Toggle word wrap" */}
+        {/* > */}
+        {/*   <WordWrapIcon className="nx-pointer-events-none nx-h-4 nx-w-4" /> */}
+        {/* </Button> */}
         {hasCopyCode && (
           <CopyToClipboard
             getValue={() =>

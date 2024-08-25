@@ -142,7 +142,7 @@ export function ComponentPreview({
           </React.Suspense>
         </TabsContent>
         <TabsContent value="code">
-          <Pre filename="gopx-dropdown-demo.tsx" hasCopyCode>
+          <Pre filename={`${name}.tsx`} hasCopyCode>
             {sourceCode}
           </Pre>
         </TabsContent>
