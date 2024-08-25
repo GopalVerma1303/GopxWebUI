@@ -12,13 +12,21 @@ export const customLightTheme = {
       },
     },
     {
-      scope: ["constant", "variable.other.constant", "variable.language"],
+      scope: [
+        "constant",
+        "variable.other.constant",
+        "variable.language",
+        "constant.numeric",
+        "constant.language",
+        "constant.character",
+        "constant.other",
+      ],
       settings: {
         foreground: "#1976d2",
       },
     },
     {
-      scope: ["string", "string.regexp"],
+      scope: ["string", "string.regexp", "string.quoted", "string.template"],
       settings: {
         foreground: "#22863a",
       },
@@ -27,28 +35,42 @@ export const customLightTheme = {
       scope: ["comment", "punctuation.definition.comment"],
       settings: {
         foreground: "#aaa",
+        fontStyle: "italic",
       },
     },
     {
-      scope: ["keyword"],
+      scope: [
+        "keyword",
+        "keyword.control",
+        "keyword.operator",
+        "keyword.other",
+        "storage",
+        "storage.type",
+        "storage.modifier",
+      ],
       settings: {
         foreground: "#d32f2f",
       },
     },
     {
-      scope: ["variable.parameter"],
+      scope: ["variable", "variable.parameter", "variable.other"],
       settings: {
         foreground: "#ff9800",
       },
     },
     {
-      scope: ["entity.name.function", "support.function"],
+      scope: [
+        "entity.name.function",
+        "support.function",
+        "entity.name.method",
+        "meta.function-call",
+      ],
       settings: {
         foreground: "#6f42c1",
       },
     },
     {
-      scope: ["punctuation"],
+      scope: ["punctuation", "meta.brace", "meta.delimiter"],
       settings: {
         foreground: "#212121",
       },
@@ -64,6 +86,31 @@ export const customLightTheme = {
       settings: {
         foreground: "#22863a",
         fontStyle: "underline",
+      },
+    },
+    {
+      scope: ["entity.name.tag", "meta.tag"],
+      settings: {
+        foreground: "#22863a",
+      },
+    },
+    {
+      scope: ["entity.other.attribute-name", "meta.attribute"],
+      settings: {
+        foreground: "#6f42c1",
+      },
+    },
+    {
+      scope: ["markup.heading", "markup.bold"],
+      settings: {
+        foreground: "#d32f2f",
+        fontStyle: "bold",
+      },
+    },
+    {
+      scope: ["markup.italic"],
+      settings: {
+        fontStyle: "italic",
       },
     },
   ],
@@ -83,43 +130,65 @@ export const customDarkTheme = {
       },
     },
     {
-      scope: ["constant", "variable.other.constant", "variable.language"],
+      scope: [
+        "constant",
+        "variable.other.constant",
+        "variable.language",
+        "constant.numeric",
+        "constant.language",
+        "constant.character",
+        "constant.other",
+      ],
       settings: {
         foreground: "#79b8ff",
       },
     },
     {
-      scope: ["string", "string.regexp"],
+      scope: ["string", "string.regexp", "string.quoted", "string.template"],
       settings: {
-        foreground: "#ffab70",
+        foreground: "#4bb74a",
       },
     },
     {
       scope: ["comment", "punctuation.definition.comment"],
       settings: {
         foreground: "#6b737c",
+        fontStyle: "italic",
       },
     },
     {
-      scope: ["keyword"],
+      scope: [
+        "keyword",
+        "keyword.control",
+        "keyword.operator",
+        "keyword.other",
+        "storage",
+        "storage.type",
+        "storage.modifier",
+      ],
       settings: {
         foreground: "#f97583",
       },
     },
     {
-      scope: ["variable.parameter"],
+      scope: ["variable", "variable.parameter", "variable.other"],
       settings: {
         foreground: "#ff9800",
       },
     },
     {
-      scope: ["entity.name.function", "support.function"],
+      scope: [
+        "entity.name.function",
+        "support.function",
+        "entity.name.method",
+        "meta.function-call",
+      ],
       settings: {
         foreground: "#b392f0",
       },
     },
     {
-      scope: ["punctuation"],
+      scope: ["punctuation", "meta.brace", "meta.delimiter"],
       settings: {
         foreground: "#bbb",
       },
@@ -135,6 +204,31 @@ export const customDarkTheme = {
       settings: {
         foreground: "#ffab70",
         fontStyle: "underline",
+      },
+    },
+    {
+      scope: ["entity.name.tag", "meta.tag"],
+      settings: {
+        foreground: "#4bb74a",
+      },
+    },
+    {
+      scope: ["entity.other.attribute-name", "meta.attribute"],
+      settings: {
+        foreground: "#b392f0",
+      },
+    },
+    {
+      scope: ["markup.heading", "markup.bold"],
+      settings: {
+        foreground: "#f97583",
+        fontStyle: "bold",
+      },
+    },
+    {
+      scope: ["markup.italic"],
+      settings: {
+        fontStyle: "italic",
       },
     },
   ],

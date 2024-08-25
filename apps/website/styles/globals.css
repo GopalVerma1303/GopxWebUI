@@ -232,3 +232,30 @@ html.dark .shiki span {
 .text-shadow {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
+
+code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: #6a7280;
+}
+
+.code-block-container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.code-block {
+  flex-grow: 1;
+  margin: 0;
+  padding: 1em 0;
+  overflow-x: auto;
+}
