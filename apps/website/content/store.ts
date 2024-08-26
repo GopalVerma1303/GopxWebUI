@@ -26,6 +26,18 @@ interface StoreItem {
   stack: TechStackItem[];
 }
 
+export interface PackItem {
+  key: string;
+  title: string;
+  route: string;
+  description: string;
+  buy: string;
+  images: string[];
+  stack: TechStackItem[];
+  cp: number;
+  sp: number;
+}
+
 const createStoreItem = (
   title: string,
   route: string,
@@ -52,26 +64,62 @@ const createStoreItem = (
   };
 };
 
+const createPackItem = (
+  title: string,
+  route: string,
+  description: string,
+  buy: string,
+  images: string[],
+  techStack: string[],
+  cp: number,
+  sp: number,
+): PackItem => {
+  const stack: TechStackItem[] = techStack.map((tech) => ({
+    name: tech,
+    image: TECH_STACK_IMAGES[tech] || "/assets/brands/default.svg", // Use a default image if the tech is not found
+  }));
+
+  return {
+    key: "unique-key",
+    title,
+    route,
+    description,
+    buy,
+    images,
+    stack,
+    cp,
+    sp,
+  };
+};
+
 interface TemplatesObject {
   [key: string]: StoreItem[];
 }
 
-export const STORE_ITEMS: TemplatesObject = {
+interface ComponentPacksObject {
+  [key: string]: PackItem[];
+}
+
+export const PACK_ITEMS: ComponentPacksObject = {
   "Component Packs": [
-    createStoreItem(
-      "www.gopx.dev",
-      "store/templates/gopx",
-      "Developer's portfolio website for sharing notes, blogs, and showcase projects.",
+    createPackItem(
+      "Hero Sections",
+      "store/packs/heros",
+      "A collection of hero sections that are modern and stand out",
       "https://gopx.dev",
-      "https://github.com/GopalVerma1303/gopx.dev",
       [
         "/assets/templates/gopx-1.png",
         "/assets/templates/gopx-3.png",
         "/assets/templates/gopx-1.png",
       ],
       ["react", "nextjs", "tailwind", "framer-motion"],
+      59,
+      9,
     ),
   ],
+};
+
+export const TEMPLATE_ITEMS: TemplatesObject = {
   Templates: [
     createStoreItem(
       "Devsite Template",
