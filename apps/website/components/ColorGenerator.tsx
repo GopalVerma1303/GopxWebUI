@@ -494,13 +494,6 @@ const ColorGenerator: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="mt-16">
-        <h2 className="text-2xl font-bold mb-4">Gradient Preview</h2>
-        <GradientPreview
-          initialGradient={gradient}
-          onGradientChange={handleGradientChange}
-        />
-      </div>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const ToolCard: React.FC<ToolCardProps> = ({
         <div className="absolute inset-0 overflow-hidden bg-[#111111] dark:bg-[#111111]">
           <Image
             src={imageUrl}
-            // src="/assets/tools/shadows.png"
+            // src="/assets/tools/gradients.png"
             alt={title}
             layout="fill"
             objectFit="cover"

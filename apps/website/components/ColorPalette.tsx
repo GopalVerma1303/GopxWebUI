@@ -133,7 +133,7 @@ const ColorRow: React.FC<{ name: string; colors: Color[] }> = ({
       </div>
       <div
         ref={scrollRef}
-        className="grid grid-flow-col auto-cols-[100px] md:grid-cols-11 gap-2 overflow-x-auto md:overflow-x-visible no-scrollbar overflow-y-hidden"
+        className="grid grid-flow-col auto-cols-[100px] md:grid-cols-11 gap-2 overflow-x-auto md:overflow-x-visible no-scrollbar overflow-y-hidden p-1"
       >
         {colors.map((color) => (
           <ColorSwatch key={color.id} color={color} format={format} />
@@ -153,7 +153,7 @@ const ColorPalette: React.FC = () => {
       {colorRows.map((row) => (
         <ColorRow key={row.name} name={row.name} colors={row.colors} />
       ))}
-      <Toaster position="bottom-center" />
+      <Toaster />
     </div>
   );
 };
