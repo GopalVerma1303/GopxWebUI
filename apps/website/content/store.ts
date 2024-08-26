@@ -74,7 +74,7 @@ export const STORE_ITEMS: TemplatesObject = {
   ],
   Templates: [
     createStoreItem(
-      "Devsite",
+      "Devsite Template",
       "/store/templates/devsite",
       "Developer's portfolio website for sharing notes, code snippits, resources, blogs, writups, and showcase projects, contributions, collaboration and work experience.",
       "https://gopx.dev",

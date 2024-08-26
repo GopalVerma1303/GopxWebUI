@@ -47,8 +47,11 @@ export const StorePage: React.FC<StorePageProps> = () => {
 
   const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     return (
-      <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg  ">
-        <div className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]">
+      <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg  mx-4">
+        <Link
+          href={item.route}
+          className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]"
+        >
           <h2 className="font-bold text-xl break-words">
             {item.title || "Portfolio Store"}
           </h2>
@@ -57,13 +60,22 @@ export const StorePage: React.FC<StorePageProps> = () => {
               "Every Portfolio Store is a multi-page responsive website."}
           </p>
           {/* <AvatarRow profiles={item.stack} /> */}
+          <p className="font-bold text-3xl">
+            $9{" "}
+            <span className="opacity-60 text-sm font-light line-through">
+              $59
+            </span>
+            <span className="opacity-80 text-green-500 text-sm font-light mx-2">
+              {(((59 - 9) / 59) * 100).toFixed(2)}% off!
+            </span>
+          </p>
           <div className="flex gap-2">
-            <Link
-              href={item.route}
-              className="bg-black dark:bg-white text-white dark:text-black text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
-            >
-              Explore
-            </Link>
+            {/* <Link */}
+            {/*   href={item.route} */}
+            {/*   className="bg-black dark:bg-white text-white dark:text-black text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105" */}
+            {/* > */}
+            {/*   Explore */}
+            {/* </Link> */}
             {/* <Link */}
             {/*   href={item.code || "https://github.com/GopalVerma1303/gopx.dev"} */}
             {/*   target="_blank" */}
@@ -73,7 +85,7 @@ export const StorePage: React.FC<StorePageProps> = () => {
             {/*   <FaGithub /> */}
             {/* </Link> */}
           </div>
-        </div>
+        </Link>
         <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-full">
           {item.images?.map((src, index) => (
             <div
