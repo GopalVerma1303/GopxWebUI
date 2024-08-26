@@ -127,19 +127,61 @@ export const StorePage: React.FC<StorePageProps> = () => {
           ))}
         </div>
         <div className="space-y-4">
-          {STORE_ITEMS[activeTab].map((item) => (
-            <motion.div
-              key={item.question}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="rounded-lg overflow-hidden m-2"
-            >
-              <StoreItem item={item} />
-            </motion.div>
-          ))}
+          <ProductCard />
+          {/* {STORE_ITEMS[activeTab].map((item) => ( */}
+          {/*   <motion.div */}
+          {/*     key={item.question} */}
+          {/*     initial={{ opacity: 0, y: 20 }} */}
+          {/*     animate={{ opacity: 1, y: 0 }} */}
+          {/*     transition={{ duration: 0.3 }} */}
+          {/*     className="rounded-lg overflow-hidden m-2" */}
+          {/*   > */}
+          {/*     <StoreItem item={item} /> */}
+          {/*   </motion.div> */}
+          {/* ))} */}
         </div>
       </div>
     </div>
   );
 };
+
+const ProductCard: React.FC = () => {
+  return (
+    <div className="w-full max-w-sm border border-black/15 rounded-lg shadow bg-[#f1f1f1] dark:bg-[#1f1f1f] dark:border-white/15">
+      <Link href="#">
+        <Image
+          className="p-5 rounded"
+          src="/assets/templates/gopx-1.png"
+          alt="product image"
+          width={500}
+          height={500}
+        />
+        <div className="px-5 pb-5">
+          <h5 className="text-xl  flex items-center font-semibold tracking-tight ">
+            Hero Sections{" "}
+            <span className="text-xs font-semibold px-2 py-0.5 rounded ms-2 border dark:border-white/15 border-black/15 dark:bg-white/5 font-mono bg-black/5">
+              3
+            </span>
+          </h5>
+
+          <p className="opacity-60">
+            A collection of hero sections that are modern and stand out
+          </p>
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-bold text-3xl">
+              $9{" "}
+              <span className="opacity-60 text-sm font-light line-through">
+                $59
+              </span>
+              <span className="opacity-80 text-green-500 text-sm font-light mx-2">
+                {(((59 - 9) / 59) * 100).toFixed(2)}% off!
+              </span>
+            </p>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};
+
+export default ProductCard;
