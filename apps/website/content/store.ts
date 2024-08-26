@@ -18,6 +18,7 @@ interface TechStackItem {
 interface StoreItem {
   question: string;
   title: string;
+  route: string;
   description: string;
   link: string;
   code: string;
@@ -27,6 +28,7 @@ interface StoreItem {
 
 const createStoreItem = (
   title: string,
+  route: string,
   description: string,
   link: string,
   code: string,
@@ -41,6 +43,7 @@ const createStoreItem = (
   return {
     question: "unique-key",
     title,
+    route,
     description,
     link,
     code,
@@ -57,20 +60,30 @@ export const STORE_ITEMS: TemplatesObject = {
   "Component Packs": [
     createStoreItem(
       "www.gopx.dev",
+      "store/templates/gopx",
       "Developer's portfolio website for sharing notes, blogs, and showcase projects.",
       "https://gopx.dev",
       "https://github.com/GopalVerma1303/gopx.dev",
-      ["/assets/templates/gopx-1.png", "/assets/templates/gopx-3.png"],
+      [
+        "/assets/templates/gopx-1.png",
+        "/assets/templates/gopx-3.png",
+        "/assets/templates/gopx-1.png",
+      ],
       ["react", "nextjs", "tailwind", "framer-motion"],
     ),
   ],
   Templates: [
     createStoreItem(
-      "www.gopx.dev",
-      "Developer's portfolio website for sharing notes, blogs, and showcase projects.",
+      "Devsite",
+      "/store/templates/devsite",
+      "Developer's portfolio website for sharing notes, code snippits, resources, blogs, writups, and showcase projects, contributions, collaboration and work experience.",
       "https://gopx.dev",
       "https://github.com/GopalVerma1303/gopx.dev",
-      ["/assets/templates/gopx-1.png", "/assets/templates/gopx-3.png"],
+      [
+        "/assets/templates/gopx-1.png",
+        "/assets/templates/gopx-3.png",
+        "/assets/templates/gopx-1.png",
+      ],
       ["react", "nextjs", "tailwind", "framer-motion"],
     ),
   ],

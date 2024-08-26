@@ -15,6 +15,7 @@ interface TechStackItem {
 interface Store {
   question: string;
   title: string;
+  route: string;
   description: string;
   link: string;
   code: string;
@@ -46,58 +47,44 @@ export const StorePage: React.FC<StorePageProps> = () => {
 
   const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     return (
-      <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
-        <div className="flex flex-col mb-4 lg:mb-0 lg:mr-8 lg:pr-8 space-y-4 flex-grow">
-          <h2 className="font-bold text-2xl break-words">
+      <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg  ">
+        <div className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]">
+          <h2 className="font-bold text-xl break-words">
             {item.title || "Portfolio Store"}
           </h2>
-          <p className="opacity-80 break-words">
+          <p className="opacity-60 break-words text-sm">
             {item.description ||
               "Every Portfolio Store is a multi-page responsive website."}
           </p>
-          <AvatarRow profiles={item.stack} />
+          {/* <AvatarRow profiles={item.stack} /> */}
           <div className="flex gap-2">
             <Link
-              href={item.link || "https://gopx.dev"}
-              target="_blank"
+              href={item.route}
               className="bg-black dark:bg-white text-white dark:text-black text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
             >
-              View Store
-              <svg
-                className="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
+              Explore
             </Link>
-            <Link
-              href={item.code || "https://github.com/GopalVerma1303/gopx.dev"}
-              target="_blank"
-              className="border border-black dark:border-white text-black dark:text-white text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2"
-            >
-              Source Code
-              <FaGithub />
-            </Link>
+            {/* <Link */}
+            {/*   href={item.code || "https://github.com/GopalVerma1303/gopx.dev"} */}
+            {/*   target="_blank" */}
+            {/*   className="border border-black dark:border-white text-black dark:text-white text-opacity-90 px-4 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2" */}
+            {/* > */}
+            {/*   Source Code */}
+            {/*   <FaGithub /> */}
+            {/* </Link> */}
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-full">
           {item.images?.map((src, index) => (
             <div
               key={index}
-              className="relative w-full h-80 rounded-md overflow-hidden"
+              className="relative w-full h-60 m-1 rounded-md overflow-hidden"
             >
               <Image
                 src={src || "https://gopx.dev/og.jpeg"}
                 alt={`Store preview ${index + 1}`}
-                width={224}
-                height={224}
+                width={216}
+                height={216}
                 className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
               />
             </div>
