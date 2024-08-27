@@ -64,7 +64,12 @@ const Code: React.FC<CodeProps> = ({
           isExpanded ? "max-h-none" : "max-h-[400px]"
         }`}
       >
-        <code dir="ltr" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+        <div className="-ml-5">
+          <code
+            dir="ltr"
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+          />
+        </div>
       </div>
       {!isExpanded && (
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F1F4FD] dark:from-[#1D1F29] to-transparent pointer-events-none" />
