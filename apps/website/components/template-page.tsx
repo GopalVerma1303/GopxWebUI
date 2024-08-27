@@ -14,7 +14,7 @@ const Template = ({ id }: { id: string }) => {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto my-28 flex flex-col gap-20 px-12">
+    <div className="w-full max-w-7xl mx-auto my-28 flex flex-col gap-20 px-5">
       <div className="grid md:grid-cols-2 grid-cols-1 md:items-start items-center ">
         <div className="flex flex-col gap-6 md:text-left text-center">
           <h2 className="text-4xl font-bold">{template.name}</h2>
