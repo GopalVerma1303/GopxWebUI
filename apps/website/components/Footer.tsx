@@ -101,7 +101,7 @@ const FooterSection: React.FC<{
     <h2 className="mb-6 text-sm font-semibold text-black uppercase dark:text-white">
       {title}
     </h2>
-    <ul className="text-black/50 dark:text-white/50 font-medium">
+    <ul className="text-black/50 dark:text-white/50 font-medium text-sm">
       {links.map((link, index) => (
         <li key={index} className={index !== links.length - 1 ? "mb-4" : ""}>
           <a href={link.url} className="hover:underline">

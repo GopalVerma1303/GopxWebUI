@@ -15,6 +15,7 @@ const Template = ({ id }: { id: string }) => {
 
   return (
     <div className="w-full max-w-7xl mx-auto my-28 flex flex-col gap-20 px-5">
+      <div className="-z-50 absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:linear-gradient(to_bottom,white_20%,transparent_80%)]"></div>
       <div className="grid md:grid-cols-2 grid-cols-1 md:items-start items-center ">
         <div className="flex flex-col gap-6 md:text-left text-center">
           <h2 className="text-4xl font-bold">{template.name}</h2>
@@ -24,18 +25,18 @@ const Template = ({ id }: { id: string }) => {
           </div>
         </div>
         <div className="flex md:justify-end justify-center  self-end md:mt-0 mt-6">
-          <div className="flex gap-4 flex-col md:flex-row">
+          <div className="flex gap-4 flex-col md:flex-row w-full max-w-sm">
             <Link
               href={template.livePreviewLink}
               target="_blank"
-              className="px-10 bg-black/15 dark:bg-white/15 text-opacity-90  py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2"
+              className="px-10 bg-[#d2d2d2] dark:bg-[#2f2f2f] text-opacity-90  py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-full transition-transform duration-300 hover:scale-105 gap-2"
             >
               Live Preview
             </Link>
             <Link
               href={template.downloadLink}
               target="_blank"
-              className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
+              className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-full transition-transform duration-300 hover:scale-105"
             >
               Buy now ${template.sp}
             </Link>
@@ -68,7 +69,7 @@ const Template = ({ id }: { id: string }) => {
           </div>
         </div>
       </section>
-      <section className="flex justify-center items-center mt-16">
+      <section className="flex justify-center items-center ">
         <Link
           href={"/store"}
           className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"

@@ -13,7 +13,7 @@ export const PACKS = [
     discount: 85,
     downloadLink: "https://github.com/GopalVerma1303/gopx.dev",
     livePreviewLink: "https://gopx.dev",
-    docsLink: "/store/packs/heros",
+    docsLink: "/store/pack-heros",
     description: "A collection of modern and stand-out hero sections.",
     summary:
       "The Hero Section Component Pack created using Tailwind CSS and Framer Motion is a modern, visually appealing solution designed for web developers looking to enhance the user experience of their websites.",
@@ -46,7 +46,7 @@ export const TEMPLATES = [
     discount: 50,
     downloadLink: "https://github.com/GopalVerma1303/gopx.dev",
     livePreviewLink: "https://gopx.dev",
-    docsLink: "/store/templates/devsite",
+    docsLink: "/store/template-devsite",
     description:
       "Developer's portfolio website for sharing notes, code snippets, resources, blogs, writeups, and showcase projects.",
     summary:

@@ -67,18 +67,18 @@ const Pack = ({ id }: { id: string }) => {
                 </ul>
               </div>
               <TechStack techStack={template.stack} />
-              <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row gap-4">
                 <Link
                   href={template.livePreviewLink}
                   target="_blank"
-                  className="px-10 bg-black/15 dark:bg-white/15 text-opacity-90  py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2"
+                  className="px-10 bg-black/15 dark:bg-white/15 text-opacity-90  py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50  transition-transform duration-300 hover:scale-105 gap-2 w-full"
                 >
                   Live Preview
                 </Link>
                 <Link
                   href={template.downloadLink}
                   target="_blank"
-                  className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
+                  className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50  transition-transform duration-300 hover:scale-105 w-full"
                 >
                   Buy now ${template.sp}
                 </Link>
