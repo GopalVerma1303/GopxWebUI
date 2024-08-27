@@ -65,6 +65,7 @@ module.exports = {
         },
         transparent: "transparent",
         white: "#fff",
+        theme: "#5271FF",
       },
       keyframes: {
         scroll: {

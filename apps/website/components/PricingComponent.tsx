@@ -42,7 +42,7 @@ const spring = {
   damping: 30,
 };
 
-const FeatureItem: React.FC<FeatureItemProps> = ({ included, name }) => (
+export const FeatureItem: React.FC<FeatureItemProps> = ({ included, name }) => (
   <motion.li
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}

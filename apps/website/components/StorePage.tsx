@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { TEMPLATE_ITEMS, PACK_ITEMS } from "@/content/store";
+import { PACKS, TEMPLATES } from "@/content/store";
 import { Tabs } from "nextra/components";
 import AvatarRow from "@/components/AvatarRow";
 import { FaGithub } from "react-icons/fa";
@@ -44,7 +44,7 @@ export const StorePage: React.FC<StorePageProps> = () => {
     return (
       <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg w-full">
         <Link
-          href={item.route}
+          href={item.docsLink}
           className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]"
         >
           <h2 className="font-bold text-xl break-words">
@@ -92,9 +92,9 @@ export const StorePage: React.FC<StorePageProps> = () => {
         <Tabs items={["Component Packs", "Templates"]}>
           <Tabs.Tab>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {PACK_ITEMS["Component Packs"].map((item) => (
+              {PACKS.map((item) => (
                 <motion.div
-                  key={item.key}
+                  key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
@@ -106,9 +106,9 @@ export const StorePage: React.FC<StorePageProps> = () => {
             </div>
           </Tabs.Tab>
           <Tabs.Tab>
-            {TEMPLATE_ITEMS["Templates"].map((item) => (
+            {TEMPLATES.map((item) => (
               <motion.div
-                key={item.question}
+                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
@@ -124,24 +124,31 @@ export const StorePage: React.FC<StorePageProps> = () => {
   );
 };
 
-const ProductCard: React.FC<{ item: PackItem }> = ({ item }) => {
+interface Pack {
+  name: string;
+  docsLink: string;
+  description: string;
+  images: string[];
+  sp: number;
+  cp: number;
+}
+
+const ProductCard: React.FC<{ item: Pack }> = ({ item }) => {
   return (
     <div className="w-full border border-black/15 rounded-lg shadow bg-[#f1f1f1] dark:bg-[#1f1f1f] dark:border-white/15 overflow-hidden">
-      <Link href={item.route} className="flex flex-col h-full">
+      <Link href={item.docsLink} className="flex flex-col h-full">
         <div className="relative w-full pt-[52.36%]">
-          {" "}
-          {/* Adjust aspect ratio if needed */}
           <Image
             className="rounded-t object-cover"
-            src={"https://webui.gopx.dev/og.jpeg"}
-            alt="product image"
+            src={item.images[0] || "https://gopx.dev/og.jpeg"}
+            alt={`${item.name} preview`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <div className="p-4 flex flex-col flex-grow">
           <h5 className="text-xl flex items-center font-semibold tracking-tight mb-2">
-            Hero Sections{" "}
+            {item.name}{" "}
             <span className="text-xs font-semibold px-2 py-0.5 rounded ms-2 border dark:border-white/15 border-black/15 dark:bg-white/5 font-mono bg-black/5">
               {item.images.length}
             </span>

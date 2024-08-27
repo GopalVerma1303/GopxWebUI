@@ -1,41 +1,28 @@
 "use client";
 
-import { TemplateData } from "@/content/template-data";
-import { cn } from "@/utils/cn";
-import { ChevronLeft } from "lucide-react";
+import { PACKS } from "@/content/store";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
-const TemplateButton = ({
-  href,
-  children,
-  variant,
-}: {
-  href: string;
-  children: string;
-  variant?: string;
-}) => {
-  return (
-    <Link
-      href={href || ""}
-      target="_blank"
-      rel="noreferrer"
-      className={cn(
-        `hover:bg-red-500/90 rounded-lg bg-red-500 px-2 py-1 text-sm font-medium text-white transition-all duration-300 ease-in-out`,
-        variant === "primary" && "bg-red-500 text-white",
-        variant === "secondary" &&
-          "border bg-white text-gray-900 hover:bg-gray-100/50",
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
+const FeatureItem = ({ item }: { item: string }) => (
+  <motion.li
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3 }}
+    className="flex items-center mb-2 text-sm"
+  >
+    <span className="text-green-500 mr-2">{"✓"}</span>
+    {item}
+  </motion.li>
+);
 
-const Template = () => {
-  const router = usePathname();
-  const template = TemplateData.find((t) => t.id === "stoic");
+const Template = ({ id }: { id: string }) => {
+  const template = PACKS.find((p) => p.id === id);
+
+  if (!template) {
+    return <div>Template not found.</div>; // Handle case where template is not found
+  }
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -47,40 +34,49 @@ const Template = () => {
               <div className="flex flex-row items-center gap-2">
                 <h1 className="text-xl font-medium">{template.name}</h1>
                 {template.discount && (
-                  <div className="text-xs font-medium text-red-500">
-                    {template.discount}% off
-                  </div>
+                  <span className="opacity-80 text-green-500 text-sm">
+                    {(
+                      ((template.cp - template.sp) / template.cp) *
+                      100
+                    ).toFixed(2)}
+                    % off!
+                  </span>
                 )}
               </div>
               <div className="flex flex-row items-center gap-1 text-lg">
-                <p className="font-semibold text-red-500">${template?.price}</p>
-                <p className="text-xs text-gray-600/50 line-through">
-                  ${template?.originalPrice}
+                <p className="font-bold text-3xl ">${template.sp}</p>
+                <p className="text-xs opacity-50 line-through">
+                  ${template.cp}
                 </p>
               </div>
-              <div className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-                {template.description}
+              <div className="mt-2 text-sm text-justify">
+                {template.summary}
               </div>
-              <div className="flex flex-row gap-2">
+              <div>
+                <ul className="space-y-2">
+                  {template.features.map((feature, index) => (
+                    <FeatureItem key={index} item={feature} />
+                  ))}
+                </ul>
+              </div>
+              <div className="flex gap-4">
                 <Link
-                  href={template.downloadLink || ""}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-lg bg-red-500 px-2 py-1 text-sm font-medium text-white transition-all duration-300 ease-in-out hover:bg-red-500/90"
-                >
-                  Download Template
-                </Link>
-                <TemplateButton
                   href={template.livePreviewLink}
-                  variant="secondary"
+                  target="_blank"
+                  className="px-10 bg-black/15 dark:bg-white/15 text-opacity-90  py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105 gap-2"
                 >
                   Live Preview
-                </TemplateButton>
+                </Link>
+                <Link
+                  href={template.downloadLink}
+                  target="_blank"
+                  className="px-10 bg-black font-medium dark:bg-white text-white dark:text-black text-opacity-90 py-2 rounded-md focus:bg-opacity-25 active:bg-opacity-30 flex items-center justify-center shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 w-fit transition-transform duration-300 hover:scale-105"
+                >
+                  Buy now ${template.sp}
+                </Link>
               </div>
             </div>
           </div>
-
-          {/* Scrollable images section */}
           <div className="mt-8 lg:mt-0 lg:w-2/3">
             <div className="flex flex-col gap-8">
               {template.images.map((image, index) => (
@@ -90,7 +86,7 @@ const Template = () => {
                   alt={`${template.name} - Image ${index + 1}`}
                   width={1200}
                   height={600}
-                  className="w-full rounded-lg border"
+                  className="w-full rounded-lg border  dark:border-white/15 border-black/15"
                 />
               ))}
             </div>
