@@ -5,9 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { PACKS, TEMPLATES } from "@/content/store";
 import { Tabs } from "nextra/components";
-import AvatarRow from "@/components/AvatarRow";
-import { FaGithub } from "react-icons/fa";
-import { PackItem } from "@/content/store";
 
 interface TechStackItem {
   name: string;
@@ -15,14 +12,12 @@ interface TechStackItem {
 }
 
 interface Store {
-  question: string;
-  title: string;
-  route: string;
+  name: string;
+  docsLink: string;
   description: string;
-  link: string;
-  code: string;
   images: string[];
-  stack: TechStackItem[];
+  sp: number;
+  cp: number;
 }
 
 interface StorePageProps {
@@ -30,16 +25,6 @@ interface StorePageProps {
 }
 
 export const StorePage: React.FC<StorePageProps> = () => {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState<string>("Component Packs");
-
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    router.push(`/store?tab=${encodeURIComponent(tab)}`, undefined, {
-      shallow: true,
-    });
-  };
-
   const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     return (
       <div className="p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg w-full">
@@ -48,26 +33,27 @@ export const StorePage: React.FC<StorePageProps> = () => {
           className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]"
         >
           <h2 className="font-bold text-xl break-words">
-            {item.title || "Portfolio Store"}
+            {item.name || "Portfolio Store"}
           </h2>
           <p className="opacity-60 break-words text-sm">
             {item.description ||
               "Every Portfolio Store is a multi-page responsive website."}
           </p>
-          {/* <AvatarRow profiles={item.stack} /> */}
           <p className="font-bold text-3xl">
-            $9{" "}
+            ${item.sp}{" "}
             <span className="opacity-60 text-sm font-light line-through">
-              $59
+              ${item.cp}
             </span>
-            <span className="opacity-80 text-green-500 text-sm font-light mx-2">
-              {(((59 - 9) / 59) * 100).toFixed(2)}% off!
+            <span className="opacity-80 text-green-500 text-sm  mx-2">
+              {item.sp === 0
+                ? "FREE"
+                : `${(((item.cp - item.sp) / item.cp) * 100).toFixed(2)}% off!`}
             </span>
           </p>
           <div className="flex gap-2"></div>
         </Link>
         <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-full">
-          {item.images?.map((src, index) => (
+          {item.images?.slice(0, 3).map((src, index) => (
             <div
               key={index}
               className="relative w-full h-60 m-1 rounded-md overflow-hidden"
@@ -160,8 +146,10 @@ const ProductCard: React.FC<{ item: Pack }> = ({ item }) => {
               <span className="opacity-60 text-sm font-light line-through">
                 ${item.cp}
               </span>
-              <span className="opacity-80 text-green-500 text-sm font-light mx-2">
-                {(((item.cp - item.sp) / item.cp) * 100).toFixed(2)}% off!
+              <span className="opacity-80 text-green-500 text-sm  mx-2">
+                {item.sp === 0
+                  ? "FREE"
+                  : `${(((item.cp - item.sp) / item.cp) * 100).toFixed(2)}% off!`}
               </span>
             </p>
           </div>
