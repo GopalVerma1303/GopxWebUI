@@ -19,7 +19,9 @@ const Template = ({ id }: { id: string }) => {
         <div className="flex flex-col gap-6 md:text-left text-center">
           <h2 className="text-4xl font-bold">{template.name}</h2>
           <p className="opacity-60 text-lg">{template.description}</p>
-          <TechStack techStack={template.stack} />
+          <div className="mx-auto w-full flex justify-center md:justify-normal ">
+            <TechStack techStack={template.stack} />
+          </div>
         </div>
         <div className="flex md:justify-end justify-center  self-end md:mt-0 mt-6">
           <div className="flex gap-4">
@@ -89,6 +91,6 @@ const FeatureItem = ({
 }) => (
   <div className="mb-8">
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-gray-400">{description}</p>
+    <p className="opacity-50">{description}</p>
   </div>
 );
