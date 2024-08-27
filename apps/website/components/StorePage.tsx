@@ -133,13 +133,13 @@ const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
               : `${(((item.cp - item.sp) / item.cp) * 100).toFixed(2)}% off!`}
           </span>
         </p>
-        <div className="flex gap-2"></div>
       </Link>
-      <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-full">
+      <div className="flex flex-col sm:flex-row gap-2 w-full">
         {item.images?.slice(0, 3).map((src, index) => (
           <div
             key={index}
-            className={`relative w-full h-60 m-1 rounded-md overflow-hidden ${index > 0 ? "hidden md:block" : ""}`}
+            className={`relative w-full h-60 m-1 rounded-md overflow-hidden 
+        ${index === 0 ? "" : index === 1 ? "hidden md:block" : "hidden lg:block"}`}
           >
             <Image
               src={src || "https://gopx.dev/og.jpeg"}
