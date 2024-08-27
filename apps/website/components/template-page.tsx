@@ -24,7 +24,7 @@ const Template = ({ id }: { id: string }) => {
           </div>
         </div>
         <div className="flex md:justify-end justify-center  self-end md:mt-0 mt-6">
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col md:flex-row">
             <Link
               href={template.livePreviewLink}
               target="_blank"

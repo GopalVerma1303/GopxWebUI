@@ -113,7 +113,7 @@ const StoreItem: React.FC<{ item: Store }> = ({ item }) => {
     <div className="p-6 gap-4 flex flex-col-reverse lg:flex-row items-start lg:items-center justify-between bg-[#f1f1f1] dark:bg-[#1f1f1f] border dark:border-white/15 border-black/15 rounded-lg w-full">
       <Link
         href={item.docsLink}
-        className="flex flex-col mb-4 lg:mb-0  space-y-4 flex-grow w-[380px]"
+        className="flex flex-col space-y-4 flex-grow w-[380px]"
       >
         <h2 className="font-bold text-xl break-words">
           {item.name || "Portfolio Store"}
