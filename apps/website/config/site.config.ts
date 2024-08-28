@@ -1,7 +1,7 @@
 import type { Site } from "@/types";
 export const siteConfig: Site = {
   name: "GOPX WEBUI",
-  title: "GOPX WEBUI| webui.gopx.dev",
+  title: "GOPX WEBUI | webui.gopx.dev",
   description: "Beautiful UI Components for Web at Your Fingertips!",
   keywords: [
     "Gopal Verma",

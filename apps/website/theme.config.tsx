@@ -3,17 +3,10 @@ import { useRouter } from "next/router";
 import type { DocsThemeConfig } from "nextra-theme-docs";
 import { useConfig } from "nextra-theme-docs";
 import Image from "next/image";
-import {
-  GitHubIcon,
-  TwitterXIcon,
-  DiscordIcon,
-  RssIcon,
-  SiteMapIcon,
-} from "@/components/icons";
+import { GitHubIcon, TwitterXIcon, DiscordIcon } from "@/components/icons";
 import { SOCIAL_MEDIA_LINKS } from "@/content/social-media";
 import Footer from "@/components/Footer";
 import FRLink from "./components/toc/fr-link";
-import BugLink from "./components/toc/bug-link";
 
 const logo = (
   <div className="flex items-center gap-2">
@@ -45,7 +38,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
-        titleTemplate: "%s - webui.gopx.dev",
+        titleTemplate: "%s - GopxWebUI",
       };
     }
   },
