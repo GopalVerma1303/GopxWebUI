@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && dev:registry",
+    "dev:registry": "pnpm build:registry --watch",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

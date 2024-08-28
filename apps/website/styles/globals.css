@@ -248,7 +248,7 @@ code {
     "ss01" 1;
 }
 
-code .line::before {
+.show-number-line .line::before {
   content: counter(step);
   counter-increment: step;
   width: 1rem;

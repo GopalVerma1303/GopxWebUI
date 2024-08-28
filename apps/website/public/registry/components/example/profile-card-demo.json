@@ -1,0 +1,13 @@
+{
+  "name": "profile-card-demo",
+  "registryDependencies": [
+    "profile-card"
+  ],
+  "files": [
+    {
+      "name": "profile-card-demo.tsx",
+      "content": "import React from \"react\";\nimport ProfileCard from \"@/components/ui/profile-card\";\n\nconst ProfileCardDemo: React.FC = () => {\n  return (\n    <ProfileCard\n      name=\"Gopal Verma\"\n      role=\"Software Developer\"\n      company=\"GOPX WEBUI\"\n      image=\"/me.jpg\"\n      email=\"business.gopalverma@gmail.com\"\n      phone=\"+1 (555) 123-4567\"\n      website=\"www.gopx.dev\"\n      github=\"GopalVerma1303\"\n    />\n  );\n};\n\nexport default ProfileCardDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

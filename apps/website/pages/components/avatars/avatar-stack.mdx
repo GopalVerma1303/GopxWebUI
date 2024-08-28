@@ -1,9 +1,9 @@
 ---
-title: "Avatars"
+title: "Avatars Stack"
 description: "Beautifully designed Avatar components Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
 ---
 
-import Showcase from '@/components/Showcase2';
+import Showcase from '@/components/Showcase3';
 import { ProfileCard }  from '@gopx-webui/ui/cards';
 import { Steps } from 'nextra/components'
 import { Tabs } from "nextra/components";
@@ -11,18 +11,18 @@ import TabButton from "@/components/gopx-buttons/TabButton";
 import toast, { Toaster } from 'react-hot-toast';
 import AvatarStack from '@/components/ui/avatar-stack';
 import GopxUserStack from '@/components/example/avatar-stack-demo';
+import { ComponentSource } from "@/components/component-source";
+
 
 export const handleClick = () => {
   toast('Button Pressed!');
 };
 
-# Avatars
+# Avatar Stack
 
 <p className="opacity-80 text-lg">Beautifully designed Avatar components with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
 
-`Avatars`
-
-## Avatar Stack
+`Avatars` `Stack`
 
 <Tabs items={['Preview', 'Code']}>
   <Tabs.Tab>
@@ -86,57 +86,7 @@ export default GopxUserStack;
   </Tabs.Tab>
   <Tabs.Tab>
     ### Create `avatar-stack.tsx`
-```tsx filename="avatar-stack.tsx" showLineNumbers
-import Image from "next/image";
-
-interface Avatar {
-  src: string;
-  alt: string;
-}
-
-interface AvatarStackProps {
-  avatars: Avatar[];
-  maxDisplay?: number;
-  size?: number;
-  borderColor?: string;
-  darkBorderColor?: string;
-}
-
-const AvatarStack: React.FC<AvatarStackProps> = ({
-  avatars,
-  maxDisplay = 5,
-  size = 10,
-  borderColor = "white",
-  darkBorderColor = "gray-800",
-}) => {
-  const displayAvatars = avatars.slice(0, maxDisplay);
-  const remainingCount = avatars.length - maxDisplay;
-
-  return (
-    <div className={`flex -space-x-3 rtl:space-x-reverse`}>
-      {displayAvatars.map((avatar, index) => (
-        <Image
-          key={index}
-          width={56}
-          height={56}
-          className={`w-${size} h-${size} border-2 border-${borderColor} rounded-full dark:border-${darkBorderColor}`}
-          src={avatar.src}
-          alt={avatar.alt}
-        />
-      ))}
-      {remainingCount > 0 && (
-        <div
-          className={`flex items-center justify-center w-${size} h-${size} text-[10px] text-white/80 font-medium text-white bg-gray-700 border-2 border-${borderColor} rounded-full hover:bg-gray-600 dark:border-${darkBorderColor}`}
-        >
-          +1.4k
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default AvatarStack;
-```
+  <ComponentSource name="avatar-stack" />
   </Tabs.Tab>
 </Tabs>
 

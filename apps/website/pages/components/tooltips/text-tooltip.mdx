@@ -8,6 +8,8 @@ import Showcase from "@/components/Showcase";
 import { Tabs } from "nextra/components";
 import { Steps } from 'nextra/components'
 import BlogList from "@/components/demos/text-tooltip";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
 
 # Text Tooltip
 
@@ -15,176 +17,28 @@ import BlogList from "@/components/demos/text-tooltip";
 
 `Tooltip` `Text` `Description` `Reveal` `Animation`
 
-<br />
-
-
-<Tabs items={["Preview", "Code"]}>
-  <Tabs.Tab>
-    <Showcase 
-      component={<BlogList />}
-    />
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="TextTooltipDemo.tsx"
-import React from "react";
-import GhostLabel from "../GhostLabel";
-import BlogRow from "../BlogRow";
-
-type BlogPost = {
-  title: string;
-  date: Date;
-  readTime: number;
-  description: string;
-  link: string;
-};
-
-const dummyBlogPosts: BlogPost[] = [
-  {
-    title: "The Future of AI in Web Development",
-    date: new Date("2023-08-15"),
-    readTime: 5,
-    description:
-      "Explore how AI is transforming the landscape of web development, from code generation to user experience optimization.",
-    link: "#",
-  },
-  {
-    title: "Mastering React Hooks",
-    date: new Date("2023-07-22"),
-    readTime: 8,
-    description:
-      "A deep dive into React Hooks, covering useEffect, useContext, and custom hooks to supercharge your React applications.",
-    link: "#",
-  },
-  {
-    title: "TypeScript Best Practices in 2023",
-    date: new Date("2023-06-30"),
-    readTime: 6,
-    description:
-      "Learn the latest TypeScript best practices to write more maintainable and scalable code in your projects.",
-    link: "#",
-  },
-];
-
-const BlogList: React.FC = () => {
-  const blogsByYear = dummyBlogPosts.reduce(
-    (acc, post) => {
-      const year = post.date.getFullYear();
-      if (!acc[year]) {
-        acc[year] = [];
-      }
-      acc[year].push(post);
-      return acc;
-    },
-    {} as Record<number, BlogPost[]>,
-  );
-
-  const years = Object.keys(blogsByYear)
-    .map(Number)
-    .sort((a, b) => b - a);
-
-  return (
-    <div className="w-full max-w-2xl mx-auto py-12 px-4">
-      <div className="-mt-0">
-        {years.map((year) => (
-          <div key={year} className="relative mt-20">
-            <GhostLabel text={year.toString()} />
-            {blogsByYear[year].map((post, index) => (
-              <BlogRow key={index} post={post} />
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default BlogList;
-        ```
-  </Tabs.Tab>
-</Tabs>
+<ComponentPreview name="text-tooltip-demo" />
 
 ## Installation
 
-### Create `TextTooltip.tsx` component
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
 
-```tsx filename="TextTooltip.tsx" showLineNumbers
-import React, { useState, useRef, useEffect } from "react";
-
-type TextTooltipProps = {
-  text: string;
-  hoverMessage?: string;
-  children?: React.ReactNode;
-};
-
-const TextTooltip: React.FC<TextTooltipProps> = ({
-  text,
-  hoverMessage,
-  children,
-}) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const linkRef = useRef<HTMLDivElement>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (linkRef.current && tooltipRef.current) {
-        const linkRect = linkRef.current.getBoundingClientRect();
-        const tooltipRect = tooltipRef.current.getBoundingClientRect();
-        setPosition({
-          x: e.clientX - linkRect.left,
-          y: e.clientY - linkRect.top - tooltipRect.height - 10,
-        });
-      }
-    };
-
-    if (isHovering) {
-      document.addEventListener("mousemove", handleMouseMove);
-      timeoutId = setTimeout(() => setIsVisible(true), 50);
-    } else {
-      document.removeEventListener("mousemove", handleMouseMove);
-      setIsVisible(false);
-    }
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      clearTimeout(timeoutId);
-    };
-  }, [isHovering]);
-
-  return (
-    <div
-      ref={linkRef}
-      className="inline-block relative w-full hover:cursor-pointer"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      {children || text}
-      {isHovering && hoverMessage && (
-        <div
-          ref={tooltipRef}
-          className={`absolute bg-[#ffffff] dark:bg-[#111111] border border-black/10 dark:border-white/20 p-3 rounded shadow-lg z-10 w-64 transition-opacity duration-200 ease-in-out ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            left: `${position.x}px`,
-            top: `${position.y}px`,
-            transform: "translateX(-50%)",
-            pointerEvents: "none",
-          }}
-        >
-          <p className="text-sm opacity-70 font-light">{hoverMessage}</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default TextTooltip;
+```bash
+npx gopx-webui add text-tooltip
 ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+  ### Create `text-tooltip.tsx` component
+
+  <ComponentSource name="text-tooltip" />
+</Steps>
+
+  </Tabs.Tab>
+</Tabs>
+
 
 ## Props
 

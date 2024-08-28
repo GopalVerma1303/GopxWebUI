@@ -66,6 +66,7 @@ const Code: React.FC<CodeProps> = ({
       >
         <div className="-ml-5">
           <code
+            className="show-number-line"
             dir="ltr"
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
           />

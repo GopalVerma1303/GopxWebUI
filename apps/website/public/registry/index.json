@@ -31,6 +31,16 @@
     "type": "components:ui"
   },
   {
+    "name": "bento-grid-demo",
+    "registryDependencies": [
+      "bento-grid"
+    ],
+    "files": [
+      "registry/components/ui/bento-grid.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "bg-bricks",
     "files": [
       "registry/components/ui/bg-bricks.tsx"
@@ -233,6 +243,16 @@
       "registry/components/ui/profile-card.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "profile-card-demo",
+    "registryDependencies": [
+      "profile-card"
+    ],
+    "files": [
+      "registry/components/example/profile-card-demo.tsx"
+    ],
+    "type": "components:example"
   },
   {
     "name": "tab-button",

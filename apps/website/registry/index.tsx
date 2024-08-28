@@ -155,6 +155,13 @@ const example: Registry = {
       () => import("@/registry/components/example/avatar-stack-demo"),
     ),
   },
+  "bento-grid-demo": {
+    name: "bento-grid-demo",
+    type: "components:example",
+    registryDependencies: ["bento-grid"],
+    files: ["registry/components/ui/bento-grid.tsx"],
+    component: React.lazy(() => import("@/registry/components/ui/bento-grid")),
+  },
   "copyable-input-demo": {
     name: "copyable-input-demo",
     type: "components:example",
@@ -207,6 +214,15 @@ const example: Registry = {
     files: ["registry/components/example/infinite-carousel-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/infinite-carousel-demo"),
+    ),
+  },
+  "profile-card-demo": {
+    name: "profile-card-demo",
+    type: "components:example",
+    registryDependencies: ["profile-card"],
+    files: ["registry/components/example/profile-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/profile-card-demo"),
     ),
   },
   "text-tooltip-demo": {

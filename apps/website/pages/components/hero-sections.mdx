@@ -5,6 +5,9 @@ description: "Beautifully designed Hero Sections with Tailwind CSS and Framer Mo
 
 import { Tabs } from "nextra/components";
 import GopxHero from "@/registry/components/block/gopx-hero";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
 
 # Hero Sections
 
@@ -12,127 +15,6 @@ import GopxHero from "@/registry/components/block/gopx-hero";
 
 `Hero` `Section`
 
-### GOPX Hero Section
+### Gopx Hero Section
 
-<Tabs items={['Preview', 'Code']}>
-  <Tabs.Tab>
-      <div className="w-full border-[1px] border-black/10 dark:border-white/10 p-4 rounded-lg">
-        <GopxHero />
-      </div>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="Hero.tsx" showLineNumbers
-import Link from "next/link";
-import BentoGrid from "@/components/ui/bento-grid";
-import AvatarStack from "@/components/ui/avatar-stack";
-import { FaStar } from "react-icons/fa";
-import CopyableInput from "@/components/ui/copyable-input";
-
-const GopxUserStack: React.FC = () => {
-  const baseUrl = "https://webui.gopx.dev";
-
-  const avatars = [
-    {
-      src: `${baseUrl}/assets/avatars/1.jpeg`,
-      alt: "Avatar 1",
-    },
-    {
-      src: `${baseUrl}/assets/avatars/2.jpeg`,
-      alt: "Avatar 2",
-    },
-    {
-      src: `${baseUrl}/assets/avatars/3.jpeg`,
-      alt: "Avatar 3",
-    },
-    {
-      src: `${baseUrl}/assets/avatars/4.jpeg`,
-      alt: "Avatar 4",
-    },
-    {
-      src: `${baseUrl}/assets/avatars/5.jpeg`,
-      alt: "Avatar 5",
-    },
-    {
-      src: `${baseUrl}/assets/avatars/6.jpeg`,
-      alt: "Avatar 6",
-    },
-  ];
-
-  return (
-    <div className="my-6 relative  flex-col">
-      <AvatarStack avatars={avatars} />
-      <div className="absolute -bottom-1 left-[250px] transform -translate-x-1/2 w-1/2 text-center">
-        <div className="flex justify-center mb-0">
-          {[...Array(5)].map((_, index) => (
-            <FaStar key={index} className="text-yellow-400 mx-1" />
-          ))}
-        </div>
-        <span className="inline-block transform dark:text-white/50 text-black/50 text-lg font-caveat font-bold ">
-          1k+ fingers tapped!
-        </span>
-      </div>
-    </div>
-  );
-};
-
-const GopxHero = () => {
-  return (
-    <section className="w-full px-8 py-12  grid grid-cols-1 items-center gap-8 max-w-6xl mx-auto">
-      <div>
-        <span className="block mb-3 text-xs md:text-sm text-[#5271ff] font-medium">
-          Effortless UI Development with{" "}
-          <span className="relative text-[#5279ff] font-extrabold">
-            GOPX WEBUI
-            <svg
-              className="absolute -bottom-0.8 left-0 w-full"
-              viewBox="0 0 338 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 5.26C47.65 4.24667 94.3167 3.73333 141 3.72C187.683 3.70667 234.35 4.19333 281 5.18C300.667 6.04667 320.333 7.24667 340 8.78"
-                stroke="#5271ff"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-        </span>
-        <h3
-          className="inline-flex text-4xl md:text-6xl font-bold leading-tight tracking-tight -ml-0.5 mt-5 bg-gradient-to-br from-indigo-600 via-blue-500 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-500 bg-clip-text text-transparent"
-          style={{
-            fontSize: "min(3.375rem, max(8vw, 2.5rem))",
-            fontFeatureSettings: "initial",
-            lineHeight: 1.2,
-            paddingBottom: "0.2em",
-          }}
-        >
-          Beautiful UI Components for Web at Your Fingertips
-        </h3>
-        <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 my-4 md:my-6">
-          Enhance your projects with our pre-built Tailwind CSS and Framer
-          Motion components. Simply copy, paste, and customize to fit your
-          needs.
-        </p>
-        <GopxUserStack />
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            href="/components"
-            className="bg-[#5271ff] sm:text-medium text-sm justify-center items-center flex py-2 px-4 rounded transition-all hover:bg-[#5259ff] active:scale-95 !text-white !no-underline"
-          >
-            Explore Components →
-          </Link>
-          <div className="flex gap-2">
-            <CopyableInput value="npm i gopx-webui" editable={false} />
-          </div>
-        </div>
-      </div>
-      <BentoGrid />
-    </section>
-  );
-};
-
-export default GopxHero;
-```
-  </Tabs.Tab>
-</Tabs>
+<ComponentPreview name="gopx-hero" />
