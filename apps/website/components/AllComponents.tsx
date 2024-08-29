@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { GrTooltip } from "react-icons/gr";
 import { LuWallpaper } from "react-icons/lu";
-import { PiAlignTopFill } from "react-icons/pi";
+import { PiAlignTopFill, PiTabsFill } from "react-icons/pi";
 
 // Importing ComponentCard and ComponentCardWrapper
 import ComponentCard from "@/components/ComponentCard";
@@ -52,7 +52,7 @@ const componentsData = [
     title: "Links",
     href: "/components/links",
     Icon: FaLink,
-    sections: ["Trending", "Components"],
+    sections: ["Components"],
   },
   {
     title: "Tooltips",
@@ -119,6 +119,12 @@ const componentsData = [
     href: "/components/headers",
     Icon: PiAlignTopFill,
     sections: ["Components"],
+  },
+  {
+    title: "Tabs",
+    href: "/components/tabs",
+    Icon: PiTabsFill,
+    sections: ["Components", "Trending"],
   },
 ];
 
