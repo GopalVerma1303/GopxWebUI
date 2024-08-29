@@ -231,6 +231,23 @@
     "type": "components:example"
   },
   {
+    "name": "lifted-tab",
+    "files": [
+      "registry/components/ui/lifted-tab.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "lifted-tab-demo",
+    "registryDependencies": [
+      "lifted-tab"
+    ],
+    "files": [
+      "registry/components/example/lifted-tab-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "page-header",
     "files": [
       "registry/components/ui/page-header.tsx"

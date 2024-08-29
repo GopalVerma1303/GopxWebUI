@@ -1,0 +1,10 @@
+{
+  "name": "lifted-tab",
+  "files": [
+    {
+      "name": "lifted-tab.tsx",
+      "content": "import React from \"react\";\nimport { motion } from \"framer-motion\";\n\ninterface TabData {\n  id: string;\n  label: string;\n}\n\ninterface LiftedTabProps {\n  tabs: TabData[];\n  activeTab: string;\n  setActiveTab: (tabId: string) => void;\n}\n\nconst LiftedTab: React.FC<LiftedTabProps> = ({\n  tabs,\n  activeTab,\n  setActiveTab,\n}) => {\n  return (\n    <div className=\"flex\">\n      {tabs.map((tab) => (\n        <motion.button\n          key={tab.id}\n          className={`px-4 py-2 rounded-t-lg cursor-pointer transition-shadow duration-150 ease-in-out\n            ${\n              activeTab === tab.id\n                ? \"border-t border-l border-r border-black/15 dark:border-white/15 !shadow-[0_-2px_4px_rgba(0,0,0,0.1)] dark:!shadow-[0_-2px_4px_rgba(255,255,255,0.1)] bg-[#fafafa] dark:bg-[#1a1a1a]\"\n                : \"border-b border-black/15 dark:border-white/15 bg-transparent\"\n            }\n          `}\n          onClick={() => setActiveTab(tab.id)}\n          whileHover={{\n            boxShadow: \"0 -4px 6px rgba(0, 0, 0, 0.1)\",\n            transition: { duration: 0.15, ease: \"easeInOut\" },\n          }}\n        >\n          {tab.label}\n        </motion.button>\n      ))}\n    </div>\n  );\n};\n\nexport default LiftedTab;\n"
+    }
+  ],
+  "type": "components:ui"
+}
