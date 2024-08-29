@@ -1,76 +1,53 @@
 ---
 title: "Lifted Tab"
-description: "Beautifully designed Button components for webui.gopx.dev with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/buttons/gopx-buttons.png"
+description: "Elegant and interactive tab components crafted with Tailwind CSS and Framer Motion. Easily integrate and customize to elevate your web applications."
+image: "https://webui.gopx.dev/assets/components/tabs/lifted-tab.png"
 ---
 
-import Showcase from '@/components/Showcase2';
-import { ProfileCard }  from '@gopx-webui/ui/cards';
 import { Steps } from 'nextra/components'
 import { Tabs } from "nextra/components";
-import TabButton from "@/components/gopx-buttons/TabButton"; 
-import toast, { Toaster } from 'react-hot-toast';
-import LiftedTab from "@/components/ui/lifted-tab";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
 
-export const handleClick = () => {
-  toast('Button Pressed!');
-};
+# Lifted Tab
 
-# GOPX Buttons
+<p className="component-description">Elegant and interactive tab components crafted with Tailwind CSS and Framer Motion. Easily integrate and customize to elevate your web applications.</p>
 
-<p className="opacity-80 text-lg">Beautifully designed Button components for [GOPX WEBUI](https://webui.gopx.dev) with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+`Tabs` `Animated` `framer-motion`
 
-`Buttons` `GOPX` `Animated` `framer-motion`
+<ComponentPreview name="lifted-tab-demo" />
 
-## Tab Button
+## Installation
 
-<Tabs items={['Preview', 'Code']}>
+<Tabs items={["CLI", "Manual"]}>
   <Tabs.Tab>
-    <Showcase>
-      <div className="flex justify-center bg-white dark:bg-[#111111] rounded-xl w-1/2 h-full py-10">
-        <LiftedTab /> 
-      </div>
-    </Showcase>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="TabButton.tsx" showLineNumbers
-import React from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/utils/cn";
+  ### Run the following command:
 
-interface TabButtonProps {
-  type?: "button" | "submit" | "reset" | undefined;
-  label: string;
-  onClick: () => void;
-  className?: string;
-}
-
-const TabButton: React.FC<TabButtonProps> = ({
-  label,
-  onClick,
-  type,
-  className,
-}) => {
-  return (
-    <motion.button
-      type={type}
-      className={cn(
-        `px-4 py-2 font-bold rounded-md text-xl bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600`,
-        className,
-      )}
-      onClick={onClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {label}
-    </motion.button>
-  );
-};
-
-export default TabButton;
-
-// use like this
-<TabButton label="Click me!" onClick={handleClick} />
+```bash
+npx gopx-webui add lifted-tab
 ```
   </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+  ### Install `framer-motion`
+
+  ```bash
+  npm install framer-motion
+  ```
+
+  ### Create `lifted-tab.tsx` component
+
+  <ComponentSource name="lifted-tab" />
+</Steps>
+
+  </Tabs.Tab>
 </Tabs>
+
+# Props
+
+| Prop          | Type                                    | Required | Description                                                        |
+|---------------|-----------------------------------------|----------|--------------------------------------------------------------------|
+| `tabs`        | `Array<{ id: string; label: string; }>` | Yes      | An array of tab objects, each containing an `id` and `label`.     |
+| `activeTab`   | `string`                                | Yes      | The `id` of the currently active tab.                              |
+| `setActiveTab`| `(tabId: string) => void`              | Yes      | A function to update the active tab by setting its `id`.          |
+

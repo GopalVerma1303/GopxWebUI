@@ -88,6 +88,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/infinite-carousel.tsx"],
   },
+  "lifted-tab": {
+    name: "lifted-tab",
+    type: "components:ui",
+    files: ["registry/components/ui/lifted-tab.tsx"],
+  },
   "page-header": {
     name: "page-header",
     type: "components:ui",
@@ -214,6 +219,15 @@ const example: Registry = {
     files: ["registry/components/example/infinite-carousel-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/infinite-carousel-demo"),
+    ),
+  },
+  "lifted-tab-demo": {
+    name: "lifted-tab-demo",
+    type: "components:example",
+    registryDependencies: ["lifted-tab"],
+    files: ["registry/components/example/lifted-tab-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/lifted-tab-demo"),
     ),
   },
   "profile-card-demo": {

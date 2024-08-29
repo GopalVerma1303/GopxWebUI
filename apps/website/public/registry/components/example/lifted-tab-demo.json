@@ -1,0 +1,13 @@
+{
+  "name": "lifted-tab-demo",
+  "registryDependencies": [
+    "lifted-tab"
+  ],
+  "files": [
+    {
+      "name": "lifted-tab-demo.tsx",
+      "content": "import React, { useState } from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport LiftedTab from \"@/components/ui/lifted-tab\";\n\ninterface TabData {\n  id: string;\n  label: string;\n  content: string;\n}\n\nconst tabs: TabData[] = [\n  { id: \"1\", label: \"npm\", content: \"npm install gopx-webui\" },\n  { id: \"2\", label: \"yarn\", content: \"yarn add gopx-webui\" },\n  { id: \"3\", label: \"pnpm\", content: \"pnpm add gopx-webui\" },\n  { id: \"4\", label: \"bun\", content: \"bun add gopx-webui\" },\n];\n\nconst LiftedTabDemo: React.FC = () => {\n  const [activeTab, setActiveTab] = useState(tabs[0].id);\n\n  return (\n    <div className=\"p-6 rounded-lg bg-[#fafafa] dark:bg-[#1a1a1a] border border-black/15 dark:border-white/15\">\n      <LiftedTab\n        tabs={tabs}\n        activeTab={activeTab}\n        setActiveTab={setActiveTab}\n      />\n      <AnimatePresence mode=\"wait\">\n        <motion.div\n          key={activeTab}\n          initial={{ opacity: 0, y: 10 }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y: -10 }}\n          transition={{ duration: 0.25, ease: \"easeInOut\" }}\n          className=\"p-4 rounded-b-lg text-gray-800 dark:text-gray-200\"\n        >\n          <code className=\"opacity-70\">\n            {tabs.find((tab) => tab.id === activeTab)?.content}\n          </code>\n        </motion.div>\n      </AnimatePresence>\n    </div>\n  );\n};\n\nexport default LiftedTabDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}
