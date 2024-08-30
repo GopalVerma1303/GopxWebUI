@@ -73,6 +73,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/dropdown.tsx"],
   },
+  "folder-hover-button": {
+    name: "folder-hover-button",
+    type: "components:ui",
+    files: ["registry/components/ui/folder-hover-button.tsx"],
+  },
   "ghost-label": {
     name: "ghost-label",
     type: "components:ui",
@@ -174,6 +179,15 @@ const example: Registry = {
     files: ["registry/components/example/copyable-input-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/copyable-input-demo"),
+    ),
+  },
+  "folder-hover-button-demo": {
+    name: "folder-hover-button-demo",
+    type: "components:example",
+    registryDependencies: ["folder-hover-button"],
+    files: ["registry/components/example/folder-hover-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/folder-hover-button-demo"),
     ),
   },
   "ghost-label-demo": {

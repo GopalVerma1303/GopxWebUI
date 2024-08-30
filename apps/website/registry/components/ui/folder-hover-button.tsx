@@ -21,19 +21,19 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
     controls.start("closed");
   };
 
-  const maxRotation = 44;
+  const maxRotation = 45;
   const rotationStep = maxRotation / (images.length + 1);
 
   const folderVariants = {
     closed: {
       rotateX: 0,
       y: 0,
-      z: 50,
+      z: 40,
       zIndex: 1,
     },
     open: {
       rotateX: -maxRotation,
-      z: 50,
+      z: 40,
       zIndex: 3,
     },
   };
@@ -55,7 +55,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
 
   return (
     <div
-      className="relative w-96 h-36 cursor-pointer"
+      className="relative w-full h-32 cursor-pointer"
       style={{ perspective: "1000px" }}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
@@ -89,7 +89,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
           </motion.div>
         ))}
         <motion.div
-          className="absolute inset-0 bg-black rounded-lg origin-bottom"
+          className="absolute inset-0 bg-[#1f1f1f] border-[2px] border-white/5 rounded-lg origin-bottom"
           initial="closed"
           animate={controls}
           variants={folderVariants}
@@ -100,7 +100,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xl font-bold uppercase text-white">
+            <span className="text-2xl font-caveat text-white">
               {folderName}
             </span>
           </div>
@@ -110,22 +110,4 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
   );
 }
 
-const FolderHoverButtonDemo = () => {
-  return (
-    <div className="flex items-center justify-center">
-      <FolderHoverButton
-        folderName="My Folder"
-        images={[
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fllama-on-disk.6f858965.png&w=3840&q=75",
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Foctocat-programming.ba4330be.png&w=3840&q=75",
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwin-crash-meme.5c68b41d.png&w=2048&q=75",
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fllama-on-disk.6f858965.png&w=3840&q=75",
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Foctocat-programming.ba4330be.png&w=3840&q=75",
-          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwin-crash-meme.5c68b41d.png&w=2048&q=75",
-        ]}
-      />
-    </div>
-  );
-};
-
-export default FolderHoverButtonDemo;
+export default FolderHoverButton;

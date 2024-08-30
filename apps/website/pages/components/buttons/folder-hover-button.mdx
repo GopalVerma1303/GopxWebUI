@@ -12,63 +12,47 @@ import TabButton from "@/components/gopx-buttons/TabButton";
 import toast, { Toaster } from 'react-hot-toast';
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import  FolderHoverButtonDemo  from "@/components/ui/folder-hover-button";
+import  FolderHoverButtonDemo  from "@/components/example/folder-hover-button-demo";
 
-export const handleClick = () => {
-  toast('Button Pressed!');
-};
 
-# Foder Hover Buttons
+# Folder Hover Buttons
 
 <p className="opacity-80 text-lg">Beautifully designed Folder Hover component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
 
 `Button` `Tailwind CSS` `Framer Motion` `Reveal`
 
-<Tabs items={['Preview', 'Code']}>
+<ComponentPreview name="folder-hover-button-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
   <Tabs.Tab>
-    <Showcase>
-      <FolderHoverButtonDemo />
-    </Showcase>
-  </Tabs.Tab>
-  <Tabs.Tab>
-```tsx filename="TabButton.tsx" showLineNumbers
-import React from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/utils/cn";
+  ### Run the following command:
 
-interface TabButtonProps {
-  type?: "button" | "submit" | "reset" | undefined;
-  label: string;
-  onClick: () => void;
-  className?: string;
-}
-
-const TabButton: React.FC<TabButtonProps> = ({
-  label,
-  onClick,
-  type,
-  className,
-}) => {
-  return (
-    <motion.button
-      type={type}
-      className={cn(
-        `px-4 py-2 font-bold rounded-md text-xl bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600`,
-        className,
-      )}
-      onClick={onClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {label}
-    </motion.button>
-  );
-};
-
-export default TabButton;
-
-// use like this
-<TabButton label="Click me!" onClick={handleClick} />
+```bash
+npx gopx-webui add folder-hover-button
 ```
   </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+
+### Install `framer-motion`
+
+```bash
+npm i framer-motion
+```
+
+### Create `folder-hover-button.tsx` 
+
+  <ComponentSource name="folder-hover-button" />
+
+</Steps>
+  </Tabs.Tab>
 </Tabs>
+
+# Props
+
+| Prop        | Type          | Required | Description                                               |
+|-------------|---------------|----------|-----------------------------------------------------------|
+| `folderName`| `string`      | `Yes`      | The name of the folder to be displayed on the button.    |
+| `images`    | `string[]`    | `Yes`      | An array of image URLs to be displayed when the button is hovered over. |
