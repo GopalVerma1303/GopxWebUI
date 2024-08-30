@@ -3,7 +3,7 @@ import FolderHoverButton from "@/components/ui/folder-hover-button";
 
 const FolderHoverButtonDemo = () => {
   return (
-    <div className="flex flex-col gap-6 w-full h-full">
+    <div className="flex justify-center items-center flex-col gap-6 w-full h-full">
       <FolderHoverButton
         folderName="🗽 New York, USA"
         images={[

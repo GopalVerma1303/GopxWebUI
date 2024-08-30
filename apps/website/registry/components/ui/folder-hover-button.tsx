@@ -55,7 +55,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
 
   return (
     <div
-      className="relative w-full h-32 cursor-pointer"
+      className="relative w-4/5 h-32 cursor-pointer"
       style={{ perspective: "1000px" }}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
