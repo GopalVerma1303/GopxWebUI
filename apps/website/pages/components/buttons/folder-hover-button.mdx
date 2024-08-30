@@ -1,0 +1,58 @@
+---
+title: "Folder Hover Buttons"
+description: "Beautifully designed Folder Hover Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/folder-hover-button.png"
+---
+
+import Showcase from '@/components/Showcase3';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import TabButton from "@/components/gopx-buttons/TabButton"; 
+import toast, { Toaster } from 'react-hot-toast';
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import  FolderHoverButtonDemo  from "@/components/example/folder-hover-button-demo";
+
+
+# Folder Hover Buttons
+
+<p className="opacity-80 text-lg">Beautifully designed Folder Hover Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Button` `Tailwind CSS` `Framer Motion` `Reveal`
+
+<ComponentPreview name="folder-hover-button-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add folder-hover-button
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+
+### Install `framer-motion`
+
+```bash
+npm i framer-motion
+```
+
+### Create `folder-hover-button.tsx` 
+
+  <ComponentSource name="folder-hover-button" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+# Props
+
+| Prop        | Type          | Required | Description                                               |
+|-------------|---------------|----------|-----------------------------------------------------------|
+| `folderName`| `string`      | `Yes`      | The name of the folder to be displayed on the button.    |
+| `images`    | `string[]`    | `Yes`      | An array of image URLs to be displayed when the button is hovered over. |

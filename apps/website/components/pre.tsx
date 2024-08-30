@@ -48,7 +48,7 @@ export const Pre = ({
         <Code
           code={
             children?.toString().split("\n").slice(0, -1).join("\n") ||
-            "Error fetching code!"
+            "Loading..."
           }
           language="tsx"
         />
