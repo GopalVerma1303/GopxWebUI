@@ -25,12 +25,21 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
   const rotationStep = maxRotation / (images.length + 1);
 
   const folderVariants = {
-    closed: { rotateX: 0, y: 0, z: 0, zIndex: 1 },
-    open: { rotateX: -maxRotation, z: 50, zIndex: 2 },
+    closed: {
+      rotateX: 0,
+      y: 0,
+      z: 50,
+      zIndex: 1,
+    },
+    open: {
+      rotateX: -maxRotation,
+      z: 50,
+      zIndex: 3,
+    },
   };
 
   const imageVariants = (index: number) => ({
-    closed: { rotateX: 0, y: 0, z: 0, opacity: 0 },
+    closed: { rotateX: 0, y: 0, z: 0, opacity: 1 },
     open: {
       rotateX: -maxRotation + (index + 1) * rotationStep,
       z: 30 - index * 5,
@@ -103,7 +112,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
 
 const FolderHoverButtonDemo = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center">
       <FolderHoverButton
         folderName="My Folder"
         images={[
