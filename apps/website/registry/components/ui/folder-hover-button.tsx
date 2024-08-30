@@ -21,16 +21,19 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
     controls.start("closed");
   };
 
+  const maxRotation = 44;
+  const rotationStep = maxRotation / (images.length + 1);
+
   const folderVariants = {
-    closed: { rotateX: 0, y: 0 },
-    open: { rotateX: -60, y: "20%" },
+    closed: { rotateX: 0, y: 0, z: 0, zIndex: 1 },
+    open: { rotateX: -maxRotation, z: 50, zIndex: 2 },
   };
 
   const imageVariants = (index: number) => ({
-    closed: { rotateX: 0, y: 0, opacity: 0 },
+    closed: { rotateX: 0, y: 0, z: 0, opacity: 0 },
     open: {
-      rotateX: -55 + index * 5,
-      y: `${20 - index * 2}%`,
+      rotateX: -maxRotation + (index + 1) * rotationStep,
+      z: 30 - index * 5,
       opacity: 1,
       transition: {
         type: "spring",
@@ -43,14 +46,18 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
 
   return (
     <div
-      className="relative w-64 h-80 perspective-1000 cursor-pointer"
+      className="relative w-96 h-36 cursor-pointer"
+      style={{ perspective: "1000px" }}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
       role="button"
       tabIndex={0}
       aria-label={`Open ${folderName} folder`}
     >
-      <div className="absolute inset-0 flex items-end justify-center">
+      <div
+        className="absolute inset-0 flex items-end justify-center"
+        style={{ transformStyle: "preserve-3d" }}
+      >
         {images.map((image, index) => (
           <motion.div
             key={index}
@@ -60,7 +67,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
             variants={imageVariants(index)}
             style={{
               transformStyle: "preserve-3d",
-              zIndex: images.length - index,
+              zIndex: images.length - index + (isHovered ? 2 : 1),
             }}
           >
             <Image
@@ -68,12 +75,12 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
               alt={`Image ${index + 1} in ${folderName} folder`}
               layout="fill"
               objectFit="cover"
-              className="rounded-t-lg shadow-md"
+              className="rounded-lg"
             />
           </motion.div>
         ))}
         <motion.div
-          className="absolute inset-0 bg-yellow-200 rounded-t-lg origin-bottom shadow-lg"
+          className="absolute inset-0 bg-black rounded-lg origin-bottom"
           initial="closed"
           animate={controls}
           variants={folderVariants}
@@ -84,7 +91,7 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-lg font-semibold text-gray-800">
+            <span className="text-xl font-bold uppercase text-white">
               {folderName}
             </span>
           </div>
@@ -96,14 +103,19 @@ function FolderHoverButton({ folderName, images }: FolderHoverButtonProps) {
 
 const FolderHoverButtonDemo = () => {
   return (
-    <FolderHoverButton
-      folderName="My Folder"
-      images={[
-        "https://webui.gopx.dev/og.jpeg",
-        "https://webui.gopx.dev/og.jpeg",
-        "https://webui.gopx.dev/og.jpeg",
-      ]}
-    />
+    <div className="flex items-center justify-center h-screen">
+      <FolderHoverButton
+        folderName="My Folder"
+        images={[
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fllama-on-disk.6f858965.png&w=3840&q=75",
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Foctocat-programming.ba4330be.png&w=3840&q=75",
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwin-crash-meme.5c68b41d.png&w=2048&q=75",
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fllama-on-disk.6f858965.png&w=3840&q=75",
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Foctocat-programming.ba4330be.png&w=3840&q=75",
+          "https://www.gopx.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fwin-crash-meme.5c68b41d.png&w=2048&q=75",
+        ]}
+      />
+    </div>
   );
 };
 
