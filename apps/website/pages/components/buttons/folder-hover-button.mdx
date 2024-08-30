@@ -1,0 +1,74 @@
+---
+title: "Folder Hover Buttons"
+description: "Beautifully designed Button components with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/gopx-buttons.png"
+---
+
+import Showcase from '@/components/Showcase3';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import TabButton from "@/components/gopx-buttons/TabButton"; 
+import toast, { Toaster } from 'react-hot-toast';
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import  FolderHoverButtonDemo  from "@/components/ui/folder-hover-button";
+
+export const handleClick = () => {
+  toast('Button Pressed!');
+};
+
+# Foder Hover Buttons
+
+<p className="opacity-80 text-lg">Beautifully designed Folder Hover component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Button` `Tailwind CSS` `Framer Motion` `Reveal`
+
+<Tabs items={['Preview', 'Code']}>
+  <Tabs.Tab>
+    <Showcase>
+      <FolderHoverButtonDemo />
+    </Showcase>
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx filename="TabButton.tsx" showLineNumbers
+import React from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/utils/cn";
+
+interface TabButtonProps {
+  type?: "button" | "submit" | "reset" | undefined;
+  label: string;
+  onClick: () => void;
+  className?: string;
+}
+
+const TabButton: React.FC<TabButtonProps> = ({
+  label,
+  onClick,
+  type,
+  className,
+}) => {
+  return (
+    <motion.button
+      type={type}
+      className={cn(
+        `px-4 py-2 font-bold rounded-md text-xl bg-gradient-to-r from-indigo-400 to-blue-400 text-white dark:from-indigo-600 dark:to-blue-600`,
+        className,
+      )}
+      onClick={onClick}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {label}
+    </motion.button>
+  );
+};
+
+export default TabButton;
+
+// use like this
+<TabButton label="Click me!" onClick={handleClick} />
+```
+  </Tabs.Tab>
+</Tabs>
