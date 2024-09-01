@@ -38,7 +38,7 @@ const config: DocsThemeConfig = {
     const { asPath } = useRouter();
     if (asPath !== "/") {
       return {
-        titleTemplate: "%s - GopxWebUI",
+        titleTemplate: "%s - GOPX-WEBUI",
       };
     }
   },

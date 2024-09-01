@@ -3,7 +3,6 @@ import React from "react";
 interface HoverFillCardProps {
   title: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  href: string;
 }
 
 const HoverFillCard: React.FC<HoverFillCardProps> = ({

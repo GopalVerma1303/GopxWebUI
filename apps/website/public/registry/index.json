@@ -228,6 +228,23 @@
     "type": "components:ui"
   },
   {
+    "name": "hover-fill-card",
+    "files": [
+      "registry/components/ui/hover-fill-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "hover-fill-card-demo",
+    "registryDependencies": [
+      "hover-fill-card"
+    ],
+    "files": [
+      "registry/components/example/hover-fill-card-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "image-tooltip",
     "files": [
       "registry/components/ui/image-tooltip.tsx"

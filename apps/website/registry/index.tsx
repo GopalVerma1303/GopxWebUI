@@ -93,6 +93,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/gopx-secondary-button.tsx"],
   },
+  "hover-fill-card": {
+    name: "hover-fill-card",
+    type: "components:ui",
+    files: ["registry/components/ui/hover-fill-card.tsx"],
+  },
   "image-tooltip": {
     name: "image-tooltip",
     type: "components:ui",
@@ -227,6 +232,16 @@ const example: Registry = {
       () => import("@/registry/components/example/gopx-dropdown-demo"),
     ),
   },
+  "hover-fill-card-demo": {
+    name: "hover-fill-card-demo",
+    type: "components:example",
+    registryDependencies: ["hover-fill-card"],
+    files: ["registry/components/example/hover-fill-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/hover-fill-card-demo"),
+    ),
+  },
+
   "image-tooltip-demo": {
     name: "image-tooltip-demo",
     type: "components:example",

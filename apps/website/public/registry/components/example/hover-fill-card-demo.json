@@ -1,0 +1,13 @@
+{
+  "name": "hover-fill-card-demo",
+  "registryDependencies": [
+    "hover-fill-card"
+  ],
+  "files": [
+    {
+      "name": "hover-fill-card-demo.tsx",
+      "content": "import React from \"react\";\nimport HoverFillCard from \"@/components/ui/hover-fill-card\";\nimport { LuWallpaper } from \"react-icons/lu\";\n\nconst HoverFillCardDemo: React.FC = () => {\n  return <HoverFillCard title=\"Backgrounds\" Icon={LuWallpaper} />;\n};\n\nexport default HoverFillCardDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

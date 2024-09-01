@@ -1,0 +1,47 @@
+---
+title: "Hover Fill Card"
+description: "Beautifully designed Hover Fill Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/cards/hover-fill-card.png"
+---
+
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
+# Hover Fill Card
+
+<p className="component-description">Beautifully designed Hover Fill Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Card` `Profile`
+
+<ComponentPreview name="hover-fill-card-demo" /> 
+
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add hover-fill-card
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+### Create `ProfileCard.tsx` 
+
+  <ComponentSource name="hover-fill-card" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+
+## Props
+
+| Prop   | Type                                      | Required | Description                                                                                  |
+|--------|-------------------------------------------|----------|----------------------------------------------------------------------------------------------|
+| title  | `string`                                  | Yes      | The title to be displayed on the card. This is a required prop that provides context to the card. |
+| Icon   | `React.FC<React.SVGProps<SVGSVGElement>>` | Yes      | A functional component that renders an SVG icon. This is also a required prop and should be a valid React component. |
