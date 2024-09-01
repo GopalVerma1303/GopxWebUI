@@ -1,0 +1,13 @@
+{
+  "name": "zoom-blur-card-demo",
+  "registryDependencies": [
+    "zoom-blur-card"
+  ],
+  "files": [
+    {
+      "name": "zoom-blur-card-demo.tsx",
+      "content": "import React from \"react\";\nimport ZoomBlurCard from \"@/components/ui/zoom-blur-card\";\n\nconst ZoomBlurCardDemo: React.FC = () => {\n  return (\n    <div className=\"w-full max-w-md\">\n      <ZoomBlurCard\n        title=\"Zoom Blur Card\"\n        description=\"The card component with zoom blur effect\"\n        imageUrl=\"/assets/tools/colors.png\"\n      />\n    </div>\n  );\n};\n\nexport default ZoomBlurCardDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}

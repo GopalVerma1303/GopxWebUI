@@ -1,0 +1,48 @@
+---
+title: "Zoom Blur Card"
+description: "Beautifully designed Zoom Blur Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/cards/zoom-blur-card.png"
+---
+
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
+# Zoom Blur Card
+
+<p className="component-description">Beautifully designed Zoom Blur Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Card` `Profile`
+
+<ComponentPreview name="zoom-blur-card-demo" /> 
+
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add zoom-blur-card
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+### Create `ZoomBlurCard.tsx`
+
+  <ComponentSource name="zoom-blur-card" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+
+## Props
+
+| Prop        | Type     | Required | Description                                                                                     |
+|-------------|----------|----------|-------------------------------------------------------------------------------------------------|
+| `title`       | `string` | Yes      | The title to be displayed on the card. This is a required prop that provides context to the card. |
+| `description` | `string` | Yes      | A brief description of the card's content. This is a required prop that gives additional information. |
+| `imageUrl`    | `string` | Yes      | The URL of the image to be displayed in the card. This is a required prop that specifies the image source. |

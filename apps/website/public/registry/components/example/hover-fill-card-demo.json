@@ -6,7 +6,7 @@
   "files": [
     {
       "name": "hover-fill-card-demo.tsx",
-      "content": "import React from \"react\";\nimport HoverFillCard from \"@/components/ui/hover-fill-card\";\nimport { LuWallpaper } from \"react-icons/lu\";\n\nconst HoverFillCardDemo: React.FC = () => {\n  return <HoverFillCard title=\"Backgrounds\" Icon={LuWallpaper} />;\n};\n\nexport default HoverFillCardDemo;\n"
+      "content": "import React from \"react\";\nimport HoverFillCard from \"@/components/ui/hover-fill-card\";\nimport { LuWallpaper } from \"react-icons/lu\";\n\nconst HoverFillCardDemo: React.FC = () => {\n  return (\n    <div className=\"w-full max-w-xs\">\n      <HoverFillCard title=\"Backgrounds\" Icon={LuWallpaper} />\n    </div>\n  );\n};\n\nexport default HoverFillCardDemo;\n"
     }
   ],
   "type": "components:example"

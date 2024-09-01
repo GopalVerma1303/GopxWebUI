@@ -359,5 +359,22 @@
       "registry/components/example/torsional-link-demo.tsx"
     ],
     "type": "components:example"
+  },
+  {
+    "name": "zoom-blur-card",
+    "files": [
+      "registry/components/ui/zoom-blur-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "zoom-blur-card-demo",
+    "registryDependencies": [
+      "zoom-blur-card"
+    ],
+    "files": [
+      "registry/components/example/zoom-blur-card-demo.tsx"
+    ],
+    "type": "components:example"
   }
 ]

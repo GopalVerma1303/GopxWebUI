@@ -138,6 +138,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/torsional-link.tsx"],
   },
+  "zoom-blur-card": {
+    name: "zoom-blur-card",
+    type: "components:ui",
+    files: ["registry/components/ui/zoom-blur-card.tsx"],
+  },
 };
 
 const block: Registry = {
@@ -294,6 +299,15 @@ const example: Registry = {
     files: ["registry/components/example/torsional-link-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/torsional-link-demo"),
+    ),
+  },
+  "zoom-blur-card-demo": {
+    name: "zoom-blur-card-demo",
+    type: "components:example",
+    registryDependencies: ["zoom-blur-card"],
+    files: ["registry/components/example/zoom-blur-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/zoom-blur-card-demo"),
     ),
   },
 };
