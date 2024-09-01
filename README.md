@@ -1,11 +1,10 @@
 <div align="center">
 
 <div align="center">
-  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/724ad87fa1758d5881f0a2a14e9bb7cb484c311b/apps/website/public/webui-dark-rounded.png#gh-dark-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
-  <img src="https://github.com/GopalVerma1303/webui.gopx/blob/724ad87fa1758d5881f0a2a14e9bb7cb484c311b/apps/website/public/webui-light-rounded.png#gh-light-mode-only" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
+  <img src="https://webui.gopx.dev/logo-r.png" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
 </div>
 
-# webui.gopx
+# GOPX WEBUI
 
 A comprehensive collection of meticulously crafted React components for web styled with Tailwind CSS and Framer Motion
 
