@@ -83,6 +83,16 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/ghost-label.tsx"],
   },
+  "gopx-primary-button": {
+    name: "gopx-primary-button",
+    type: "components:ui",
+    files: ["registry/components/ui/gopx-primary-button.tsx"],
+  },
+  "gopx-secondary-button": {
+    name: "gopx-secondary-button",
+    type: "components:ui",
+    files: ["registry/components/ui/gopx-secondary-button.tsx"],
+  },
   "image-tooltip": {
     name: "image-tooltip",
     type: "components:ui",

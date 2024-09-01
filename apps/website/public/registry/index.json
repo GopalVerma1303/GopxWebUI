@@ -214,6 +214,20 @@
     "type": "components:block"
   },
   {
+    "name": "gopx-primary-button",
+    "files": [
+      "registry/components/ui/gopx-primary-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "gopx-secondary-button",
+    "files": [
+      "registry/components/ui/gopx-secondary-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "image-tooltip",
     "files": [
       "registry/components/ui/image-tooltip.tsx"
