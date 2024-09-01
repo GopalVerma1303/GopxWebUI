@@ -4,7 +4,7 @@
   <img src="https://webui.gopx.dev/logo-r.png" alt="AutoForge Logo" height="250" style="border-radius: 20px;">
 </div>
 
-# GOPX WEBUI
+# gopx-webui
 
 A comprehensive collection of meticulously crafted React components for web styled with Tailwind CSS and Framer Motion
 
