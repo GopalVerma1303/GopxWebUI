@@ -60,17 +60,17 @@ const FooterLogo: React.FC = () => (
         <div className="relative flex gap-2 items-center mb-5">
           <Image
             src={FOOTER_CONTENT.logo.darkImage}
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             alt={FOOTER_CONTENT.logo.alt}
-            className="hidden dark:block rounded-lg shadow-lg dark:shadow-gray-700/50"
+            className="hidden dark:block shadow-lg dark:shadow-gray-700/50"
           />
           <Image
             src={FOOTER_CONTENT.logo.lightImage}
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             alt={FOOTER_CONTENT.logo.alt}
-            className="dark:hidden shadow-lg rounded-lg shadow-gray-300/50"
+            className="dark:hidden shadow-lg shadow-gray-300/50"
           />
           <p className="font-bold">{FOOTER_CONTENT.logo.title}</p>
         </div>

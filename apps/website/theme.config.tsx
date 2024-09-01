@@ -11,18 +11,18 @@ import FRLink from "./components/toc/fr-link";
 const logo = (
   <div className="flex items-center gap-2">
     <Image
-      src={"/webui-light-rounded.png"}
-      width={40}
-      height={40}
+      src={"/logo-r.png"}
+      width={30}
+      height={30}
       alt="logo"
-      className="dark:hidden rounded-lg shadow-lg dark:shadow-gray-300/50"
+      className="dark:hidden shadow-lg dark:shadow-gray-300/50"
     />
     <Image
-      src={"/webui-dark-rounded.png"}
-      width={40}
-      height={40}
+      src={"/logo-r.png"}
+      width={30}
+      height={30}
       alt="logo"
-      className="hidden dark:block rounded-lg shadow-lg dark:shadow-gray-700/50"
+      className="hidden dark:block shadow-lg dark:shadow-gray-700/50"
     />
     <p className=" font-bold hidden lg:inline-block">GOPX WEBUI</p>
   </div>
