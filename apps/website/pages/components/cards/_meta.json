@@ -2,5 +2,6 @@
   "index": {
     "display": "hidden"
   },
-  "profile-card": "Profile Card"
+  "profile-card": "Profile Card",
+  "hover-fill-card": "Hover Fill Card"
 }
