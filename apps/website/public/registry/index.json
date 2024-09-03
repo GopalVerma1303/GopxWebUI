@@ -303,6 +303,23 @@
     "type": "components:ui"
   },
   {
+    "name": "peelable-sticker",
+    "files": [
+      "registry/components/ui/peelable-sticker.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "peelable-sticker-demo",
+    "registryDependencies": [
+      "peelable-sticker"
+    ],
+    "files": [
+      "registry/components/example/peelable-sticker-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "profile-card",
     "files": [
       "registry/components/ui/profile-card.tsx"

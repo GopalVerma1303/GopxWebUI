@@ -1,0 +1,13 @@
+{
+  "name": "peelable-sticker-demo",
+  "registryDependencies": [
+    "peelable-sticker"
+  ],
+  "files": [
+    {
+      "name": "peelable-sticker-demo.tsx",
+      "content": "import React from \"react\";\nimport PeelableSticker from \"@/components/ui/peelable-sticker\";\n\nconst PeelableStickerDemo: React.FC = () => {\n  const stickerImage = \"/logo.png\";\n  const message = \"peek-a-boo 🎉\";\n\n  return <PeelableSticker stickerImage={stickerImage} message={message} />;\n};\n\nexport default PeelableStickerDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}
