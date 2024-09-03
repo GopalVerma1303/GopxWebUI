@@ -118,6 +118,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/page-header.tsx"],
   },
+  "peelable-sticker": {
+    name: "peelable-sticker",
+    type: "components:ui",
+    files: ["registry/components/ui/peelable-sticker.tsx"],
+  },
   "profile-card": {
     name: "profile-card",
     type: "components:ui",
@@ -281,6 +286,15 @@ const example: Registry = {
     files: ["registry/components/example/profile-card-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/profile-card-demo"),
+    ),
+  },
+  "peelable-sticker-demo": {
+    name: "peelable-sticker-demo",
+    type: "components:example",
+    registryDependencies: ["peelable-sticker"],
+    files: ["registry/components/example/peelable-sticker-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/peelable-sticker-demo"),
     ),
   },
   "text-tooltip-demo": {

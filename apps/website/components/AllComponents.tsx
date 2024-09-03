@@ -20,7 +20,7 @@ import { PiAlignTopFill, PiTabsFill } from "react-icons/pi";
 // Importing ComponentCard and ComponentCardWrapper
 import ComponentCard from "@/components/ComponentCard";
 import ComponentCardWrapper from "@/components/ComponentCardWrapper";
-import { FaUserLarge } from "react-icons/fa6";
+import { FaStar, FaUserLarge } from "react-icons/fa6";
 
 // Define the data for components
 const componentsData = [
@@ -125,6 +125,12 @@ const componentsData = [
     href: "/components/tabs",
     Icon: PiTabsFill,
     sections: ["Components", "Trending"],
+  },
+  {
+    title: "Stickers",
+    href: "/components/stickers",
+    Icon: FaStar,
+    sections: ["Components"],
   },
 ];
 
