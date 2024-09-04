@@ -111,7 +111,7 @@ export default function GalaxyButton() {
       ))}
 
       {/* Button text */}
-      <span className="relative z-10">Galaxy Button</span>
+      <span className="relative z-10 font-light">Galaxy Button</span>
     </motion.button>
   );
 }
