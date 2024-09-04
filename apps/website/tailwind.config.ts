@@ -22,6 +22,8 @@ module.exports = {
         caveat: ["Caveat", "cursive"],
       },
       animation: {
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        slide: "slide var(--speed) ease-in-out infinite alternate",
         scroll: "scroll linear infinite",
         flicker: "flicker 0.3s infinite",
         blob: "blob 7s linear infinite",
@@ -69,6 +71,25 @@ module.exports = {
         theme: "#5271FF",
       },
       keyframes: {
+        "spin-around": {
+          "0%": {
+            transform: "translateZ(0) rotate(0)",
+          },
+          "15%, 35%": {
+            transform: "translateZ(0) rotate(90deg)",
+          },
+          "65%, 85%": {
+            transform: "translateZ(0) rotate(270deg)",
+          },
+          "100%": {
+            transform: "translateZ(0) rotate(360deg)",
+          },
+        },
+        slide: {
+          to: {
+            transform: "translate(calc(100cqw - 100%), 0)",
+          },
+        },
         scroll: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
