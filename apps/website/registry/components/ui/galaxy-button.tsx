@@ -50,13 +50,13 @@ export default function GalaxyButton() {
       className="group relative z-0 overflow-hidden rounded-full px-10 py-3.5 text-md font-semibold text-white focus:outline-none"
       style={
         {
-          "--spread": "180deg", // Increased from 90deg to 180deg
+          "--spread": "180deg",
           "--shimmer-color": "white",
           "--radius": "9999px",
           "--speed": "3s",
           "--cut": "0.05em",
-          "--bg": "black",
-          background: "linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4)",
+          "--bg": "white",
+          background: "linear-gradient(to right, #d800ff, #3B82F6, #00ffb6)",
         } as React.CSSProperties
       }
       animate={controls}
@@ -70,7 +70,7 @@ export default function GalaxyButton() {
       <div className="absolute inset-0.5 rounded-full bg-black" />
 
       {/* Shimmer effect */}
-      <div className="absolute inset-0 -z-30 overflow-visible blur-[2px] [container-type:size]">
+      <div className="absolute inset-0 -z-30 overflow-visible blur-[0px] [container-type:size]">
         <div className="absolute inset-0 h-[100cqh] animate-slide [aspect-ratio:1] [border-radius:0] [mask:none]">
           <div className="animate-spin-around absolute inset-[-100%] w-auto rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] [translate:0_0]" />
         </div>
