@@ -1,0 +1,13 @@
+{
+  "name": "galaxy-button-demo",
+  "registryDependencies": [
+    "galaxy-button"
+  ],
+  "files": [
+    {
+      "name": "galaxy-button-demo.tsx",
+      "content": "import React from \"react\";\nimport GalaxyButton from \"@/components/ui/galaxy-button\";\n\nexport default function GalaxyButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-8 \">\n      <GalaxyButton\n        text=\"Galaxy Button\"\n        gradientColors={[\"#9500FD\", \"#3B82F6\", \"#00ffb6\"]}\n        fontSize=\"1.2rem\"\n        padding=\"1.25rem 4rem\"\n        onClick={() => console.log(\"Galaxy Button clicked!\")}\n      />\n    </div>\n  );\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

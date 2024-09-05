@@ -145,6 +145,23 @@
     "type": "components:example"
   },
   {
+    "name": "galaxy-button",
+    "files": [
+      "registry/components/ui/galaxy-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "galaxy-button-demo",
+    "registryDependencies": [
+      "galaxy-button"
+    ],
+    "files": [
+      "registry/components/example/galaxy-button-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "ghost-label",
     "files": [
       "registry/components/ui/ghost-label.tsx"

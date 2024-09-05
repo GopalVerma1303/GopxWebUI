@@ -1,19 +1,13 @@
 ---
 title: "Galaxy Buttons"
 description: "Beautifully designed Galaxy Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
-image: "https://webui.gopx.dev/assets/components/buttons/folder-hover-button.png"
+image: "https://webui.gopx.dev/assets/components/buttons/galaxy-button.png"
 ---
 
-import Showcase from '@/components/Showcase3';
-import { ProfileCard }  from '@gopx-webui/ui/cards';
 import { Steps } from 'nextra/components'
 import { Tabs } from "nextra/components";
-import TabButton from "@/components/gopx-buttons/TabButton"; 
-import toast, { Toaster } from 'react-hot-toast';
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import GalaxyButton from '@/components/ui/galaxy-button';
-
 
 # Galaxy Buttons
 
@@ -21,9 +15,7 @@ import GalaxyButton from '@/components/ui/galaxy-button';
 
 `Button` `Tailwind CSS` `Framer Motion` `Reveal`
 
-<Showcase>
-  <GalaxyButton />
-</Showcase>
+<ComponentPreview name="galaxy-button-demo" />
 
 ## Installation
 
@@ -44,8 +36,9 @@ npx gopx-webui add galaxy-button
 npm i framer-motion
 ```
 
-### Create `folder-hover-button.tsx` 
+### Create `galaxy-button.tsx` 
 
+<ComponentSource name="galaxy-button" />
 
 </Steps>
   </Tabs.Tab>
@@ -53,7 +46,14 @@ npm i framer-motion
 
 # Props
 
-| Prop        | Type          | Required | Description                                               |
-|-------------|---------------|----------|-----------------------------------------------------------|
-| `folderName`| `string`      | `Yes`      | The name of the folder to be displayed on the button.    |
-| `images`    | `string[]`    | `Yes`      | An array of image URLs to be displayed when the button is hovered over. |
+| Prop            | Type                  | Required | Description                                                                                               |
+|-----------------|-----------------------|----------|-----------------------------------------------------------------------------------------------------------|
+| `text`          | `string`              | Yes      | The text to be displayed on the button.                                                                   |
+| `gradientColors`| `string[]`            | Yes      | An array of color strings used for the button's gradient background.                                      |
+| `shimmerColor`  | `string`              | No       | The color of the shimmer effect. Defaults to `"white"`.                                                  |
+| `textColor`     | `string`              | No       | The color of the button text. Defaults to `"white"`.                                                      |
+| `fontSize`      | `string`              | No       | The font size of the button text. Defaults to `"1rem"`.                                                  |
+| `padding`       | `string`              | No       | The padding around the button text. Defaults to `"0.875rem 2.5rem"`.                                     |
+| `starCount`     | `number`              | No       | The number of stars to be generated around the button. Defaults to `100`.                                 |
+| `className`     | `string`              | No       | Additional CSS classes to apply to the button for custom styling.                                         |
+| `onClick`       | `() => void`          | No       | A callback function to be executed when the button is clicked.                                            |
