@@ -78,6 +78,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/folder-hover-button.tsx"],
   },
+  "galaxy-button": {
+    name: "galaxy-button",
+    type: "components:ui",
+    files: ["registry/components/ui/galaxy-button.tsx"],
+  },
   "ghost-label": {
     name: "ghost-label",
     type: "components:ui",
@@ -213,6 +218,15 @@ const example: Registry = {
     files: ["registry/components/example/folder-hover-button-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/folder-hover-button-demo"),
+    ),
+  },
+  "galaxy-button-demo": {
+    name: "galaxy-button-demo",
+    type: "components:example",
+    registryDependencies: ["galaxy-button"],
+    files: ["registry/components/example/galaxy-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/galaxy-button-demo"),
     ),
   },
   "ghost-label-demo": {

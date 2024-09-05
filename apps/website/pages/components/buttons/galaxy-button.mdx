@@ -1,0 +1,59 @@
+---
+title: "Galaxy Buttons"
+description: "Beautifully designed Galaxy Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/galaxy-button.png"
+---
+
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
+# Galaxy Button
+
+<p className="opacity-80 text-lg">Beautifully designed Galaxy Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Button` `Tailwind CSS` `Framer Motion` `Reveal`
+
+<ComponentPreview name="galaxy-button-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add galaxy-button
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+
+### Install `framer-motion`
+
+```bash
+npm i framer-motion
+```
+
+### Create `galaxy-button.tsx` 
+
+<ComponentSource name="galaxy-button" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+# Props
+
+| Prop            | Type                  | Required | Description                                                                                               |
+|-----------------|-----------------------|----------|-----------------------------------------------------------------------------------------------------------|
+| `text`          | `string`              | Yes      | The text to be displayed on the button.                                                                   |
+| `gradientColors`| `string[]`            | Yes      | An array of color strings used for the button's gradient background.                                      |
+| `shimmerColor`  | `string`              | No       | The color of the shimmer effect. Defaults to `"white"`.                                                  |
+| `textColor`     | `string`              | No       | The color of the button text. Defaults to `"white"`.                                                      |
+| `fontSize`      | `string`              | No       | The font size of the button text. Defaults to `"1rem"`.                                                  |
+| `padding`       | `string`              | No       | The padding around the button text. Defaults to `"0.875rem 2.5rem"`.                                     |
+| `starCount`     | `number`              | No       | The number of stars to be generated around the button. Defaults to `100`.                                 |
+| `className`     | `string`              | No       | Additional CSS classes to apply to the button for custom styling.                                         |
+| `onClick`       | `() => void`          | No       | A callback function to be executed when the button is clicked.                                            |
