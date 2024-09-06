@@ -128,6 +128,23 @@
     "type": "components:ui"
   },
   {
+    "name": "emoji-button",
+    "files": [
+      "registry/components/ui/emoji-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "emoji-button-demo",
+    "registryDependencies": [
+      "emoji-button"
+    ],
+    "files": [
+      "registry/components/example/emoji-button-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "folder-hover-button",
     "files": [
       "registry/components/ui/folder-hover-button.tsx"

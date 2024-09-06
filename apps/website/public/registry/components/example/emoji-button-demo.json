@@ -1,0 +1,13 @@
+{
+  "name": "emoji-button-demo",
+  "registryDependencies": [
+    "emoji-button"
+  ],
+  "files": [
+    {
+      "name": "emoji-button-demo.tsx",
+      "content": "import BubbleButton from \"@/components/ui/emoji-button\";\nimport { HeartIcon } from \"lucide-react\";\n\nexport default function BubbleButtonDemo() {\n  return (\n    <div className=\"flex md:flex-row flex-col items-center gap-16 md:py-8\">\n      <BubbleButton\n        icon={<HeartIcon className=\"w-3 h-3 fill-current\" />}\n        emergingInterval={80}\n        color={\"#FC342C\"}\n      >\n        <div className=\"flex items-center gap-2 w-full h-full\">\n          <div className=\"group-hover:animate-[heartbeat_0.8s_ease-in-out_infinite] transition duration-300\">\n            <HeartIcon className=\"w-5 h-5 fill-current\" />\n          </div>\n          <span>Sponsor</span>\n        </div>\n      </BubbleButton>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "type": "components:example"
+}
