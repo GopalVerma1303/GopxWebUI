@@ -4,23 +4,18 @@ description: "Beautifully designed Emoji Button component with Tailwind CSS and 
 image: "https://webui.gopx.dev/assets/components/buttons/emoji-button.png"
 ---
 
-import Showcase from '@/components/Showcase3';
-import { ProfileCard }  from '@gopx-webui/ui/cards';
 import { Steps } from 'nextra/components'
 import { Tabs } from "nextra/components";
-import TabButton from "@/components/gopx-buttons/TabButton"; 
-import toast, { Toaster } from 'react-hot-toast';
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import EmojiButtonDemo from "@/components/ui/emoji-button";
 
-# Emoji Buttons
+# Emoji Button
 
 <p className="opacity-80 text-lg">Beautifully designed Emoji Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
 
-`Button` `Tailwind CSS` `Framer Motion` `Reveal`
+`Button` `Tailwind CSS` `Framer Motion` `Emoji`
 
-<Showcase><EmojiButtonDemo /></Showcase>
+<ComponentPreview name="emoji-button-demo" />
 
 ## Installation
 
@@ -51,7 +46,9 @@ npm i framer-motion
 
 # Props
 
-| Prop        | Type          | Required | Description                                               |
-|-------------|---------------|----------|-----------------------------------------------------------|
-| `folderName`| `string`      | `Yes`      | The name of the folder to be displayed on the button.    |
-| `images`    | `string[]`    | `Yes`      | An array of image URLs to be displayed when the button is hovered over. |
+| Prop                | Type                | Required | Description                                                                                     |
+|---------------------|---------------------|----------|-------------------------------------------------------------------------------------------------|
+| `icon`              | `React.ReactNode`   | Yes      | The icon to be displayed within the bubble effect.                                             |
+| `children`          | `ReactNode`         | Yes      | The text or content to be displayed on the button.                                             |
+| `emergingInterval`  | `number`            | Yes      | The time interval (in milliseconds) between the creation of new bubbles when the button is hovered. |
+| `color`             | `string`            | Yes      | The color of the button and bubbles, specified as a valid CSS color string.                    |

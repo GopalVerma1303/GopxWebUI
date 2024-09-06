@@ -1,13 +1,19 @@
 "use client";
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  ReactNode,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HeartIcon } from "lucide-react";
 
 interface BubbleButtonProps {
   icon: React.ReactNode;
-  text: string;
+  children: ReactNode;
   emergingInterval: number;
+  color: string;
 }
 
 interface Bubble {
@@ -21,7 +27,12 @@ interface Bubble {
   duration: number;
 }
 
-function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
+export default function BubbleButton({
+  icon,
+  children,
+  emergingInterval,
+  color,
+}: BubbleButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +47,7 @@ function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
       createdAt: Date.now(),
       waveAmplitude: Math.random() * 30 + 10,
       waveFrequency: Math.random() * 2 + 1,
-      riseHeight: Math.random() * 40 + 10,
+      riseHeight: Math.random() * 40 + 20,
       duration: Math.random() * 0.5 + 1,
     };
     setBubbles((prevBubbles) => [...prevBubbles, newBubble]);
@@ -48,8 +59,8 @@ function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
         const currentTime = Date.now();
         if (currentTime - lastBubbleTimeRef.current >= emergingInterval) {
           const rect = buttonRef.current.getBoundingClientRect();
-          const x = e.clientX - rect.left - 40;
-          const y = e.clientY - rect.top - 80;
+          const x = e.clientX - rect.left - 35;
+          const y = e.clientY - rect.top - 60;
           createBubble(x, y);
           lastBubbleTimeRef.current = currentTime;
         }
@@ -72,13 +83,20 @@ function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
   return (
     <motion.button
       ref={buttonRef}
-      className="relative px-6 py-3 border border-red-500 text-white rounded-lg overflow-visible w-1/3"
-      whileHover={{ scale: 1.05 }}
+      className={`group relative px-4 py-2 rounded-full overflow-visible transition-colors duration-300`}
+      style={
+        {
+          "--button-color": color,
+          backgroundColor: `${color}1a`,
+          color: color,
+        } as React.CSSProperties
+      }
+      whileTap={{ scale: 0.9 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      <span className="relative z-10 text-lg font-semibold">{text}</span>
+      <span className="relative z-10 text-lg font-semibold">{children}</span>
       <AnimatePresence>
         {bubbles.map((bubble) => (
           <motion.div
@@ -96,12 +114,17 @@ function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
                     bubble.waveAmplitude,
                 bubble.x,
               ],
-              y: [bubble.y, bubble.y - bubble.riseHeight],
+              y: [
+                bubble.y,
+                bubble.y - bubble.riseHeight * 0.6,
+                bubble.y - bubble.riseHeight * 0.8,
+                bubble.y - bubble.riseHeight,
+              ],
               scale: [0, 1, 1, 0],
             }}
             transition={{
               duration: bubble.duration,
-              times: [0, 0.2, 0.8, 1],
+              times: [0, 0.3, 0.8, 1],
               ease: "easeInOut",
             }}
           >
@@ -110,17 +133,5 @@ function BubbleButton({ icon, text, emergingInterval }: BubbleButtonProps) {
         ))}
       </AnimatePresence>
     </motion.button>
-  );
-}
-
-export default function BubbleButtonDemo() {
-  const [emergingInterval, setEmergingInterval] = useState(70);
-
-  return (
-    <BubbleButton
-      icon={<HeartIcon className="w-5 h-5 text-red-500 fill-red-500" />}
-      text="Sponcer"
-      emergingInterval={emergingInterval}
-    />
   );
 }

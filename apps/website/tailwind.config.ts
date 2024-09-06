@@ -71,6 +71,10 @@ module.exports = {
         theme: "#5271FF",
       },
       keyframes: {
+        heartbeat: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+        },
         "spin-around": {
           "0%": {
             transform: "translateZ(0) rotate(0)",

@@ -73,6 +73,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/dropdown.tsx"],
   },
+  "emoji-button": {
+    name: "emoji-button",
+    type: "components:ui",
+    files: ["registry/components/ui/emoji-button.tsx"],
+  },
   "folder-hover-button": {
     name: "folder-hover-button",
     type: "components:ui",
@@ -254,6 +259,15 @@ const example: Registry = {
     files: ["registry/components/example/gopx-dropdown-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/gopx-dropdown-demo"),
+    ),
+  },
+  "emoji-button-demo": {
+    name: "emoji-button-demo",
+    type: "components:example",
+    registryDependencies: ["emoji-button"],
+    files: ["registry/components/example/emoji-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/emoji-button-demo"),
     ),
   },
   "hover-fill-card-demo": {
