@@ -1,0 +1,50 @@
+---
+title: "Shimmer Text"
+Description: "Shimmer Text is a text component that displays a shimmer effect when the text is loading. It is useful for displaying a loading state while waiting for the data to load."
+image: "https://webui.gopx.dev/assets/components/text/shimmer-text.png"
+---
+
+import Showcase from '@/components/Showcase2';
+import { ProfileCard }  from '@gopx-webui/ui/cards';
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import GhostLabel from '@/components/GhostLabel';
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+
+
+# Shimmer Text
+
+<p className="component-description">Shimmer Text is a text component that displays a shimmer effect when the text is loading. It is useful for displaying a loading state while waiting for the data to load.</p>
+
+`Card` `Profile`
+
+<ComponentPreview name="shimmer-text-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add shimmer-text
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+### Create `shimmer-text.tsx` 
+
+<ComponentSource name="shimmer-text" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## Props
+
+| Prop                  | Type          | Required | Description                                                                                     |
+|-----------------------|---------------|----------|-------------------------------------------------------------------------------------------------|
+| `phrases`             | `string[]`    | Yes      | An array of strings representing the phrases to be displayed in the shimmering animation.      |
+| `animationDuration`   | `number`      | No       | The duration of the animation cycle in milliseconds. Defaults to `3000` ms (3 seconds).       |
+| `fadeDuration`        | `number`      | No       | The duration of the fade animation in milliseconds. Defaults to `300` ms (0.3 seconds).       |

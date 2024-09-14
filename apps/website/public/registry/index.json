@@ -371,6 +371,23 @@
     "type": "components:example"
   },
   {
+    "name": "shimmer-text",
+    "files": [
+      "registry/components/ui/shimmer-text.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "shimmer-text-demo",
+    "registryDependencies": [
+      "shimmer-text"
+    ],
+    "files": [
+      "registry/components/example/shimmer-text-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "tab-button",
     "files": [
       "registry/components/ui/tab-button.tsx"

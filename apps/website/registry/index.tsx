@@ -138,6 +138,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/profile-card.tsx"],
   },
+  "shimmer-text": {
+    name: "shimmer-text",
+    type: "components:ui",
+    files: ["registry/components/ui/shimmer-text.tsx"],
+  },
   "tab-button": {
     name: "tab-button",
     type: "components:ui",
@@ -323,6 +328,15 @@ const example: Registry = {
     files: ["registry/components/example/peelable-sticker-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/peelable-sticker-demo"),
+    ),
+  },
+  "shimmer-text-demo": {
+    name: "shimmer-text-demo",
+    type: "components:example",
+    registryDependencies: ["shimmer-text"],
+    files: ["registry/components/example/shimmer-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shimmer-text-demo"),
     ),
   },
   "text-tooltip-demo": {

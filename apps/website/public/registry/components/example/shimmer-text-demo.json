@@ -1,0 +1,13 @@
+{
+  "name": "shimmer-text-demo",
+  "registryDependencies": [
+    "shimmer-text"
+  ],
+  "files": [
+    {
+      "name": "shimmer-text-demo.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport ShimmerText from \"@/components/ui/shimmer-text\";\n\nconst LoadingTextAnimationDemo = () => {\n  const phrases = [\n    \"conquering\",\n    \"commanding\",\n    \"asserting\",\n    \"dominating\",\n    \"overcoming\",\n    \"strategizing\",\n  ];\n\n  return (\n    <div className=\" flex items-center justify-center \">\n      <ShimmerText phrases={phrases} />\n    </div>\n  );\n};\n\nexport default LoadingTextAnimationDemo;\n"
+    }
+  ],
+  "type": "components:example"
+}
