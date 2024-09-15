@@ -1,0 +1,86 @@
+---
+title: "Stacked Carousel"
+description: "A customizable stacked carousel component that displays a series of images or logos with a smooth stacked scrolling effect."
+image: "https://webui.gopx.dev/assets/components/carousels/stacked-carousel.png"
+---
+
+import Showcase from '@/components/Showcase3';
+import StackedCarousel from '@/components/StackedCarousel';
+import { Steps } from 'nextra/components';
+import { Tabs } from 'nextra/components';
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import StackedCarousel from "@/components/ui/stacked-carousel";
+
+
+# Stacked Carousel
+
+<p className="opacity-80 text-lg">A customizable stacked carousel component that displays a series of images or logos with a smooth stacked scrolling effect, ideal for showcasing brand partnerships or featured content.</p>
+
+`Carousel` `Stacked` `Animated` `Brands`
+
+<ComponentPreview name="stacked-carousel-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add stacked-carousel
+```
+
+<Tabs.Tab>
+
+</Tabs.Tab>
+<Tabs.Tab>
+<Steps>
+
+### Define the animation and keyframes in `tailwind.config.ts`
+
+  ```ts filename="tailwind.config.ts" {5, 9-10}
+  tailwind.config = {
+    theme: {
+      extend: {
+        animation: {
+          'scroll': 'scroll linear stacked',
+        },
+        keyframes: {
+          'scroll': {
+            from: { transform: 'translateX(0)' },
+            to: { transform: 'translateX(-100%)' },
+          }
+        }
+      },
+    },
+  }
+```
+
+### Create `StackedCarousel.tsx` Component
+
+  <ComponentSource name="stacked-carousel" /> 
+
+</Steps>
+
+</Tabs.Tab>
+</Tabs>
+
+
+## StackedCarousel Props
+
+| Prop        | Type                     | Required | Description                                                        |
+|-------------|--------------------------|----------|--------------------------------------------------------------------|
+| `images`    | `string[]`              | Yes      | An array of image sources to be displayed in the carousel.        |
+| `direction` | `"left"` \| `"right"`   | No       | The direction of the carousel animation. Defaults to `"left"`.    |
+| `speed`     | `number`                 | No       | The speed of the carousel animation in seconds. Defaults to `25`.  |
+| `itemWidth` | `number`                 | Yes      | The width of each carousel item in pixels.                        |
+| `itemHeight`| `number`                 | Yes      | The height of each carousel item in pixels.                       |
+
+## StackedCarouselItem Props
+
+| Prop    | Type      | Required | Description                                           |
+|---------|-----------|----------|-------------------------------------------------------|
+| `src`   | `string`  | Yes      | The source of the image to be displayed.             |
+| `width` | `number`  | Yes      | The width of the image in pixels.                    |
+| `height`| `number`  | Yes      | The height of the image in pixels.                   |
+

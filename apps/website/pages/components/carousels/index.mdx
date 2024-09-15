@@ -16,13 +16,17 @@ import Image from 'next/image'
 
 export function BlogIndex() {
   const currentPageTitle = "Carousel Components";
-  return getPagesUnderRoute('/components/carousels').filter(page => page.meta?.title !== currentPageTitle && page.frontMatter?.title !== currentPageTitle).map(page => {
-    return (
-      <ShowcaseCard title={page.meta?.title || page.frontMatter?.title || page.name} href={page.route}>
-        <Image src={page.frontMatter?.image} alt={page.frontMatter?.title} width={500} height={500} />
-      </ShowcaseCard>
-    )
-  })
+  return getPagesUnderRoute('/components/carousels')
+    .filter(page => page.meta?.title !== currentPageTitle && page.frontMatter?.title !== currentPageTitle)
+    .map(page => {
+      const fullUrl = page.frontMatter?.image;
+      const srcPath = fullUrl?.replace(/^https?:\/\/[^/]+/, '');
+      return (
+        <ShowcaseCard title={page.meta?.title || page.frontMatter?.title || page.name} href={page.route}>
+          <Image src={srcPath} alt={page.frontMatter?.title} width={500} height={300} />
+        </ShowcaseCard>
+      );
+    });
 }
 
 export const ShowcaseCard = Object.assign(
