@@ -28,7 +28,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  transpilePackages: ["ui"],
+  transpilePackages: ["ui", "react-tweet"],
 };
 
 const withPWAConfig = withPWA({
