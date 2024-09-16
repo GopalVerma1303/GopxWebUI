@@ -3,10 +3,10 @@ import StackedCarousel from "@/components/ui/stacked-carousel";
 
 const StackedCarouselDemo: React.FC = () => {
   const images = [
-    "https://picsum.photos/id/1018/300/300",
-    "https://picsum.photos/id/1015/300/300",
-    "https://picsum.photos/id/1019/300/300",
-    "https://picsum.photos/id/1021/300/300",
+    "/assets/components/carousels/p1.jpg",
+    "/assets/components/carousels/p2.jpg",
+    "/assets/components/carousels/p3.jpg",
+    "/assets/components/carousels/p4.jpg",
   ];
 
   return (

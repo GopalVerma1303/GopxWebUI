@@ -68,8 +68,14 @@ const StackedCarousel: React.FC<StackedCarouselProps> = ({
   };
 
   return (
-    <div className={`relative w-full max-w-[${width}px] h-[${height}px]`}>
-      <div className={`relative w-full h-[${height - 100}px]`}>
+    <div
+      style={{ width: `${width}px`, height: `${height}px` }}
+      className="relative"
+    >
+      <div
+        style={{ width: "100%", height: `${height - 100}px` }}
+        className="relative"
+      >
         <AnimatePresence>
           {images.map((src, index) => {
             const orderIndex = order.indexOf(index);
@@ -82,7 +88,13 @@ const StackedCarousel: React.FC<StackedCarouselProps> = ({
             return (
               <motion.div
                 key={src}
-                className={`absolute top-0 left-0 w-full h-[${height - 100}px]`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                }}
                 animate={{
                   rotate: isMoving ? 0 : getRotation(orderIndex),
                   x: isAnimating
@@ -103,12 +115,26 @@ const StackedCarousel: React.FC<StackedCarouselProps> = ({
                   },
                 }}
               >
-                <Image
-                  src={src}
-                  alt={`Image ${index + 1}`}
-                  fill
-                  className={`rounded-3xl border-[${borderWidth}px] border-${borderColor} object-cover shadow-lg`}
-                />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    position: "relative",
+                    borderRadius: "1.5rem",
+                    border: `${borderWidth}px solid ${borderColor}`,
+                    overflow: "hidden",
+                    boxShadow:
+                      "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Image ${index + 1}`}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes={`${width}px`}
+                  />
+                </div>
               </motion.div>
             );
           })}
