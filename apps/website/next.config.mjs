@@ -24,6 +24,7 @@ const nextConfig = {
       "media.licdn.com",
       "github.com",
       "opengraph.githubassets.com",
+      "picsum.photos",
     ],
   },
   reactStrictMode: true,

@@ -388,6 +388,23 @@
     "type": "components:example"
   },
   {
+    "name": "stacked-carousel",
+    "files": [
+      "registry/components/ui/stacked-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "stacked-carousel-demo",
+    "registryDependencies": [
+      "stacked-carousel"
+    ],
+    "files": [
+      "registry/components/example/stacked-carousel-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "tab-button",
     "files": [
       "registry/components/ui/tab-button.tsx"

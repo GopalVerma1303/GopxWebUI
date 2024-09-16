@@ -143,6 +143,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/shimmer-text.tsx"],
   },
+  "stacked-carousel": {
+    name: "stacked-carousel",
+    type: "components:ui",
+    files: ["registry/components/ui/stacked-carousel.tsx"],
+  },
   "tab-button": {
     name: "tab-button",
     type: "components:ui",
@@ -337,6 +342,15 @@ const example: Registry = {
     files: ["registry/components/example/shimmer-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shimmer-text-demo"),
+    ),
+  },
+  "stacked-carousel-demo": {
+    name: "stacked-carousel-demo",
+    type: "components:example",
+    registryDependencies: ["stacked-carousel"],
+    files: ["registry/components/example/stacked-carousel-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/stacked-carousel-demo"),
     ),
   },
   "text-tooltip-demo": {
