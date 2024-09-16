@@ -52,7 +52,7 @@ export default async function handler(req) {
             }}
             height="30"
             width="30"
-            src="https://webui.gopx.dev/webui-light-rounded.png"
+            src="https://webui.gopx.dev/webui-dark-rounded.png"
             alt="Gopal Verma"
           />
           GOPX WEBUI
