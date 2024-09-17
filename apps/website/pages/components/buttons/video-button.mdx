@@ -1,0 +1,48 @@
+---
+title: "Video Buttons"
+description: "Beautifully designed Video Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/buttons/video-button.png"
+---
+
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import VideoButton from "@/components/ui/video-button";
+
+# Video Button
+
+<p className="opacity-80 text-lg">Beautifully designed Video Button component with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Button` `Tailwind CSS` `Framer Motion` `Reveal`
+
+<ComponentPreview name="video-button-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add video-button
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+
+### Create `video-button.tsx` 
+
+<ComponentSource name="video-button" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `children` | `React.ReactNode` | Yes | The content to be displayed inside the button |
+| `videoSrc` | `string` | Yes | The source URL of the video to be played on hover |
+| `className` | `string` | No | Additional CSS classes to be applied to the button |

@@ -163,6 +163,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/torsional-link.tsx"],
   },
+  "video-button": {
+    name: "video-button",
+    type: "components:ui",
+    files: ["registry/components/ui/video-button.tsx"],
+  },
   "zoom-blur-card": {
     name: "zoom-blur-card",
     type: "components:ui",
@@ -369,6 +374,15 @@ const example: Registry = {
     files: ["registry/components/example/torsional-link-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/torsional-link-demo"),
+    ),
+  },
+  "video-button-demo": {
+    name: "video-button-demo",
+    type: "components:example",
+    registryDependencies: ["video-button"],
+    files: ["registry/components/example/video-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/video-button-demo"),
     ),
   },
   "zoom-blur-card-demo": {

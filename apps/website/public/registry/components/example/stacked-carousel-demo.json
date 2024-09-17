@@ -6,7 +6,7 @@
   "files": [
     {
       "name": "stacked-carousel-demo.tsx",
-      "content": "import React from \"react\";\nimport StackedCarousel from \"@/components/ui/stacked-carousel\";\n\nconst StackedCarouselDemo: React.FC = () => {\n  const images = [\n    \"https://picsum.photos/id/1018/300/300\",\n    \"https://picsum.photos/id/1015/300/300\",\n    \"https://picsum.photos/id/1019/300/300\",\n    \"https://picsum.photos/id/1021/300/300\",\n  ];\n\n  return (\n    <div className=\"w-full h-full flex justify-center items-center pt-12 pb-4\">\n      <StackedCarousel\n        images={images}\n        width={300}\n        height={400}\n        borderColor=\"white\"\n        borderWidth={8}\n      />\n    </div>\n  );\n};\n\nexport default StackedCarouselDemo;\n"
+      "content": "import React from \"react\";\nimport StackedCarousel from \"@/components/ui/stacked-carousel\";\n\nconst StackedCarouselDemo: React.FC = () => {\n  const images = [\n    \"/assets/components/carousels/p1.jpg\",\n    \"/assets/components/carousels/p2.jpg\",\n    \"/assets/components/carousels/p3.jpg\",\n    \"/assets/components/carousels/p4.jpg\",\n  ];\n\n  return (\n    <div className=\"w-full h-full flex justify-center items-center pt-12 pb-4\">\n      <StackedCarousel\n        images={images}\n        width={300}\n        height={400}\n        borderColor=\"white\"\n        borderWidth={8}\n      />\n    </div>\n  );\n};\n\nexport default StackedCarouselDemo;\n"
     }
   ],
   "type": "components:example"

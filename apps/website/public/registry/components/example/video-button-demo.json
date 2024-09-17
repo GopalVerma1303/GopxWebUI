@@ -1,0 +1,13 @@
+{
+  "name": "video-button-demo",
+  "registryDependencies": [
+    "video-button"
+  ],
+  "files": [
+    {
+      "name": "video-button-demo.tsx",
+      "content": "import VideoButton from \"@/components/ui/video-button\";\n\nexport default function VideoButtonDemo() {\n  return (\n    <VideoButton videoSrc=\"/assets/components/buttons/videos/party.mp4\">\n      <span className=\"text-xl font-semibold\">Join the club!</span>\n    </VideoButton>\n  );\n}\n"
+    }
+  ],
+  "type": "components:example"
+}

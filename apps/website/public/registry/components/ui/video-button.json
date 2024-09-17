@@ -1,0 +1,10 @@
+{
+  "name": "video-button",
+  "files": [
+    {
+      "name": "video-button.tsx",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { cn } from \"@/utils/cn\";\n\ninterface VideoButtonProps {\n  children: React.ReactNode;\n  videoSrc: string;\n  className?: string;\n}\n\nconst VideoButton = ({ children, videoSrc, className }: VideoButtonProps) => {\n  const [isHovered, setIsHovered] = useState(false);\n  const [isPressed, setIsPressed] = useState(false);\n\n  return (\n    <button\n      className={cn(\n        \"relative inline-flex items-center justify-center rounded-2xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 h-10 px-8 py-8 overflow-hidden shadow-lg hover:shadow-xl dark:shadow-white/20 dark:hover:shadow-white/30\",\n        isPressed && \"scale-95\",\n        className,\n      )}\n      onMouseEnter={() => setIsHovered(true)}\n      onMouseLeave={() => setIsHovered(false)}\n      onMouseDown={() => setIsPressed(true)}\n      onMouseUp={() => setIsPressed(false)}\n      onTouchStart={() => setIsPressed(true)}\n      onTouchEnd={() => setIsPressed(false)}\n    >\n      <span className=\"relative z-10\">{children}</span>\n      <div\n        className={`absolute inset-0 transition-opacity duration-300 ${\n          isHovered ? \"opacity-50\" : \"opacity-0\"\n        }`}\n      >\n        <video\n          className=\"object-cover w-full h-full\"\n          src={videoSrc}\n          loop\n          muted\n          playsInline\n          autoPlay\n        />\n      </div>\n    </button>\n  );\n};\n\nexport default VideoButton;\n"
+    }
+  ],
+  "type": "components:ui"
+}

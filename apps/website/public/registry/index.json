@@ -446,6 +446,23 @@
     "type": "components:example"
   },
   {
+    "name": "video-button",
+    "files": [
+      "registry/components/ui/video-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "video-button-demo",
+    "registryDependencies": [
+      "video-button"
+    ],
+    "files": [
+      "registry/components/example/video-button-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "zoom-blur-card",
     "files": [
       "registry/components/ui/zoom-blur-card.tsx"
