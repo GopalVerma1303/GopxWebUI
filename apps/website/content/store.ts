@@ -11,8 +11,8 @@ export const PACKS = [
     sp: 0,
     cp: 59,
     discount: 85,
-    downloadLink: "https://github.com/GopalVerma1303/gopx.dev",
-    livePreviewLink: "https://gopx.dev",
+    downloadLink: "https://github.com/GopalVerma1303/old.gopx.dev",
+    livePreviewLink: "https://old.gopx.dev",
     docsLink: "/store/pack-heros",
     description: "A collection of modern and stand-out hero sections.",
     summary:
@@ -44,8 +44,8 @@ export const TEMPLATES = [
     sp: 0,
     cp: 39,
     discount: 50,
-    downloadLink: "https://github.com/GopalVerma1303/gopx.dev",
-    livePreviewLink: "https://gopx.dev",
+    downloadLink: "https://github.com/GopalVerma1303/old.gopx.dev",
+    livePreviewLink: "https://old.gopx.dev",
     docsLink: "/store/template-devsite",
     description:
       "Developer's portfolio website for sharing notes, code snippets, resources, blogs, writeups, and showcase projects.",
