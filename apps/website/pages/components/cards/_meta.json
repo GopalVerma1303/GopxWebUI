@@ -2,7 +2,8 @@
   "index": {
     "display": "hidden"
   },
-  "profile-card": "Profile Card",
   "hover-fill-card": "Hover Fill Card",
+  "profile-card": "Profile Card",
+  "slide-in-card": "Slide In Card",
   "zoom-blur-card": "Zoom Blur Card"
 }

@@ -25,6 +25,7 @@ const nextConfig = {
       "github.com",
       "opengraph.githubassets.com",
       "picsum.photos",
+      "images.unsplash.com",
     ],
   },
   reactStrictMode: true,

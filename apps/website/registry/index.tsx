@@ -143,6 +143,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/ui/shimmer-text.tsx"],
   },
+  "slide-in-card": {
+    name: "slide-in-card",
+    type: "components:ui",
+    files: ["registry/components/ui/slide-in-card.tsx"],
+  },
   "stacked-carousel": {
     name: "stacked-carousel",
     type: "components:ui",
@@ -347,6 +352,15 @@ const example: Registry = {
     files: ["registry/components/example/shimmer-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shimmer-text-demo"),
+    ),
+  },
+  "slide-in-card-demo": {
+    name: "slide-in-card-demo",
+    type: "components:example",
+    registryDependencies: ["slide-in-card"],
+    files: ["registry/components/example/slide-in-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/slide-in-card-demo"),
     ),
   },
   "stacked-carousel-demo": {

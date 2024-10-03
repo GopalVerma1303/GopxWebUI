@@ -1,0 +1,59 @@
+---
+title: "Slide In Card"
+description: "Beautifully designed Slide In Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly."
+image: "https://webui.gopx.dev/assets/components/cards/slide-in-card.png"
+---
+
+import { Steps } from 'nextra/components'
+import { Tabs } from "nextra/components";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import ArtGallery from "@/components/example/slide-in-card-demo";
+
+# Slide In Card
+
+<p className="component-description">Beautifully designed Slide In Card with Tailwind CSS and Framer Motion. Copy, paste, and customize to enhance your web projects effortlessly.</p>
+
+`Card` `Profile`
+
+<ComponentPreview name="slide-in-card-demo" />
+
+## Installation
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tabs.Tab>
+  ### Run the following command:
+
+```bash
+npx gopx-webui add slide-in-card
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+<Steps>
+### Create `slide-in-card.tsx` 
+
+  <ComponentSource name="slide-in-card" />
+
+</Steps>
+  </Tabs.Tab>
+</Tabs>
+
+
+## Props
+
+| Prop     | Type           | Required | Description                                                                                  |
+|----------|----------------|----------|----------------------------------------------------------------------------------------------|
+| item     | `SlideInItem`  | `Yes`      | An object containing the details of the item to be displayed in the card.                    |
+| isActive | `boolean`      | `Yes`      | A boolean indicating whether the card is currently active (expanded).                        |
+| onClick  | `() => void`   | `Yes`      | A function to be called when the card is clicked.                                            |
+
+### SlideInItem Interface
+
+| Property | Type     | Required | Description                                           |
+|----------|----------|----------|-------------------------------------------------------|
+| name     | `string` | `Yes`       | The name or title of the item.                        |
+| desc     | `string` | `Yes`       | A brief description of the item.                      |
+| imgUrl   | `string` | `Yes`       | The URL of the image to be displayed.                 |
+| date     | `string` | `Yes`       | The date associated with the item.                    |
+| loc      | `string` | `Yes`       | The location associated with the item.                |
+| shotOn   | `string` | `Yes`       | Information about the camera or device used for shot. |

@@ -388,6 +388,23 @@
     "type": "components:example"
   },
   {
+    "name": "slide-in-card",
+    "files": [
+      "registry/components/ui/slide-in-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "slide-in-card-demo",
+    "registryDependencies": [
+      "slide-in-card"
+    ],
+    "files": [
+      "registry/components/example/slide-in-card-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
     "name": "stacked-carousel",
     "files": [
       "registry/components/ui/stacked-carousel.tsx"
